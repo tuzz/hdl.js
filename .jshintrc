@@ -24,6 +24,7 @@
   "strict"               : true,
 
   // Relaxing options:
+  "multistr"             : true,
   "asi"                  : false,
   "boss"                 : false,
   "debug"                : false,
@@ -39,7 +40,6 @@
   "laxcomma"             : false,
   "loopfunc"             : false,
   "moz"                  : false,
-  "multistr"             : false,
   "notypeof"             : false,
   "proto"                : false,
   "scripturl"            : false,
