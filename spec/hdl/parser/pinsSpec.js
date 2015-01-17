@@ -16,8 +16,8 @@ describe("outputs", function () {
       inputs: ["a", "b"], outputs: ["out"]
     });
 
-    expect(subject.parse("inputs  a, b ,c\noutputs out_1_2_3")).toEqual({
-      inputs: ["a", "b", "c"], outputs: ["out_1_2_3"]
+    expect(subject.parse("inputs  a, b[1] ,c\noutputs out_1_2_3")).toEqual({
+      inputs: ["a", ["b", 1], "c"], outputs: ["out_1_2_3"]
     });
   });
 

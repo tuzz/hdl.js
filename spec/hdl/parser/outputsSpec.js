@@ -11,6 +11,7 @@ describe("outputs", function () {
     expect(subject.parse("outputs a")).toEqual(["a"]);
     expect(subject.parse("outputs a, b")).toEqual(["a", "b"]);
     expect(subject.parse("outputs  in")).toEqual(["in"]);
+    expect(subject.parse("outputs a[1]")).toEqual([["a", 1]]);
   });
 
   it("rejects invalid", function () {
