@@ -120,8 +120,11 @@ describe("Parser", function () {
       # Increment the program counter, or load a new value from the A-register.               \n\
       pc(in=a_register, load=load_ps, inc=T, reset=reset, out[0..14]=pc)                      \n\
                                                                                               \n\
-      # I've added this to test boolean buses.                                                \n\
+      # Added to test boolean buses                                                           \n\
       foo(a=0, b[1]=1F1, c[2..3]=T1)                                                          \n\
+                                                                                              \n\
+      # Added to test clocked parts                                                           \n\
+      _clocked(in=out, a[1]=b[2..3], c=T)                                                     \n\
     ");
 
     expect(result).toEqual({
@@ -215,6 +218,11 @@ describe("Parser", function () {
           ["a", false],
           [["b", [1, 1]], [true, false, true]],
           [["c", [2, 3]], [true, true]]
+        ]],
+        ["_clocked", [
+          ["in", "out"],
+          [["a", [1, 1]], ["b", [2, 3]]],
+          ["c", true ]
         ]]
       ]
     });
