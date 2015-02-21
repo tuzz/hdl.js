@@ -1,9 +1,9 @@
 "use strict";
 
-var Parser = require("../../../lib/hdl/parser");
+var InputParser = require("../../../lib/hdl/inputParser");
 
 describe("interface_variable", function () {
-  var subject = new Parser({
+  var subject = new InputParser({
     allowedStartRules: ["interface_variable"]
   });
 

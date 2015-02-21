@@ -2,10 +2,10 @@
 
 "use strict";
 
-var Parser = require("../../lib/hdl/parser");
+var InputParser = require("../../lib/hdl/inputParser");
 
-describe("Parser", function () {
-  var subject = new Parser();
+describe("InputParser", function () {
+  var subject = new InputParser();
 
   it("parses truth tables", function () {
     var result = subject.parse("    \n\

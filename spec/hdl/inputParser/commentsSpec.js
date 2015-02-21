@@ -1,9 +1,9 @@
 "use strict";
 
-var Parser = require("../../../lib/hdl/parser");
+var InputParser = require("../../../lib/hdl/inputParser");
 
 describe("comments", function () {
-  var subject = new Parser();
+  var subject = new InputParser();
 
   it("ignores comments", function () {
     var result = subject.parse("    \n\

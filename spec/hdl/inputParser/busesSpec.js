@@ -1,9 +1,9 @@
 "use strict";
 
-var Parser = require("../../../lib/hdl/parser");
+var InputParser = require("../../../lib/hdl/inputParser");
 
 describe("buses", function () {
-  var subject = new Parser();
+  var subject = new InputParser();
 
   it("supports buses as part of the interface", function () {
     var result = subject.parse("    \
