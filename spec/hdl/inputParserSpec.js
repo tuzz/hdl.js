@@ -2,23 +2,21 @@
 
 "use strict";
 
-var InputParser = require("../../lib/hdl/inputParser");
+var described_class = require("../../lib/hdl/inputParser");
 
 describe("InputParser", function () {
-  var subject = new InputParser();
-
   it("parses truth tables", function () {
-    var result = subject.parse("    \n\
-      # nand                        \n\
-                                    \n\
-      inputs a, b                   \n\
-      outputs out                   \n\
-                                    \n\
-      | a | b | out |               \n\
-      | 0 | 0 |  T  |               \n\
-      | 0 | 1 |  T  |               \n\
-      | 1 | 0 |  T  |               \n\
-      | 1 | 1 |  F  |               \n\
+    var result = described_class.parse("  \n\
+      # nand                              \n\
+                                          \n\
+      inputs a, b                         \n\
+      outputs out                         \n\
+                                          \n\
+      | a | b | out |                     \n\
+      | 0 | 0 |  T  |                     \n\
+      | 0 | 1 |  T  |                     \n\
+      | 1 | 0 |  T  |                     \n\
+      | 1 | 1 |  F  |                     \n\
     ");
 
     expect(result).toEqual({
@@ -34,13 +32,13 @@ describe("InputParser", function () {
   });
 
   it("parses chips with parts", function () {
-    var result = subject.parse("    \n\
-      # and                         \n\
-      inputs a, b                   \n\
-      outputs out                   \n\
-                                    \n\
-      nand(a=a, b=b, out=x)         \n\
-      nand(a=x, b=x, out=out)       \n\
+    var result = described_class.parse("  \n\
+      # and                               \n\
+      inputs a, b                         \n\
+      outputs out                         \n\
+                                          \n\
+      nand(a=a, b=b, out=x)               \n\
+      nand(a=x, b=x, out=out)             \n\
     ");
 
     expect(result).toEqual({
@@ -54,7 +52,7 @@ describe("InputParser", function () {
   });
 
   it("parses a very complex example", function () {
-    var result = subject.parse("                                                              \n\
+    var result = described_class.parse("                                                      \n\
       inputs                                                                                  \n\
         in_m[16],        # M value input  (M = contents of RAM[A])                            \n\
         instruction[16], # Instruction for execution                                          \n\
