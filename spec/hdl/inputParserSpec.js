@@ -2,11 +2,11 @@
 
 "use strict";
 
-var described_class = require("../../lib/hdl/inputParser");
+var describedClass = require("../../lib/hdl/inputParser");
 
 describe("InputParser", function () {
   it("parses truth tables", function () {
-    var result = described_class.parse("  \n\
+    var result = describedClass.parse("  \n\
       # nand                              \n\
                                           \n\
       inputs a, b                         \n\
@@ -32,7 +32,7 @@ describe("InputParser", function () {
   });
 
   it("parses chips with parts", function () {
-    var result = described_class.parse("  \n\
+    var result = describedClass.parse("  \n\
       # and                               \n\
       inputs a, b                         \n\
       outputs out                         \n\
@@ -52,7 +52,7 @@ describe("InputParser", function () {
   });
 
   it("parses a very complex example", function () {
-    var result = described_class.parse("                                                      \n\
+    var result = describedClass.parse("                                                      \n\
       inputs                                                                                  \n\
         in_m[16],        # M value input  (M = contents of RAM[A])                            \n\
         instruction[16], # Instruction for execution                                          \n\

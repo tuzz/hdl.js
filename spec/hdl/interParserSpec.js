@@ -1,10 +1,10 @@
 "use strict";
 
-var described_class = require("../../lib/hdl/interParser");
+var describedClass = require("../../lib/hdl/interParser");
 
 describe("InterParser", function () {
   describe("parsing an intermediate derived from a truth table", function () {
-    var graph = described_class.parse({
+    var graph = describedClass.parse({
       inputs: ["a", "b"],
       outputs: ["out"],
       table: [
