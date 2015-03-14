@@ -48,4 +48,23 @@ describe("graph", function () {
     expect(e3.source).toEqual(n2);
     expect(e3.destination).toEqual(n1);
   });
+
+  describe("#findBy", function () {
+    it("finds a node by a subset of its valueobject's properties", function () {
+      var graph = new Graph();
+      var node = new Graph.Node({ foo: "foo", bar: 123 });
+      graph.addNode(node);
+
+      expect(graph.findBy({ foo: "foo" })).toEqual(node);
+      expect(graph.findBy({ bar: 123 })).toEqual(node);
+      expect(graph.findBy({ foo: "foo", bar: 123 })).toEqual(node);
+      expect(graph.findBy({})).toEqual(node);
+
+      expect(graph.findBy({ foo: "missing" })).toBeUndefined();
+      expect(graph.findBy({ missing: "foo" })).toBeUndefined();
+      expect(graph.findBy({ bar: 999 })).toBeUndefined();
+      expect(graph.findBy({ foo: "foo", bar: 999 })).toBeUndefined();
+      expect(graph.findBy({ foo: "foo", bar: 123, a: "b" })).toBeUndefined();
+    });
+  });
 });
