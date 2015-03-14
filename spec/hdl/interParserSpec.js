@@ -86,4 +86,60 @@ describe("InterParser", function () {
       expect(graph.edges.length).toEqual(16);
     });
   });
+
+  describe("parsing an intermediate derived from a list of parts", function () {
+    var graph = describedClass.parse({
+      inputs: ["a", "b"],
+      outputs: ["out"],
+      parts: [
+        ["nand", [["a", "a"], ["b", "b"], ["out", "x"]]],
+        ["nand", [["a", "x"], ["b", "x"], ["out", "out"]]]
+      ]
+    });
+
+    it("builds the correct graph", function () {
+      var instance0 = graph.findBy({ name: "instance-0" });
+      var instance1 = graph.findBy({ name: "instance-1" });
+      var a         = graph.findBy({ name: "a" });
+      var b         = graph.findBy({ name: "b" });
+      var out       = graph.findBy({ name: "out" });
+      var x         = graph.findBy({ name: "x" });
+      var nand      = graph.findBy({ name: "nand" });
+
+      expect(instance0.value.type).toEqual("instance");
+      expect(instance1.value.type).toEqual("instance");
+      expect(a.value.type).toEqual("input");
+      expect(b.value.type).toEqual("input");
+      expect(out.value.type).toEqual("output");
+      expect(x.value.type).toEqual("intermediate");
+      expect(nand.value.type).toEqual("chip");
+
+      var edges = instance0.outEdges;
+
+      expect(edges[0].destination).toEqual(nand);
+      expect(edges[1].destination).toEqual(a);
+      expect(edges[2].destination).toEqual(b);
+      expect(edges[3].destination).toEqual(x);
+
+      expect(edges[0].value).toBeUndefined();
+      expect(edges[1].value).toEqual("a");
+      expect(edges[2].value).toEqual("b");
+      expect(edges[3].value).toEqual("out");
+
+      edges = instance1.outEdges;
+
+      expect(edges[0].destination).toEqual(nand);
+      expect(edges[1].destination).toEqual(x);
+      expect(edges[2].destination).toEqual(x);
+      expect(edges[3].destination).toEqual(out);
+
+      expect(edges[0].value).toBeUndefined();
+      expect(edges[1].value).toEqual("a");
+      expect(edges[2].value).toEqual("b");
+      expect(edges[3].value).toEqual("out");
+
+      expect(graph.nodes.length).toEqual(7);
+      expect(graph.edges.length).toEqual(8);
+    });
+  });
 });
