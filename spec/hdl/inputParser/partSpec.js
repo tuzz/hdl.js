@@ -20,8 +20,8 @@ describe("part", function () {
       "abc0_", [["in0", true], ["in1", false], ["out_", "a_"]]
     ]);
 
-    expect(subject.parse("_clocked(a=b, c=00)")).toEqual([
-      "_clocked", [["a", "b"], ["c", [false, false]]]
+    expect(subject.parse("_clocked(a=b, c=0)")).toEqual([
+      "_clocked", [["a", "b"], ["c", false]]
     ]);
   });
 
@@ -31,5 +31,6 @@ describe("part", function () {
     expect(function () { subject.parse("(a=a)"); }).toThrow();
     expect(function () { subject.parse("not(0=in)"); }).toThrow();
     expect(function () { subject.parse("and(a=_, b=1)"); }).toThrow();
+    expect(function () { subject.parse("_clocked(a=b, c=00)"); }).toThrow();
   });
 });

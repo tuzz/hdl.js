@@ -13,8 +13,8 @@ describe("right_assignment", function () {
     expect(subject.parse("a[1..2]")).toEqual(["a", [1, 2]]);
     expect(subject.parse("0")).toEqual(false);
     expect(subject.parse("T")).toEqual(true);
-    expect(subject.parse("01")).toEqual([false, true]);
-    expect(subject.parse("T10F")).toEqual([true, true, false, false]);
+    expect(subject.parse("true")).toEqual(true);
+    expect(subject.parse("false")).toEqual(false);
   });
 
   it("rejects invalid", function () {
@@ -23,6 +23,7 @@ describe("right_assignment", function () {
     expect(function () { subject.parse("012"); }).toThrow();
     expect(function () { subject.parse("0 0"); }).toThrow();
     expect(function () { subject.parse("TFA"); }).toThrow();
+    expect(function () { subject.parse("TT"); }).toThrow();
   });
 });
 

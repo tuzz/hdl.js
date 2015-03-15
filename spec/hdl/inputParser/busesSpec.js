@@ -49,24 +49,4 @@ describe("buses", function () {
       ]
     });
   });
-
-  it("supports boolean buses", function () {
-    var result = subject.parse(" \
-      inputs in[3]               \
-      outputs out[4]             \
-                                 \
-      foo(in=0, out=01TF)        \
-    ");
-
-    expect(result).toEqual({
-      inputs: [["in", 3]],
-      outputs: [["out", 4]],
-      parts: [
-        ["foo", [
-          ["in", false],
-          ["out", [false, true, true, false]]
-        ]]
-      ]
-    });
-  });
 });

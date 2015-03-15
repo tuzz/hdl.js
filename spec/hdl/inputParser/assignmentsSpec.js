@@ -11,8 +11,8 @@ describe("assignments", function () {
     expect(subject.parse("a=a")).toEqual([["a", "a"]]);
     expect(subject.parse("a=a,b=b")).toEqual([["a", "a"], ["b", "b"]]);
     expect(subject.parse("a = a , b = b")).toEqual([["a", "a"], ["b", "b"]]);
-    expect(subject.parse("a=00,b=T")).toEqual(
-      [["a", [false, false]], ["b", true]]
+    expect(subject.parse("a=false,b=T")).toEqual(
+      [["a", false], ["b", true]]
     );
 
     expect(subject.parse("a=a,b=b,c=1")).toEqual([
