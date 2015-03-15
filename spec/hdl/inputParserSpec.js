@@ -76,25 +76,25 @@ describe("InputParser", function () {
                                                                                               \n\
       # Don't write to the other data locations if an A-instruction is issued.                \n\
       and(a=instruction[15], b=instruction[4], out=load_d)                                    \n\
-      and(a=instruction[15], b=jump, out=load_pc)                                             \n\
+      and(a=instruction[15], b=j, out=load_pc)                                                \n\
       and(a=instruction[15], b=instruction[3], out=write_m)                                   \n\
                                                                                               \n\
       # Treat the instruction as a constant if an A-instruction is issued.                    \n\
       mux16(a=alu_output, b=instruction, sel=a_instruction, out=a_input)                      \n\
                                                                                               \n\
       # Set the registers according to the proposed architecture.                             \n\
-      a_register(in=a_input, load=load_a, out=a_register, out[0..14]=address_m)               \n\
-      d_register(in=alu_output, load=load_d, out=d_register)                                  \n\
+      a_register(in=a_input, load=load_a, out=a_reg, out[0..14]=address_m)                    \n\
+      d_register(in=alu_output, load=load_d, out=d_reg)                                       \n\
                                                                                               \n\
       # Conditionally read from memory or the A-register.                                     \n\
-      mux16(a=a_register, b=in_m, sel=instruction[12], out=alu_input)                         \n\
+      mux16(a=a_reg, b=in_m, sel=instruction[12], out=alu_input)                              \n\
                                                                                               \n\
       # Configure the ALU with the control bits.                                              \n\
       alu(                                                                                    \n\
                                                                                               \n\
         # Inputs                                                                              \n\
                                                                                               \n\
-        x=d_register,                                                                         \n\
+        x=d_reg,                                                                              \n\
         y=alu_input,                                                                          \n\
         zx=instruction[11], # c1                                                              \n\
         nx=instruction[10], # c2                                                              \n\
@@ -113,13 +113,10 @@ describe("InputParser", function () {
       )                                                                                       \n\
                                                                                               \n\
       # The conditional jump logic has been extracted into Jump.hdl.                          \n\
-      jump(zero=zero, neg=neg, code=instruction[0..2], out=jump)                              \n\
+      jump(zero=zero, neg=neg, code=instruction[0..2], out=j)                                 \n\
                                                                                               \n\
       # Increment the program counter, or load a new value from the A-register.               \n\
-      pc(in=a_register, load=load_ps, inc=T, reset=reset, out[0..14]=pc)                      \n\
-                                                                                              \n\
-      # Added to test clocked parts                                                           \n\
-      _clocked(in=out, a[1]=b[2..3], c=T)                                                     \n\
+      counter(in=a_reg, load=load_pc, inc=T, reset=reset, out[0..14]=pc)                      \n\
     ");
 
     expect(result).toEqual({
@@ -151,7 +148,7 @@ describe("InputParser", function () {
         ]],
         ["and", [
           ["a", ["instruction", [15, 15]]],
-          ["b", "jump"],
+          ["b", "j"],
           ["out", "load_pc"]
         ]],
         ["and", [
@@ -168,22 +165,22 @@ describe("InputParser", function () {
         ["a_register", [
           ["in", "a_input"],
           ["load", "load_a"],
-          ["out", "a_register"],
+          ["out", "a_reg"],
           [["out", [0, 14]], "address_m"]
         ]],
         ["d_register", [
           ["in", "alu_output"],
           ["load", "load_d"],
-          ["out", "d_register"]
+          ["out", "d_reg"]
         ]],
         ["mux16", [
-          ["a", "a_register"],
+          ["a", "a_reg"],
           ["b", "in_m"],
           ["sel", ["instruction", [12, 12]]],
           ["out", "alu_input"]
         ]],
         ["alu", [
-          ["x", "d_register"],
+          ["x", "d_reg"],
           ["y", "alu_input"],
           ["zx", ["instruction", [11, 11]]],
           ["nx", ["instruction", [10, 10]]],
@@ -200,19 +197,14 @@ describe("InputParser", function () {
           ["zero", "zero"],
           ["neg", "neg"],
           ["code", ["instruction", [0, 2]]],
-          ["out", "jump"]
+          ["out", "j"]
         ]],
-        ["pc", [
-          ["in", "a_register"],
-          ["load", "load_ps"],
+        ["counter", [
+          ["in", "a_reg"],
+          ["load", "load_pc"],
           ["inc", true],
           ["reset", "reset"],
           [["out", [0, 14]], "pc"]
-        ]],
-        ["_clocked", [
-          ["in", "out"],
-          [["a", [1, 1]], ["b", [2, 3]]],
-          ["c", true ]
         ]]
       ]
     });
