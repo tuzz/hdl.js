@@ -6,7 +6,7 @@ var describedClass = require("../../lib/hdl/interParser");
 
 describe("InterParser", function () {
   describe("parsing an intermediate derived from a truth table", function () {
-    var graph = describedClass.parse({
+    var graph = describedClass.parse("nand", {
       inputs: ["a", "b"],
       outputs: ["out"],
       table: [
@@ -18,6 +18,7 @@ describe("InterParser", function () {
     });
 
     it("builds the correct graph", function () {
+      var nand      = graph.findBy({ name: "nand" });
       var instance0 = graph.findBy({ name: "instance-0" });
       var instance1 = graph.findBy({ name: "instance-1" });
       var instance2 = graph.findBy({ name: "instance-2" });
@@ -27,6 +28,7 @@ describe("InterParser", function () {
       var out       = graph.findBy({ name: "out" });
       var lookup    = graph.findBy({ name: "lookup" });
 
+      expect(nand.value.type).toEqual("chip");
       expect(instance0.value.type).toEqual("instance");
       expect(instance1.value.type).toEqual("instance");
       expect(instance2.value.type).toEqual("instance");
@@ -36,7 +38,19 @@ describe("InterParser", function () {
       expect(out.value.type).toEqual("output");
       expect(lookup.value.type).toEqual("chip");
 
-      var edges = instance0.outEdges;
+      var edges = nand.outEdges;
+
+      expect(edges[0].destination).toEqual(instance0);
+      expect(edges[1].destination).toEqual(instance1);
+      expect(edges[2].destination).toEqual(instance2);
+      expect(edges[3].destination).toEqual(instance3);
+
+      expect(edges[0].value).toBeUndefined();
+      expect(edges[1].value).toBeUndefined();
+      expect(edges[2].value).toBeUndefined();
+      expect(edges[3].value).toBeUndefined();
+
+      edges = instance0.outEdges;
 
       expect(edges[0].destination).toEqual(lookup);
       expect(edges[1].destination).toEqual(a);
@@ -84,13 +98,13 @@ describe("InterParser", function () {
       expect(edges[2].value).toEqual(true);
       expect(edges[3].value).toEqual(false);
 
-      expect(graph.nodes.length).toEqual(8);
-      expect(graph.edges.length).toEqual(16);
+      expect(graph.nodes.length).toEqual(9);
+      expect(graph.edges.length).toEqual(20);
     });
   });
 
   describe("parsing an intermediate derived from a list of parts", function () {
-    var graph = describedClass.parse({
+    var graph = describedClass.parse("and", {
       inputs: ["a", "b"],
       outputs: ["out"],
       parts: [
@@ -100,6 +114,7 @@ describe("InterParser", function () {
     });
 
     it("builds the correct graph", function () {
+      var and       = graph.findBy({ name: "and" });
       var instance0 = graph.findBy({ name: "instance-0" });
       var instance1 = graph.findBy({ name: "instance-1" });
       var a         = graph.findBy({ name: "a" });
@@ -108,6 +123,7 @@ describe("InterParser", function () {
       var x         = graph.findBy({ name: "x" });
       var nand      = graph.findBy({ name: "nand" });
 
+      expect(and.value.type).toEqual("chip");
       expect(instance0.value.type).toEqual("instance");
       expect(instance1.value.type).toEqual("instance");
       expect(a.value.type).toEqual("input");
@@ -116,7 +132,15 @@ describe("InterParser", function () {
       expect(x.value.type).toEqual("intermediate");
       expect(nand.value.type).toEqual("chip");
 
-      var edges = instance0.outEdges;
+      var edges = and.outEdges;
+
+      expect(edges[0].destination).toEqual(instance0);
+      expect(edges[1].destination).toEqual(instance1);
+
+      expect(edges[0].value).toBeUndefined();
+      expect(edges[1].value).toBeUndefined();
+
+      edges = instance0.outEdges;
 
       expect(edges[0].destination).toEqual(nand);
       expect(edges[1].destination).toEqual(a);
@@ -140,13 +164,13 @@ describe("InterParser", function () {
       expect(edges[2].value).toEqual({ name: "b"});
       expect(edges[3].value).toEqual({ name: "out"});
 
-      expect(graph.nodes.length).toEqual(7);
-      expect(graph.edges.length).toEqual(8);
+      expect(graph.nodes.length).toEqual(8);
+      expect(graph.edges.length).toEqual(10);
     });
   });
 
   describe("parsing a very complex intermediate", function () {
-    var graph = describedClass.parse({
+    var graph = describedClass.parse("cpu", {
       inputs : [
         ["in_m", 16],
         ["instruction", 16],
@@ -287,6 +311,7 @@ describe("InterParser", function () {
       expect(neg.value.type).toEqual("intermediate");
 
       // chips
+      var cpu = graph.findBy({ name: "cpu" });
       var bool = graph.findBy({ name: "boolean" });
       var not = graph.findBy({ name: "not" });
       var or = graph.findBy({ name: "or" });
@@ -298,6 +323,7 @@ describe("InterParser", function () {
       var jump = graph.findBy({ name: "jump" });
       var counter = graph.findBy({ name: "counter" });
 
+      expect(cpu.value.type).toEqual("chip");
       expect(bool.value.type).toEqual("chip");
       expect(not.value.type).toEqual("chip");
       expect(or.value.type).toEqual("chip");
@@ -345,8 +371,25 @@ describe("InterParser", function () {
       expect(addressM.value.width).toEqual(15);
       expect(pc.value.width).toEqual(15);
 
+      // check that the chip is connected to its instances
+      var edges = cpu.outEdges;
+      expect(edges.length).toEqual(13);
+      expect(edges[0].destination).toEqual(instanceB);
+      expect(edges[1].destination).toEqual(instance0);
+      expect(edges[2].destination).toEqual(instance1);
+      expect(edges[3].destination).toEqual(instance2);
+      expect(edges[4].destination).toEqual(instance3);
+      expect(edges[5].destination).toEqual(instance4);
+      expect(edges[6].destination).toEqual(instance5);
+      expect(edges[7].destination).toEqual(instance6);
+      expect(edges[8].destination).toEqual(instance7);
+      expect(edges[9].destination).toEqual(instance8);
+      expect(edges[10].destination).toEqual(instance9);
+      expect(edges[11].destination).toEqual(instance10);
+      expect(edges[12].destination).toEqual(instance11);
+
       // boolean chip
-      var edges = instanceB.outEdges;
+      edges = instanceB.outEdges;
       expect(edges.length).toEqual(2);
       expect(edges[0].destination).toEqual(bool);
       expect(edges[1].destination).toEqual(tru);
@@ -588,8 +631,8 @@ describe("InterParser", function () {
       expect(edges[5].value).toEqual({ name: "out", otherStart: 0, otherEnd: 14 });
 
       // check that everything is accounted for
-      expect(graph.nodes.length).toEqual(43);
-      expect(graph.edges.length).toEqual(64);
+      expect(graph.nodes.length).toEqual(44);
+      expect(graph.edges.length).toEqual(77);
     });
   });
 });

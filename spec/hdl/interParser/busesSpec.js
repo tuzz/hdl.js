@@ -4,7 +4,7 @@ var describedClass = require("../../../lib/hdl/interParser");
 
 describe("buses", function () {
   it("supports buses as part of the interface", function () {
-    var graph = describedClass.parse({
+    var graph = describedClass.parse("something", {
       inputs: [["a", 4], ["b", 4], "foo"],
       outputs: [["out", 4]],
       parts: [
@@ -22,7 +22,7 @@ describe("buses", function () {
   });
 
   it("supports buses in the part assignments", function () {
-    var graph = describedClass.parse({
+    var graph = describedClass.parse("something", {
       inputs: [["a", 2]],
       outputs: ["out"],
       parts: [
@@ -56,7 +56,7 @@ describe("buses", function () {
   });
 
   it("supports buses on intermediate pins", function () {
-    var graph = describedClass.parse({
+    var graph = describedClass.parse("something", {
       inputs: ["in"],
       outputs: ["out"],
       parts: [

@@ -6,9 +6,13 @@ var Graph = require(hdl + "/graph");
 var describedClass = require(hdl + "/interParser/partsParser/booleansParser");
 
 describe("BooleansParser", function () {
+  var chip = new Graph.Node({ type: "chip", name: "something" });
+
   it("introduces a boolean chip to set intermediate pins", function () {
     var graph = new Graph();
-    describedClass.parse({
+    graph.addNode(chip);
+
+    describedClass.parse(chip, {
       inputs: ["in"],
       outputs: ["out"],
       parts: [
@@ -47,7 +51,9 @@ describe("BooleansParser", function () {
 
   it("only introduces the boolean chip when needed", function () {
     var graph = new Graph();
-    describedClass.parse({
+    graph.addNode(chip);
+
+    describedClass.parse(chip, {
       inputs: ["in"],
       outputs: ["out"],
       parts: [
@@ -61,7 +67,9 @@ describe("BooleansParser", function () {
 
   it("only introduces an intermediate pin when needed", function () {
     var graph = new Graph();
-    describedClass.parse({
+    graph.addNode(chip);
+
+    describedClass.parse(chip, {
       inputs: ["in"],
       outputs: ["out"],
       parts: [
