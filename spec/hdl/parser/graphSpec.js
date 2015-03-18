@@ -79,7 +79,7 @@ describe("graph", function () {
       expect(graph.nodes.length).toEqual(0);
     });
 
-    it("removes inbound and outbound edges", function () {
+    it("throws an error if the node is connected", function () {
       var graph = new Graph();
 
       var a = new Graph.Node(1);
@@ -87,7 +87,6 @@ describe("graph", function () {
       var c = new Graph.Node(3);
 
       var ab = new Graph.Edge(a, b);
-      var ac = new Graph.Edge(a, c);
       var bc = new Graph.Edge(b, c);
 
       graph.addNode(a);
@@ -95,19 +94,23 @@ describe("graph", function () {
       graph.addNode(c);
 
       graph.addEdge(ab);
-      graph.addEdge(ac);
       graph.addEdge(bc);
 
-      expect(graph.nodes.length).toEqual(3);
-      expect(graph.edges.length).toEqual(3);
+      expect(function () {
+        graph.removeNode(b);
+      }).toThrow(new Error("Unable to remove node because it is connected"));
 
+      graph.removeEdge(bc);
+
+      expect(function () {
+        graph.removeNode(b);
+      }).toThrow(new Error("Unable to remove node because it is connected"));
+
+      graph.removeEdge(ab);
       graph.removeNode(b);
-      expect(graph.nodes.length).toEqual(2);
-      expect(graph.edges.length).toEqual(1);
 
-      graph.removeNode(c);
-      expect(graph.nodes.length).toEqual(1);
-      expect(graph.edges.length).toEqual(0);
+      expect(graph.nodes.length).toEqual(2)
+      expect(graph.edges.length).toEqual(0)
     });
   });
 
