@@ -67,4 +67,98 @@ describe("graph", function () {
       expect(graph.findBy({ foo: "foo", bar: 123, a: "b" })).toBeUndefined();
     });
   });
+
+  describe("#removeNode", function () {
+    it("removes the node from the graph", function () {
+      var graph = new Graph();
+      var node = new Graph.Node(1);
+
+      graph.addNode(node);
+      graph.removeNode(node);
+
+      expect(graph.nodes.length).toEqual(0);
+    });
+
+    it("removes inbound and outbound edges", function () {
+      var graph = new Graph();
+
+      var a = new Graph.Node(1);
+      var b = new Graph.Node(2);
+      var c = new Graph.Node(3);
+
+      var ab = new Graph.Edge(a, b);
+      var ac = new Graph.Edge(a, c);
+      var bc = new Graph.Edge(b, c);
+
+      graph.addNode(a);
+      graph.addNode(b);
+      graph.addNode(c);
+
+      graph.addEdge(ab);
+      graph.addEdge(ac);
+      graph.addEdge(bc);
+
+      expect(graph.nodes.length).toEqual(3);
+      expect(graph.edges.length).toEqual(3);
+
+      graph.removeNode(b);
+      expect(graph.nodes.length).toEqual(2);
+      expect(graph.edges.length).toEqual(1);
+
+      graph.removeNode(c);
+      expect(graph.nodes.length).toEqual(1);
+      expect(graph.edges.length).toEqual(0);
+    });
+  });
+
+  describe("#removeEdge", function () {
+    it("removes the edge from the graph", function () {
+      var graph = new Graph();
+
+      var a = new Graph.Node(1);
+      var b = new Graph.Node(1);
+      var edge = new Graph.Edge(a, b);
+
+      graph.addNode(a);
+      graph.addNode(b);
+      graph.addEdge(edge);
+
+      graph.removeEdge(edge);
+      expect(graph.edges.length).toEqual(0);
+    });
+
+    it("removes the edge from the in/out edges of dest/source", function () {
+      var graph = new Graph();
+
+      var a = new Graph.Node(1);
+      var b = new Graph.Node(2);
+      var c = new Graph.Node(3);
+
+      var ab = new Graph.Edge(a, b);
+      var ac = new Graph.Edge(a, c);
+      var bc = new Graph.Edge(b, c);
+
+      graph.addNode(a);
+      graph.addNode(b);
+      graph.addNode(c);
+
+      graph.addEdge(ab);
+      graph.addEdge(ac);
+      graph.addEdge(bc);
+
+      expect(graph.nodes.length).toEqual(3);
+      expect(graph.edges.length).toEqual(3);
+
+      graph.removeEdge(ab);
+      expect(a.outEdges.length).toEqual(1);
+      expect(b.inEdges.length).toEqual(0);
+
+      graph.removeEdge(ac);
+      expect(a.outEdges.length).toEqual(0);
+      expect(c.inEdges.length).toEqual(1);
+
+      expect(graph.nodes.length).toEqual(3);
+      expect(graph.edges.length).toEqual(1);
+    });
+  });
 });
