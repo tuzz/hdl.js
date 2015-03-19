@@ -68,6 +68,28 @@ describe("graph", function () {
     });
   });
 
+  describe("#where", function () {
+    it("finds all node by a subset of their properties", function () {
+      var graph = new Graph();
+
+      var foo = new Graph.Node({ foo: "foo", bar: 123 });
+      var bar = new Graph.Node({ foo: "bar", bar: 123 });
+
+      graph.addNode(foo);
+      graph.addNode(bar);
+
+      expect(graph.where({ foo: "foo" })).toEqual([foo]);
+      expect(graph.where({ foo: "bar" })).toEqual([bar]);
+      expect(graph.where({ bar: 123 })).toEqual([foo, bar]);
+      expect(graph.where({ foo: "foo", bar: 123 })).toEqual([foo]);
+      expect(graph.where({})).toEqual([foo, bar]);
+
+      expect(graph.where({ foo: "missing" })).toEqual([]);
+      expect(graph.where({ missing: "foo" })).toEqual([]);
+      expect(graph.where({ bar: 999 })).toEqual([]);
+    });
+  });
+
   describe("#removeNode", function () {
     it("removes the node from the graph", function () {
       var graph = new Graph();
@@ -109,8 +131,8 @@ describe("graph", function () {
       graph.removeEdge(ab);
       graph.removeNode(b);
 
-      expect(graph.nodes.length).toEqual(2)
-      expect(graph.edges.length).toEqual(0)
+      expect(graph.nodes.length).toEqual(2);
+      expect(graph.edges.length).toEqual(0);
     });
   });
 
