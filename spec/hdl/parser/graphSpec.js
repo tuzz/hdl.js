@@ -228,4 +228,42 @@ describe("graph", function () {
       expect(b.inEdges.length).toEqual(0);
     });
   });
+
+  describe("#clone", function () {
+    it("clones itself and all of its nodes and edges", function () {
+      var graph = new Graph();
+
+      var a = new Graph.Node({ name: "a" });
+      var b = new Graph.Node({ name: "b" });
+      var c = new Graph.Node({ name: "c" });
+
+      var ab = new Graph.Edge(a, b);
+      var ac = new Graph.Edge(a, c);
+
+      graph.addNode(a);
+      graph.addNode(b);
+      graph.addNode(c);
+
+      graph.addEdge(ab);
+      graph.addEdge(ac);
+
+      var clone = graph.clone();
+
+      var _a = clone.findBy({ name: "a" });
+      var _b = clone.findBy({ name: "b" });
+      var _ab = _b.inEdges[0];
+
+      clone.removeEdge(_ab);
+      clone.removeNode(_b);
+
+      expect(graph.nodes.length).toEqual(3);
+      expect(graph.edges.length).toEqual(2);
+
+      expect(clone.nodes.length).toEqual(2);
+      expect(clone.edges.length).toEqual(1);
+
+      expect(a.outEdges.length).toEqual(2);
+      expect(_a.outEdges.length).toEqual(1);
+    });
+  });
 });
