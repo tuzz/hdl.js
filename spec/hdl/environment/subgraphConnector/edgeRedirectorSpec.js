@@ -1,7 +1,8 @@
 "use strict";
 
-var describedClass = require("../../../lib/hdl/environment/edgeRedirector");
-var Graph = require("../../../lib/hdl/parser/graph");
+var subgraphConnector = "../../../../lib/hdl/environment/subgraphConnector";
+var describedClass = require(subgraphConnector + "/edgeRedirector");
+var Graph = require("../../../../lib/hdl/parser/graph");
 
 describe("EdgeRedirector", function () {
   it("redirects inbound edges from one node to another", function () {

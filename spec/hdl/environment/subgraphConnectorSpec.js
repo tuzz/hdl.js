@@ -35,7 +35,7 @@ describe("SubgraphConnector", function () {
     ");
   });
 
-  it("connects 'references' to 'concrete implementations' of chips", function () {
+  it("connects 'references' to 'concretions' of chips", function () {
     var graph = new Graph();
 
     graph.nodes = graph.nodes.concat(andGraph.nodes);
@@ -65,7 +65,7 @@ describe("SubgraphConnector", function () {
     expect(not.outEdges.length).toEqual(1);
   });
 
-  it("connects 'references' when there is no 'implementation'", function () {
+  it("connects 'references' when there is no 'concretion'", function () {
     var graph = new Graph();
 
     graph.nodes = graph.nodes.concat(andGraph.nodes);
