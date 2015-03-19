@@ -1,5 +1,6 @@
 "use strict";
 
+var _ = require("underscore");
 var describedClass = require("../../lib/hdl/environment");
 var Parser = require("../../lib/hdl/parser");
 
@@ -55,19 +56,42 @@ describe("Environment", function () {
       expect(graph.edges.length).toEqual(5);
     });
 
-    return;
     it("updates instances to point to the concrete chip", function () {
       subject.addChip("not", not);
       subject.addChip("nand", nand);
+      subject.addChip("and", and);
 
       var graph = subject.graph;
-      var instance = graph.findBy({ name: "instance-0" });
+      not = graph.findBy({ name: "not" });
+      and = graph.findBy({ name: "and" });
 
-      nand = instance.outEdges[0].destination;
+      var instance = not.outEdges[0].destination;
+      nand = instance.outEdges[3].destination;
+      // edge redirector put the redirected edge at the end
+
+      expect(nand.value.name).toEqual("nand");
       expect(nand.outEdges.length).toEqual(4);
 
-      expect(graph.nodes.length).toEqual(13);
-      expect(graph.edges.length).toEqual(25);
+      instance = and.outEdges[0].destination;
+      nand = instance.outEdges[3].destination;
+
+      expect(nand.value.name).toEqual("nand");
+      expect(nand.outEdges.length).toEqual(4);
+
+      instance = and.outEdges[1].destination;
+      not = instance.outEdges[2].destination;
+      // edge redirector put the redirected edge at the end
+
+      expect(not.value.name).toEqual("not");
+      expect(not.outEdges.length).toEqual(1);
+
+      var nots = graph.where({ name: "not" });
+      var nands = graph.where({ name: "nand" });
+      var ands = graph.where({ name: "and" });
+
+      expect(nots.length).toEqual(1);
+      expect(nands.length).toEqual(1);
+      expect(ands.length).toEqual(1);
     });
   });
 
@@ -94,40 +118,176 @@ describe("Environment", function () {
       expect(graph.edges.length).toEqual(0);
     });
 
-    return
     it("updates instances to point to a reference to the chip", function () {
       subject.addChip("nand", nand);
-      subject.removeChip("nand", nand);
+      subject.addChip("and", and);
+
+      subject.removeChip("nand");
 
       var graph = subject.graph;
-      var instance = graph.findBy({ name: "instance-0" });
+      not = graph.findBy({ name: "not" });
+      and = graph.findBy({ name: "and" });
 
-      nand = instance.outEdges[0].destination;
+      var instance = not.outEdges[0].destination;
+      nand = instance.outEdges[3].destination;
+      // edge redirector put the redirected edge at the end
+
       expect(nand.value.name).toEqual("nand");
       expect(nand.outEdges.length).toEqual(0);
 
-      expect(graph.nodes.length).toEqual(5);
-      expect(graph.edges.length).toEqual(5);
+      instance = and.outEdges[0].destination;
+      nand = instance.outEdges[3].destination;
+
+      expect(nand.value.name).toEqual("nand");
+      expect(nand.outEdges.length).toEqual(0);
+
+      instance = and.outEdges[1].destination;
+      not = instance.outEdges[2].destination;
+      // edge redirector put the redirected edge at the end
+
+      expect(not.value.name).toEqual("not");
+      expect(not.outEdges.length).toEqual(1);
+
+      var nots = graph.where({ name: "not" });
+      var nands = graph.where({ name: "nand" });
+      var ands = graph.where({ name: "and" });
+
+      expect(nots.length).toEqual(1);
+      expect(nands.length).toEqual(1);
+      expect(ands.length).toEqual(1);
     });
 
     it("does not remove chips that are depended on by others", function () {
-      subject.addChip("and", and);
       subject.addChip("nand", nand);
+      subject.addChip("and", and);
 
       var graph = subject.graph;
-      var instance0 = graph.findBy({ name: "instance-0" });
-      var instance1 = graph.findBy({ name: "instance-1" });
+      nand = graph.findBy({ name: "nand" });
 
-      nand = instance0.outEdges[0].destination;
-      not = instance0.outEdges[0].destination;
-
-      expect(nand.value.name).toEqual("nand");
-      expect(not.value.name).toEqual("not");
       expect(nand.outEdges.length).toEqual(4);
-      expect(not.outEdges.length).toEqual(0);
 
-      expect(graph.nodes.length).toEqual(17);
-      expect(graph.edges.length).toEqual(29);
+      subject.removeChip("not");
+
+      expect(nand.outEdges.length).toEqual(4);
+    });
+  });
+
+  describe("integration test", function () {
+    it("behaves as expected", function () {
+      var graph = subject.graph;
+
+      expect(graph.nodes.length).toEqual(0);
+      expect(graph.edges.length).toEqual(0);
+
+      subject.removeChip("and");
+      subject.addChip("and", and);
+      subject.removeChip("and");
+
+      expect(graph.nodes.length).toEqual(0);
+      expect(graph.edges.length).toEqual(0);
+
+      subject.addChip("nand", nand);
+      subject.addChip("and", and);
+      subject.addChip("not", not);
+      subject.addChip("not", not);
+      subject.addChip("not", not);
+      subject.removeChip("nand");
+      subject.removeChip("and");
+      subject.removeChip("and");
+      subject.removeChip("and");
+      subject.removeChip("not");
+
+      expect(graph.nodes.length).toEqual(0);
+      expect(graph.edges.length).toEqual(0);
+
+      subject.addChip("nand", nand);
+
+      expect(graph.nodes.length).toEqual(9);
+      expect(graph.edges.length).toEqual(20);
+
+      subject.addChip("not", not);
+
+      expect(graph.nodes.length).toEqual(13);
+      expect(graph.edges.length).toEqual(25);
+
+      subject.addChip("and", and);
+
+      expect(graph.nodes.length).toEqual(20);
+      expect(graph.edges.length).toEqual(34);
+
+      var nodeNames = _.map(graph.nodes, function (n) { return n.value.name; });
+      expect(nodeNames).toEqual([
+        "nand",
+        "lookup",
+        "a",
+        "b",
+        "out",
+        "instance-0",
+        "instance-1",
+        "instance-2",
+        "instance-3",
+        "not",
+        "in",
+        "out",
+        "instance-0",
+        "and",
+        "a",
+        "b",
+        "x",
+        "instance-0",
+        "out",
+        "instance-1"
+      ]);
+
+      var xor = Parser.parse("xor", " \n\
+        inputs a, b                   \n\
+        outputs out                   \n\
+                                      \n\
+        | a | b | out |               \n\
+        | 0 | 0 |  0  |               \n\
+        | 0 | 1 |  1  |               \n\
+        | 1 | 0 |  1  |               \n\
+        | 1 | 1 |  0  |               \n\
+      ");
+
+      subject.addChip("xor", xor);
+
+      var lookup = graph.findBy({ name: "lookup" });
+      expect(lookup).toBeDefined();
+      expect(lookup.inEdges.length).toEqual(8);
+
+      subject.removeChip("nand");
+
+      lookup = graph.findBy({ name: "lookup" });
+      expect(lookup).toBeDefined();
+      expect(lookup.inEdges.length).toEqual(4);
+
+      subject.removeChip("xor");
+
+      lookup = graph.findBy({ name: "lookup" });
+      expect(lookup).toBeUndefined();
+
+      expect(graph.nodes.length).toEqual(12);
+      expect(graph.edges.length).toEqual(14);
+
+      var alternativeAnd = Parser.parse("and", " \n\
+        inputs a, b                              \n\
+        outputs out                              \n\
+                                                 \n\
+        | a | b | out |                          \n\
+        | 0 | 0 |  0  |                          \n\
+        | 0 | 1 |  0  |                          \n\
+        | 1 | 0 |  0  |                          \n\
+        | 1 | 1 |  1  |                          \n\
+      ");
+
+      subject.addChip("and", alternativeAnd);
+
+      var ands = graph.where({ name: "and" });
+      expect(ands.length).toEqual(1);
+
+      expect(graph.nodes.length).toEqual(14);
+      expect(graph.edges.length).toEqual(25);
     });
   });
 });
