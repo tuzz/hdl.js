@@ -164,4 +164,68 @@ describe("graph", function () {
       expect(graph.edges.length).toEqual(1);
     });
   });
+
+  describe("idempotence", function () {
+    it("is idempotent for #addNode", function () {
+      var graph = new Graph();
+      var node = new Graph.Node(1);
+
+      graph.addNode(node);
+      expect(graph.nodes.length).toEqual(1);
+
+      graph.addNode(node);
+      expect(graph.nodes.length).toEqual(1);
+    });
+
+    it("is idempotent for #removeNode", function () {
+      var graph = new Graph();
+      var node = new Graph.Node(1);
+      graph.addNode(node);
+
+      graph.removeNode(node);
+      expect(graph.nodes.length).toEqual(0);
+
+      graph.removeNode(node);
+      expect(graph.nodes.length).toEqual(0);
+    });
+
+    it("is idempotent for #addEdge", function () {
+      var graph = new Graph();
+      var a = new Graph.Node(1);
+      var b = new Graph.Node(1);
+      var ab = new Graph.Edge(a, b);
+      graph.addNode(a);
+      graph.addNode(b);
+
+      graph.addEdge(ab);
+      expect(graph.edges.length).toEqual(1);
+      expect(a.outEdges.length).toEqual(1);
+      expect(b.inEdges.length).toEqual(1);
+
+      graph.addEdge(ab);
+      expect(graph.edges.length).toEqual(1);
+      expect(a.outEdges.length).toEqual(1);
+      expect(b.inEdges.length).toEqual(1);
+    });
+
+    it("is idempotent for #removeEdge", function () {
+      var graph = new Graph();
+      var a = new Graph.Node(1);
+      var b = new Graph.Node(1);
+      var ab = new Graph.Edge(a, b);
+      graph.addNode(a);
+      graph.addNode(b);
+      graph.addEdge(ab);
+
+      graph.removeEdge(ab);
+      expect(graph.edges.length).toEqual(0);
+      expect(a.outEdges.length).toEqual(0);
+      expect(b.inEdges.length).toEqual(0);
+
+      graph.removeEdge(ab);
+      expect(graph.edges.length).toEqual(0);
+      expect(a.outEdges.length).toEqual(0);
+      expect(b.inEdges.length).toEqual(0);
+    });
+  });
 });
