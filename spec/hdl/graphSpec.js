@@ -1,6 +1,6 @@
 "use strict";
 
-var Graph = require("../../../lib/hdl/parser/graph");
+var Graph = require("../../lib/hdl/graph");
 
 describe("graph", function () {
   it("supports arbitrary digraphs of nodes and edges", function () {

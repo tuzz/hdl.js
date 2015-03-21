@@ -2,7 +2,7 @@
 
 var describedClass = require("../../../lib/hdl/environment/subgraphConnector");
 var Parser = require("../../../lib/hdl/parser");
-var Graph = require("../../../lib/hdl/parser/graph");
+var Graph = require("../../../lib/hdl/graph");
 
 describe("SubgraphConnector", function () {
   var andGraph, nandGraph, notGraph;

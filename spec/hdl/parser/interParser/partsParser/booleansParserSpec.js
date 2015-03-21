@@ -1,9 +1,10 @@
 "use strict";
 
-var parser = "../../../../../lib/hdl/parser";
+var hdl = "../../../../../lib/hdl";
+var interParser = hdl + "/parser/interParser";
 
-var Graph = require(parser + "/graph");
-var describedClass = require(parser+"/interParser/partsParser/booleansParser");
+var Graph = require(hdl + "/graph");
+var describedClass = require(interParser + "/partsParser/booleansParser");
 
 describe("BooleansParser", function () {
   var chip = new Graph.Node({ type: "chip", name: "something" });
