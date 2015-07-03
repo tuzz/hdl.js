@@ -1,5 +1,7 @@
 ## hardware-description-language
 
+[![Build Status](https://travis-ci.org/tuzz/hdl.js.svg?branch=master)](https://travis-ci.org/tuzz/hdl.js)
+
 (Work in progress)
 
 This is an attempt at writing a hardware description language that is at least
