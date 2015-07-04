@@ -80,6 +80,7 @@ describe("TopoSorter", function () {
       inputs a, b                               \n\
       outputs out                               \n\
                                                 \n\
+      nand(a=a, b=b, out=out)                   \n\
       nand(a[0]=x[1], b[0..1]=x[1..2], out=out) \n\
     ");
 
@@ -88,5 +89,35 @@ describe("TopoSorter", function () {
     expect(function () {
       environment.addChip("foo", foo);
     }).toThrow();
+  });
+
+  it("sorts instances of chips that use booleans", function () {
+    var foo = Parser.parse("foo", "   \n\
+      inputs a, b                     \n\
+      outputs out                     \n\
+                                      \n\
+      nand(a=1, b=y, out=x)           \n\
+      nand(a=x, b=x, out=out)         \n\
+      nand(a=a, b=b, out=y)           \n\
+    ");
+
+    environment.addChip("nand", nand);
+    environment.addChip("foo", foo);
+
+    var graph = environment.graph;
+    foo = graph.findBy({ name: "foo" });
+    expect(foo.outEdges.length).toEqual(4);
+
+    var instance = foo.outEdges[0].destination;
+    expect(instance.value.name).toEqual("instance-b");
+
+    instance = foo.outEdges[1].destination;
+    expect(instance.value.name).toEqual("instance-2");
+
+    instance = foo.outEdges[2].destination;
+    expect(instance.value.name).toEqual("instance-0");
+
+    instance = foo.outEdges[3].destination;
+    expect(instance.value.name).toEqual("instance-1");
   });
 });
