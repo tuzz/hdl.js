@@ -79,4 +79,20 @@ describe("TopoSorter", function () {
     instance = and.outEdges[1].destination;
     expect(instance.value.name).toEqual("instance-0");
   });
+
+  it("raises a helpful error if unable to sort", function () {
+    var foo = Parser.parse("foo", "             \n\
+      inputs a, b                               \n\
+      outputs out                               \n\
+                                                \n\
+      nand(a[0]=x[1], b[0..1]=x[1..2], out=out) \n\
+    ");
+
+    environment.addChip("nand", nand);
+    environment.addChip("foo", foo);
+
+    expect(function () {
+      describedClass.sort("foo", environment);
+    }).toThrow();
+  });
 });
