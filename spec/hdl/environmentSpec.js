@@ -32,8 +32,8 @@ describe("Environment", function () {
       inputs a, b                     \n\
       outputs out                     \n\
                                       \n\
-      nand(a=a, b=b, out=x)           \n\
       not(in=x, out=out)              \n\
+      nand(a=a, b=b, out=x)           \n\
     ");
   });
 
@@ -73,17 +73,17 @@ describe("Environment", function () {
       expect(nand.outEdges.length).toEqual(4);
 
       instance = and.outEdges[0].destination;
-      nand = instance.outEdges[3].destination;
-
-      expect(nand.value.name).toEqual("nand");
-      expect(nand.outEdges.length).toEqual(4);
-
-      instance = and.outEdges[1].destination;
       not = instance.outEdges[2].destination;
-      // edge redirector put the redirected edge at the end
 
       expect(not.value.name).toEqual("not");
       expect(not.outEdges.length).toEqual(1);
+
+      instance = and.outEdges[1].destination;
+      nand = instance.outEdges[3].destination;
+      // edge redirector put the redirected edge at the end
+
+      expect(nand.value.name).toEqual("nand");
+      expect(nand.outEdges.length).toEqual(4);
 
       var nots = graph.where({ name: "not" });
       var nands = graph.where({ name: "nand" });
@@ -136,17 +136,17 @@ describe("Environment", function () {
       expect(nand.outEdges.length).toEqual(0);
 
       instance = and.outEdges[0].destination;
-      nand = instance.outEdges[3].destination;
-
-      expect(nand.value.name).toEqual("nand");
-      expect(nand.outEdges.length).toEqual(0);
-
-      instance = and.outEdges[1].destination;
       not = instance.outEdges[2].destination;
-      // edge redirector put the redirected edge at the end
 
       expect(not.value.name).toEqual("not");
       expect(not.outEdges.length).toEqual(1);
+
+      instance = and.outEdges[1].destination;
+      nand = instance.outEdges[3].destination;
+      // edge redirector put the redirected edge at the end
+
+      expect(nand.value.name).toEqual("nand");
+      expect(nand.outEdges.length).toEqual(0);
 
       var nots = graph.where({ name: "not" });
       var nands = graph.where({ name: "nand" });
@@ -231,11 +231,11 @@ describe("Environment", function () {
         "out",
         "instance-0",
         "and",
+        "x",
+        "out",
+        "instance-0",
         "a",
         "b",
-        "x",
-        "instance-0",
-        "out",
         "instance-1"
       ]);
 
