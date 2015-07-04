@@ -1,8 +1,8 @@
 "use strict";
 
-var Parser = require("../../lib/hdl/parser");
-var Environment = require("../../lib/hdl/environment");
-var describedClass = require("../../lib/hdl/topoSorter");
+var Parser = require("../../../lib/hdl/parser");
+var Environment = require("../../../lib/hdl/environment");
+var describedClass = require("../../../lib/hdl/environment/topoSorter");
 
 describe("TopoSorter", function () {
   var environment, nand, and;
