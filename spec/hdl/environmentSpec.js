@@ -72,13 +72,15 @@ describe("Environment", function () {
       expect(nand.value.name).toEqual("nand");
       expect(nand.outEdges.length).toEqual(4);
 
-      instance = and.outEdges[0].destination;
+      instance = and.outEdges[1].destination;
+      // topo sorter put the instance in position 1
       not = instance.outEdges[2].destination;
 
       expect(not.value.name).toEqual("not");
       expect(not.outEdges.length).toEqual(1);
 
-      instance = and.outEdges[1].destination;
+      instance = and.outEdges[0].destination;
+      // topo sorter put the instance in position 0
       nand = instance.outEdges[3].destination;
       // edge redirector put the redirected edge at the end
 
@@ -135,13 +137,15 @@ describe("Environment", function () {
       expect(nand.value.name).toEqual("nand");
       expect(nand.outEdges.length).toEqual(0);
 
-      instance = and.outEdges[0].destination;
+      instance = and.outEdges[1].destination;
+      // topo sorter put the instance in position 1
       not = instance.outEdges[2].destination;
 
       expect(not.value.name).toEqual("not");
       expect(not.outEdges.length).toEqual(1);
 
-      instance = and.outEdges[1].destination;
+      instance = and.outEdges[0].destination;
+      // topo sorter put the instance in position 0
       nand = instance.outEdges[3].destination;
       // edge redirector put the redirected edge at the end
 
