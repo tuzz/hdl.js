@@ -39,9 +39,11 @@ describe("TopoSorter", function () {
 
     var instance = and.outEdges[0].destination;
     expect(instance.value.name).toEqual("instance-1");
+    expect(instance.inEdges[0]).toEqual(and.outEdges[0]);
 
     instance = and.outEdges[1].destination;
     expect(instance.value.name).toEqual("instance-0");
+    expect(instance.inEdges[0]).toEqual(and.outEdges[1]);
   });
 
   it("does not sort instances of chips with abstract dependencies", function (){
