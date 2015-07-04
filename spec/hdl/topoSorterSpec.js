@@ -64,19 +64,19 @@ describe("TopoSorter", function () {
   });
 
   it("recursively sorts chips that reference this one", function () {
-//    environment.addChip("nand", nand);
-//    environment.addChip("and", and);
-//
-//    describedClass.sort("nand", environment);
-//
-//    var graph = environment.graph;
-//    and = graph.findBy({ name: "and" });
-//    expect(and.outEdges.length).toEqual(2);
-//
-//    var instance = and.outEdges[0].destination;
-//    expect(instance.value.name).toEqual("instance-1");
-//
-//    instance = and.outEdges[1].destination;
-//    expect(instance.value.name).toEqual("instance-0");
+    environment.addChip("nand", nand);
+    environment.addChip("and", and);
+
+    describedClass.sort("nand", environment);
+
+    var graph = environment.graph;
+    and = graph.findBy({ name: "and" });
+    expect(and.outEdges.length).toEqual(2);
+
+    var instance = and.outEdges[0].destination;
+    expect(instance.value.name).toEqual("instance-1");
+
+    instance = and.outEdges[1].destination;
+    expect(instance.value.name).toEqual("instance-0");
   });
 });
