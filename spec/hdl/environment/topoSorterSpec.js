@@ -2,7 +2,6 @@
 
 var Parser = require("../../../lib/hdl/parser");
 var Environment = require("../../../lib/hdl/environment");
-var describedClass = require("../../../lib/hdl/environment/topoSorter");
 
 describe("TopoSorter", function () {
   var environment, nand, and;
@@ -34,8 +33,6 @@ describe("TopoSorter", function () {
     environment.addChip("nand", nand);
     environment.addChip("and", and);
 
-    describedClass.sort("and", environment);
-
     var graph = environment.graph;
     and = graph.findBy({ name: "and" });
     expect(and.outEdges.length).toEqual(2);
@@ -50,8 +47,6 @@ describe("TopoSorter", function () {
   it("does not sort instances of chips with abstract dependencies", function (){
     environment.addChip("and", and);
 
-    describedClass.sort("and", environment);
-
     var graph = environment.graph;
     and = graph.findBy({ name: "and" });
     expect(and.outEdges.length).toEqual(2);
@@ -64,10 +59,8 @@ describe("TopoSorter", function () {
   });
 
   it("recursively sorts chips that reference this one", function () {
-    environment.addChip("nand", nand);
     environment.addChip("and", and);
-
-    describedClass.sort("nand", environment);
+    environment.addChip("nand", nand);
 
     var graph = environment.graph;
     and = graph.findBy({ name: "and" });
@@ -89,10 +82,9 @@ describe("TopoSorter", function () {
     ");
 
     environment.addChip("nand", nand);
-    environment.addChip("foo", foo);
 
     expect(function () {
-      describedClass.sort("foo", environment);
+      environment.addChip("foo", foo);
     }).toThrow();
   });
 });
