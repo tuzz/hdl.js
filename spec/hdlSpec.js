@@ -51,4 +51,19 @@ describe("HDL", function () {
     expect(result.outputs).toEqual(["out"]);
     expect(result.intermediates).toEqual(["x"]);
   });
+
+  it("lets you undefine chips", function () {
+    HDL.define("not", "          \n\
+      inputs in                  \n\
+      outputs out                \n\
+                                 \n\
+      nand(a=in, b=in, out=out)  \n\
+    ");
+
+    HDL.undefine("not");
+
+    expect(function () {
+      HDL.interface("not");
+    }).toThrow();
+  });
 });
