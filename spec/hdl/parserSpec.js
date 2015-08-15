@@ -119,9 +119,9 @@ describe("Parser", function () {
     expect(edges[2].destination).toEqual(b);
     expect(edges[3].destination).toEqual(out);
     expect(edges[0].value).toBeUndefined();
-    expect(edges[1].value).toEqual(false);
-    expect(edges[2].value).toEqual(false);
-    expect(edges[3].value).toEqual(true);
+    expect(edges[1].value.name).toEqual("false");
+    expect(edges[2].value.name).toEqual("false");
+    expect(edges[3].value.name).toEqual("true");
 
     edges = instance1.outEdges;
     expect(edges.length).toEqual(4);
@@ -130,9 +130,9 @@ describe("Parser", function () {
     expect(edges[2].destination).toEqual(b);
     expect(edges[3].destination).toEqual(out);
     expect(edges[0].value).toBeUndefined();
-    expect(edges[1].value).toEqual(false);
-    expect(edges[2].value).toEqual(true);
-    expect(edges[3].value).toEqual(true);
+    expect(edges[1].value.name).toEqual("false");
+    expect(edges[2].value.name).toEqual("true");
+    expect(edges[3].value.name).toEqual("true");
 
     edges = instance2.outEdges;
     expect(edges.length).toEqual(4);
@@ -141,9 +141,9 @@ describe("Parser", function () {
     expect(edges[2].destination).toEqual(b);
     expect(edges[3].destination).toEqual(out);
     expect(edges[0].value).toBeUndefined();
-    expect(edges[1].value).toEqual(true);
-    expect(edges[2].value).toEqual(false);
-    expect(edges[3].value).toEqual(true);
+    expect(edges[1].value.name).toEqual("true");
+    expect(edges[2].value.name).toEqual("false");
+    expect(edges[3].value.name).toEqual("true");
 
     edges = instance3.outEdges;
     expect(edges.length).toEqual(4);
@@ -152,9 +152,9 @@ describe("Parser", function () {
     expect(edges[2].destination).toEqual(b);
     expect(edges[3].destination).toEqual(out);
     expect(edges[0].value).toBeUndefined();
-    expect(edges[1].value).toEqual(true);
-    expect(edges[2].value).toEqual(true);
-    expect(edges[3].value).toEqual(false);
+    expect(edges[1].value.name).toEqual("true");
+    expect(edges[2].value.name).toEqual("true");
+    expect(edges[3].value.name).toEqual("false");
 
     // check that everything is accounted for
     expect(graph.nodes.length).toEqual(9);

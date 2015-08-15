@@ -19,8 +19,8 @@ describe("LookupEvaluator", function () {
 
   it("assigns 'true' when true = true", function () {
     var assignments = [
-      { left: true, right: truthy },
-      { left: true, right: out }
+      { left: "true", right: truthy },
+      { left: "true", right: out }
     ];
     describedClass.evaluate(lookup, assignments);
     expect(out.value).toEqual(true);
@@ -28,8 +28,8 @@ describe("LookupEvaluator", function () {
 
   it("assigns 'false' when true = true", function () {
     var assignments = [
-      { left: true, right: truthy },
-      { left: false, right: out }
+      { left: "true", right: truthy },
+      { left: "false", right: out }
     ];
     describedClass.evaluate(lookup, assignments);
     expect(out.value).toEqual(false);
@@ -37,8 +37,8 @@ describe("LookupEvaluator", function () {
 
   it("does not assign when true = false", function () {
     var assignments = [
-      { left: true, right: falsey },
-      { left: true, right: out }
+      { left: "true", right: falsey },
+      { left: "true", right: out }
     ];
     describedClass.evaluate(lookup, assignments);
     expect(out.value).toEqual("initial value");
@@ -46,8 +46,8 @@ describe("LookupEvaluator", function () {
 
   it("does not assign when false = true", function () {
     var assignments = [
-      { left: false, right: truthy },
-      { left: false, right: out }
+      { left: "false", right: truthy },
+      { left: "false", right: out }
     ];
     describedClass.evaluate(lookup, assignments);
     expect(out.value).toEqual("initial value");
@@ -55,9 +55,9 @@ describe("LookupEvaluator", function () {
 
   it("assigns 'true' and 'false' when true = true", function () {
     var assignments = [
-      { left: true, right: truthy },
-      { left: true, right: x },
-      { left: false, right: y }
+      { left: "true", right: truthy },
+      { left: "true", right: x },
+      { left: "false", right: y }
     ];
     describedClass.evaluate(lookup, assignments);
     expect(x.value).toEqual(true);
@@ -66,10 +66,10 @@ describe("LookupEvaluator", function () {
 
   it("does not assign when when true = true and true = false", function () {
     var assignments = [
-      { left: true, right: truthy },
-      { left: true, right: falsey },
-      { left: false, right: x },
-      { left: true, right: y }
+      { left: "true", right: truthy },
+      { left: "true", right: falsey },
+      { left: "false", right: x },
+      { left: "true", right: y }
     ];
     describedClass.evaluate(lookup, assignments);
     expect(x.value).toEqual("initial value");
