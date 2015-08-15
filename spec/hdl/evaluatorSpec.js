@@ -29,9 +29,9 @@ describe("Evaluator", function () {
     ];
 
     beforeEach(function () {
-      a.value = "inital value";
-      b.value = "inital value";
-      out.value = "inital value";
+      a.value = "initial value";
+      b.value = "initial value";
+      out.value = "initial value";
     });
 
     it("evaluates a = false, b = false correctly", function () {
@@ -112,9 +112,9 @@ describe("Evaluator", function () {
     ];
 
     beforeEach(function () {
-      a.value = "inital value";
-      b.value = "inital value";
-      out.value = "inital value";
+      a.value = "initial value";
+      b.value = "initial value";
+      out.value = "initial value";
     });
 
     it("evaluates a = false, b = false correctly", function () {
@@ -147,6 +147,39 @@ describe("Evaluator", function () {
 
       describedClass.evaluate(chip, assignments);
       expect(out.value).toEqual(true);
+    });
+  });
+
+  describe("evaluating expressions on an abstract chips", function () {
+    var not = Parser.parse("not", " \n\
+      inputs in                     \n\
+      outputs out                   \n\
+                                    \n\
+      nand(a=in, b=in, out=out)     \n\
+    ");
+
+    var environment = new Environment();
+    environment.addChip("not", not);
+
+    var in_ = { name: "in", type: "assignment" };
+    var out = { name: "out", type: "assignment" };
+
+    var assignments = [
+      { left: "in", right: in_ },
+      { left: "out", right: out }
+    ];
+
+    var chip = environment.graph.findBy({ name: "not" });
+
+    beforeEach(function () {
+      in_.value = "initial value";
+      out.value = "initial value";
+    });
+
+    it("does not set the output value", function () {
+      in_.value = true;
+      describedClass.evaluate(chip, assignments);
+      expect(out.value).toEqual("initial value");
     });
   });
 });
