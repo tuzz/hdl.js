@@ -66,4 +66,19 @@ describe("HDL", function () {
       HDL.interface("not");
     }).toThrow();
   });
+
+  it("lets you reset the environment", function () {
+    HDL.define("not", "          \n\
+      inputs in                  \n\
+      outputs out                \n\
+                                 \n\
+      nand(a=in, b=in, out=out)  \n\
+    ");
+
+    HDL.reset();
+
+    expect(function () {
+      HDL.interface("not");
+    }).toThrow();
+  });
 });
