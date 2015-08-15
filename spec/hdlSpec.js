@@ -83,6 +83,38 @@ describe("HDL", function () {
     }).toThrow();
   });
 
+  it("lets you evaluate expressions", function () {
+    HDL.define("not", "          \n\
+      inputs in                  \n\
+      outputs out                \n\
+                                 \n\
+      nand(a=in, b=in, out=out)  \n\
+    ");
+
+    HDL.define("nand", "         \n\
+      inputs a, b                \n\
+      outputs out                \n\
+                                 \n\
+      | a | b | out |            \n\
+      | 0 | 0 |  1  |            \n\
+      | 0 | 1 |  1  |            \n\
+      | 1 | 0 |  1  |            \n\
+      | 1 | 1 |  0  |            \n\
+    ");
+
+    var result = HDL.evaluate("not", { in: true });
+    expect(result).toEqual({ out: false });
+
+    result = HDL.evaluate("not", { in: false });
+    expect(result).toEqual({ out: true });
+
+    result = HDL.evaluate("nand", { a: true, b: true });
+    expect(result).toEqual({ out: false });
+
+    result = HDL.evaluate("nand", { a: false, b: false });
+    expect(result).toEqual({ out: true });
+  });
+
   it("lets you output a dot graph", function () {
     HDL.define("nand", "              \n\
       inputs a, b                     \n\
