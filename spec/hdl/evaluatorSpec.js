@@ -6,7 +6,7 @@ var Environment = require("../../lib/hdl/environment");
 
 describe("Evaluator", function () {
   describe("evaluating expressions on 'nand'", function () {
-    var nand = Parser.parse("nand", " \n\
+    var graph = Parser.parse("nand", " \n\
       inputs a, b                     \n\
       outputs out                     \n\
                                       \n\
@@ -16,142 +16,111 @@ describe("Evaluator", function () {
       | 1 | 0 |  1  |                 \n\
       | 1 | 1 |  0  |                 \n\
     ");
-    var chip = nand.findBy({ name: "nand" });
 
-    var a = { name: "a", type: "assignment" };
-    var b = { name: "b", type: "assignment" };
-    var out = { name: "out", type: "assignment" };
-
-    var assignments = [
-      { left: "a", right: a },
-      { left: "b", right: b },
-      { left: "out", right: out }
-    ];
-
-    beforeEach(function () {
-      a.value = "initial value";
-      b.value = "initial value";
-      out.value = "initial value";
-    });
+    var nand = graph.findBy({ name: "nand" });
 
     it("evaluates a = false, b = false correctly", function () {
-      a.value = false;
-      b.value = false;
+      var result = describedClass.evaluateExpression(nand, {
+        a: false, b: false
+      });
 
-      describedClass.evaluate(chip, assignments);
-      expect(out.value).toEqual(true);
+      expect(result).toEqual({ out: true });
     });
 
     it("evaluates a = false, b = true correctly", function () {
-      a.value = false;
-      b.value = true;
+      var result = describedClass.evaluateExpression(nand, {
+        a: false, b: true
+      });
 
-      describedClass.evaluate(chip, assignments);
-      expect(out.value).toEqual(true);
+      expect(result).toEqual({ out: true });
     });
 
     it("evaluates a = true, b = false correctly", function () {
-      a.value = true;
-      b.value = false;
+      var result = describedClass.evaluateExpression(nand, {
+        a: true, b: false
+      });
 
-      describedClass.evaluate(chip, assignments);
-      expect(out.value).toEqual(true);
+      expect(result).toEqual({ out: true });
     });
 
     it("evaluates a = true, b = true correctly", function () {
-      a.value = true;
-      b.value = true;
+      var result = describedClass.evaluateExpression(nand, {
+        a: true, b: true
+      });
 
-      describedClass.evaluate(chip, assignments);
-      expect(out.value).toEqual(false);
+      expect(result).toEqual({ out: false });
     });
   });
 
   describe("evaluating expressions on 'and'", function () {
-    var nand = Parser.parse("nand", " \n\
-      inputs a, b                     \n\
-      outputs out                     \n\
-                                      \n\
-      | a | b | out |                 \n\
-      | 0 | 0 |  1  |                 \n\
-      | 0 | 1 |  1  |                 \n\
-      | 1 | 0 |  1  |                 \n\
-      | 1 | 1 |  0  |                 \n\
+    var nandGraph = Parser.parse("nand", " \n\
+      inputs a, b                          \n\
+      outputs out                          \n\
+                                           \n\
+      | a | b | out |                      \n\
+      | 0 | 0 |  1  |                      \n\
+      | 0 | 1 |  1  |                      \n\
+      | 1 | 0 |  1  |                      \n\
+      | 1 | 1 |  0  |                      \n\
     ");
 
-    var not = Parser.parse("not", " \n\
-      inputs in                     \n\
-      outputs out                   \n\
-                                    \n\
-      nand(a=in, b=in, out=out)     \n\
+    var notGraph = Parser.parse("not", " \n\
+      inputs in                          \n\
+      outputs out                        \n\
+                                         \n\
+      nand(a=in, b=in, out=out)          \n\
     ");
 
-    var and = Parser.parse("and", " \n\
-      inputs a, b                   \n\
-      outputs out                   \n\
-                                    \n\
-      nand(a=a, b=b, out=x)         \n\
-      not(in=x, out=out)            \n\
+    var andGraph = Parser.parse("and", " \n\
+      inputs a, b                        \n\
+      outputs out                        \n\
+                                         \n\
+      nand(a=a, b=b, out=x)              \n\
+      not(in=x, out=out)                 \n\
     ");
 
     var environment = new Environment();
-    environment.addChip("nand", nand);
-    environment.addChip("not", not);
-    environment.addChip("and", and);
+    environment.addChip("nand", nandGraph);
+    environment.addChip("not", notGraph);
+    environment.addChip("and", andGraph);
 
-    var chip = environment.graph.findBy({ name: "and" });
-
-    var a = { name: "a", type: "assignment" };
-    var b = { name: "b", type: "assignment" };
-    var out = { name: "out", type: "assignment" };
-
-    var assignments = [
-      { left: "a", right: a },
-      { left: "b", right: b },
-      { left: "out", right: out }
-    ];
-
-    beforeEach(function () {
-      a.value = "initial value";
-      b.value = "initial value";
-      out.value = "initial value";
-    });
+    var and = environment.graph.findBy({ name: "and" });
 
     it("evaluates a = false, b = false correctly", function () {
-      a.value = false;
-      b.value = false;
+      var result = describedClass.evaluateExpression(and, {
+        a: false, b: false
+      });
 
-      describedClass.evaluate(chip, assignments);
-      expect(out.value).toEqual(false);
+      expect(result).toEqual({ out: false });
     });
 
     it("evaluates a = false, b = true correctly", function () {
-      a.value = false;
-      b.value = true;
+      var result = describedClass.evaluateExpression(and, {
+        a: false, b: true
+      });
 
-      describedClass.evaluate(chip, assignments);
-      expect(out.value).toEqual(false);
+      expect(result).toEqual({ out: false });
     });
 
     it("evaluates a = true, b = false correctly", function () {
-      a.value = true;
-      b.value = false;
+      var result = describedClass.evaluateExpression(and, {
+        a: true, b: false
+      });
 
-      describedClass.evaluate(chip, assignments);
-      expect(out.value).toEqual(false);
+      expect(result).toEqual({ out: false });
     });
 
     it("evaluates a = true, b = true correctly", function () {
-      a.value = true;
-      b.value = true;
+      var result = describedClass.evaluateExpression(and, {
+        a: true, b: true
+      });
 
-      describedClass.evaluate(chip, assignments);
-      expect(out.value).toEqual(true);
+      expect(result).toEqual({ out: true });
     });
   });
 
   describe("evaluating expressions on an abstract chips", function () {
-    var not = Parser.parse("not", " \n\
+    var graph = Parser.parse("not", " \n\
       inputs in                     \n\
       outputs out                   \n\
                                     \n\
@@ -159,27 +128,16 @@ describe("Evaluator", function () {
     ");
 
     var environment = new Environment();
-    environment.addChip("not", not);
+    environment.addChip("not", graph);
 
-    var in_ = { name: "in", type: "assignment" };
-    var out = { name: "out", type: "assignment" };
-
-    var assignments = [
-      { left: "in", right: in_ },
-      { left: "out", right: out }
-    ];
-
-    var chip = environment.graph.findBy({ name: "not" });
-
-    beforeEach(function () {
-      in_.value = "initial value";
-      out.value = "initial value";
-    });
+    var not = environment.graph.findBy({ name: "not" });
 
     it("does not set the output value", function () {
-      in_.value = true;
-      describedClass.evaluate(chip, assignments);
-      expect(out.value).toEqual("initial value");
+      var result = describedClass.evaluateExpression(not, {
+        "in": true
+      });
+
+      expect(result).toEqual({});
     });
   });
 });
