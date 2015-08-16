@@ -4,6 +4,7 @@
 module.exports = function (grunt) {
   grunt.loadNpmTasks("grunt-contrib-jshint");
   grunt.loadNpmTasks("grunt-jasmine-node");
+  grunt.loadNpmTasks("grunt-browserify");
 
   grunt.initConfig({
     jshint: {
@@ -21,9 +22,18 @@ module.exports = function (grunt) {
       options: {
         useHelpers: true
       }
+    },
+    browserify: {
+      build: {
+        src: "lib/hdl.js",
+        dest: "bin/hdl.js",
+        options: {
+          transform: ["brfs"]
+        }
+      }
     }
   });
 
-  grunt.registerTask("default", ["jasmine_node", "jshint"]);
+  grunt.registerTask("default", ["jasmine_node", "jshint", "browserify"]);
 };
 
