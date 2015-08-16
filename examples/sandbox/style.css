@@ -1,0 +1,79 @@
+#left {
+  width: 30%;
+  float: left;
+}
+
+#right {
+  width: 70%;
+  float: right;
+}
+
+#chip-name {
+  font-size: 20px;
+  width: 50%;
+  float: left;
+  font-family: "Courier New", Courier, monospace;
+}
+
+#evaluate-name {
+  font-size: 20px;
+  width: 15%;
+  float: left;
+  font-family: "Courier New", Courier, monospace;
+}
+
+#evaluate-expression {
+  font-size: 20px;
+  width: 65%;
+  margin-left: 5%;
+  float: left;
+  font-family: "Courier New", Courier, monospace;
+}
+
+#evaluate-result {
+  clear: both;
+  padding-top: 20px;
+  font-size: 20px;
+  font-family: "Courier New", Courier, monospace;
+  color: blue;
+}
+
+#input {
+  margin-top: 20px;
+  font-size: 20px;
+  font-family: "Courier New", Courier, monospace;
+  width: 95%;
+  height: 300px;
+}
+
+#error-line {
+  margin-top: 20px;
+  color: red;
+}
+
+#remove {
+  font-size: 20px;
+  background: white;
+  color: red;
+  border: none;
+  cursor: pointer;
+  float: left;
+  width: 10%;
+}
+
+#evaluate {
+  font-size: 20px;
+  background: white;
+  color: blue;
+  border: none;
+  cursor: pointer;
+  float: left;
+  width: 10%;
+}
+
+h2 {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}

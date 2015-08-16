@@ -4,8 +4,50 @@
     <meta charset="utf-8">
     <title>Sandbox</title>
     <script src="../../bin/hdl.js"></script>
+    <script src="viz.js"></script>
+    <script src="application.js"></script>
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
+    <div id="left">
 
+      <input type="text" id="chip-name" value="nand"></input>
+      <button id="remove">X</button>
+
+<textarea id="input">
+inputs a, b
+outputs out
+
+| a | b | out |
+| 0 | 0 |  1  |
+| 0 | 1 |  1  |
+| 1 | 0 |  1  |
+| 1 | 1 |  0  |
+</textarea>
+
+      <div id="error-line"></div>
+
+      <h2>Evaluate:</h2>
+      <input type="text" id="evaluate-name" value="nand"></input>
+      <input type="text" id="evaluate-expression" value='{"a":true,"b":true}'></input>
+      <button id="evaluate">&gt;</button>
+      <div id="evaluate-result"></div>
+    </div>
+    <div id="right"></div>
+
+    <script>
+      new Application(
+        "right",
+        "input",
+        "error-line",
+        "chip-name",
+        "remove",
+        "evaluate-name",
+        "evaluate-expression",
+        "evaluate",
+        "evaluate-result"
+      );
+    </script>
   </body>
 </html>
