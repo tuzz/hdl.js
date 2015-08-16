@@ -38,19 +38,35 @@ describe("HDL", function () {
     ");
 
     var result = HDL.interface("not");
-    expect(result.inputs).toEqual(["in"]);
-    expect(result.outputs).toEqual(["out"]);
+    expect(result.inputs).toEqual([
+      { name: "in", width: 1 }
+    ]);
+    expect(result.outputs).toEqual([
+      { name: "out", width: 1 }
+    ]);
     expect(result.intermediates).toEqual([]);
 
     result = HDL.interface("nand");
-    expect(result.inputs).toEqual(["a", "b"]);
-    expect(result.outputs).toEqual(["out"]);
+    expect(result.inputs).toEqual([
+      { name: "a", width: 1 },
+      { name: "b", width: 1 }
+    ]);
+    expect(result.outputs).toEqual([
+      { name: "out", width: 1 }
+    ]);
     expect(result.intermediates).toEqual([]);
 
     result = HDL.interface("and");
-    expect(result.inputs).toEqual(["a", "b"]);
-    expect(result.outputs).toEqual(["out"]);
-    expect(result.intermediates).toEqual(["x"]);
+    expect(result.inputs).toEqual([
+      { name: "a", width: 1 },
+      { name: "b", width: 1 }
+    ]);
+    expect(result.outputs).toEqual([
+      { name: "out", width: 1 }
+    ]);
+    expect(result.intermediates).toEqual([
+      { name: "x" }
+    ]);
   });
 
   it("lets you undefine chips", function () {
