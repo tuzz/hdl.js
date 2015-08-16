@@ -55,6 +55,10 @@ var HDL = function () {
 
 module.exports = new HDL();
 
+if (typeof window !== "undefined") {
+  window.HDL = module.exports;
+}
+
 },{"./hdl/dotCompiler":2,"./hdl/environment":3,"./hdl/evaluator":7,"./hdl/interface":10,"./hdl/parser":11}],2:[function(require,module,exports){
 'use strict';
 

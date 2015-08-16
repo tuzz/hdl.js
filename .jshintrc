@@ -1,6 +1,7 @@
 {
   "globals": {
-    "HDL": true
+    "HDL":    true,
+    "window": true
   },
 
   // Enforcing options:
