@@ -270,6 +270,10 @@ describe("InterParser", function () {
       expect(instruction.value.type).toEqual("input");
       expect(reset.value.type).toEqual("input");
 
+      expect(inM.value.width).toEqual(16);
+      expect(instruction.value.width).toEqual(16);
+      expect(reset.value.width).toEqual(1);
+
       // outputs
       var outM = graph.findBy({ name: "out_m" });
       var writeM = graph.findBy({ name: "write_m" });
@@ -280,6 +284,11 @@ describe("InterParser", function () {
       expect(writeM.value.type).toEqual("output");
       expect(addressM.value.type).toEqual("output");
       expect(pc.value.type).toEqual("output");
+
+      expect(outM.value.width).toEqual(16);
+      expect(writeM.value.width).toEqual(1);
+      expect(addressM.value.width).toEqual(15);
+      expect(pc.value.width).toEqual(15);
 
       // intermediates
       var tru = graph.findBy({ name: "true" });
