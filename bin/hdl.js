@@ -8,6 +8,7 @@ var Parser = require("./hdl/parser");
 var Interface = require("./hdl/interface");
 var Evaluator = require("./hdl/evaluator");
 var DotCompiler = require("./hdl/dotCompiler");
+var DIMACSCompiler = require("./hdl/dimacsCompiler");
 
 var HDL = function () {
   var self = this;
@@ -44,6 +45,11 @@ var HDL = function () {
     return findChip(chipName).value.cnfExpression;
   };
 
+  self.toDIMACS = function (chipName) {
+    var expression = self.toCNF(chipName);
+    return DIMACSCompiler.compile(expression);
+  };
+
   var findChip = function (name) {
     var chip = environment.graph.findBy({ type: "chip", name: name });
 
@@ -63,7 +69,51 @@ if (typeof window !== "undefined") {
   window.HDL = module.exports;
 }
 
-},{"./hdl/dotCompiler":2,"./hdl/environment":3,"./hdl/evaluator":12,"./hdl/interface":15,"./hdl/parser":16}],2:[function(require,module,exports){
+},{"./hdl/dimacsCompiler":2,"./hdl/dotCompiler":3,"./hdl/environment":4,"./hdl/evaluator":13,"./hdl/interface":16,"./hdl/parser":17}],2:[function(require,module,exports){
+"use strict";
+
+var _ = require("underscore");
+
+module.exports.compile = function (expression) {
+  var variables = [""];
+
+  _.each(expression.conjunctions, function (conjunction) {
+    _.each(conjunction.disjunctions, function (disjunction) {
+      variables.push(disjunction.value);
+    });
+  });
+
+  variables = _.uniq(variables);
+
+  var numberOfVariables = variables.length - 1;
+  var numberOfClauses = expression.conjunctions.length;
+
+  var output = "p cnf " + numberOfVariables + " " + numberOfClauses + "\n";
+
+  _.each(expression.conjunctions, function (conjunction) {
+    _.each(conjunction.disjunctions, function (disjunction) {
+      var index = variables.indexOf(disjunction.value);
+
+      if (disjunction.isNegation) {
+        output += "-" + index + " ";
+      }
+      else {
+        output += index + " ";
+      }
+    });
+
+    output += "0\n";
+  });
+
+  output += "\nc Variable mappings:\n";
+  for (var i = 1; i < variables.length; i += 1) {
+    output += "c " + i + " -> " + variables[i] + "\n";
+  }
+
+  return output;
+};
+
+},{"underscore":36}],3:[function(require,module,exports){
 'use strict';
 
 var _ = require('underscore');
@@ -178,7 +228,7 @@ DotCompiler.compile = function (graph) {
 
 module.exports = DotCompiler;
 
-},{"underscore":35}],3:[function(require,module,exports){
+},{"underscore":36}],4:[function(require,module,exports){
 "use strict";
 
 var Graph = require("./graph");
@@ -249,7 +299,7 @@ module.exports = function () {
 
 };
 
-},{"./environment/subgraphConnector":4,"./environment/topoSorter":6,"./environment/tseitinTransformer":7,"./graph":14,"underscore":35}],4:[function(require,module,exports){
+},{"./environment/subgraphConnector":5,"./environment/topoSorter":7,"./environment/tseitinTransformer":8,"./graph":15,"underscore":36}],5:[function(require,module,exports){
 "use strict";
 
 var _ = require("underscore");
@@ -308,7 +358,7 @@ SubgraphConnector.connect = function (graph) {
 
 module.exports = SubgraphConnector;
 
-},{"./subgraphConnector/edgeRedirector":5,"underscore":35}],5:[function(require,module,exports){
+},{"./subgraphConnector/edgeRedirector":6,"underscore":36}],6:[function(require,module,exports){
 "use strict";
 
 var _ = require("underscore");
@@ -326,7 +376,7 @@ module.exports.redirect = function (graph, from, to) {
   });
 };
 
-},{"../../graph":14,"underscore":35}],6:[function(require,module,exports){
+},{"../../graph":15,"underscore":36}],7:[function(require,module,exports){
 "use strict";
 
 var _ = require("underscore");
@@ -576,7 +626,7 @@ TopoSorter.sort = function (chipName, environment) {
 
 module.exports = TopoSorter;
 
-},{"underscore":35}],7:[function(require,module,exports){
+},{"underscore":36}],8:[function(require,module,exports){
 "use strict";
 
 var CNFCompiler = require("./tseitinTransformer/cnfCompiler");
@@ -669,7 +719,7 @@ TseitinTransformer.transform = function (chipName, environment) {
 
 module.exports = TseitinTransformer;
 
-},{"./tseitinTransformer/cnfCompiler":8,"underscore":35}],8:[function(require,module,exports){
+},{"./tseitinTransformer/cnfCompiler":9,"underscore":36}],9:[function(require,module,exports){
 "use strict";
 
 var TruthTableCNFCompiler = require("./cnfCompiler/truthTableCNFCompiler");
@@ -777,7 +827,7 @@ CNFCompiler.compile = function (chipName, environment) {
 
 module.exports = CNFCompiler;
 
-},{"./cnfCompiler/booleanCNFCompiler":9,"./cnfCompiler/truthTableCNFCompiler":10,"./cnfExpression":11,"underscore":35}],9:[function(require,module,exports){
+},{"./cnfCompiler/booleanCNFCompiler":10,"./cnfCompiler/truthTableCNFCompiler":11,"./cnfExpression":12,"underscore":36}],10:[function(require,module,exports){
 "use strict";
 
 var CNFExpression = require("../cnfExpression");
@@ -806,7 +856,7 @@ module.exports.compile = function () {
   return expression;
 };
 
-},{"../cnfExpression":11}],10:[function(require,module,exports){
+},{"../cnfExpression":12}],11:[function(require,module,exports){
 "use strict";
 
 var CNFExpression = require("../cnfExpression");
@@ -907,7 +957,7 @@ TruthTableCNFCompiler.compile = function (chipName, environment) {
 module.exports = TruthTableCNFCompiler;
 
 
-},{"../../../interface":15,"../cnfExpression":11,"underscore":35}],11:[function(require,module,exports){
+},{"../../../interface":16,"../cnfExpression":12,"underscore":36}],12:[function(require,module,exports){
 "use strict";
 
 var _ = require("underscore");
@@ -956,7 +1006,7 @@ CNFExpression.Disjunction = function () {
 
 module.exports = CNFExpression;
 
-},{"underscore":35}],12:[function(require,module,exports){
+},{"underscore":36}],13:[function(require,module,exports){
 "use strict";
 
 var _ = require("underscore");
@@ -1092,7 +1142,7 @@ Evaluator.evaluateExpression = function (chip, expression) {
 
 module.exports = Evaluator;
 
-},{"./evaluator/lookupEvaluator":13,"./interface":15,"underscore":35}],13:[function(require,module,exports){
+},{"./evaluator/lookupEvaluator":14,"./interface":16,"underscore":36}],14:[function(require,module,exports){
 "use strict";
 
 var _ = require("underscore");
@@ -1141,7 +1191,7 @@ LookupEvaluator.evaluate = function (chip, assignments) {
 
 module.exports = LookupEvaluator;
 
-},{"underscore":35}],14:[function(require,module,exports){
+},{"underscore":36}],15:[function(require,module,exports){
 "use strict";
 
 var _ = require("underscore");
@@ -1242,7 +1292,7 @@ Graph.Edge = function (source, destination, value) {
 
 module.exports = Graph;
 
-},{"underscore":35}],15:[function(require,module,exports){
+},{"underscore":36}],16:[function(require,module,exports){
 "use strict";
 
 var _ = require("underscore");
@@ -1295,7 +1345,7 @@ module.exports = function (chip) {
   });
 };
 
-},{"underscore":35}],16:[function(require,module,exports){
+},{"underscore":36}],17:[function(require,module,exports){
 "use strict";
 
 var InputParser = require("./parser/inputParser");
@@ -1308,7 +1358,7 @@ module.exports.parse = function (name, input) {
   return graph;
 };
 
-},{"./parser/inputParser":17,"./parser/interParser":18}],17:[function(require,module,exports){
+},{"./parser/inputParser":18,"./parser/interParser":19}],18:[function(require,module,exports){
 "use strict";
 
 var InputParser = function (options) {
@@ -1328,7 +1378,7 @@ InputParser.parse = function (input) {
 
 module.exports = InputParser;
 
-},{"pegjs":33}],18:[function(require,module,exports){
+},{"pegjs":34}],19:[function(require,module,exports){
 "use strict";
 
 var _ = require("underscore");
@@ -1398,7 +1448,7 @@ InterParser.parse = function (name, inter) {
 
 module.exports = InterParser;
 
-},{"../graph":14,"./interParser/partsParser":19,"./interParser/tableParser":22,"./interParser/variableResolver":23,"underscore":35}],19:[function(require,module,exports){
+},{"../graph":15,"./interParser/partsParser":20,"./interParser/tableParser":23,"./interParser/variableResolver":24,"underscore":36}],20:[function(require,module,exports){
 "use strict";
 
 var _ = require("underscore");
@@ -1514,7 +1564,7 @@ PartsParser.parse = function (chip, inter, graph) {
 
 module.exports = PartsParser;
 
-},{"../../graph":14,"./partsParser/booleansParser":20,"./partsParser/wireResolver":21,"./variableResolver":23,"underscore":35}],20:[function(require,module,exports){
+},{"../../graph":15,"./partsParser/booleansParser":21,"./partsParser/wireResolver":22,"./variableResolver":24,"underscore":36}],21:[function(require,module,exports){
 "use strict";
 
 var Graph = require("../../../graph");
@@ -1575,7 +1625,7 @@ BooleansParser.parse = function (chip, inter, graph) {
 
 module.exports = BooleansParser;
 
-},{"../../../graph":14,"underscore":35}],21:[function(require,module,exports){
+},{"../../../graph":15,"underscore":36}],22:[function(require,module,exports){
 "use strict";
 
 var VariableResolver = require("../variableResolver");
@@ -1605,7 +1655,7 @@ module.exports.resolve = function (wire) {
   return properties;
 };
 
-},{"../variableResolver":23}],22:[function(require,module,exports){
+},{"../variableResolver":24}],23:[function(require,module,exports){
 "use strict";
 
 var _ = require("underscore");
@@ -1683,7 +1733,7 @@ TableParser.parse = function (chip, inter, graph) {
 
 module.exports = TableParser;
 
-},{"../../graph":14,"underscore":35}],23:[function(require,module,exports){
+},{"../../graph":15,"underscore":36}],24:[function(require,module,exports){
 "use strict";
 
 module.exports.resolve = function (variable) {
@@ -1704,7 +1754,7 @@ module.exports.resolve = function (variable) {
   }
 };
 
-},{}],24:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 var utils = require("./utils");
 
 module.exports = {
@@ -1767,7 +1817,7 @@ module.exports = {
   }
 };
 
-},{"./compiler/passes/generate-bytecode":26,"./compiler/passes/generate-javascript":27,"./compiler/passes/remove-proxy-rules":28,"./compiler/passes/report-left-recursion":29,"./compiler/passes/report-missing-rules":30,"./utils":34}],25:[function(require,module,exports){
+},{"./compiler/passes/generate-bytecode":27,"./compiler/passes/generate-javascript":28,"./compiler/passes/remove-proxy-rules":29,"./compiler/passes/report-left-recursion":30,"./compiler/passes/report-missing-rules":31,"./utils":35}],26:[function(require,module,exports){
 /* Bytecode instruction opcodes. */
 module.exports = {
   /* Stack Manipulation */
@@ -1815,7 +1865,7 @@ module.exports = {
   SILENT_FAILS_OFF: 25    // SILENT_FAILS_FF
 };
 
-},{}],26:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 var utils = require("../../utils"),
     op    = require("../opcodes");
 
@@ -2423,7 +2473,7 @@ module.exports = function(ast) {
   generate(ast);
 };
 
-},{"../../utils":34,"../opcodes":25}],27:[function(require,module,exports){
+},{"../../utils":35,"../opcodes":26}],28:[function(require,module,exports){
 var utils = require("../../utils"),
     op    = require("../opcodes");
 
@@ -3409,7 +3459,7 @@ module.exports = function(ast, options) {
   ast.code = parts.join('\n');
 };
 
-},{"../../utils":34,"../opcodes":25}],28:[function(require,module,exports){
+},{"../../utils":35,"../opcodes":26}],29:[function(require,module,exports){
 var utils = require("../../utils");
 
 /*
@@ -3485,7 +3535,7 @@ module.exports = function(ast, options) {
   });
 };
 
-},{"../../utils":34}],29:[function(require,module,exports){
+},{"../../utils":35}],30:[function(require,module,exports){
 var utils        = require("../../utils"),
     GrammarError = require("../../grammar-error");
 
@@ -3552,7 +3602,7 @@ module.exports = function(ast) {
   check(ast, []);
 };
 
-},{"../../grammar-error":31,"../../utils":34}],30:[function(require,module,exports){
+},{"../../grammar-error":32,"../../utils":35}],31:[function(require,module,exports){
 var utils        = require("../../utils"),
     GrammarError = require("../../grammar-error");
 
@@ -3600,7 +3650,7 @@ module.exports = function(ast) {
   check(ast);
 };
 
-},{"../../grammar-error":31,"../../utils":34}],31:[function(require,module,exports){
+},{"../../grammar-error":32,"../../utils":35}],32:[function(require,module,exports){
 var utils = require("./utils");
 
 /* Thrown when the grammar contains an error. */
@@ -3611,7 +3661,7 @@ module.exports = function(message) {
 
 utils.subclass(module.exports, Error);
 
-},{"./utils":34}],32:[function(require,module,exports){
+},{"./utils":35}],33:[function(require,module,exports){
 module.exports = (function() {
   /*
    * Generated by PEG.js 0.8.0.
@@ -6410,7 +6460,7 @@ module.exports = (function() {
   };
 })();
 
-},{"./utils":34}],33:[function(require,module,exports){
+},{"./utils":35}],34:[function(require,module,exports){
 var utils = require("./utils");
 
 module.exports = {
@@ -6462,7 +6512,7 @@ module.exports = {
   }
 };
 
-},{"./compiler":24,"./grammar-error":31,"./parser":32,"./utils":34}],34:[function(require,module,exports){
+},{"./compiler":25,"./grammar-error":32,"./parser":33,"./utils":35}],35:[function(require,module,exports){
 var utils = {
   /* Like Python's |range|, but without |step|. */
   range: function(start, stop) {
@@ -6700,7 +6750,7 @@ var utils = {
 
 module.exports = utils;
 
-},{}],35:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors

@@ -185,4 +185,33 @@ describe("HDL", function () {
     cnf = fs.readFileSync(path).toString();
     expect(HDL.toCNF("and").toString() + "\n").toEqual(cnf);
   });
+
+  it("lets you output a DIMACS format string", function () {
+    HDL.define("nand", "              \n\
+      inputs a, b                     \n\
+      outputs out                     \n\
+                                      \n\
+      | a | b | out |                 \n\
+      | 0 | 0 |  1  |                 \n\
+      | 0 | 1 |  1  |                 \n\
+      | 1 | 0 |  1  |                 \n\
+      | 1 | 1 |  0  |                 \n\
+    ");
+
+    HDL.define("and", "               \n\
+      inputs a, b                     \n\
+      outputs out                     \n\
+                                      \n\
+      nand(a=x, b=x, out=out)         \n\
+      nand(a=a, b=b, out=x)           \n\
+    ");
+
+    var path = [__dirname, "fixtures", "expectedNand.dimacs"].join("/");
+    var cnf = fs.readFileSync(path).toString();
+    expect(HDL.toDIMACS("nand")).toEqual(cnf);
+
+    path = [__dirname, "fixtures", "expectedAnd.dimacs"].join("/");
+    cnf = fs.readFileSync(path).toString();
+    expect(HDL.toDIMACS("and")).toEqual(cnf);
+  });
 });

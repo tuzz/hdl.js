@@ -1,0 +1,10 @@
+p cnf 3 4
+1 2 3 0
+1 -2 3 0
+-1 2 3 0
+-1 -2 -3 0
+
+c Variable mappings:
+c 1 -> a
+c 2 -> b
+c 3 -> out
