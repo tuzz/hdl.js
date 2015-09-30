@@ -1,8 +1,9 @@
 "use strict";
 
-var describedClass = require("../../lib/hdl/cnfCompiler");
-var Environment = require("../../lib/hdl/environment");
-var Parser = require("../../lib/hdl/parser");
+var env = "../../../../lib/hdl/environment";
+var Environment = require(env);
+var describedClass = require(env + "/tseitinTransformer/cnfCompiler");
+var Parser = require("../../../../lib/hdl/parser");
 
 describe("CNFCompiler", function () {
   var nand, and, environment;

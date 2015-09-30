@@ -59,261 +59,7 @@ if (typeof window !== "undefined") {
   window.HDL = module.exports;
 }
 
-},{"./hdl/dotCompiler":6,"./hdl/environment":7,"./hdl/evaluator":12,"./hdl/interface":15,"./hdl/parser":16}],2:[function(require,module,exports){
-"use strict";
-
-var TruthTableCNFCompiler = require("./cnfCompiler/truthTableCNFCompiler");
-var BooleanCNFCompiler = require("./cnfCompiler/booleanCNFCompiler");
-var CNFExpression = require("./cnfExpression");
-var _ = require("underscore");
-
-var CNFCompiler = function (environment) {
-  var self = this;
-  var graph = environment.graph;
-
-  self.compile = function (chipName) {
-    var chip = graph.findBy({ name: chipName });
-
-    if (chip.value.name === "boolean") {
-      return BooleanCNFCompiler.compile();
-    }
-
-    if (chip.outEdges.length === 0) {
-      return;
-    }
-
-    if (isTruthTableChip(chip)) {
-      return TruthTableCNFCompiler.compile(chipName, environment);
-    }
-
-    var instances = _.map(chip.outEdges, function (edge) {
-      return edge.destination;
-    });
-
-    var instanceExpressions = _.map(instances, function (instance) {
-      return compileExpression(instance);
-    });
-
-    var expression = new CNFExpression();
-
-    _.each(instanceExpressions, function (expr) {
-      _.each(expr.conjunctions, function (conjunction) {
-        expression.conjunctions.push(conjunction);
-      });
-    });
-
-    return expression;
-  };
-
-  var compileExpression = function (instance) {
-    var edges = instance.outEdges;
-
-    var chipEdge = _.detect(edges, function (e) {
-      return e.destination.value.type === "chip";
-    });
-
-    var pinEdges = _.without(edges, chipEdge);
-    var chip = chipEdge.destination;
-
-    var expression = chip.value.cnfExpression;
-
-    if (!expression) {
-      throw new Error("no CNF expression set on chip " + chip.value.name);
-    }
-
-    var mappedExpression = new CNFExpression();
-
-    _.each(expression.conjunctions, function (conjunction) {
-      var mappedConjunction = new CNFExpression.Conjunction();
-
-      _.each(conjunction.disjunctions, function (disjunction) {
-        var pinEdge = _.detect(pinEdges, function (edge) {
-          return edge.value.name === disjunction.value;
-        });
-
-        if (pinEdge) {
-          var pin = pinEdge.destination;
-
-          var mappedDisjunction = new CNFExpression.Disjunction();
-          mappedDisjunction.value = pin.value.name;
-          mappedDisjunction.isNegation = disjunction.isNegation;
-
-          mappedConjunction.disjunctions.push(mappedDisjunction);
-        }
-      });
-
-      if (mappedConjunction.disjunctions.length > 0) {
-        mappedExpression.conjunctions.push(mappedConjunction);
-      }
-    });
-
-    return mappedExpression;
-  };
-
-  var isTruthTableChip = function (chip) {
-    var instance = chip.outEdges[0].destination;
-
-    var chipEdge = _.detect(instance.outEdges, function (edge) {
-      return edge.destination.value.type === "chip";
-    });
-
-    return chipEdge.destination.value.name === "lookup";
-  };
-};
-
-CNFCompiler.compile = function (chipName, environment) {
-  return new CNFCompiler(environment).compile(chipName);
-};
-
-module.exports = CNFCompiler;
-
-},{"./cnfCompiler/booleanCNFCompiler":3,"./cnfCompiler/truthTableCNFCompiler":4,"./cnfExpression":5,"underscore":35}],3:[function(require,module,exports){
-"use strict";
-
-var CNFExpression = require("../cnfExpression");
-
-module.exports.compile = function () {
-  var expression = new CNFExpression();
-
-  var trueConjunction = new CNFExpression.Conjunction();
-  var falseConjunction = new CNFExpression.Conjunction();
-
-  var trueDisjunction = new CNFExpression.Disjunction();
-  var falseDisjunction = new CNFExpression.Disjunction();
-
-  trueDisjunction.value = "true";
-  trueDisjunction.isNegation = false;
-
-  falseDisjunction.value = "false";
-  falseDisjunction.isNegation = true;
-
-  trueConjunction.disjunctions.push(trueDisjunction);
-  falseConjunction.disjunctions.push(falseDisjunction);
-
-  expression.conjunctions.push(trueConjunction);
-  expression.conjunctions.push(falseConjunction);
-
-  return expression;
-};
-
-},{"../cnfExpression":5}],4:[function(require,module,exports){
-"use strict";
-
-var CNFExpression = require("../cnfExpression");
-var Interface = require("../interface");
-var _ = require("underscore");
-
-var TruthTableCNFCompiler = function (environment) {
-  var self = this;
-  var graph = environment.graph;
-
-  self.compile = function (chipName) {
-    var chip = graph.findBy({ name: chipName });
-
-    var interf = new Interface(chip);
-    var pins = interf.inputs.concat(interf.outputs);
-    var pinNames = _.map(pins, function (pin) {
-      return pin.name;
-    });
-
-    var remainingPinCombinations = subtract(
-      allPinCombinations(pinNames),
-      specifiedPinCombinations(chip, pinNames)
-    );
-
-    return buildExpression(remainingPinCombinations, pinNames);
-  };
-
-  var buildExpression = function (pinCombinations, pinNames) {
-    var expression = new CNFExpression();
-
-    _.each(pinCombinations, function (row) {
-      var conjunction = new CNFExpression.Conjunction();
-
-      _.each(row, function (bool, index) {
-        var disjunction = new CNFExpression.Disjunction();
-        disjunction.value = pinNames[index];
-        disjunction.isNegation = bool;
-
-        conjunction.disjunctions.push(disjunction);
-      });
-
-      expression.conjunctions.push(conjunction);
-    });
-
-    return expression;
-  };
-
-  var allPinCombinations = function (pinNames) {
-    var numberOfPins = pinNames.length;
-    var combinations = Math.pow(2, numberOfPins);
-    var leftPad = new Array(numberOfPins + 1).join("0");
-    var arrays = [];
-
-    for (var i = 0; i < combinations; i += 1) {
-      var binary = i.toString(2);
-      var paddedBinary = (leftPad + binary).slice(-numberOfPins);
-      var binaryArray = paddedBinary.split("");
-
-      var array = _.map(binaryArray, function (bit) {
-        return bit === "1";
-      });
-
-      arrays.push(array);
-    }
-
-    return arrays;
-  };
-
-  var specifiedPinCombinations = function (chip, pinNames) {
-    return _.map(chip.outEdges, function (edge) {
-      var instance = edge.destination;
-
-      return _.map(pinNames, function (name) {
-        var edges = instance.outEdges;
-
-        var edge = _.detect(edges, function (e) {
-          return e.destination.value.name === name;
-        });
-
-        return edge.value.name === "true";
-      });
-    });
-  };
-
-  var subtract = function (a, b) {
-    return _.reject(a, function (aElement) {
-      return _.any(b, function (bElement) {
-        return _.isEqual(aElement, bElement);
-      });
-    });
-  };
-};
-
-TruthTableCNFCompiler.compile = function (chipName, environment) {
-  return new TruthTableCNFCompiler(environment).compile(chipName);
-};
-
-module.exports = TruthTableCNFCompiler;
-
-
-},{"../cnfExpression":5,"../interface":15,"underscore":35}],5:[function(require,module,exports){
-"use strict";
-
-var CNFExpression = function () {
-  this.conjunctions = [];
-};
-
-CNFExpression.Conjunction = function () {
-  this.disjunctions = [];
-};
-
-CNFExpression.Disjunction = function () {
-};
-
-module.exports = CNFExpression;
-
-},{}],6:[function(require,module,exports){
+},{"./hdl/dotCompiler":2,"./hdl/environment":3,"./hdl/evaluator":12,"./hdl/interface":15,"./hdl/parser":16}],2:[function(require,module,exports){
 'use strict';
 
 var _ = require('underscore');
@@ -428,7 +174,7 @@ DotCompiler.compile = function (graph) {
 
 module.exports = DotCompiler;
 
-},{"underscore":35}],7:[function(require,module,exports){
+},{"underscore":35}],3:[function(require,module,exports){
 "use strict";
 
 var Graph = require("./graph");
@@ -498,7 +244,7 @@ module.exports = function () {
 
 };
 
-},{"./environment/subgraphConnector":8,"./environment/topoSorter":10,"./environment/tseitinTransformer":11,"./graph":14,"underscore":35}],8:[function(require,module,exports){
+},{"./environment/subgraphConnector":4,"./environment/topoSorter":6,"./environment/tseitinTransformer":7,"./graph":14,"underscore":35}],4:[function(require,module,exports){
 "use strict";
 
 var _ = require("underscore");
@@ -557,7 +303,7 @@ SubgraphConnector.connect = function (graph) {
 
 module.exports = SubgraphConnector;
 
-},{"./subgraphConnector/edgeRedirector":9,"underscore":35}],9:[function(require,module,exports){
+},{"./subgraphConnector/edgeRedirector":5,"underscore":35}],5:[function(require,module,exports){
 "use strict";
 
 var _ = require("underscore");
@@ -575,7 +321,7 @@ module.exports.redirect = function (graph, from, to) {
   });
 };
 
-},{"../../graph":14,"underscore":35}],10:[function(require,module,exports){
+},{"../../graph":14,"underscore":35}],6:[function(require,module,exports){
 "use strict";
 
 var _ = require("underscore");
@@ -825,10 +571,10 @@ TopoSorter.sort = function (chipName, environment) {
 
 module.exports = TopoSorter;
 
-},{"underscore":35}],11:[function(require,module,exports){
+},{"underscore":35}],7:[function(require,module,exports){
 "use strict";
 
-var CNFCompiler = require("../cnfCompiler");
+var CNFCompiler = require("./tseitinTransformer/cnfCompiler");
 var _ = require("underscore");
 
 var TseitinTransformer = function (environment) {
@@ -918,7 +664,261 @@ TseitinTransformer.transform = function (chipName, environment) {
 
 module.exports = TseitinTransformer;
 
-},{"../cnfCompiler":2,"underscore":35}],12:[function(require,module,exports){
+},{"./tseitinTransformer/cnfCompiler":8,"underscore":35}],8:[function(require,module,exports){
+"use strict";
+
+var TruthTableCNFCompiler = require("./cnfCompiler/truthTableCNFCompiler");
+var BooleanCNFCompiler = require("./cnfCompiler/booleanCNFCompiler");
+var CNFExpression = require("./cnfExpression");
+var _ = require("underscore");
+
+var CNFCompiler = function (environment) {
+  var self = this;
+  var graph = environment.graph;
+
+  self.compile = function (chipName) {
+    var chip = graph.findBy({ name: chipName });
+
+    if (chip.value.name === "boolean") {
+      return BooleanCNFCompiler.compile();
+    }
+
+    if (chip.outEdges.length === 0) {
+      return;
+    }
+
+    if (isTruthTableChip(chip)) {
+      return TruthTableCNFCompiler.compile(chipName, environment);
+    }
+
+    var instances = _.map(chip.outEdges, function (edge) {
+      return edge.destination;
+    });
+
+    var instanceExpressions = _.map(instances, function (instance) {
+      return compileExpression(instance);
+    });
+
+    var expression = new CNFExpression();
+
+    _.each(instanceExpressions, function (expr) {
+      _.each(expr.conjunctions, function (conjunction) {
+        expression.conjunctions.push(conjunction);
+      });
+    });
+
+    return expression;
+  };
+
+  var compileExpression = function (instance) {
+    var edges = instance.outEdges;
+
+    var chipEdge = _.detect(edges, function (e) {
+      return e.destination.value.type === "chip";
+    });
+
+    var pinEdges = _.without(edges, chipEdge);
+    var chip = chipEdge.destination;
+
+    var expression = chip.value.cnfExpression;
+
+    if (!expression) {
+      throw new Error("no CNF expression set on chip " + chip.value.name);
+    }
+
+    var mappedExpression = new CNFExpression();
+
+    _.each(expression.conjunctions, function (conjunction) {
+      var mappedConjunction = new CNFExpression.Conjunction();
+
+      _.each(conjunction.disjunctions, function (disjunction) {
+        var pinEdge = _.detect(pinEdges, function (edge) {
+          return edge.value.name === disjunction.value;
+        });
+
+        if (pinEdge) {
+          var pin = pinEdge.destination;
+
+          var mappedDisjunction = new CNFExpression.Disjunction();
+          mappedDisjunction.value = pin.value.name;
+          mappedDisjunction.isNegation = disjunction.isNegation;
+
+          mappedConjunction.disjunctions.push(mappedDisjunction);
+        }
+      });
+
+      if (mappedConjunction.disjunctions.length > 0) {
+        mappedExpression.conjunctions.push(mappedConjunction);
+      }
+    });
+
+    return mappedExpression;
+  };
+
+  var isTruthTableChip = function (chip) {
+    var instance = chip.outEdges[0].destination;
+
+    var chipEdge = _.detect(instance.outEdges, function (edge) {
+      return edge.destination.value.type === "chip";
+    });
+
+    return chipEdge.destination.value.name === "lookup";
+  };
+};
+
+CNFCompiler.compile = function (chipName, environment) {
+  return new CNFCompiler(environment).compile(chipName);
+};
+
+module.exports = CNFCompiler;
+
+},{"./cnfCompiler/booleanCNFCompiler":9,"./cnfCompiler/truthTableCNFCompiler":10,"./cnfExpression":11,"underscore":35}],9:[function(require,module,exports){
+"use strict";
+
+var CNFExpression = require("../cnfExpression");
+
+module.exports.compile = function () {
+  var expression = new CNFExpression();
+
+  var trueConjunction = new CNFExpression.Conjunction();
+  var falseConjunction = new CNFExpression.Conjunction();
+
+  var trueDisjunction = new CNFExpression.Disjunction();
+  var falseDisjunction = new CNFExpression.Disjunction();
+
+  trueDisjunction.value = "true";
+  trueDisjunction.isNegation = false;
+
+  falseDisjunction.value = "false";
+  falseDisjunction.isNegation = true;
+
+  trueConjunction.disjunctions.push(trueDisjunction);
+  falseConjunction.disjunctions.push(falseDisjunction);
+
+  expression.conjunctions.push(trueConjunction);
+  expression.conjunctions.push(falseConjunction);
+
+  return expression;
+};
+
+},{"../cnfExpression":11}],10:[function(require,module,exports){
+"use strict";
+
+var CNFExpression = require("../cnfExpression");
+var Interface = require("../../../interface");
+var _ = require("underscore");
+
+var TruthTableCNFCompiler = function (environment) {
+  var self = this;
+  var graph = environment.graph;
+
+  self.compile = function (chipName) {
+    var chip = graph.findBy({ name: chipName });
+
+    var interf = new Interface(chip);
+    var pins = interf.inputs.concat(interf.outputs);
+    var pinNames = _.map(pins, function (pin) {
+      return pin.name;
+    });
+
+    var remainingPinCombinations = subtract(
+      allPinCombinations(pinNames),
+      specifiedPinCombinations(chip, pinNames)
+    );
+
+    return buildExpression(remainingPinCombinations, pinNames);
+  };
+
+  var buildExpression = function (pinCombinations, pinNames) {
+    var expression = new CNFExpression();
+
+    _.each(pinCombinations, function (row) {
+      var conjunction = new CNFExpression.Conjunction();
+
+      _.each(row, function (bool, index) {
+        var disjunction = new CNFExpression.Disjunction();
+        disjunction.value = pinNames[index];
+        disjunction.isNegation = bool;
+
+        conjunction.disjunctions.push(disjunction);
+      });
+
+      expression.conjunctions.push(conjunction);
+    });
+
+    return expression;
+  };
+
+  var allPinCombinations = function (pinNames) {
+    var numberOfPins = pinNames.length;
+    var combinations = Math.pow(2, numberOfPins);
+    var leftPad = new Array(numberOfPins + 1).join("0");
+    var arrays = [];
+
+    for (var i = 0; i < combinations; i += 1) {
+      var binary = i.toString(2);
+      var paddedBinary = (leftPad + binary).slice(-numberOfPins);
+      var binaryArray = paddedBinary.split("");
+
+      var array = _.map(binaryArray, function (bit) {
+        return bit === "1";
+      });
+
+      arrays.push(array);
+    }
+
+    return arrays;
+  };
+
+  var specifiedPinCombinations = function (chip, pinNames) {
+    return _.map(chip.outEdges, function (edge) {
+      var instance = edge.destination;
+
+      return _.map(pinNames, function (name) {
+        var edges = instance.outEdges;
+
+        var edge = _.detect(edges, function (e) {
+          return e.destination.value.name === name;
+        });
+
+        return edge.value.name === "true";
+      });
+    });
+  };
+
+  var subtract = function (a, b) {
+    return _.reject(a, function (aElement) {
+      return _.any(b, function (bElement) {
+        return _.isEqual(aElement, bElement);
+      });
+    });
+  };
+};
+
+TruthTableCNFCompiler.compile = function (chipName, environment) {
+  return new TruthTableCNFCompiler(environment).compile(chipName);
+};
+
+module.exports = TruthTableCNFCompiler;
+
+
+},{"../../../interface":15,"../cnfExpression":11,"underscore":35}],11:[function(require,module,exports){
+"use strict";
+
+var CNFExpression = function () {
+  this.conjunctions = [];
+};
+
+CNFExpression.Conjunction = function () {
+  this.disjunctions = [];
+};
+
+CNFExpression.Disjunction = function () {
+};
+
+module.exports = CNFExpression;
+
+},{}],12:[function(require,module,exports){
 "use strict";
 
 var _ = require("underscore");

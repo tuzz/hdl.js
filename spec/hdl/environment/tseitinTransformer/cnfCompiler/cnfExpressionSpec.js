@@ -1,6 +1,7 @@
 "use strict";
 
-var CNFExpression = require("../../lib/hdl/cnfExpression");
+var env = "../../../../../lib/hdl/environment";
+var CNFExpression = require(env + "/tseitinTransformer/cnfExpression");
 
 describe("CNFExpression", function () {
   it("represents a CNF expression", function () {
