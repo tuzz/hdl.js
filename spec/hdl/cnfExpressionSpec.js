@@ -7,12 +7,10 @@ describe("CNFExpression", function () {
     var expression = new CNFExpression();
     var conjunction = new CNFExpression.Conjunction();
     var disjunction = new CNFExpression.Disjunction();
-    var literal = new CNFExpression.Literal("a");
-    var negation = new CNFExpression.Negation("b");
 
-    expression.conjunctions.push(conjunction);
+    disjunction.value = "a";
+    disjunction.isNegative = false;
     conjunction.disjunctions.push(disjunction);
-    disjunction.terms.push(literal);
-    disjunction.terms.push(negation);
+    expression.conjunctions.push(conjunction);
   });
 });
