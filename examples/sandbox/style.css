@@ -15,7 +15,7 @@
   font-family: "Courier New", Courier, monospace;
 }
 
-#evaluate-name {
+#evaluate-name, #cnf-name {
   font-size: 20px;
   width: 15%;
   float: left;
@@ -61,7 +61,7 @@
   width: 10%;
 }
 
-#evaluate {
+#evaluate, #cnf {
   font-size: 20px;
   background: white;
   color: blue;
@@ -69,6 +69,14 @@
   cursor: pointer;
   float: left;
   width: 10%;
+}
+
+#cnf-result {
+  margin-top: 20px;
+  font-size: 20px;
+  font-family: "Courier New", Courier, monospace;
+  width: 95%;
+  height: 100px;
 }
 
 h2 {

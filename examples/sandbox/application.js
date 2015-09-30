@@ -7,7 +7,10 @@ var Application = function (
     evaluateNameId,
     evaluateExpressionId,
     evaluateId,
-    evaluateResultId
+    evaluateResultId,
+    cnfNameId,
+    cnfId,
+    cnfResultId
 ) {
   var self = this;
 
@@ -20,6 +23,9 @@ var Application = function (
   var evaluateExpression = document.getElementById(evaluateExpressionId);
   var evaluate = document.getElementById(evaluateId);
   var evaluateResult = document.getElementById(evaluateResultId);
+  var cnfName = document.getElementById(cnfNameId);
+  var cnf = document.getElementById(cnfId);
+  var cnfResult = document.getElementById(cnfResultId);
 
   var update = function () {
     parse();
@@ -62,6 +68,15 @@ var Application = function (
     });
   };
 
+  var displayCNF = function () {
+    catchError(function () {
+      var name = cnfName.value;
+      var cnf = HDL.toCNF(name).toString();
+
+      cnfResult.value = cnf;
+    });
+  };
+
   var catchError = function (callback) {
     try {
       errorLine.innerHTML = "";
@@ -76,5 +91,6 @@ var Application = function (
   textarea.onfocus = update;
   remove.onclick = removeChip;
   evaluate.onclick = eval;
+  cnf.onclick = displayCNF;
   update();
 }

@@ -33,6 +33,10 @@ outputs out
       <input type="text" id="evaluate-expression" value='{"a":true,"b":true}'></input>
       <button id="evaluate">&gt;</button>
       <div id="evaluate-result"></div>
+      <h2>Display CNF:</h2>
+      <input type="text" id="cnf-name" value="nand"></input>
+      <button id="cnf">&gt;</button>
+      <textarea id="cnf-result"></textarea>
     </div>
     <div id="right"></div>
 
@@ -46,7 +50,10 @@ outputs out
         "evaluate-name",
         "evaluate-expression",
         "evaluate",
-        "evaluate-result"
+        "evaluate-result",
+        "cnf-name",
+        "cnf",
+        "cnf-result"
       );
     </script>
   </body>
