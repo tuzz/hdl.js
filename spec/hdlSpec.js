@@ -156,4 +156,33 @@ describe("HDL", function () {
 
     expect(HDL.toDot()).toEqual(dot);
   });
+
+  it("lets you output a CNF expression", function () {
+    HDL.define("nand", "              \n\
+      inputs a, b                     \n\
+      outputs out                     \n\
+                                      \n\
+      | a | b | out |                 \n\
+      | 0 | 0 |  1  |                 \n\
+      | 0 | 1 |  1  |                 \n\
+      | 1 | 0 |  1  |                 \n\
+      | 1 | 1 |  0  |                 \n\
+    ");
+
+    HDL.define("and", "               \n\
+      inputs a, b                     \n\
+      outputs out                     \n\
+                                      \n\
+      nand(a=x, b=x, out=out)         \n\
+      nand(a=a, b=b, out=x)           \n\
+    ");
+
+    var path = [__dirname, "fixtures", "expectedNand.cnf"].join("/");
+    var cnf = fs.readFileSync(path).toString();
+    expect(HDL.toCNF("nand").toString() + "\n").toEqual(cnf);
+
+    path = [__dirname, "fixtures", "expectedAnd.cnf"].join("/");
+    cnf = fs.readFileSync(path).toString();
+    expect(HDL.toCNF("and").toString() + "\n").toEqual(cnf);
+  });
 });
