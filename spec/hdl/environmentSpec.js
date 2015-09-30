@@ -174,6 +174,18 @@ describe("Environment", function () {
 
       expect(nand.outEdges.length).toEqual(4);
     });
+
+    it("removes the memoized cnfExpression property", function () {
+      subject.addChip("nand", nand);
+      subject.addChip("and", and);
+
+      var graph = subject.graph;
+      nand = graph.findBy({ name: "nand" });
+
+      expect(nand.value.cnfExpression).toBeDefined();
+      subject.removeChip("nand");
+      expect(nand.value.cnfExpression).toBeUndefined();
+    });
   });
 
   describe("integration test", function () {
