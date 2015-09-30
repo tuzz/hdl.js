@@ -59,7 +59,261 @@ if (typeof window !== "undefined") {
   window.HDL = module.exports;
 }
 
-},{"./hdl/dotCompiler":2,"./hdl/environment":3,"./hdl/evaluator":7,"./hdl/interface":10,"./hdl/parser":11}],2:[function(require,module,exports){
+},{"./hdl/dotCompiler":6,"./hdl/environment":7,"./hdl/evaluator":12,"./hdl/interface":15,"./hdl/parser":16}],2:[function(require,module,exports){
+"use strict";
+
+var TruthTableCNFCompiler = require("./cnfCompiler/truthTableCNFCompiler");
+var BooleanCNFCompiler = require("./cnfCompiler/booleanCNFCompiler");
+var CNFExpression = require("./cnfExpression");
+var _ = require("underscore");
+
+var CNFCompiler = function (environment) {
+  var self = this;
+  var graph = environment.graph;
+
+  self.compile = function (chipName) {
+    var chip = graph.findBy({ name: chipName });
+
+    if (chip.value.name === "boolean") {
+      return BooleanCNFCompiler.compile();
+    }
+
+    if (chip.outEdges.length === 0) {
+      return;
+    }
+
+    if (isTruthTableChip(chip)) {
+      return TruthTableCNFCompiler.compile(chipName, environment);
+    }
+
+    var instances = _.map(chip.outEdges, function (edge) {
+      return edge.destination;
+    });
+
+    var instanceExpressions = _.map(instances, function (instance) {
+      return compileExpression(instance);
+    });
+
+    var expression = new CNFExpression();
+
+    _.each(instanceExpressions, function (expr) {
+      _.each(expr.conjunctions, function (conjunction) {
+        expression.conjunctions.push(conjunction);
+      });
+    });
+
+    return expression;
+  };
+
+  var compileExpression = function (instance) {
+    var edges = instance.outEdges;
+
+    var chipEdge = _.detect(edges, function (e) {
+      return e.destination.value.type === "chip";
+    });
+
+    var pinEdges = _.without(edges, chipEdge);
+    var chip = chipEdge.destination;
+
+    var expression = chip.value.cnfExpression;
+
+    if (!expression) {
+      throw new Error("no CNF expression set on chip " + chip.value.name);
+    }
+
+    var mappedExpression = new CNFExpression();
+
+    _.each(expression.conjunctions, function (conjunction) {
+      var mappedConjunction = new CNFExpression.Conjunction();
+
+      _.each(conjunction.disjunctions, function (disjunction) {
+        var pinEdge = _.detect(pinEdges, function (edge) {
+          return edge.value.name === disjunction.value;
+        });
+
+        if (pinEdge) {
+          var pin = pinEdge.destination;
+
+          var mappedDisjunction = new CNFExpression.Disjunction();
+          mappedDisjunction.value = pin.value.name;
+          mappedDisjunction.isNegation = disjunction.isNegation;
+
+          mappedConjunction.disjunctions.push(mappedDisjunction);
+        }
+      });
+
+      if (mappedConjunction.disjunctions.length > 0) {
+        mappedExpression.conjunctions.push(mappedConjunction);
+      }
+    });
+
+    return mappedExpression;
+  };
+
+  var isTruthTableChip = function (chip) {
+    var instance = chip.outEdges[0].destination;
+
+    var chipEdge = _.detect(instance.outEdges, function (edge) {
+      return edge.destination.value.type === "chip";
+    });
+
+    return chipEdge.destination.value.name === "lookup";
+  };
+};
+
+CNFCompiler.compile = function (chipName, environment) {
+  return new CNFCompiler(environment).compile(chipName);
+};
+
+module.exports = CNFCompiler;
+
+},{"./cnfCompiler/booleanCNFCompiler":3,"./cnfCompiler/truthTableCNFCompiler":4,"./cnfExpression":5,"underscore":35}],3:[function(require,module,exports){
+"use strict";
+
+var CNFExpression = require("../cnfExpression");
+
+module.exports.compile = function () {
+  var expression = new CNFExpression();
+
+  var trueConjunction = new CNFExpression.Conjunction();
+  var falseConjunction = new CNFExpression.Conjunction();
+
+  var trueDisjunction = new CNFExpression.Disjunction();
+  var falseDisjunction = new CNFExpression.Disjunction();
+
+  trueDisjunction.value = "true";
+  trueDisjunction.isNegation = false;
+
+  falseDisjunction.value = "false";
+  falseDisjunction.isNegation = true;
+
+  trueConjunction.disjunctions.push(trueDisjunction);
+  falseConjunction.disjunctions.push(falseDisjunction);
+
+  expression.conjunctions.push(trueConjunction);
+  expression.conjunctions.push(falseConjunction);
+
+  return expression;
+};
+
+},{"../cnfExpression":5}],4:[function(require,module,exports){
+"use strict";
+
+var CNFExpression = require("../cnfExpression");
+var Interface = require("../interface");
+var _ = require("underscore");
+
+var TruthTableCNFCompiler = function (environment) {
+  var self = this;
+  var graph = environment.graph;
+
+  self.compile = function (chipName) {
+    var chip = graph.findBy({ name: chipName });
+
+    var interf = new Interface(chip);
+    var pins = interf.inputs.concat(interf.outputs);
+    var pinNames = _.map(pins, function (pin) {
+      return pin.name;
+    });
+
+    var remainingPinCombinations = subtract(
+      allPinCombinations(pinNames),
+      specifiedPinCombinations(chip, pinNames)
+    );
+
+    return buildExpression(remainingPinCombinations, pinNames);
+  };
+
+  var buildExpression = function (pinCombinations, pinNames) {
+    var expression = new CNFExpression();
+
+    _.each(pinCombinations, function (row) {
+      var conjunction = new CNFExpression.Conjunction();
+
+      _.each(row, function (bool, index) {
+        var disjunction = new CNFExpression.Disjunction();
+        disjunction.value = pinNames[index];
+        disjunction.isNegation = bool;
+
+        conjunction.disjunctions.push(disjunction);
+      });
+
+      expression.conjunctions.push(conjunction);
+    });
+
+    return expression;
+  };
+
+  var allPinCombinations = function (pinNames) {
+    var numberOfPins = pinNames.length;
+    var combinations = Math.pow(2, numberOfPins);
+    var leftPad = new Array(numberOfPins + 1).join("0");
+    var arrays = [];
+
+    for (var i = 0; i < combinations; i += 1) {
+      var binary = i.toString(2);
+      var paddedBinary = (leftPad + binary).slice(-numberOfPins);
+      var binaryArray = paddedBinary.split("");
+
+      var array = _.map(binaryArray, function (bit) {
+        return bit === "1";
+      });
+
+      arrays.push(array);
+    }
+
+    return arrays;
+  };
+
+  var specifiedPinCombinations = function (chip, pinNames) {
+    return _.map(chip.outEdges, function (edge) {
+      var instance = edge.destination;
+
+      return _.map(pinNames, function (name) {
+        var edges = instance.outEdges;
+
+        var edge = _.detect(edges, function (e) {
+          return e.destination.value.name === name;
+        });
+
+        return edge.value.name === "true";
+      });
+    });
+  };
+
+  var subtract = function (a, b) {
+    return _.reject(a, function (aElement) {
+      return _.any(b, function (bElement) {
+        return _.isEqual(aElement, bElement);
+      });
+    });
+  };
+};
+
+TruthTableCNFCompiler.compile = function (chipName, environment) {
+  return new TruthTableCNFCompiler(environment).compile(chipName);
+};
+
+module.exports = TruthTableCNFCompiler;
+
+
+},{"../cnfExpression":5,"../interface":15,"underscore":35}],5:[function(require,module,exports){
+"use strict";
+
+var CNFExpression = function () {
+  this.conjunctions = [];
+};
+
+CNFExpression.Conjunction = function () {
+  this.disjunctions = [];
+};
+
+CNFExpression.Disjunction = function () {
+};
+
+module.exports = CNFExpression;
+
+},{}],6:[function(require,module,exports){
 'use strict';
 
 var _ = require('underscore');
@@ -174,12 +428,13 @@ DotCompiler.compile = function (graph) {
 
 module.exports = DotCompiler;
 
-},{"underscore":30}],3:[function(require,module,exports){
+},{"underscore":35}],7:[function(require,module,exports){
 "use strict";
 
 var Graph = require("./graph");
 var SubgraphConnector = require("./environment/subgraphConnector");
 var TopoSorter = require("./environment/topoSorter");
+var TseitinTransformer = require("./environment/tseitinTransformer");
 var _ = require("underscore");
 
 module.exports = function () {
@@ -200,6 +455,7 @@ module.exports = function () {
 
     SubgraphConnector.connect(self.graph);
     TopoSorter.sort(name, self);
+    TseitinTransformer.transform(name, self);
   };
 
   self.removeChip = function (name) {
@@ -242,7 +498,7 @@ module.exports = function () {
 
 };
 
-},{"./environment/subgraphConnector":4,"./environment/topoSorter":6,"./graph":9,"underscore":30}],4:[function(require,module,exports){
+},{"./environment/subgraphConnector":8,"./environment/topoSorter":10,"./environment/tseitinTransformer":11,"./graph":14,"underscore":35}],8:[function(require,module,exports){
 "use strict";
 
 var _ = require("underscore");
@@ -301,7 +557,7 @@ SubgraphConnector.connect = function (graph) {
 
 module.exports = SubgraphConnector;
 
-},{"./subgraphConnector/edgeRedirector":5,"underscore":30}],5:[function(require,module,exports){
+},{"./subgraphConnector/edgeRedirector":9,"underscore":35}],9:[function(require,module,exports){
 "use strict";
 
 var _ = require("underscore");
@@ -319,7 +575,7 @@ module.exports.redirect = function (graph, from, to) {
   });
 };
 
-},{"../../graph":9,"underscore":30}],6:[function(require,module,exports){
+},{"../../graph":14,"underscore":35}],10:[function(require,module,exports){
 "use strict";
 
 var _ = require("underscore");
@@ -569,7 +825,100 @@ TopoSorter.sort = function (chipName, environment) {
 
 module.exports = TopoSorter;
 
-},{"underscore":30}],7:[function(require,module,exports){
+},{"underscore":35}],11:[function(require,module,exports){
+"use strict";
+
+var CNFCompiler = require("../cnfCompiler");
+var _ = require("underscore");
+
+var TseitinTransformer = function (environment) {
+  var self = this;
+  var graph = environment.graph;
+  var transformedChips = [];
+
+  self.transform = function (chipName) {
+    var chip = graph.findBy({ name: chipName });
+
+    transformBooleanChip();
+
+    if (transformable(chip)) {
+      var expression = CNFCompiler.compile(chipName, environment);
+      chip.value.cnfExpression = expression;
+      transformedChips.push(chip);
+
+      _.each(dependeeChips(chip), function (dependee) {
+        if (!contains(transformedChips, dependee)) {
+          self.transform(dependee.value.name);
+        }
+      });
+    }
+  };
+
+  var transformBooleanChip = function () {
+    var booleanChip = graph.findBy({ name: "boolean", type: "chip" });
+
+    if (!booleanChip || booleanChip.cnfExpression) {
+      return;
+    }
+
+    var expression = CNFCompiler.compile("boolean", environment);
+    booleanChip.value.cnfExpression = expression;
+  };
+
+  var transformable = function (chip) {
+    return _.all(dependentChips(chip), function (c) {
+      return isConcrete(c) || isLookup(c) || isBoolean(c);
+    });
+  };
+
+  var dependentChips = function (chip) {
+    var instances = _.map(chip.outEdges, function (edge) {
+      return edge.destination;
+    });
+
+    var chipEdges = _.map(instances, function (instance) {
+      var edges = instance.outEdges;
+      return _.detect(edges, function (edge) {
+        return edge.destination.value.type === "chip";
+      });
+    });
+
+    return _.map(chipEdges, function (edge) {
+      return edge.destination;
+    });
+  };
+
+  var isConcrete = function (chip) {
+    return chip.outEdges.length > 0;
+  };
+
+  var isBoolean = function (chip) {
+    return chip.value.name === "boolean";
+  };
+
+  var isLookup = function (chip) {
+    return chip.value.name === "lookup";
+  };
+
+  var contains = function (array, element) {
+    return array.indexOf(element) > -1;
+  };
+
+  var dependeeChips = function (chip) {
+    return _.uniq(_.map(chip.inEdges, function (edge) {
+      var instance = edge.source;
+      return instance.inEdges[0].source;
+    }));
+  };
+};
+
+TseitinTransformer.transform = function (chipName, environment) {
+  new TseitinTransformer(environment).transform(chipName);
+};
+
+module.exports = TseitinTransformer;
+
+},{"../cnfCompiler":2,"underscore":35}],12:[function(require,module,exports){
 "use strict";
 
 var _ = require("underscore");
@@ -705,7 +1054,7 @@ Evaluator.evaluateExpression = function (chip, expression) {
 
 module.exports = Evaluator;
 
-},{"./evaluator/lookupEvaluator":8,"./interface":10,"underscore":30}],8:[function(require,module,exports){
+},{"./evaluator/lookupEvaluator":13,"./interface":15,"underscore":35}],13:[function(require,module,exports){
 "use strict";
 
 var _ = require("underscore");
@@ -754,7 +1103,7 @@ LookupEvaluator.evaluate = function (chip, assignments) {
 
 module.exports = LookupEvaluator;
 
-},{"underscore":30}],9:[function(require,module,exports){
+},{"underscore":35}],14:[function(require,module,exports){
 "use strict";
 
 var _ = require("underscore");
@@ -855,7 +1204,7 @@ Graph.Edge = function (source, destination, value) {
 
 module.exports = Graph;
 
-},{"underscore":30}],10:[function(require,module,exports){
+},{"underscore":35}],15:[function(require,module,exports){
 "use strict";
 
 var _ = require("underscore");
@@ -908,7 +1257,7 @@ module.exports = function (chip) {
   });
 };
 
-},{"underscore":30}],11:[function(require,module,exports){
+},{"underscore":35}],16:[function(require,module,exports){
 "use strict";
 
 var InputParser = require("./parser/inputParser");
@@ -921,7 +1270,7 @@ module.exports.parse = function (name, input) {
   return graph;
 };
 
-},{"./parser/inputParser":12,"./parser/interParser":13}],12:[function(require,module,exports){
+},{"./parser/inputParser":17,"./parser/interParser":18}],17:[function(require,module,exports){
 "use strict";
 
 var InputParser = function (options) {
@@ -941,7 +1290,7 @@ InputParser.parse = function (input) {
 
 module.exports = InputParser;
 
-},{"pegjs":28}],13:[function(require,module,exports){
+},{"pegjs":33}],18:[function(require,module,exports){
 "use strict";
 
 var _ = require("underscore");
@@ -1011,7 +1360,7 @@ InterParser.parse = function (name, inter) {
 
 module.exports = InterParser;
 
-},{"../graph":9,"./interParser/partsParser":14,"./interParser/tableParser":17,"./interParser/variableResolver":18,"underscore":30}],14:[function(require,module,exports){
+},{"../graph":14,"./interParser/partsParser":19,"./interParser/tableParser":22,"./interParser/variableResolver":23,"underscore":35}],19:[function(require,module,exports){
 "use strict";
 
 var _ = require("underscore");
@@ -1127,7 +1476,7 @@ PartsParser.parse = function (chip, inter, graph) {
 
 module.exports = PartsParser;
 
-},{"../../graph":9,"./partsParser/booleansParser":15,"./partsParser/wireResolver":16,"./variableResolver":18,"underscore":30}],15:[function(require,module,exports){
+},{"../../graph":14,"./partsParser/booleansParser":20,"./partsParser/wireResolver":21,"./variableResolver":23,"underscore":35}],20:[function(require,module,exports){
 "use strict";
 
 var Graph = require("../../../graph");
@@ -1188,7 +1537,7 @@ BooleansParser.parse = function (chip, inter, graph) {
 
 module.exports = BooleansParser;
 
-},{"../../../graph":9,"underscore":30}],16:[function(require,module,exports){
+},{"../../../graph":14,"underscore":35}],21:[function(require,module,exports){
 "use strict";
 
 var VariableResolver = require("../variableResolver");
@@ -1218,7 +1567,7 @@ module.exports.resolve = function (wire) {
   return properties;
 };
 
-},{"../variableResolver":18}],17:[function(require,module,exports){
+},{"../variableResolver":23}],22:[function(require,module,exports){
 "use strict";
 
 var _ = require("underscore");
@@ -1296,7 +1645,7 @@ TableParser.parse = function (chip, inter, graph) {
 
 module.exports = TableParser;
 
-},{"../../graph":9,"underscore":30}],18:[function(require,module,exports){
+},{"../../graph":14,"underscore":35}],23:[function(require,module,exports){
 "use strict";
 
 module.exports.resolve = function (variable) {
@@ -1317,7 +1666,7 @@ module.exports.resolve = function (variable) {
   }
 };
 
-},{}],19:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 var utils = require("./utils");
 
 module.exports = {
@@ -1380,7 +1729,7 @@ module.exports = {
   }
 };
 
-},{"./compiler/passes/generate-bytecode":21,"./compiler/passes/generate-javascript":22,"./compiler/passes/remove-proxy-rules":23,"./compiler/passes/report-left-recursion":24,"./compiler/passes/report-missing-rules":25,"./utils":29}],20:[function(require,module,exports){
+},{"./compiler/passes/generate-bytecode":26,"./compiler/passes/generate-javascript":27,"./compiler/passes/remove-proxy-rules":28,"./compiler/passes/report-left-recursion":29,"./compiler/passes/report-missing-rules":30,"./utils":34}],25:[function(require,module,exports){
 /* Bytecode instruction opcodes. */
 module.exports = {
   /* Stack Manipulation */
@@ -1428,7 +1777,7 @@ module.exports = {
   SILENT_FAILS_OFF: 25    // SILENT_FAILS_FF
 };
 
-},{}],21:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 var utils = require("../../utils"),
     op    = require("../opcodes");
 
@@ -2036,7 +2385,7 @@ module.exports = function(ast) {
   generate(ast);
 };
 
-},{"../../utils":29,"../opcodes":20}],22:[function(require,module,exports){
+},{"../../utils":34,"../opcodes":25}],27:[function(require,module,exports){
 var utils = require("../../utils"),
     op    = require("../opcodes");
 
@@ -3022,7 +3371,7 @@ module.exports = function(ast, options) {
   ast.code = parts.join('\n');
 };
 
-},{"../../utils":29,"../opcodes":20}],23:[function(require,module,exports){
+},{"../../utils":34,"../opcodes":25}],28:[function(require,module,exports){
 var utils = require("../../utils");
 
 /*
@@ -3098,7 +3447,7 @@ module.exports = function(ast, options) {
   });
 };
 
-},{"../../utils":29}],24:[function(require,module,exports){
+},{"../../utils":34}],29:[function(require,module,exports){
 var utils        = require("../../utils"),
     GrammarError = require("../../grammar-error");
 
@@ -3165,7 +3514,7 @@ module.exports = function(ast) {
   check(ast, []);
 };
 
-},{"../../grammar-error":26,"../../utils":29}],25:[function(require,module,exports){
+},{"../../grammar-error":31,"../../utils":34}],30:[function(require,module,exports){
 var utils        = require("../../utils"),
     GrammarError = require("../../grammar-error");
 
@@ -3213,7 +3562,7 @@ module.exports = function(ast) {
   check(ast);
 };
 
-},{"../../grammar-error":26,"../../utils":29}],26:[function(require,module,exports){
+},{"../../grammar-error":31,"../../utils":34}],31:[function(require,module,exports){
 var utils = require("./utils");
 
 /* Thrown when the grammar contains an error. */
@@ -3224,7 +3573,7 @@ module.exports = function(message) {
 
 utils.subclass(module.exports, Error);
 
-},{"./utils":29}],27:[function(require,module,exports){
+},{"./utils":34}],32:[function(require,module,exports){
 module.exports = (function() {
   /*
    * Generated by PEG.js 0.8.0.
@@ -6023,7 +6372,7 @@ module.exports = (function() {
   };
 })();
 
-},{"./utils":29}],28:[function(require,module,exports){
+},{"./utils":34}],33:[function(require,module,exports){
 var utils = require("./utils");
 
 module.exports = {
@@ -6075,7 +6424,7 @@ module.exports = {
   }
 };
 
-},{"./compiler":19,"./grammar-error":26,"./parser":27,"./utils":29}],29:[function(require,module,exports){
+},{"./compiler":24,"./grammar-error":31,"./parser":32,"./utils":34}],34:[function(require,module,exports){
 var utils = {
   /* Like Python's |range|, but without |step|. */
   range: function(start, stop) {
@@ -6313,7 +6662,7 @@ var utils = {
 
 module.exports = utils;
 
-},{}],30:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
