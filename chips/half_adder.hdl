@@ -1,0 +1,8 @@
+inputs a, b
+outputs sum, carry
+
+| a | b | sum | carry |
+| 0 | 0 | 0   | 0     |
+| 0 | 1 | 1   | 0     |
+| 1 | 0 | 1   | 0     |
+| 1 | 1 | 0   | 1     |
