@@ -24,7 +24,7 @@ describe(describedChip, function () {
       i0: true   // 01 * 1
     });
 
-    // The term "five a's" contains 1 'a'
-    expect(result).toEqual({ o2: false, o1: false, o0: true });
+    // The term "five _'s" contains 0 'a'
+    expect(result).toEqual({ o2: false, o1: false, o0: false });
   });
 });
