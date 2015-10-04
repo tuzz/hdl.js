@@ -1,8 +1,0 @@
-inputs a0, a1, a2,
-       b0, b1, b2
-
-outputs o0, o1, o2, carry
-
-half_adder(a=a0, b=b0, sum=o0, carry=c0)
-adder(a=a1, b=b1, c=c0, sum=o1, carry=c1)
-adder(a=a2, b=b2, c=c1, sum=o2, carry=carry)
