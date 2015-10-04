@@ -180,24 +180,13 @@ describe("CNFCompiler", function () {
 
     var expression = describedClass.compile("foo", environment);
 
-    expect(expression.conjunctions.length).toEqual(5);
-    var conjunctions = expression.conjunctions;
-
-    expect(conjunctions[0].disjunctions.length).toEqual(1);
-    var disjunctions = conjunctions[0].disjunctions;
-
-    expect(disjunctions[0].value).toEqual("true");
-    expect(disjunctions[0].isNegation).toEqual(false);
-
-    expect(conjunctions[1].disjunctions.length).toEqual(3);
-    disjunctions = conjunctions[1].disjunctions;
-
-    expect(disjunctions[0].value).toEqual("true");
-    expect(disjunctions[0].isNegation).toEqual(false);
-    expect(disjunctions[1].value).toEqual("in");
-    expect(disjunctions[1].isNegation).toEqual(false);
-    expect(disjunctions[2].value).toEqual("out");
-    expect(disjunctions[2].isNegation).toEqual(false);
+    expect(expression.toString().split(" && ")).toEqual([
+      "true",
+      "(true || in || out)",
+      "(true || !in || out)",
+      "(!true || in || out)",
+      "(!true || !in || !out)"
+    ]);
   });
 
   it("returns 'undefined' when given a reference to a chip", function () {
