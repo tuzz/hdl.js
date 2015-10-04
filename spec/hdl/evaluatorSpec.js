@@ -119,6 +119,42 @@ describe("Evaluator", function () {
     });
   });
 
+  describe("evaluating expressions on chips using booleans", function () {
+    var nandGraph = Parser.parse("nand", " \n\
+      inputs a, b                          \n\
+      outputs out                          \n\
+                                           \n\
+      | a | b | out |                      \n\
+      | 0 | 0 |  1  |                      \n\
+      | 0 | 1 |  1  |                      \n\
+      | 1 | 0 |  1  |                      \n\
+      | 1 | 1 |  0  |                      \n\
+    ");
+
+    var fooGraph = Parser.parse("foo", " \n\
+      inputs in                          \n\
+      outputs out                        \n\
+                                         \n\
+      nand(a=in, b=1, out=out)           \n\
+    ");
+
+    var environment = new Environment();
+    environment.addChip("nand", nandGraph);
+    environment.addChip("foo", fooGraph);
+
+    var foo = environment.graph.findBy({ name: "foo" });
+
+    it("evaluates in = false correctly", function () {
+      var result = describedClass.evaluateExpression(foo, { in: false });
+      expect(result).toEqual({ out: true });
+    });
+
+    it("evaluates in = true correctly", function () {
+      var result = describedClass.evaluateExpression(foo, { in: true });
+      expect(result).toEqual({ out: false });
+    });
+  });
+
   describe("evaluating expressions on an abstract chips", function () {
     var graph = Parser.parse("not", " \n\
       inputs in                     \n\
