@@ -434,7 +434,7 @@ var TopoSorter = function (environment) {
 
   var hasConcreteDependencies = function (chip) {
     return _.all(instances(chip), function (instance) {
-      return isBoolean || isConcrete(instance);
+      return isBoolean(instance) || isConcrete(instance);
     });
   };
 
@@ -668,7 +668,7 @@ var TseitinTransformer = function (environment) {
 
   var transformable = function (chip) {
     return _.all(dependentChips(chip), function (c) {
-      return isConcrete(c) || isLookup(c) || isBoolean(c);
+      return c.value.cnfExpression || isLookup(c);
     });
   };
 
@@ -687,14 +687,6 @@ var TseitinTransformer = function (environment) {
     return _.map(chipEdges, function (edge) {
       return edge.destination;
     });
-  };
-
-  var isConcrete = function (chip) {
-    return chip.outEdges.length > 0;
-  };
-
-  var isBoolean = function (chip) {
-    return chip.value.name === "boolean";
   };
 
   var isLookup = function (chip) {

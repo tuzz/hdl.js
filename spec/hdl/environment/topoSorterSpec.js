@@ -120,4 +120,55 @@ describe("TopoSorter", function () {
     instance = foo.outEdges[3].destination;
     expect(instance.value.name).toEqual("instance-1");
   });
+
+  it("works as expected for a complex example", function () {
+    var add3 = Parser.parse("add_3", "              \n\
+      inputs a0, a1, a2,                            \n\
+             b0, b1, b2                             \n\
+                                                    \n\
+      outputs o0, o1, o2, carry                     \n\
+                                                    \n\
+      half_adder(a=a0, b=b0, sum=o0, carry=c0)      \n\
+      adder(a=a1, b=b1, c=c0, sum=o1, carry=c1)     \n\
+      adder(a=a2, b=b2, c=c1, sum=o2, carry=carry)  \n\
+    ");
+
+    var adder = Parser.parse("adder", "                   \n\
+      inputs a, b, c                                      \n\
+      outputs sum, carry                                  \n\
+                                                          \n\
+      half_adder(a=a, b=b, sum=sum_ab, carry=carry_ab)    \n\
+      half_adder(a=sum_ab, b=c, sum=sum, carry=carry_abc) \n\
+      xor(a=carry_ab, b=carry_abc, out=carry)             \n\
+    ");
+
+    var halfAdder = Parser.parse("half_adder", "  \n\
+      inputs a, b                                 \n\
+      outputs sum, carry                          \n\
+                                                  \n\
+      | a | b | sum | carry |                     \n\
+      | 0 | 0 | 0   | 0     |                     \n\
+      | 0 | 1 | 1   | 0     |                     \n\
+      | 1 | 0 | 1   | 0     |                     \n\
+      | 1 | 1 | 0   | 1     |                     \n\
+    ");
+
+    var xor = Parser.parse("xor", "  \n\
+      inputs a, b                    \n\
+      outputs out                    \n\
+                                     \n\
+      | a | b | out |                \n\
+      | 0 | 0 | 0   |                \n\
+      | 0 | 1 | 1   |                \n\
+      | 1 | 0 | 1   |                \n\
+      | 1 | 1 | 0   |                \n\
+    ");
+
+    expect(function () {
+      environment.addChip("add_3", add3);
+      environment.addChip("adder", adder);
+      environment.addChip("half_adder", halfAdder);
+      environment.addChip("xor", xor);
+    }).not.toThrow();
+  });
 });
