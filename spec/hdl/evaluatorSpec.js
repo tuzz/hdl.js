@@ -145,12 +145,12 @@ describe("Evaluator", function () {
     var foo = environment.graph.findBy({ name: "foo" });
 
     it("evaluates in = false correctly", function () {
-      var result = describedClass.evaluateExpression(foo, { in: false });
+      var result = describedClass.evaluateExpression(foo, { "in": false });
       expect(result).toEqual({ out: true });
     });
 
     it("evaluates in = true correctly", function () {
-      var result = describedClass.evaluateExpression(foo, { in: true });
+      var result = describedClass.evaluateExpression(foo, { "in": true });
       expect(result).toEqual({ out: false });
     });
   });
