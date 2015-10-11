@@ -55,13 +55,20 @@ describe(describedChip, function () {
       w5: _, w4: T, w3: _, w2: T, w1: T, w0: _, // twenty-two w's    = 1
       x5: _, x4: T, x3: _, x2: T, x1: T, x0: T, // twenty-three x's  = 3
       y5: T, y4: _, y3: _, y2: _, y1: T, y0: _, // thirty-four y's   = 0
-      z5: T, z4: _, z3: _, z2: _, z1: T, z0: T  // thirty-five z's   = 1
+      z5: T, z4: _, z3: _, z2: _, z1: T, z0: T, // thirty-five z's   = 1
 
-                                                //                   = 42
+      seed5: _,                                 //                 = 0
+      seed4: T,                                 //                 = 16
+      seed3: _,                                 //                 = 0
+      seed2: T,                                 //                 = 4
+      seed1: _,                                 //                 = 0
+      seed0: T                                  //                 = 1
+
+                                                //            Total: 63
     });
 
     expect(result).toEqual({
-      sum5: T, sum4: _, sum3: T, sum2: _, sum1: T, sum0: _, carry: _
+      sum5: T, sum4: T, sum3: T, sum2: T, sum1: T, sum0: T, carry: _
     });
 
     result = HDL.evaluate(describedChip, {
@@ -90,13 +97,20 @@ describe(describedChip, function () {
       w5: _, w4: T, w3: _, w2: _, w1: _, w0: T, // seventeen w's   = 4
       x5: _, x4: T, x3: _, x2: _, x1: _, x0: T, // seventeen x's   = 4
       y5: _, y4: T, y3: _, y2: _, y1: _, y0: T, // seventeen y's   = 4
-      z5: _, z4: T, z3: _, z2: _, z1: _, z0: T  // seventeen z's   = 4
+      z5: _, z4: T, z3: _, z2: _, z1: _, z0: T, // seventeen z's   = 4
 
-                                                //              = 41 (carries)
+      seed5: _,                                 //                 = 0
+      seed4: T,                                 //                 = 16
+      seed3: _,                                 //                 = 0
+      seed2: T,                                 //                 = 4
+      seed1: _,                                 //                 = 0
+      seed0: T                                  //                 = 1
+
+                                                //           Total: 62 (carries)
     });
 
     expect(result).toEqual({
-      sum5: T, sum4: _, sum3: T, sum2: _, sum1: _, sum0: T, carry: T
+      sum5: T, sum4: T, sum3: T, sum2: T, sum1: T, sum0: _, carry: T
     });
   });
 });

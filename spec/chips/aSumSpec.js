@@ -55,13 +55,20 @@ describe(describedChip, function () {
       w5: _, w4: T, w3: _, w2: T, w1: T, w0: _, // twenty-two w's    = 0
       x5: _, x4: T, x3: _, x2: T, x1: T, x0: T, // twenty-three x's  = 0
       y5: T, y4: _, y3: _, y2: _, y1: T, y0: _, // thirty-four y's   = 0
-      z5: T, z4: _, z3: _, z2: _, z1: T, z0: T  // thirty-five z's   = 0
+      z5: T, z4: _, z3: _, z2: _, z1: T, z0: T, // thirty-five z's   = 0
 
-                                                //                   = 1
+      seed5: _,                                 //                   = 0
+      seed4: T,                                 //                   = 16
+      seed3: _,                                 //                   = 0
+      seed2: T,                                 //                   = 4
+      seed1: _,                                 //                   = 0
+      seed0: T                                  //                   = 1
+
+                                                //              Total: 22
     });
 
     expect(result).toEqual({
-      sum5: _, sum4: _, sum3: _, sum2: _, sum1: _, sum0: T, carry: _
+      sum5: _, sum4: T, sum3: _, sum2: T, sum1: T, sum0: _, carry: _
     });
   });
 });

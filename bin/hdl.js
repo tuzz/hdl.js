@@ -1029,6 +1029,16 @@ var Evaluator = function (chip, assignments) {
     if (chip.value.name === "lookup") {
       LookupEvaluator.evaluate(chip, assignments);
     }
+    else if (chip.value.name === "boolean") {
+      _.each(assignments, function (assignment) {
+        if (assignment.left === "true") {
+          assignment.right.value = true;
+        }
+        else {
+          assignment.right.value = false;
+        }
+      });
+    }
     else {
       _.each(chip.outEdges, function (edge) {
         var instance = edge.destination;
