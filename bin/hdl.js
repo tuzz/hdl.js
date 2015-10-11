@@ -789,10 +789,6 @@ var CNFCompiler = function (environment) {
           var pin = pinEdge.destination;
           value = pin.value.name;
         }
-        else if (disjunction.value === "true" || disjunction.value === "false"){
-          // Don't add unnecessary boolean pins.
-          value = undefined;
-        }
         else {
           var sourceChip = instance.inEdges[0].source;
 
@@ -810,9 +806,7 @@ var CNFCompiler = function (environment) {
         }
       });
 
-      if (mappedConjunction.disjunctions.length > 0) {
-        mappedExpression.conjunctions.push(mappedConjunction);
-      }
+      mappedExpression.conjunctions.push(mappedConjunction);
     });
 
     return mappedExpression;

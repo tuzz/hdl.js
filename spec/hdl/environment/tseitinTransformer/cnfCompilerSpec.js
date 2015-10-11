@@ -182,10 +182,31 @@ describe("CNFCompiler", function () {
 
     expect(expression.toString().split(" && ")).toEqual([
       "true",
+      "!foo-instance-b-false",
       "(true || in || out)",
       "(true || !in || out)",
       "(!true || in || out)",
       "(!true || !in || !out)"
+    ]);
+
+    var bar = Parser.parse("bar", "   \n\
+      inputs in                       \n\
+      outputs out                     \n\
+                                      \n\
+      foo(in=in, out=out)             \n\
+    ");
+
+    environment.addChip("bar", bar);
+
+    expression = describedClass.compile("bar", environment);
+
+    expect(expression.toString().split(" && ")).toEqual([
+      "bar-instance-0-true",
+      "!bar-instance-0-foo-instance-b-false",
+      "(bar-instance-0-true || in || out)",
+      "(bar-instance-0-true || !in || out)",
+      "(!bar-instance-0-true || in || out)",
+      "(!bar-instance-0-true || !in || !out)"
     ]);
   });
 
