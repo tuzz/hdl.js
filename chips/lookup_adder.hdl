@@ -1,0 +1,205 @@
+inputs a0, a1, a2,
+       b0, b1, b2,
+       c0, c1, c2,
+       d0, d1, d2,
+       e0, e1, e2,
+       f0, f1, f2,
+       g0, g1, g2,
+       h0, h1, h2,
+       i0, i1, i2,
+       j0, j1, j2,
+       k0, k1, k2,
+       l0, l1, l2,
+       m0, m1, m2,
+       n0, n1, n2,
+       o0, o1, o2,
+       p0, p1, p2,
+       q0, q1, q2,
+       r0, r1, r2,
+       s0, s1, s2,
+       t0, t1, t2,
+       u0, u1, u2,
+       v0, v1, v2,
+       w0, w1, w2,
+       x0, x1, x2,
+       y0, y1, y2,
+       z0, z1, z2
+
+outputs sum0, sum1, sum2, sum3, sum4, sum5,
+        carry
+
+add_6(
+  a0=a0, a1=a1, a2=a2, a3=0, a4=0, a5=0,
+  b0=b0, b1=b1, b2=b2, b3=0, b4=0, b5=0,
+  o0=sum_0_0, o1=sum_0_1, o2=sum_0_2, o3=sum_0_3, o4=sum_0_4, o5=sum_0_5,
+  carry=carry_0
+)
+add_6(
+  a0=sum_0_0, a1=sum_0_1, a2=sum_0_2, a3=sum_0_3, a4=sum_0_4, a5=sum_0_5,
+  b0=c0, b1=c1, b2=c2, b3=0, b4=0, b5=0,
+  o0=sum_1_0, o1=sum_1_1, o2=sum_1_2, o3=sum_1_3, o4=sum_1_4, o5=sum_1_5,
+  carry=carry_1
+)
+add_6(
+  a0=sum_1_0, a1=sum_1_1, a2=sum_1_2, a3=sum_1_3, a4=sum_1_4, a5=sum_1_5,
+  b0=d0, b1=d1, b2=d2, b3=0, b4=0, b5=0,
+  o0=sum_2_0, o1=sum_2_1, o2=sum_2_2, o3=sum_2_3, o4=sum_2_4, o5=sum_2_5,
+  carry=carry_2
+)
+add_6(
+  a0=sum_2_0, a1=sum_2_1, a2=sum_2_2, a3=sum_2_3, a4=sum_2_4, a5=sum_2_5,
+  b0=e0, b1=e1, b2=e2, b3=0, b4=0, b5=0,
+  o0=sum_3_0, o1=sum_3_1, o2=sum_3_2, o3=sum_3_3, o4=sum_3_4, o5=sum_3_5,
+  carry=carry_3
+)
+add_6(
+  a0=sum_3_0, a1=sum_3_1, a2=sum_3_2, a3=sum_3_3, a4=sum_3_4, a5=sum_3_5,
+  b0=f0, b1=f1, b2=f2, b3=0, b4=0, b5=0,
+  o0=sum_4_0, o1=sum_4_1, o2=sum_4_2, o3=sum_4_3, o4=sum_4_4, o5=sum_4_5,
+  carry=carry_4
+)
+add_6(
+  a0=sum_4_0, a1=sum_4_1, a2=sum_4_2, a3=sum_4_3, a4=sum_4_4, a5=sum_4_5,
+  b0=g0, b1=g1, b2=g2, b3=0, b4=0, b5=0,
+  o0=sum_5_0, o1=sum_5_1, o2=sum_5_2, o3=sum_5_3, o4=sum_5_4, o5=sum_5_5,
+  carry=carry_5
+)
+add_6(
+  a0=sum_5_0, a1=sum_5_1, a2=sum_5_2, a3=sum_5_3, a4=sum_5_4, a5=sum_5_5,
+  b0=h0, b1=h1, b2=h2, b3=0, b4=0, b5=0,
+  o0=sum_6_0, o1=sum_6_1, o2=sum_6_2, o3=sum_6_3, o4=sum_6_4, o5=sum_6_5,
+  carry=carry_6
+)
+add_6(
+  a0=sum_6_0, a1=sum_6_1, a2=sum_6_2, a3=sum_6_3, a4=sum_6_4, a5=sum_6_5,
+  b0=i0, b1=i1, b2=i2, b3=0, b4=0, b5=0,
+  o0=sum_7_0, o1=sum_7_1, o2=sum_7_2, o3=sum_7_3, o4=sum_7_4, o5=sum_7_5,
+  carry=carry_7
+)
+add_6(
+  a0=sum_7_0, a1=sum_7_1, a2=sum_7_2, a3=sum_7_3, a4=sum_7_4, a5=sum_7_5,
+  b0=j0, b1=j1, b2=j2, b3=0, b4=0, b5=0,
+  o0=sum_8_0, o1=sum_8_1, o2=sum_8_2, o3=sum_8_3, o4=sum_8_4, o5=sum_8_5,
+  carry=carry_8
+)
+add_6(
+  a0=sum_8_0, a1=sum_8_1, a2=sum_8_2, a3=sum_8_3, a4=sum_8_4, a5=sum_8_5,
+  b0=k0, b1=k1, b2=k2, b3=0, b4=0, b5=0,
+  o0=sum_9_0, o1=sum_9_1, o2=sum_9_2, o3=sum_9_3, o4=sum_9_4, o5=sum_9_5,
+  carry=carry_9
+)
+add_6(
+  a0=sum_9_0, a1=sum_9_1, a2=sum_9_2, a3=sum_9_3, a4=sum_9_4, a5=sum_9_5,
+  b0=l0, b1=l1, b2=l2, b3=0, b4=0, b5=0,
+  o0=sum_10_0, o1=sum_10_1, o2=sum_10_2, o3=sum_10_3, o4=sum_10_4, o5=sum_10_5,
+  carry=carry_10
+)
+add_6(
+  a0=sum_10_0, a1=sum_10_1, a2=sum_10_2, a3=sum_10_3, a4=sum_10_4, a5=sum_10_5,
+  b0=m0, b1=m1, b2=m2, b3=0, b4=0, b5=0,
+  o0=sum_11_0, o1=sum_11_1, o2=sum_11_2, o3=sum_11_3, o4=sum_11_4, o5=sum_11_5,
+  carry=carry_11
+)
+add_6(
+  a0=sum_11_0, a1=sum_11_1, a2=sum_11_2, a3=sum_11_3, a4=sum_11_4, a5=sum_11_5,
+  b0=n0, b1=n1, b2=n2, b3=0, b4=0, b5=0,
+  o0=sum_12_0, o1=sum_12_1, o2=sum_12_2, o3=sum_12_3, o4=sum_12_4, o5=sum_12_5,
+  carry=carry_12
+)
+add_6(
+  a0=sum_12_0, a1=sum_12_1, a2=sum_12_2, a3=sum_12_3, a4=sum_12_4, a5=sum_12_5,
+  b0=o0, b1=o1, b2=o2, b3=0, b4=0, b5=0,
+  o0=sum_13_0, o1=sum_13_1, o2=sum_13_2, o3=sum_13_3, o4=sum_13_4, o5=sum_13_5,
+  carry=carry_13
+)
+add_6(
+  a0=sum_13_0, a1=sum_13_1, a2=sum_13_2, a3=sum_13_3, a4=sum_13_4, a5=sum_13_5,
+  b0=p0, b1=p1, b2=p2, b3=0, b4=0, b5=0,
+  o0=sum_14_0, o1=sum_14_1, o2=sum_14_2, o3=sum_14_3, o4=sum_14_4, o5=sum_14_5,
+  carry=carry_14
+)
+add_6(
+  a0=sum_14_0, a1=sum_14_1, a2=sum_14_2, a3=sum_14_3, a4=sum_14_4, a5=sum_14_5,
+  b0=q0, b1=q1, b2=q2, b3=0, b4=0, b5=0,
+  o0=sum_15_0, o1=sum_15_1, o2=sum_15_2, o3=sum_15_3, o4=sum_15_4, o5=sum_15_5,
+  carry=carry_15
+)
+add_6(
+  a0=sum_15_0, a1=sum_15_1, a2=sum_15_2, a3=sum_15_3, a4=sum_15_4, a5=sum_15_5,
+  b0=r0, b1=r1, b2=r2, b3=0, b4=0, b5=0,
+  o0=sum_16_0, o1=sum_16_1, o2=sum_16_2, o3=sum_16_3, o4=sum_16_4, o5=sum_16_5,
+  carry=carry_16
+)
+add_6(
+  a0=sum_16_0, a1=sum_16_1, a2=sum_16_2, a3=sum_16_3, a4=sum_16_4, a5=sum_16_5,
+  b0=s0, b1=s1, b2=s2, b3=0, b4=0, b5=0,
+  o0=sum_17_0, o1=sum_17_1, o2=sum_17_2, o3=sum_17_3, o4=sum_17_4, o5=sum_17_5,
+  carry=carry_17
+)
+add_6(
+  a0=sum_17_0, a1=sum_17_1, a2=sum_17_2, a3=sum_17_3, a4=sum_17_4, a5=sum_17_5,
+  b0=t0, b1=t1, b2=t2, b3=0, b4=0, b5=0,
+  o0=sum_18_0, o1=sum_18_1, o2=sum_18_2, o3=sum_18_3, o4=sum_18_4, o5=sum_18_5,
+  carry=carry_18
+)
+add_6(
+  a0=sum_18_0, a1=sum_18_1, a2=sum_18_2, a3=sum_18_3, a4=sum_18_4, a5=sum_18_5,
+  b0=u0, b1=u1, b2=u2, b3=0, b4=0, b5=0,
+  o0=sum_19_0, o1=sum_19_1, o2=sum_19_2, o3=sum_19_3, o4=sum_19_4, o5=sum_19_5,
+  carry=carry_19
+)
+add_6(
+  a0=sum_19_0, a1=sum_19_1, a2=sum_19_2, a3=sum_19_3, a4=sum_19_4, a5=sum_19_5,
+  b0=v0, b1=v1, b2=v2, b3=0, b4=0, b5=0,
+  o0=sum_20_0, o1=sum_20_1, o2=sum_20_2, o3=sum_20_3, o4=sum_20_4, o5=sum_20_5,
+  carry=carry_20
+)
+add_6(
+  a0=sum_20_0, a1=sum_20_1, a2=sum_20_2, a3=sum_20_3, a4=sum_20_4, a5=sum_20_5,
+  b0=w0, b1=w1, b2=w2, b3=0, b4=0, b5=0,
+  o0=sum_21_0, o1=sum_21_1, o2=sum_21_2, o3=sum_21_3, o4=sum_21_4, o5=sum_21_5,
+  carry=carry_21
+)
+add_6(
+  a0=sum_21_0, a1=sum_21_1, a2=sum_21_2, a3=sum_21_3, a4=sum_21_4, a5=sum_21_5,
+  b0=x0, b1=x1, b2=x2, b3=0, b4=0, b5=0,
+  o0=sum_22_0, o1=sum_22_1, o2=sum_22_2, o3=sum_22_3, o4=sum_22_4, o5=sum_22_5,
+  carry=carry_22
+)
+add_6(
+  a0=sum_22_0, a1=sum_22_1, a2=sum_22_2, a3=sum_22_3, a4=sum_22_4, a5=sum_22_5,
+  b0=y0, b1=y1, b2=y2, b3=0, b4=0, b5=0,
+  o0=sum_23_0, o1=sum_23_1, o2=sum_23_2, o3=sum_23_3, o4=sum_23_4, o5=sum_23_5,
+  carry=carry_23
+)
+add_6(
+  a0=sum_23_0, a1=sum_23_1, a2=sum_23_2, a3=sum_23_3, a4=sum_23_4, a5=sum_23_5,
+  b0=z0, b1=z1, b2=z2, b3=0, b4=0, b5=0,
+  o0=sum0, o1=sum1, o2=sum2, o3=sum3, o4=sum4, o5=sum5,
+  carry=carry_24
+)
+
+or(a=carry_0, b=carry_1, out=or_0)
+or(a=or_0, b=carry_2, out=or_1)
+or(a=or_1, b=carry_3, out=or_2)
+or(a=or_2, b=carry_4, out=or_3)
+or(a=or_3, b=carry_5, out=or_4)
+or(a=or_4, b=carry_6, out=or_5)
+or(a=or_5, b=carry_7, out=or_6)
+or(a=or_6, b=carry_8, out=or_7)
+or(a=or_7, b=carry_9, out=or_8)
+or(a=or_8, b=carry_10, out=or_9)
+or(a=or_9, b=carry_11, out=or_10)
+or(a=or_10, b=carry_12, out=or_11)
+or(a=or_11, b=carry_13, out=or_12)
+or(a=or_12, b=carry_14, out=or_13)
+or(a=or_13, b=carry_15, out=or_14)
+or(a=or_14, b=carry_16, out=or_15)
+or(a=or_15, b=carry_17, out=or_16)
+or(a=or_16, b=carry_18, out=or_17)
+or(a=or_17, b=carry_19, out=or_18)
+or(a=or_18, b=carry_20, out=or_19)
+or(a=or_19, b=carry_21, out=or_20)
+or(a=or_20, b=carry_22, out=or_21)
+or(a=or_21, b=carry_23, out=or_22)
+or(a=or_22, b=carry_24, out=carry)

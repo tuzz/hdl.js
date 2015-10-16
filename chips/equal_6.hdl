@@ -1,0 +1,17 @@
+inputs a0, a1, a2, a3, a4, a5,
+       b0, b1, b2, b3, b4, b5
+
+outputs out
+
+xnor(a=a0, b=b0, out=xnor0)
+xnor(a=a1, b=b1, out=xnor1)
+xnor(a=a2, b=b2, out=xnor2)
+xnor(a=a3, b=b3, out=xnor3)
+xnor(a=a4, b=b4, out=xnor4)
+xnor(a=a5, b=b5, out=xnor5)
+
+and(a=xnor0, b=xnor1, out=and0)
+and(a=and0, b=xnor2, out=and1)
+and(a=and1, b=xnor3, out=and2)
+and(a=and2, b=xnor4, out=and3)
+and(a=and3, b=xnor5, out=out)
