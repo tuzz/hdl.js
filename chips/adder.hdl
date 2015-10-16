@@ -1,6 +1,0 @@
-inputs a, b, c
-outputs sum, carry
-
-half_adder(a=a, b=b, sum=sum_ab, carry=carry_ab)
-half_adder(a=sum_ab, b=c, sum=sum, carry=carry_abc)
-xor(a=carry_ab, b=carry_abc, out=carry)
