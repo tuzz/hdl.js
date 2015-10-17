@@ -1,0 +1,6 @@
+inputs a, b, b_in
+outputs difference, b_out
+
+half_subtractor(a=a, b=b, difference=difference_ab, borrow=borrow_ab)
+half_subtractor(a=difference_ab, b=b_in, difference=difference, borrow=xxx)
+or(a=xxx, b=borrow_ab, out=b_out)
