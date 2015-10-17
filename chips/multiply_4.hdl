@@ -1,0 +1,48 @@
+# 4-bit multiplier
+
+inputs a0, a1, a2, a3,
+       b0, b1, b2, b3
+
+outputs o0, o1, o2, o3, o4, o5, o6, o7
+
+# Multiply every bit with every other bit:
+
+and(a=a0, b=b0, out=o0)     # 1
+and(a=a0, b=b1, out=x_02_0) # 2
+and(a=a0, b=b2, out=x_04_0) # 4
+and(a=a0, b=b3, out=x_08_0) # 8
+
+and(a=a1, b=b0, out=x_02_1) # 2
+and(a=a1, b=b1, out=x_04_1) # 4
+and(a=a1, b=b2, out=x_08_1) # 8
+and(a=a1, b=b3, out=x_16_0) # 16
+
+and(a=a2, b=b0, out=x_04_2) # 4
+and(a=a2, b=b1, out=x_08_2) # 8
+and(a=a2, b=b2, out=x_16_1) # 16
+and(a=a2, b=b3, out=x_32_0) # 32
+
+and(a=a3, b=b0, out=x_08_3) # 8
+and(a=a3, b=b1, out=x_16_2) # 16
+and(a=a3, b=b2, out=x_32_1) # 32
+and(a=a3, b=b3, out=x_64_0) # 64
+
+# Add up the partial results:
+
+half_adder(a=x_02_0, b=x_02_1, sum=o1, carry=x_04_3)
+
+adder(a=x_04_0, b=x_04_1, c=x_04_2, sum=x_04_4, carry=x_08_4)
+half_adder(a=x_04_3, b=x_04_4, sum=o2, carry=x_08_5)
+
+adder(a=x_08_0, b=x_08_1, c=x_08_2, sum=x_08_6, carry=x_16_3)
+adder(a=x_08_3, b=x_08_4, c=x_08_5, sum=x_08_7, carry=x_16_4)
+half_adder(a=x_08_6, b=x_08_7, sum=o3, carry=x_16_5)
+
+adder(a=x_16_0, b=x_16_1, c=x_16_2, sum=x_16_6, carry=x_32_2)
+adder(a=x_16_3, b=x_16_4, c=x_16_5, sum=x_16_7, carry=x_32_3)
+half_adder(a=x_16_6, b=x_16_7, sum=o4, carry=x_32_4)
+
+adder(a=x_32_0, b=x_32_1, c=x_32_2, sum=x_32_5, carry=x_64_1)
+adder(a=x_32_3, b=x_32_4, c=x_32_5, sum=o5, carry=x_64_2)
+
+adder(a=x_64_0, b=x_64_1, c=x_64_2, sum=o6, carry=o7)
