@@ -46,8 +46,7 @@ describe(describedChip, function () {
       sf1_out2: _, sf1_out1: _, sf1_out0: _,
 
       sf2_out3: _, sf2_out2: _, sf2_out1: _, sf2_out0: _,
-      sf3_out3: _, sf3_out2: _, sf3_out1: _, sf3_out0: _,
-      overflow: _
+      sf3_out3: _, sf3_out2: _, sf3_out1: _, sf3_out0: _
     });
 
     // 0.004 -> 0.00
@@ -64,8 +63,7 @@ describe(describedChip, function () {
       sf1_out2: _, sf1_out1: _, sf1_out0: _,
 
       sf2_out3: _, sf2_out2: _, sf2_out1: _, sf2_out0: _,
-      sf3_out3: _, sf3_out2: _, sf3_out1: _, sf3_out0: _,
-      overflow: _
+      sf3_out3: _, sf3_out2: _, sf3_out1: _, sf3_out0: _
     });
 
     // 0.005 -> 0.01
@@ -82,8 +80,7 @@ describe(describedChip, function () {
       sf1_out2: _, sf1_out1: _, sf1_out0: _,
 
       sf2_out3: _, sf2_out2: _, sf2_out1: _, sf2_out0: _,
-      sf3_out3: _, sf3_out2: _, sf3_out1: _, sf3_out0: T,
-      overflow: _
+      sf3_out3: _, sf3_out2: _, sf3_out1: _, sf3_out0: T
     });
 
     // 0.009 -> 0.01
@@ -100,8 +97,7 @@ describe(describedChip, function () {
       sf1_out2: _, sf1_out1: _, sf1_out0: _,
 
       sf2_out3: _, sf2_out2: _, sf2_out1: _, sf2_out0: _,
-      sf3_out3: _, sf3_out2: _, sf3_out1: _, sf3_out0: T,
-      overflow: _
+      sf3_out3: _, sf3_out2: _, sf3_out1: _, sf3_out0: T
     });
 
     // 1.059 -> 1.06
@@ -118,8 +114,7 @@ describe(describedChip, function () {
       sf1_out2: _, sf1_out1: _, sf1_out0: T,
 
       sf2_out3: _, sf2_out2: _, sf2_out1: _, sf2_out0: _,
-      sf3_out3: _, sf3_out2: T, sf3_out1: T, sf3_out0: _,
-      overflow: _
+      sf3_out3: _, sf3_out2: T, sf3_out1: T, sf3_out0: _
     });
 
     // 1.099 -> 1.10
@@ -136,8 +131,7 @@ describe(describedChip, function () {
       sf1_out2: _, sf1_out1: _, sf1_out0: T,
 
       sf2_out3: _, sf2_out2: _, sf2_out1: _, sf2_out0: T,
-      sf3_out3: _, sf3_out2: _, sf3_out1: _, sf3_out0: _,
-      overflow: _
+      sf3_out3: _, sf3_out2: _, sf3_out1: _, sf3_out0: _
     });
 
     // 2.899 -> 2.900
@@ -154,8 +148,7 @@ describe(describedChip, function () {
       sf1_out2: _, sf1_out1: T, sf1_out0: _,
 
       sf2_out3: T, sf2_out2: _, sf2_out1: _, sf2_out0: T,
-      sf3_out3: _, sf3_out2: _, sf3_out1: _, sf3_out0: _,
-      overflow: _
+      sf3_out3: _, sf3_out2: _, sf3_out1: _, sf3_out0: _
     });
 
     // 2.999 -> 3.000
@@ -172,8 +165,7 @@ describe(describedChip, function () {
       sf1_out2: _, sf1_out1: T, sf1_out0: T,
 
       sf2_out3: _, sf2_out2: _, sf2_out1: _, sf2_out0: _,
-      sf3_out3: _, sf3_out2: _, sf3_out1: _, sf3_out0: _,
-      overflow: _
+      sf3_out3: _, sf3_out2: _, sf3_out1: _, sf3_out0: _
     });
 
     // 63.994 -> 63.99
@@ -190,8 +182,7 @@ describe(describedChip, function () {
       sf1_out2: T, sf1_out1: T, sf1_out0: T,
 
       sf2_out3: T, sf2_out2: _, sf2_out1: _, sf2_out0: T,
-      sf3_out3: T, sf3_out2: _, sf3_out1: _, sf3_out0: T,
-      overflow: _
+      sf3_out3: T, sf3_out2: _, sf3_out1: _, sf3_out0: T
     });
 
     // 63.995 -> 0.000 (overflows)
@@ -208,8 +199,7 @@ describe(describedChip, function () {
       sf1_out2: _, sf1_out1: _, sf1_out0: _,
 
       sf2_out3: _, sf2_out2: _, sf2_out1: _, sf2_out0: _,
-      sf3_out3: _, sf3_out2: _, sf3_out1: _, sf3_out0: _,
-      overflow: T
+      sf3_out3: _, sf3_out2: _, sf3_out1: _, sf3_out0: _
     });
   });
 });
