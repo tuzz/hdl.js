@@ -1,0 +1,15 @@
+inputs i0, i1, i2, i3, i4, i5
+outputs out
+
+# 001010 (binary) = 10 (decimal)
+
+not(in=i0, out=not_i0)
+not(in=i2, out=not_i2)
+not(in=i4, out=not_i4)
+not(in=i5, out=not_i5)
+
+and(a=not_i0, b=i1,     out=out0)
+and(a=out0,   b=not_i2, out=out1)
+and(a=out1,   b=i3,     out=out2)
+and(a=out2,   b=not_i4, out=out3)
+and(a=out3,   b=not_i5, out=out)
