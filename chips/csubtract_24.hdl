@@ -1,0 +1,58 @@
+# Conditionally subtract:
+# if (a - b >= 0) then return a - b; else return a
+
+inputs a23, a22, a21, a20, a19, a18, a17, a16,
+       a15, a14, a13, a12, a11, a10, a9,  a8,
+       a7,  a6,  a5,  a4,  a3,  a2,  a1,  a0,
+
+       b23, b22, b21, b20, b19, b18, b17, b16,
+       b15, b14, b13, b12, b11, b10, b9,  b8,
+       b7,  b6,  b5,  b4,  b3,  b2,  b1,  b0
+
+outputs o23, o22, o21, o20, o19, o18, o17, o16,
+        o15, o14, o13, o12, o11, o10, o9,  o8,
+        o7,  o6,  o5,  o4,  o3,  o2,  o1,  o0,
+        subtracted
+
+subtract_24(
+ a23=a23, a22=a22, a21=a21, a20=a20, a19=a19, a18=a18, a17=a17, a16=a16,
+ a15=a15, a14=a14, a13=a13, a12=a12, a11=a11, a10=a10, a9=a9,   a8=a8,
+ a7=a7,   a6=a6,   a5=a5,   a4=a4,   a3=a3,   a2=a2,   a1=a1,   a0=a0,
+
+ b23=b23, b22=b22, b21=b21, b20=b20, b19=b19, b18=b18, b17=b17, b16=b16,
+ b15=b15, b14=b14, b13=b13, b12=b12, b11=b11, b10=b10, b9=b9,   b8=b8,
+ b7=b7,   b6=b6,   b5=b5,   b4=b4,   b3=b3,   b2=b2,   b1=b1,   b0=b0,
+
+ o23=x23, o22=x22, o21=x21, o20=x20, o19=x19, o18=x18, o17=x17, o16=x16,
+ o15=x15, o14=x14, o13=x13, o12=x12, o11=x11, o10=x10, o9=x9,   o8=x8,
+ o7=x7,   o6=x6,   o5=x5,   o4=x4,   o3=x3,   o2=x2,   o1=x1,   o0=x0,
+
+ borrow=borrow
+)
+
+mux(a=x0, b=a0, sel=borrow, out=o0)
+mux(a=x1, b=a1, sel=borrow, out=o1)
+mux(a=x2, b=a2, sel=borrow, out=o2)
+mux(a=x3, b=a3, sel=borrow, out=o3)
+mux(a=x4, b=a4, sel=borrow, out=o4)
+mux(a=x5, b=a5, sel=borrow, out=o5)
+mux(a=x6, b=a6, sel=borrow, out=o6)
+mux(a=x7, b=a7, sel=borrow, out=o7)
+mux(a=x8, b=a8, sel=borrow, out=o8)
+mux(a=x9, b=a9, sel=borrow, out=o9)
+mux(a=x10, b=a10, sel=borrow, out=o10)
+mux(a=x11, b=a11, sel=borrow, out=o11)
+mux(a=x12, b=a12, sel=borrow, out=o12)
+mux(a=x13, b=a13, sel=borrow, out=o13)
+mux(a=x14, b=a14, sel=borrow, out=o14)
+mux(a=x15, b=a15, sel=borrow, out=o15)
+mux(a=x16, b=a16, sel=borrow, out=o16)
+mux(a=x17, b=a17, sel=borrow, out=o17)
+mux(a=x18, b=a18, sel=borrow, out=o18)
+mux(a=x19, b=a19, sel=borrow, out=o19)
+mux(a=x20, b=a20, sel=borrow, out=o20)
+mux(a=x21, b=a21, sel=borrow, out=o21)
+mux(a=x22, b=a22, sel=borrow, out=o22)
+mux(a=x23, b=a23, sel=borrow, out=o23)
+
+not(in=borrow, out=subtracted)
