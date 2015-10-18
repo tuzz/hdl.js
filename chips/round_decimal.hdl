@@ -5,8 +5,7 @@ inputs sf1_in0, sf1_in1, sf1_in2, sf1_in3, sf1_in4, sf1_in5,
 
 outputs sf1_out0, sf1_out1, sf1_out2, sf1_out3, sf1_out4, sf1_out5,
         sf2_out0, sf2_out1, sf2_out2, sf2_out3,
-        sf3_out0, sf3_out1, sf3_out2, sf3_out3,
-        overflow
+        sf3_out0, sf3_out1, sf3_out2, sf3_out3
 
 # Check if the fourth-significant figure causes rounding to the third:
 less_than_5(i0=sf4_in0, i1=sf4_in1, i2=sf4_in2, i3=sf4_in3, i4=0, i5=0, out=sf4_less_than_5)
