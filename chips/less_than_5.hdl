@@ -1,0 +1,50 @@
+inputs i5, i4, i3, i2, i1, i0
+outputs out
+
+not(in=i5, out=not_i5)
+not(in=i4, out=not_i4)
+not(in=i3, out=not_i3)
+not(in=i2, out=not_i2)
+not(in=i1, out=not_i1)
+not(in=i0, out=not_i0)
+
+# 00000 = 0
+and(a=not_i5, b=not_i4, out=zero_0)
+and(a=zero_0, b=not_i3, out=zero_1)
+and(a=zero_1, b=not_i2, out=zero_2)
+and(a=zero_2, b=not_i1, out=zero_3)
+and(a=zero_3, b=not_i0, out=zero)
+
+# 00001 = 1
+and(a=not_i5, b=not_i4, out=one_0)
+and(a=one_0,  b=not_i3, out=one_1)
+and(a=one_1,  b=not_i2, out=one_2)
+and(a=one_2,  b=not_i1, out=one_3)
+and(a=one_3,  b=i0,     out=one)
+
+# 00010 = 2
+and(a=not_i5, b=not_i4, out=two_0)
+and(a=two_0,  b=not_i3, out=two_1)
+and(a=two_1,  b=not_i2, out=two_2)
+and(a=two_2,  b=i1,     out=two_3)
+and(a=two_3,  b=not_i0, out=two)
+
+# 00011 = 3
+and(a=not_i5,  b=not_i4, out=three_0)
+and(a=three_0, b=not_i3, out=three_1)
+and(a=three_1, b=not_i2, out=three_2)
+and(a=three_2, b=i1,     out=three_3)
+and(a=three_3, b=i0,     out=three)
+
+# 00100 = 4
+and(a=not_i5, b=not_i4, out=four_0)
+and(a=four_0, b=not_i3, out=four_1)
+and(a=four_1, b=i2,     out=four_2)
+and(a=four_2, b=not_i1, out=four_3)
+and(a=four_3, b=not_i0, out=four)
+
+# Check that it's one of { 0, 1, 2, 3, 4 }
+or(a=zero, b=one, out=out_01)
+or(a=out_01, b=two, out=out_012)
+or(a=out_012, b=three, out=out_0123)
+or(a=out_0123, b=four, out=out)
