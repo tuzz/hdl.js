@@ -24,9 +24,17 @@ describe(describedChip, function () {
     var _ = false;
     var T = true;
 
-
     var result = HDL.evaluate(describedChip, { a: _, b: _, b_in: _ });
     expect(result).toEqual({ difference: _, b_out: _ });
+
+    result = HDL.evaluate(describedChip, { a: _, b: _, b_in: T });
+    expect(result).toEqual({ difference: T, b_out: T });
+
+    result = HDL.evaluate(describedChip, { a: _, b: T, b_in: _ });
+    expect(result).toEqual({ difference: T, b_out: T });
+
+    result = HDL.evaluate(describedChip, { a: _, b: T, b_in: T });
+    expect(result).toEqual({ difference: _, b_out: T });
 
     result = HDL.evaluate(describedChip, { a: T, b: _, b_in: _ });
     expect(result).toEqual({ difference: T, b_out: _ });
@@ -34,13 +42,10 @@ describe(describedChip, function () {
     result = HDL.evaluate(describedChip, { a: T, b: _, b_in: T });
     expect(result).toEqual({ difference: _, b_out: _ });
 
-    result = HDL.evaluate(describedChip, { a: _, b: _, b_in: T });
-    expect(result).toEqual({ difference: T, b_out: T });
+    result = HDL.evaluate(describedChip, { a: T, b: T, b_in: _ });
+    expect(result).toEqual({ difference: _, b_out: _ });
 
     result = HDL.evaluate(describedChip, { a: T, b: T, b_in: T });
     expect(result).toEqual({ difference: T, b_out: T });
-
-    result = HDL.evaluate(describedChip, { a: _, b: T, b_in: T });
-    expect(result).toEqual({ difference: _, b_out: T });
   });
 });
