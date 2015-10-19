@@ -1,12 +1,15 @@
-inputs a23, a22, a21, a20, a19, a18, a17, a16,
+inputs a31, a30, a29, a28, a27, a26, a25, a24,
+       a23, a22, a21, a20, a19, a18, a17, a16,
        a15, a14, a13, a12, a11, a10, a9,  a8,
        a7,  a6,  a5,  a4,  a3,  a2,  a1,  a0,
 
+       b31, b30, b29, b28, b27, b26, b25, b24,
        b23, b22, b21, b20, b19, b18, b17, b16,
        b15, b14, b13, b12, b11, b10, b9,  b8,
        b7,  b6,  b5,  b4,  b3,  b2,  b1,  b0
 
-outputs o23, o22, o21, o20, o19, o18, o17, o16,
+outputs o31, o30, o29, o28, o27, o26, o25, o24,
+        o23, o22, o21, o20, o19, o18, o17, o16,
         o15, o14, o13, o12, o11, o10, o9,  o8,
         o7,  o6,  o5,  o4,  o3,  o2,  o1,  o0,
         borrow
@@ -34,4 +37,12 @@ subtractor(a=a19, b=b19, b_in=x18, difference=o19, b_out=x19)
 subtractor(a=a20, b=b20, b_in=x19, difference=o20, b_out=x20)
 subtractor(a=a21, b=b21, b_in=x20, difference=o21, b_out=x21)
 subtractor(a=a22, b=b22, b_in=x21, difference=o22, b_out=x22)
-subtractor(a=a23, b=b23, b_in=x22, difference=o23, b_out=borrow)
+subtractor(a=a23, b=b23, b_in=x22, difference=o23, b_out=x23)
+subtractor(a=a24, b=b24, b_in=x23, difference=o24, b_out=x24)
+subtractor(a=a25, b=b25, b_in=x24, difference=o25, b_out=x25)
+subtractor(a=a26, b=b26, b_in=x25, difference=o26, b_out=x26)
+subtractor(a=a27, b=b27, b_in=x26, difference=o27, b_out=x27)
+subtractor(a=a28, b=b28, b_in=x27, difference=o28, b_out=x28)
+subtractor(a=a29, b=b29, b_in=x28, difference=o29, b_out=x29)
+subtractor(a=a30, b=b30, b_in=x29, difference=o30, b_out=x30)
+subtractor(a=a31, b=b31, b_in=x30, difference=o31, b_out=borrow)
