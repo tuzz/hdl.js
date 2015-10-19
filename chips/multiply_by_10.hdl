@@ -1,0 +1,59 @@
+inputs i11, i10, i9, i8, i7, i6, i5, i4, i3, i2, i1, i0
+outputs o15, o14, o13, o12, o11, o10, o9, o8, o7, o6, o5, o4, o3, o2, o1, o0
+
+# This bit can never be set:
+and(a=0, b=0, out=o0)
+
+# ten = 000000001010
+
+# When multiplied by 2:
+and(a=i0, b=1, out=o1)
+and(a=i1, b=1, out=o2)
+and(a=i2, b=1, out=x_0008_0)
+and(a=i3, b=1, out=x_0016_0)
+and(a=i4, b=1, out=x_0032_0)
+and(a=i5, b=1, out=x_0064_0)
+and(a=i6, b=1, out=x_0128_0)
+and(a=i7, b=1, out=x_0256_0)
+and(a=i8, b=1, out=x_0512_0)
+and(a=i9, b=1, out=x_1024_0)
+and(a=i10, b=1, out=x_2048_0)
+and(a=i11, b=1, out=x_4096_0)
+
+# When multiplied by 8:
+and(a=i0, b=1, out=x_0008_1)
+and(a=i1, b=1, out=x_0016_1)
+and(a=i2, b=1, out=x_0032_1)
+and(a=i3, b=1, out=x_0064_1)
+and(a=i4, b=1, out=x_0128_1)
+and(a=i5, b=1, out=x_0256_1)
+and(a=i6, b=1, out=x_0512_1)
+and(a=i7, b=1, out=x_1024_1)
+and(a=i8, b=1, out=x_2048_1)
+and(a=i9, b=1, out=x_4096_1)
+and(a=i10, b=1, out=x_8192_0)
+and(a=i11, b=1, out=x_16k_0)
+
+half_adder(a=x_0008_0, b=x_0008_1, sum=o3, carry=x_0016_2)
+
+adder(a=x_0016_0, b=x_0016_1, c=x_0016_2, sum=o4, carry=x_0032_2)
+
+adder(a=x_0032_0, b=x_0032_1, c=x_0032_2, sum=o5, carry=x_0064_2)
+
+adder(a=x_0064_0, b=x_0064_1, c=x_0064_2, sum=o6, carry=x_0128_2)
+
+adder(a=x_0128_0, b=x_0128_1, c=x_0128_2, sum=o7, carry=x_0256_2)
+
+adder(a=x_0256_0, b=x_0256_1, c=x_0256_2, sum=o8, carry=x_0512_2)
+
+adder(a=x_0512_0, b=x_0512_1, c=x_0512_2, sum=o9, carry=x_1024_2)
+
+adder(a=x_1024_0, b=x_1024_1, c=x_1024_2, sum=o10, carry=x_2048_2)
+
+adder(a=x_2048_0, b=x_2048_1, c=x_2048_2, sum=o11, carry=x_4096_2)
+
+adder(a=x_4096_0, b=x_4096_1, c=x_4096_2, sum=o12, carry=x_8192_1)
+
+half_adder(a=x_8192_0, b=x_8192_1, sum=o13, carry=x_16k_1)
+
+half_adder(a=x_16k_0, b=x_16k_1, sum=o14, carry=o15)
