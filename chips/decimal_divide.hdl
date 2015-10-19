@@ -1,158 +1,169 @@
-inputs n0, n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11,
-       d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11
+inputs n11, n10, n9, n8, n7, n6, n5, n4, n3, n2, n1, n0,
+       d11, d10, d9, d8, d7, d6, d5, d4, d3, d2, d1, d0
 
-outputs a0, a1, a2, a3, a4, a5, # first significant figure
-        b0, b1, b2, b3,         # second s.f. (first dp)
-        c0, c1, c2, c3,         # third s.f. (second dp)
+outputs a5, a4, a3, a2, a1, a0, # first significant figure
+        b3, b2, b1, b0,         # second s.f. (first dp)
+        c3, c2, c1, c0,         # third s.f. (second dp)
         overflow
 
-divide_12(
-  n0=n0, n1=n1, n2=n2, n3=n3, n4=n4, n5=n5, n6=n6, n7=n7, n8=n8, n9=n9, n10=n10, n11=n11,
-  d0=d0, d1=d1, d2=d2, d3=d3, d4=d4, d5=d5, d6=d6, d7=d7, d8=d8, d9=d9, d10=d10, d11=d11,
+# ---------------- first s.f. ----------------------
+
+divide_16(
+  n15=0, n14=0, n13=0, n12=0, n11=n11, n10=n10, n9=n9, n8=n8,
+  n7=n7, n6=n6, n5=n5, n4=n4, n3=n3, n2=n2, n1=n1, n0=n0,
+
+  d15=0, d14=0, d13=0, d12=0, d11=d11, d10=d10, d9=d9, d8=d8,
+  d7=d7, d6=d6, d5=d5, d4=d4, d3=d3, d2=d2, d1=d1, d0=d0,
 
   # This chip only supports quotients in the range 0 - 63:
-  q0=a0_r, q1=a1_r, q2=a2_r, q3=a3_r, q4=a4_r, q5=a5_r, # <-- This if the first s.f.
-  r0=r0, r1=r1, r2=r2, r3=r3, r4=r4, r5=r5,
+  q15=o0, q14=o1, q13=o2, q12=o3, q11=o4, q10=o5, q9=o6, q8=o7,
+  q7=o8, q6=o9, q5=q1_5, q4=q1_4, q3=q1_3, q2=q1_2, q1=q1_1, q0=q1_0,
 
-  # These are overflows:
-  q6=x0, q7=x1, q8=x2, q9=x3, q10=x4, q11=x5,
-  # TODO: this needs to change: there could be a large remainder that needs to be
-  # multiplied by 10 to get the next s.f.
-  #
-  # This might mean we need some bigger multiply/divide chips
-  r6=x6, r7=x7, r8=x8, r9=x9, r10=x10, r11=x11
+  r15=o10, r14=o11, r13=o12, r12=o13, r11=r1_11, r10=r1_10, r9=r1_9, r8=r1_8,
+  r7=r1_7, r6=r1_6, r5=r1_5, r4=r1_4, r3=r1_3, r2=r1_2, r1=r1_1, r0=r1_0
 )
 
-# Multiply the remainder by 10:
-multiply_6(
-  a0=r0, a1=r1, a2=r2, a3=r3, a4=r4, a5=r5,
-  b0=0,  b1=1,  b2=0,  b3=1,  b4=0,  b5=0,
+multiply_by_10(
+  i11=r1_11, i10=r1_10, i9=r1_9, i8=r1_8, i7=r1_7, i6=r1_6,
+  i5=r1_5, i4=r1_4, i3=r1_3, i2=r1_2, i1=r1_1, i0=r1_0,
 
-  o0=s0, o1=s1, o2=s2, o3=s3, o4=s4, o5=s5,
-  o6=s6, o7=s7, o8=s8, o9=s9, o10=s10, o11=s11
+  o15=m1_15, o14=m1_14, o13=m1_13, o12=m1_12, o11=m1_11, o10=m1_10, o9=m1_9, o8=m1_8,
+  o7=m1_7, o6=m1_6, o5=m1_5, o4=m1_4, o3=m1_3, o2=m1_2, o1=m1_1, o0=m1_0
 )
 
-# Divide the multiplied remainer to get the next (decimal) significant figure:
-divide_12(
-  n0=s0, n1=s1, n2=s2, n3=s3, n4=s4, n5=s5, n6=s6, n7=s7, n8=s8, n9=s9, n10=s10, n11=s11,
-  d0=d0, d1=d1, d2=d2, d3=d3, d4=d4, d5=d5, d6=d6, d7=d7, d8=d8, d9=d9, d10=d10, d11=d11,
+# --------------- second s.f. ----------------------
 
-  q0=b0_r, q1=b1_r, q2=b2_r, q3=b3_r, # <-- This is the second s.f.
-  r0=t0, r1=t1, r2=t2, r3=t3, r4=t4, r5=t5,
+divide_16(
+  n15=m1_15, n14=m1_14, n13=m1_13, n12=m1_12, n11=m1_11, n10=m1_10, n9=m1_9, n8=m1_8,
+  n7=m1_7, n6=m1_6, n5=m1_5, n4=m1_4, n3=m1_3, n2=m1_2, n1=m1_1, n0=m1_0,
 
-  # These are overflows:
-  q4=x12, q5=x13, q6=x14, q7=x15, q8=x16, q9=x17, q10=x18, q11=x19,
-  r6=x20, r7=x21, r8=x22, r9=x23, r10=x24, r11=x25
+  d15=0, d14=0, d13=0, d12=0, d11=d11, d10=d10, d9=d9, d8=d8,
+  d7=d7, d6=d6, d5=d5, d4=d4, d3=d3, d2=d2, d1=d1, d0=d0,
+
+  q15=o14, q14=o15, q13=o16, q12=o17, q11=o18, q10=o19, q9=o20, q8=o21,
+  q7=o22, q6=o23, q5=o24, q4=o25, q3=q2_3, q2=q2_2, q1=q2_1, q0=q2_0,
+
+  r15=o26, r14=o27, r13=o28, r12=o29, r11=r2_11, r10=r2_10, r9=r2_9, r8=r2_8,
+  r7=r2_7, r6=r2_6, r5=r2_5, r4=r2_4, r3=r2_3, r2=r2_2, r1=r2_1, r0=r2_0
 )
 
-# Multiply the remainder by 10:
-multiply_6(
-  a0=t0, a1=t1, a2=t2, a3=t3, a4=t4, a5=t5,
-  b0=0,  b1=1,  b2=0,  b3=1,  b4=0,  b5=0,
+multiply_by_10(
+  i11=r2_11, i10=r2_10, i9=r2_9, i8=r2_8, i7=r2_7, i6=r2_6,
+  i5=r2_5, i4=r2_4, i3=r2_3, i2=r2_2, i1=r2_1, i0=r2_0,
 
-  o0=u0, o1=u1, o2=u2, o3=u3, o4=u4, o5=u5,
-  o6=u6, o7=u7, o8=u8, o9=u9, o10=u10, o11=u11
+  o15=m2_15, o14=m2_14, o13=m2_13, o12=m2_12, o11=m2_11, o10=m2_10, o9=m2_9, o8=m2_8,
+  o7=m2_7, o6=m2_6, o5=m2_5, o4=m2_4, o3=m2_3, o2=m2_2, o1=m2_1, o0=m2_0
 )
 
-# Divide the multiplied remainer to get the next (decimal) significant figure:
-divide_12(
-  n0=u0, n1=u1, n2=u2, n3=u3, n4=u4, n5=u5, n6=u6, n7=u7, n8=u8, n9=u9, n10=u10, n11=u11,
-  d0=d0, d1=d1, d2=d2, d3=d3, d4=d4, d5=d5, d6=d6, d7=d7, d8=d8, d9=d9, d10=d10, d11=d11,
+# --------------- third s.f. -----------------------
 
-  q0=c0_r, q1=c1_r, q2=c2_r, q3=c3_r, # <-- This is the third s.f.
-  r0=v0, r1=v1, r2=v2, r3=v3, r4=v4, r5=v5,
+divide_16(
+  n15=m2_15, n14=m2_14, n13=m2_13, n12=m2_12, n11=m2_11, n10=m2_10, n9=m2_9, n8=m2_8,
+  n7=m2_7, n6=m2_6, n5=m2_5, n4=m2_4, n3=m2_3, n2=m2_2, n1=m2_1, n0=m2_0,
 
-  # These are overflows:
-  q4=x26, q5=x27, q6=x28, q7=x29, q8=x30, q9=x31, q10=x32, q11=x33,
-  r6=x34, r7=x35, r8=x36, r9=x37, r10=x38, r11=x39
+  d15=0, d14=0, d13=0, d12=0, d11=d11, d10=d10, d9=d9, d8=d8,
+  d7=d7, d6=d6, d5=d5, d4=d4, d3=d3, d2=d2, d1=d1, d0=d0,
+
+  q15=o30, q14=o31, q13=o32, q12=o33, q11=o34, q10=o35, q9=o36, q8=o37,
+  q7=o38, q6=o39, q5=o40, q4=o41, q3=q3_3, q2=q3_2, q1=q3_1, q0=q3_0,
+
+  r15=o26, r14=o27, r13=o28, r12=o29, r11=r3_11, r10=r3_10, r9=r3_9, r8=r3_8,
+  r7=r3_7, r6=r3_6, r5=r3_5, r4=r3_4, r3=r3_3, r2=r3_2, r1=r3_1, r0=r3_0
 )
 
-# We need to do it again to check if the final significant figure needs to be rounded.
+multiply_by_10(
+  i11=r3_11, i10=r3_10, i9=r3_9, i8=r3_8, i7=r3_7, i6=r3_6,
+  i5=r3_5, i4=r3_4, i3=r3_3, i2=r3_2, i1=r3_1, i0=r3_0,
 
-# Multiply the remainder by 10:
-multiply_6(
-  a0=v0, a1=v1, a2=v2, a3=v3, a4=v4, a5=v5,
-  b0=0,  b1=1,  b2=0,  b3=1,  b4=0,  b5=0,
-
-  o0=w0, o1=w1, o2=w2, o3=w3, o4=w4, o5=w5,
-  o6=w6, o7=w7, o8=w8, o9=w9, o10=w10, o11=w11
+  o15=m3_15, o14=m3_14, o13=m3_13, o12=m3_12, o11=m3_11, o10=m3_10, o9=m3_9, o8=m3_8,
+  o7=m3_7, o6=m3_6, o5=m3_5, o4=m3_4, o3=m3_3, o2=m3_2, o1=m3_1, o0=m3_0
 )
 
-# Divide the multiplied remainer to get the next (decimal) significant figure:
-divide_12(
-  n0=w0, n1=w1, n2=w2, n3=w3, n4=w4, n5=w5, n6=w6, n7=w7, n8=w8, n9=w9, n10=w10, n11=w11,
-  d0=d0, d1=d1, d2=d2, d3=d3, d4=d4, d5=d5, d6=d6, d7=d7, d8=d8, d9=d9, d10=d10, d11=d11,
+# --------------- fourth s.f. ----------------------
 
-  q0=e0_r, q1=e1_r, q2=e2_r, q3=e3_r, # <-- This is the fourth s.f.
-  r0=y0, r1=y1, r2=y2, r3=y3, r4=y4, r5=y5,
+divide_16(
+  n15=m3_15, n14=m3_14, n13=m3_13, n12=m3_12, n11=m3_11, n10=m3_10, n9=m3_9, n8=m3_8,
+  n7=m3_7, n6=m3_6, n5=m3_5, n4=m3_4, n3=m3_3, n2=m3_2, n1=m3_1, n0=m3_0,
 
-  # These are overflows:
-  q4=x40, q5=x41, q6=x42, q7=x43, q8=x44, q9=x45, q10=x46, q11=x47,
-  r6=x48, r7=x49, r8=x50, r9=x51, r10=x52, r11=x53
+  d15=0, d14=0, d13=0, d12=0, d11=d11, d10=d10, d9=d9, d8=d8,
+  d7=d7, d6=d6, d5=d5, d4=d4, d3=d3, d2=d2, d1=d1, d0=d0,
+
+  q15=o42, q14=o43, q13=o44, q12=o45, q11=o46, q10=o47, q9=o48, q8=o49,
+  q7=o50, q6=o51, q5=o52, q4=o53, q3=q4_3, q2=q4_2, q1=q4_1, q0=q4_0,
+
+  r15=o54, r14=o55, r13=o56, r12=o57, r11=r4_11, r10=r4_10, r9=r4_9, r8=r4_8,
+  r7=r4_7, r6=r4_6, r5=r4_5, r4=r4_4, r3=r4_3, r2=r4_2, r1=r4_1, r0=r4_0
 )
 
-# Round the decimals values according to the additional significant figure:
+# ----------------- rounding -----------------------
+
 round_decimal(
-  sf1_in0=a0_r, sf1_in1=a1_r, sf1_in2=a2_r, sf1_in3=a3_r, sf1_in4=a4_r, sf1_in5=a5_r,
-  sf2_in0=b0_r, sf2_in1=b1_r, sf2_in2=b2_r, sf2_in3=b3_r,
-  sf3_in0=c0_r, sf3_in1=c1_r, sf3_in2=c2_r, sf3_in3=c3_r,
-  sf4_in0=e0_r, sf4_in1=e1_r, sf4_in2=e2_r, sf4_in3=e3_r,
+  sf1_in5=q1_5, sf1_in4=q1_4, sf1_in3=q1_3, sf1_in2=q1_2, sf1_in1=q1_1, sf1_in0=q1_0,
+  sf2_in3=q2_3, sf2_in2=q2_2, sf2_in1=q2_1, sf2_in0=q2_0,
+  sf3_in3=q3_3, sf3_in2=q3_2, sf3_in1=q3_1, sf3_in0=q3_0,
+  sf4_in3=q4_3, sf4_in2=q4_2, sf4_in1=q4_1, sf4_in0=q4_0,
 
-  sf1_out0=a0, sf1_out1=a1, sf1_out2=a2, sf1_out3=a3, sf1_out4=a4, sf1_out5=a5,
-  sf2_out0=b0, sf2_out1=b1, sf2_out2=b2, sf2_out3=b3,
-  sf3_out0=c0, sf3_out1=c1, sf3_out2=c2, sf3_out3=c3
+  sf1_out5=a5, sf1_out4=a4, sf1_out3=a3, sf1_out2=a2, sf1_out1=a1, sf1_out0=a0,
+  sf2_out3=b3, sf2_out2=b2, sf2_out1=b1, sf2_out0=b0,
+  sf3_out3=c3, sf3_out2=c2, sf3_out1=c1, sf3_out0=c0
 )
 
-# Once tested, this could (potentially) be removed:
-or(a=x0, b=x1, out=x53)
-or(a=x2, b=x3, out=x54)
-or(a=x4, b=x5, out=x55)
-or(a=x6, b=x7, out=x56)
-or(a=x8, b=x9, out=x57)
-or(a=x10, b=x11, out=x58)
-or(a=x12, b=x13, out=x59)
-or(a=x14, b=x15, out=x60)
-or(a=x16, b=x17, out=x61)
-or(a=x18, b=x19, out=x62)
-or(a=x20, b=x21, out=x63)
-or(a=x22, b=x23, out=x64)
-or(a=x24, b=x25, out=x65)
-or(a=x26, b=x27, out=x66)
-or(a=x28, b=x29, out=x67)
-or(a=x30, b=x31, out=x68)
-or(a=x32, b=x33, out=x69)
-or(a=x34, b=x35, out=x70)
-or(a=x36, b=x37, out=x71)
-or(a=x38, b=x39, out=x72)
-or(a=x40, b=x41, out=x73)
-or(a=x42, b=x43, out=x74)
-or(a=x44, b=x45, out=x75)
-or(a=x46, b=x47, out=x76)
-or(a=x48, b=x49, out=x77)
-or(a=x50, b=x51, out=x78)
-or(a=x52, b=x53, out=x79)
-or(a=x54, b=x55, out=x80)
-or(a=x56, b=x57, out=x81)
-or(a=x58, b=x59, out=x82)
-or(a=x60, b=x61, out=x83)
-or(a=x62, b=x63, out=x84)
-or(a=x64, b=x65, out=x85)
-or(a=x66, b=x67, out=x86)
-or(a=x68, b=x69, out=x87)
-or(a=x70, b=x71, out=x88)
-or(a=x72, b=x73, out=x89)
-or(a=x74, b=x75, out=x90)
-or(a=x76, b=x77, out=x91)
-or(a=x78, b=x79, out=x92)
-or(a=x80, b=x81, out=x93)
-or(a=x82, b=x83, out=x94)
-or(a=x84, b=x85, out=x95)
-or(a=x86, b=x87, out=x96)
-or(a=x88, b=x89, out=x97)
-or(a=x90, b=x91, out=x98)
-or(a=x92, b=x93, out=x99)
-or(a=x94, b=x95, out=x100)
-or(a=x96, b=x97, out=x101)
-or(a=x98, b=x99, out=x102)
-or(a=x100, b=x101, out=x103)
-or(a=x102, b=x103, out=overflow)
+# ----------------- overflows ----------------------
+
+or(a=o0, b=o1, out=o58)
+or(a=o2, b=o3, out=o59)
+or(a=o4, b=o5, out=o60)
+or(a=o6, b=o7, out=o61)
+or(a=o8, b=o9, out=o62)
+or(a=o10, b=o11, out=o63)
+or(a=o12, b=o13, out=o64)
+or(a=o14, b=o15, out=o65)
+or(a=o16, b=o17, out=o66)
+or(a=o18, b=o19, out=o67)
+or(a=o20, b=o21, out=o68)
+or(a=o22, b=o23, out=o69)
+or(a=o24, b=o25, out=o70)
+or(a=o26, b=o27, out=o71)
+or(a=o28, b=o29, out=o72)
+or(a=o30, b=o31, out=o73)
+or(a=o32, b=o33, out=o74)
+or(a=o34, b=o35, out=o75)
+or(a=o36, b=o37, out=o76)
+or(a=o38, b=o39, out=o77)
+or(a=o40, b=o41, out=o78)
+or(a=o42, b=o43, out=o79)
+or(a=o44, b=o45, out=o80)
+or(a=o46, b=o47, out=o81)
+or(a=o48, b=o49, out=o82)
+or(a=o50, b=o51, out=o83)
+or(a=o52, b=o53, out=o84)
+or(a=o54, b=o55, out=o85)
+or(a=o56, b=o57, out=o86)
+or(a=o58, b=o59, out=o87)
+or(a=o60, b=o61, out=o88)
+or(a=o62, b=o63, out=o89)
+or(a=o64, b=o65, out=o90)
+or(a=o66, b=o67, out=o91)
+or(a=o68, b=o69, out=o92)
+or(a=o70, b=o71, out=o93)
+or(a=o72, b=o73, out=o94)
+or(a=o74, b=o75, out=o95)
+or(a=o76, b=o77, out=o96)
+or(a=o78, b=o79, out=o97)
+or(a=o80, b=o81, out=o98)
+or(a=o82, b=o83, out=o99)
+or(a=o84, b=o85, out=o100)
+or(a=o86, b=o87, out=o101)
+or(a=o88, b=o89, out=o102)
+or(a=o90, b=o91, out=o103)
+or(a=o92, b=o93, out=o104)
+or(a=o94, b=o95, out=o105)
+or(a=o96, b=o97, out=o106)
+or(a=o98, b=o99, out=o107)
+or(a=o100, b=o101, out=o108)
+or(a=o102, b=o103, out=o109)
+or(a=o104, b=o105, out=o110)
+or(a=o106, b=o107, out=o111)
+or(a=o108, b=o109, out=o112)
+or(a=o110, b=o111, out=o113)
+or(a=o112, b=o113, out=overflow)
