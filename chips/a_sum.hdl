@@ -1,61 +1,175 @@
-inputs a0, a1, a2, a3, a4, a5,
-       b0, b1, b2, b3, b4, b5,
-       c0, c1, c2, c3, c4, c5,
-       d0, d1, d2, d3, d4, d5,
-       e0, e1, e2, e3, e4, e5,
-       f0, f1, f2, f3, f4, f5,
-       g0, g1, g2, g3, g4, g5,
-       h0, h1, h2, h3, h4, h5,
-       i0, i1, i2, i3, i4, i5,
-       j0, j1, j2, j3, j4, j5,
-       k0, k1, k2, k3, k4, k5,
-       l0, l1, l2, l3, l4, l5,
-       m0, m1, m2, m3, m4, m5,
-       n0, n1, n2, n3, n4, n5,
-       o0, o1, o2, o3, o4, o5,
-       p0, p1, p2, p3, p4, p5,
-       q0, q1, q2, q3, q4, q5,
-       r0, r1, r2, r3, r4, r5,
-       s0, s1, s2, s3, s4, s5,
-       t0, t1, t2, t3, t4, t5,
-       u0, u1, u2, u3, u4, u5,
-       v0, v1, v2, v3, v4, v5,
-       w0, w1, w2, w3, w4, w5,
-       x0, x1, x2, x3, x4, x5,
-       y0, y1, y2, y3, y4, y5,
-       z0, z1, z2, z3, z4, z5,
+inputs a_sf1_0, a_sf1_1, a_sf1_2, a_sf1_3, a_sf1_4, a_sf1_5,
+       a_sf2_0, a_sf2_1, a_sf2_2, a_sf2_3,
+       a_sf3_0, a_sf3_1, a_sf3_2, a_sf3_3,
+       b_sf1_0, b_sf1_1, b_sf1_2, b_sf1_3, b_sf1_4, b_sf1_5,
+       b_sf2_0, b_sf2_1, b_sf2_2, b_sf2_3,
+       b_sf3_0, b_sf3_1, b_sf3_2, b_sf3_3,
+       c_sf1_0, c_sf1_1, c_sf1_2, c_sf1_3, c_sf1_4, c_sf1_5,
+       c_sf2_0, c_sf2_1, c_sf2_2, c_sf2_3,
+       c_sf3_0, c_sf3_1, c_sf3_2, c_sf3_3,
+       d_sf1_0, d_sf1_1, d_sf1_2, d_sf1_3, d_sf1_4, d_sf1_5,
+       d_sf2_0, d_sf2_1, d_sf2_2, d_sf2_3,
+       d_sf3_0, d_sf3_1, d_sf3_2, d_sf3_3,
+       e_sf1_0, e_sf1_1, e_sf1_2, e_sf1_3, e_sf1_4, e_sf1_5,
+       e_sf2_0, e_sf2_1, e_sf2_2, e_sf2_3,
+       e_sf3_0, e_sf3_1, e_sf3_2, e_sf3_3,
+       f_sf1_0, f_sf1_1, f_sf1_2, f_sf1_3, f_sf1_4, f_sf1_5,
+       f_sf2_0, f_sf2_1, f_sf2_2, f_sf2_3,
+       f_sf3_0, f_sf3_1, f_sf3_2, f_sf3_3,
+       g_sf1_0, g_sf1_1, g_sf1_2, g_sf1_3, g_sf1_4, g_sf1_5,
+       g_sf2_0, g_sf2_1, g_sf2_2, g_sf2_3,
+       g_sf3_0, g_sf3_1, g_sf3_2, g_sf3_3,
+       h_sf1_0, h_sf1_1, h_sf1_2, h_sf1_3, h_sf1_4, h_sf1_5,
+       h_sf2_0, h_sf2_1, h_sf2_2, h_sf2_3,
+       h_sf3_0, h_sf3_1, h_sf3_2, h_sf3_3,
+       i_sf1_0, i_sf1_1, i_sf1_2, i_sf1_3, i_sf1_4, i_sf1_5,
+       i_sf2_0, i_sf2_1, i_sf2_2, i_sf2_3,
+       i_sf3_0, i_sf3_1, i_sf3_2, i_sf3_3,
+       j_sf1_0, j_sf1_1, j_sf1_2, j_sf1_3, j_sf1_4, j_sf1_5,
+       j_sf2_0, j_sf2_1, j_sf2_2, j_sf2_3,
+       j_sf3_0, j_sf3_1, j_sf3_2, j_sf3_3,
+       k_sf1_0, k_sf1_1, k_sf1_2, k_sf1_3, k_sf1_4, k_sf1_5,
+       k_sf2_0, k_sf2_1, k_sf2_2, k_sf2_3,
+       k_sf3_0, k_sf3_1, k_sf3_2, k_sf3_3,
+       l_sf1_0, l_sf1_1, l_sf1_2, l_sf1_3, l_sf1_4, l_sf1_5,
+       l_sf2_0, l_sf2_1, l_sf2_2, l_sf2_3,
+       l_sf3_0, l_sf3_1, l_sf3_2, l_sf3_3,
+       m_sf1_0, m_sf1_1, m_sf1_2, m_sf1_3, m_sf1_4, m_sf1_5,
+       m_sf2_0, m_sf2_1, m_sf2_2, m_sf2_3,
+       m_sf3_0, m_sf3_1, m_sf3_2, m_sf3_3,
+       n_sf1_0, n_sf1_1, n_sf1_2, n_sf1_3, n_sf1_4, n_sf1_5,
+       n_sf2_0, n_sf2_1, n_sf2_2, n_sf2_3,
+       n_sf3_0, n_sf3_1, n_sf3_2, n_sf3_3,
+       o_sf1_0, o_sf1_1, o_sf1_2, o_sf1_3, o_sf1_4, o_sf1_5,
+       o_sf2_0, o_sf2_1, o_sf2_2, o_sf2_3,
+       o_sf3_0, o_sf3_1, o_sf3_2, o_sf3_3,
+       p_sf1_0, p_sf1_1, p_sf1_2, p_sf1_3, p_sf1_4, p_sf1_5,
+       p_sf2_0, p_sf2_1, p_sf2_2, p_sf2_3,
+       p_sf3_0, p_sf3_1, p_sf3_2, p_sf3_3,
+       q_sf1_0, q_sf1_1, q_sf1_2, q_sf1_3, q_sf1_4, q_sf1_5,
+       q_sf2_0, q_sf2_1, q_sf2_2, q_sf2_3,
+       q_sf3_0, q_sf3_1, q_sf3_2, q_sf3_3,
+       r_sf1_0, r_sf1_1, r_sf1_2, r_sf1_3, r_sf1_4, r_sf1_5,
+       r_sf2_0, r_sf2_1, r_sf2_2, r_sf2_3,
+       r_sf3_0, r_sf3_1, r_sf3_2, r_sf3_3,
+       s_sf1_0, s_sf1_1, s_sf1_2, s_sf1_3, s_sf1_4, s_sf1_5,
+       s_sf2_0, s_sf2_1, s_sf2_2, s_sf2_3,
+       s_sf3_0, s_sf3_1, s_sf3_2, s_sf3_3,
+       t_sf1_0, t_sf1_1, t_sf1_2, t_sf1_3, t_sf1_4, t_sf1_5,
+       t_sf2_0, t_sf2_1, t_sf2_2, t_sf2_3,
+       t_sf3_0, t_sf3_1, t_sf3_2, t_sf3_3,
+       u_sf1_0, u_sf1_1, u_sf1_2, u_sf1_3, u_sf1_4, u_sf1_5,
+       u_sf2_0, u_sf2_1, u_sf2_2, u_sf2_3,
+       u_sf3_0, u_sf3_1, u_sf3_2, u_sf3_3,
+       v_sf1_0, v_sf1_1, v_sf1_2, v_sf1_3, v_sf1_4, v_sf1_5,
+       v_sf2_0, v_sf2_1, v_sf2_2, v_sf2_3,
+       v_sf3_0, v_sf3_1, v_sf3_2, v_sf3_3,
+       w_sf1_0, w_sf1_1, w_sf1_2, w_sf1_3, w_sf1_4, w_sf1_5,
+       w_sf2_0, w_sf2_1, w_sf2_2, w_sf2_3,
+       w_sf3_0, w_sf3_1, w_sf3_2, w_sf3_3,
+       x_sf1_0, x_sf1_1, x_sf1_2, x_sf1_3, x_sf1_4, x_sf1_5,
+       x_sf2_0, x_sf2_1, x_sf2_2, x_sf2_3,
+       x_sf3_0, x_sf3_1, x_sf3_2, x_sf3_3,
+       y_sf1_0, y_sf1_1, y_sf1_2, y_sf1_3, y_sf1_4, y_sf1_5,
+       y_sf2_0, y_sf2_1, y_sf2_2, y_sf2_3,
+       y_sf3_0, y_sf3_1, y_sf3_2, y_sf3_3,
+       z_sf1_0, z_sf1_1, z_sf1_2, z_sf1_3, z_sf1_4, z_sf1_5,
+       z_sf2_0, z_sf2_1, z_sf2_2, z_sf2_3,
+       z_sf3_0, z_sf3_1, z_sf3_2, z_sf3_3,
 
        seed0, seed1, seed2, seed3, seed4, seed5
 
 outputs sum0, sum1, sum2, sum3, sum4, sum5,
+        sum6, sum7, sum8, sum9, sum10, sum11,
         carry
 
-a_lookup(i0=a0, i1=a1, i2=a2, i3=a3, i4=a4, i5=a5, o0=sum_a_0, o1=sum_a_1, o2=sum_a_2)
-a_lookup(i0=b0, i1=b1, i2=b2, i3=b3, i4=b4, i5=b5, o0=sum_b_0, o1=sum_b_1, o2=sum_b_2)
-a_lookup(i0=c0, i1=c1, i2=c2, i3=c3, i4=c4, i5=c5, o0=sum_c_0, o1=sum_c_1, o2=sum_c_2)
-a_lookup(i0=d0, i1=d1, i2=d2, i3=d3, i4=d4, i5=d5, o0=sum_d_0, o1=sum_d_1, o2=sum_d_2)
-a_lookup(i0=e0, i1=e1, i2=e2, i3=e3, i4=e4, i5=e5, o0=sum_e_0, o1=sum_e_1, o2=sum_e_2)
-a_lookup(i0=f0, i1=f1, i2=f2, i3=f3, i4=f4, i5=f5, o0=sum_f_0, o1=sum_f_1, o2=sum_f_2)
-a_lookup(i0=g0, i1=g1, i2=g2, i3=g3, i4=g4, i5=g5, o0=sum_g_0, o1=sum_g_1, o2=sum_g_2)
-a_lookup(i0=h0, i1=h1, i2=h2, i3=h3, i4=h4, i5=h5, o0=sum_h_0, o1=sum_h_1, o2=sum_h_2)
-a_lookup(i0=i0, i1=i1, i2=i2, i3=i3, i4=i4, i5=i5, o0=sum_i_0, o1=sum_i_1, o2=sum_i_2)
-a_lookup(i0=j0, i1=j1, i2=j2, i3=j3, i4=j4, i5=j5, o0=sum_j_0, o1=sum_j_1, o2=sum_j_2)
-a_lookup(i0=k0, i1=k1, i2=k2, i3=k3, i4=k4, i5=k5, o0=sum_k_0, o1=sum_k_1, o2=sum_k_2)
-a_lookup(i0=l0, i1=l1, i2=l2, i3=l3, i4=l4, i5=l5, o0=sum_l_0, o1=sum_l_1, o2=sum_l_2)
-a_lookup(i0=m0, i1=m1, i2=m2, i3=m3, i4=m4, i5=m5, o0=sum_m_0, o1=sum_m_1, o2=sum_m_2)
-a_lookup(i0=n0, i1=n1, i2=n2, i3=n3, i4=n4, i5=n5, o0=sum_n_0, o1=sum_n_1, o2=sum_n_2)
-a_lookup(i0=o0, i1=o1, i2=o2, i3=o3, i4=o4, i5=o5, o0=sum_o_0, o1=sum_o_1, o2=sum_o_2)
-a_lookup(i0=p0, i1=p1, i2=p2, i3=p3, i4=p4, i5=p5, o0=sum_p_0, o1=sum_p_1, o2=sum_p_2)
-a_lookup(i0=q0, i1=q1, i2=q2, i3=q3, i4=q4, i5=q5, o0=sum_q_0, o1=sum_q_1, o2=sum_q_2)
-a_lookup(i0=r0, i1=r1, i2=r2, i3=r3, i4=r4, i5=r5, o0=sum_r_0, o1=sum_r_1, o2=sum_r_2)
-a_lookup(i0=s0, i1=s1, i2=s2, i3=s3, i4=s4, i5=s5, o0=sum_s_0, o1=sum_s_1, o2=sum_s_2)
-a_lookup(i0=t0, i1=t1, i2=t2, i3=t3, i4=t4, i5=t5, o0=sum_t_0, o1=sum_t_1, o2=sum_t_2)
-a_lookup(i0=u0, i1=u1, i2=u2, i3=u3, i4=u4, i5=u5, o0=sum_u_0, o1=sum_u_1, o2=sum_u_2)
-a_lookup(i0=v0, i1=v1, i2=v2, i3=v3, i4=v4, i5=v5, o0=sum_v_0, o1=sum_v_1, o2=sum_v_2)
-a_lookup(i0=w0, i1=w1, i2=w2, i3=w3, i4=w4, i5=w5, o0=sum_w_0, o1=sum_w_1, o2=sum_w_2)
-a_lookup(i0=x0, i1=x1, i2=x2, i3=x3, i4=x4, i5=x5, o0=sum_x_0, o1=sum_x_1, o2=sum_x_2)
-a_lookup(i0=y0, i1=y1, i2=y2, i3=y3, i4=y4, i5=y5, o0=sum_y_0, o1=sum_y_1, o2=sum_y_2)
-a_lookup(i0=z0, i1=z1, i2=z2, i3=z3, i4=z4, i5=z5, o0=sum_z_0, o1=sum_z_1, o2=sum_z_2)
+# Lookup the words from the first-significant figure:
+
+a_lookup(i0=a_sf1_0, i1=a_sf1_1, i2=a_sf1_2, i3=a_sf1_3, i4=a_sf1_4, i5=a_sf1_5, o0=sum_a_sf1_0, o1=sum_a_sf1_1, o2=sum_a_sf1_2)
+a_lookup(i0=b_sf1_0, i1=b_sf1_1, i2=b_sf1_2, i3=b_sf1_3, i4=b_sf1_4, i5=b_sf1_5, o0=sum_b_sf1_0, o1=sum_b_sf1_1, o2=sum_b_sf1_2)
+a_lookup(i0=c_sf1_0, i1=c_sf1_1, i2=c_sf1_2, i3=c_sf1_3, i4=c_sf1_4, i5=c_sf1_5, o0=sum_c_sf1_0, o1=sum_c_sf1_1, o2=sum_c_sf1_2)
+a_lookup(i0=d_sf1_0, i1=d_sf1_1, i2=d_sf1_2, i3=d_sf1_3, i4=d_sf1_4, i5=d_sf1_5, o0=sum_d_sf1_0, o1=sum_d_sf1_1, o2=sum_d_sf1_2)
+a_lookup(i0=e_sf1_0, i1=e_sf1_1, i2=e_sf1_2, i3=e_sf1_3, i4=e_sf1_4, i5=e_sf1_5, o0=sum_e_sf1_0, o1=sum_e_sf1_1, o2=sum_e_sf1_2)
+a_lookup(i0=f_sf1_0, i1=f_sf1_1, i2=f_sf1_2, i3=f_sf1_3, i4=f_sf1_4, i5=f_sf1_5, o0=sum_f_sf1_0, o1=sum_f_sf1_1, o2=sum_f_sf1_2)
+a_lookup(i0=g_sf1_0, i1=g_sf1_1, i2=g_sf1_2, i3=g_sf1_3, i4=g_sf1_4, i5=g_sf1_5, o0=sum_g_sf1_0, o1=sum_g_sf1_1, o2=sum_g_sf1_2)
+a_lookup(i0=h_sf1_0, i1=h_sf1_1, i2=h_sf1_2, i3=h_sf1_3, i4=h_sf1_4, i5=h_sf1_5, o0=sum_h_sf1_0, o1=sum_h_sf1_1, o2=sum_h_sf1_2)
+a_lookup(i0=i_sf1_0, i1=i_sf1_1, i2=i_sf1_2, i3=i_sf1_3, i4=i_sf1_4, i5=i_sf1_5, o0=sum_i_sf1_0, o1=sum_i_sf1_1, o2=sum_i_sf1_2)
+a_lookup(i0=j_sf1_0, i1=j_sf1_1, i2=j_sf1_2, i3=j_sf1_3, i4=j_sf1_4, i5=j_sf1_5, o0=sum_j_sf1_0, o1=sum_j_sf1_1, o2=sum_j_sf1_2)
+a_lookup(i0=k_sf1_0, i1=k_sf1_1, i2=k_sf1_2, i3=k_sf1_3, i4=k_sf1_4, i5=k_sf1_5, o0=sum_k_sf1_0, o1=sum_k_sf1_1, o2=sum_k_sf1_2)
+a_lookup(i0=l_sf1_0, i1=l_sf1_1, i2=l_sf1_2, i3=l_sf1_3, i4=l_sf1_4, i5=l_sf1_5, o0=sum_l_sf1_0, o1=sum_l_sf1_1, o2=sum_l_sf1_2)
+a_lookup(i0=m_sf1_0, i1=m_sf1_1, i2=m_sf1_2, i3=m_sf1_3, i4=m_sf1_4, i5=m_sf1_5, o0=sum_m_sf1_0, o1=sum_m_sf1_1, o2=sum_m_sf1_2)
+a_lookup(i0=n_sf1_0, i1=n_sf1_1, i2=n_sf1_2, i3=n_sf1_3, i4=n_sf1_4, i5=n_sf1_5, o0=sum_n_sf1_0, o1=sum_n_sf1_1, o2=sum_n_sf1_2)
+a_lookup(i0=o_sf1_0, i1=o_sf1_1, i2=o_sf1_2, i3=o_sf1_3, i4=o_sf1_4, i5=o_sf1_5, o0=sum_o_sf1_0, o1=sum_o_sf1_1, o2=sum_o_sf1_2)
+a_lookup(i0=p_sf1_0, i1=p_sf1_1, i2=p_sf1_2, i3=p_sf1_3, i4=p_sf1_4, i5=p_sf1_5, o0=sum_p_sf1_0, o1=sum_p_sf1_1, o2=sum_p_sf1_2)
+a_lookup(i0=q_sf1_0, i1=q_sf1_1, i2=q_sf1_2, i3=q_sf1_3, i4=q_sf1_4, i5=q_sf1_5, o0=sum_q_sf1_0, o1=sum_q_sf1_1, o2=sum_q_sf1_2)
+a_lookup(i0=r_sf1_0, i1=r_sf1_1, i2=r_sf1_2, i3=r_sf1_3, i4=r_sf1_4, i5=r_sf1_5, o0=sum_r_sf1_0, o1=sum_r_sf1_1, o2=sum_r_sf1_2)
+a_lookup(i0=s_sf1_0, i1=s_sf1_1, i2=s_sf1_2, i3=s_sf1_3, i4=s_sf1_4, i5=s_sf1_5, o0=sum_s_sf1_0, o1=sum_s_sf1_1, o2=sum_s_sf1_2)
+a_lookup(i0=t_sf1_0, i1=t_sf1_1, i2=t_sf1_2, i3=t_sf1_3, i4=t_sf1_4, i5=t_sf1_5, o0=sum_t_sf1_0, o1=sum_t_sf1_1, o2=sum_t_sf1_2)
+a_lookup(i0=u_sf1_0, i1=u_sf1_1, i2=u_sf1_2, i3=u_sf1_3, i4=u_sf1_4, i5=u_sf1_5, o0=sum_u_sf1_0, o1=sum_u_sf1_1, o2=sum_u_sf1_2)
+a_lookup(i0=v_sf1_0, i1=v_sf1_1, i2=v_sf1_2, i3=v_sf1_3, i4=v_sf1_4, i5=v_sf1_5, o0=sum_v_sf1_0, o1=sum_v_sf1_1, o2=sum_v_sf1_2)
+a_lookup(i0=w_sf1_0, i1=w_sf1_1, i2=w_sf1_2, i3=w_sf1_3, i4=w_sf1_4, i5=w_sf1_5, o0=sum_w_sf1_0, o1=sum_w_sf1_1, o2=sum_w_sf1_2)
+a_lookup(i0=x_sf1_0, i1=x_sf1_1, i2=x_sf1_2, i3=x_sf1_3, i4=x_sf1_4, i5=x_sf1_5, o0=sum_x_sf1_0, o1=sum_x_sf1_1, o2=sum_x_sf1_2)
+a_lookup(i0=y_sf1_0, i1=y_sf1_1, i2=y_sf1_2, i3=y_sf1_3, i4=y_sf1_4, i5=y_sf1_5, o0=sum_y_sf1_0, o1=sum_y_sf1_1, o2=sum_y_sf1_2)
+a_lookup(i0=z_sf1_0, i1=z_sf1_1, i2=z_sf1_2, i3=z_sf1_3, i4=z_sf1_4, i5=z_sf1_5, o0=sum_z_sf1_0, o1=sum_z_sf1_1, o2=sum_z_sf1_2)
+
+# Lookup the words from the second-significant figure:
+
+a_lookup(i0=a_sf2_0, i1=a_sf2_1, i2=a_sf2_2, i3=a_sf2_3, i4=0, i5=0, o0=sum_a_sf2_0, o1=sum_a_sf2_1, o2=sum_a_sf2_2)
+a_lookup(i0=b_sf2_0, i1=b_sf2_1, i2=b_sf2_2, i3=b_sf2_3, i4=0, i5=0, o0=sum_b_sf2_0, o1=sum_b_sf2_1, o2=sum_b_sf2_2)
+a_lookup(i0=c_sf2_0, i1=c_sf2_1, i2=c_sf2_2, i3=c_sf2_3, i4=0, i5=0, o0=sum_c_sf2_0, o1=sum_c_sf2_1, o2=sum_c_sf2_2)
+a_lookup(i0=d_sf2_0, i1=d_sf2_1, i2=d_sf2_2, i3=d_sf2_3, i4=0, i5=0, o0=sum_d_sf2_0, o1=sum_d_sf2_1, o2=sum_d_sf2_2)
+a_lookup(i0=e_sf2_0, i1=e_sf2_1, i2=e_sf2_2, i3=e_sf2_3, i4=0, i5=0, o0=sum_e_sf2_0, o1=sum_e_sf2_1, o2=sum_e_sf2_2)
+a_lookup(i0=f_sf2_0, i1=f_sf2_1, i2=f_sf2_2, i3=f_sf2_3, i4=0, i5=0, o0=sum_f_sf2_0, o1=sum_f_sf2_1, o2=sum_f_sf2_2)
+a_lookup(i0=g_sf2_0, i1=g_sf2_1, i2=g_sf2_2, i3=g_sf2_3, i4=0, i5=0, o0=sum_g_sf2_0, o1=sum_g_sf2_1, o2=sum_g_sf2_2)
+a_lookup(i0=h_sf2_0, i1=h_sf2_1, i2=h_sf2_2, i3=h_sf2_3, i4=0, i5=0, o0=sum_h_sf2_0, o1=sum_h_sf2_1, o2=sum_h_sf2_2)
+a_lookup(i0=i_sf2_0, i1=i_sf2_1, i2=i_sf2_2, i3=i_sf2_3, i4=0, i5=0, o0=sum_i_sf2_0, o1=sum_i_sf2_1, o2=sum_i_sf2_2)
+a_lookup(i0=j_sf2_0, i1=j_sf2_1, i2=j_sf2_2, i3=j_sf2_3, i4=0, i5=0, o0=sum_j_sf2_0, o1=sum_j_sf2_1, o2=sum_j_sf2_2)
+a_lookup(i0=k_sf2_0, i1=k_sf2_1, i2=k_sf2_2, i3=k_sf2_3, i4=0, i5=0, o0=sum_k_sf2_0, o1=sum_k_sf2_1, o2=sum_k_sf2_2)
+a_lookup(i0=l_sf2_0, i1=l_sf2_1, i2=l_sf2_2, i3=l_sf2_3, i4=0, i5=0, o0=sum_l_sf2_0, o1=sum_l_sf2_1, o2=sum_l_sf2_2)
+a_lookup(i0=m_sf2_0, i1=m_sf2_1, i2=m_sf2_2, i3=m_sf2_3, i4=0, i5=0, o0=sum_m_sf2_0, o1=sum_m_sf2_1, o2=sum_m_sf2_2)
+a_lookup(i0=n_sf2_0, i1=n_sf2_1, i2=n_sf2_2, i3=n_sf2_3, i4=0, i5=0, o0=sum_n_sf2_0, o1=sum_n_sf2_1, o2=sum_n_sf2_2)
+a_lookup(i0=o_sf2_0, i1=o_sf2_1, i2=o_sf2_2, i3=o_sf2_3, i4=0, i5=0, o0=sum_o_sf2_0, o1=sum_o_sf2_1, o2=sum_o_sf2_2)
+a_lookup(i0=p_sf2_0, i1=p_sf2_1, i2=p_sf2_2, i3=p_sf2_3, i4=0, i5=0, o0=sum_p_sf2_0, o1=sum_p_sf2_1, o2=sum_p_sf2_2)
+a_lookup(i0=q_sf2_0, i1=q_sf2_1, i2=q_sf2_2, i3=q_sf2_3, i4=0, i5=0, o0=sum_q_sf2_0, o1=sum_q_sf2_1, o2=sum_q_sf2_2)
+a_lookup(i0=r_sf2_0, i1=r_sf2_1, i2=r_sf2_2, i3=r_sf2_3, i4=0, i5=0, o0=sum_r_sf2_0, o1=sum_r_sf2_1, o2=sum_r_sf2_2)
+a_lookup(i0=s_sf2_0, i1=s_sf2_1, i2=s_sf2_2, i3=s_sf2_3, i4=0, i5=0, o0=sum_s_sf2_0, o1=sum_s_sf2_1, o2=sum_s_sf2_2)
+a_lookup(i0=t_sf2_0, i1=t_sf2_1, i2=t_sf2_2, i3=t_sf2_3, i4=0, i5=0, o0=sum_t_sf2_0, o1=sum_t_sf2_1, o2=sum_t_sf2_2)
+a_lookup(i0=u_sf2_0, i1=u_sf2_1, i2=u_sf2_2, i3=u_sf2_3, i4=0, i5=0, o0=sum_u_sf2_0, o1=sum_u_sf2_1, o2=sum_u_sf2_2)
+a_lookup(i0=v_sf2_0, i1=v_sf2_1, i2=v_sf2_2, i3=v_sf2_3, i4=0, i5=0, o0=sum_v_sf2_0, o1=sum_v_sf2_1, o2=sum_v_sf2_2)
+a_lookup(i0=w_sf2_0, i1=w_sf2_1, i2=w_sf2_2, i3=w_sf2_3, i4=0, i5=0, o0=sum_w_sf2_0, o1=sum_w_sf2_1, o2=sum_w_sf2_2)
+a_lookup(i0=x_sf2_0, i1=x_sf2_1, i2=x_sf2_2, i3=x_sf2_3, i4=0, i5=0, o0=sum_x_sf2_0, o1=sum_x_sf2_1, o2=sum_x_sf2_2)
+a_lookup(i0=y_sf2_0, i1=y_sf2_1, i2=y_sf2_2, i3=y_sf2_3, i4=0, i5=0, o0=sum_y_sf2_0, o1=sum_y_sf2_1, o2=sum_y_sf2_2)
+a_lookup(i0=z_sf2_0, i1=z_sf2_1, i2=z_sf2_2, i3=z_sf2_3, i4=0, i5=0, o0=sum_z_sf2_0, o1=sum_z_sf2_1, o2=sum_z_sf2_2)
+
+# Lookup the words from the third-significant figure:
+
+a_lookup(i0=a_sf3_0, i1=a_sf3_1, i2=a_sf3_2, i3=a_sf3_3, i4=0, i5=0, o0=sum_a_sf3_0, o1=sum_a_sf3_1, o2=sum_a_sf3_2)
+a_lookup(i0=b_sf3_0, i1=b_sf3_1, i2=b_sf3_2, i3=b_sf3_3, i4=0, i5=0, o0=sum_b_sf3_0, o1=sum_b_sf3_1, o2=sum_b_sf3_2)
+a_lookup(i0=c_sf3_0, i1=c_sf3_1, i2=c_sf3_2, i3=c_sf3_3, i4=0, i5=0, o0=sum_c_sf3_0, o1=sum_c_sf3_1, o2=sum_c_sf3_2)
+a_lookup(i0=d_sf3_0, i1=d_sf3_1, i2=d_sf3_2, i3=d_sf3_3, i4=0, i5=0, o0=sum_d_sf3_0, o1=sum_d_sf3_1, o2=sum_d_sf3_2)
+a_lookup(i0=e_sf3_0, i1=e_sf3_1, i2=e_sf3_2, i3=e_sf3_3, i4=0, i5=0, o0=sum_e_sf3_0, o1=sum_e_sf3_1, o2=sum_e_sf3_2)
+a_lookup(i0=f_sf3_0, i1=f_sf3_1, i2=f_sf3_2, i3=f_sf3_3, i4=0, i5=0, o0=sum_f_sf3_0, o1=sum_f_sf3_1, o2=sum_f_sf3_2)
+a_lookup(i0=g_sf3_0, i1=g_sf3_1, i2=g_sf3_2, i3=g_sf3_3, i4=0, i5=0, o0=sum_g_sf3_0, o1=sum_g_sf3_1, o2=sum_g_sf3_2)
+a_lookup(i0=h_sf3_0, i1=h_sf3_1, i2=h_sf3_2, i3=h_sf3_3, i4=0, i5=0, o0=sum_h_sf3_0, o1=sum_h_sf3_1, o2=sum_h_sf3_2)
+a_lookup(i0=i_sf3_0, i1=i_sf3_1, i2=i_sf3_2, i3=i_sf3_3, i4=0, i5=0, o0=sum_i_sf3_0, o1=sum_i_sf3_1, o2=sum_i_sf3_2)
+a_lookup(i0=j_sf3_0, i1=j_sf3_1, i2=j_sf3_2, i3=j_sf3_3, i4=0, i5=0, o0=sum_j_sf3_0, o1=sum_j_sf3_1, o2=sum_j_sf3_2)
+a_lookup(i0=k_sf3_0, i1=k_sf3_1, i2=k_sf3_2, i3=k_sf3_3, i4=0, i5=0, o0=sum_k_sf3_0, o1=sum_k_sf3_1, o2=sum_k_sf3_2)
+a_lookup(i0=l_sf3_0, i1=l_sf3_1, i2=l_sf3_2, i3=l_sf3_3, i4=0, i5=0, o0=sum_l_sf3_0, o1=sum_l_sf3_1, o2=sum_l_sf3_2)
+a_lookup(i0=m_sf3_0, i1=m_sf3_1, i2=m_sf3_2, i3=m_sf3_3, i4=0, i5=0, o0=sum_m_sf3_0, o1=sum_m_sf3_1, o2=sum_m_sf3_2)
+a_lookup(i0=n_sf3_0, i1=n_sf3_1, i2=n_sf3_2, i3=n_sf3_3, i4=0, i5=0, o0=sum_n_sf3_0, o1=sum_n_sf3_1, o2=sum_n_sf3_2)
+a_lookup(i0=o_sf3_0, i1=o_sf3_1, i2=o_sf3_2, i3=o_sf3_3, i4=0, i5=0, o0=sum_o_sf3_0, o1=sum_o_sf3_1, o2=sum_o_sf3_2)
+a_lookup(i0=p_sf3_0, i1=p_sf3_1, i2=p_sf3_2, i3=p_sf3_3, i4=0, i5=0, o0=sum_p_sf3_0, o1=sum_p_sf3_1, o2=sum_p_sf3_2)
+a_lookup(i0=q_sf3_0, i1=q_sf3_1, i2=q_sf3_2, i3=q_sf3_3, i4=0, i5=0, o0=sum_q_sf3_0, o1=sum_q_sf3_1, o2=sum_q_sf3_2)
+a_lookup(i0=r_sf3_0, i1=r_sf3_1, i2=r_sf3_2, i3=r_sf3_3, i4=0, i5=0, o0=sum_r_sf3_0, o1=sum_r_sf3_1, o2=sum_r_sf3_2)
+a_lookup(i0=s_sf3_0, i1=s_sf3_1, i2=s_sf3_2, i3=s_sf3_3, i4=0, i5=0, o0=sum_s_sf3_0, o1=sum_s_sf3_1, o2=sum_s_sf3_2)
+a_lookup(i0=t_sf3_0, i1=t_sf3_1, i2=t_sf3_2, i3=t_sf3_3, i4=0, i5=0, o0=sum_t_sf3_0, o1=sum_t_sf3_1, o2=sum_t_sf3_2)
+a_lookup(i0=u_sf3_0, i1=u_sf3_1, i2=u_sf3_2, i3=u_sf3_3, i4=0, i5=0, o0=sum_u_sf3_0, o1=sum_u_sf3_1, o2=sum_u_sf3_2)
+a_lookup(i0=v_sf3_0, i1=v_sf3_1, i2=v_sf3_2, i3=v_sf3_3, i4=0, i5=0, o0=sum_v_sf3_0, o1=sum_v_sf3_1, o2=sum_v_sf3_2)
+a_lookup(i0=w_sf3_0, i1=w_sf3_1, i2=w_sf3_2, i3=w_sf3_3, i4=0, i5=0, o0=sum_w_sf3_0, o1=sum_w_sf3_1, o2=sum_w_sf3_2)
+a_lookup(i0=x_sf3_0, i1=x_sf3_1, i2=x_sf3_2, i3=x_sf3_3, i4=0, i5=0, o0=sum_x_sf3_0, o1=sum_x_sf3_1, o2=sum_x_sf3_2)
+a_lookup(i0=y_sf3_0, i1=y_sf3_1, i2=y_sf3_2, i3=y_sf3_3, i4=0, i5=0, o0=sum_y_sf3_0, o1=sum_y_sf3_1, o2=sum_y_sf3_2)
+a_lookup(i0=z_sf3_0, i1=z_sf3_1, i2=z_sf3_2, i3=z_sf3_3, i4=0, i5=0, o0=sum_z_sf3_0, o1=sum_z_sf3_1, o2=sum_z_sf3_2)
+
 
 lookup_adder(
   a0=sum_a_0, a1=sum_a_1, a2=sum_a_2,
