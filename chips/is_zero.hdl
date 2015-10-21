@@ -1,0 +1,11 @@
+inputs i0, i1, i2, i3
+outputs out
+
+not(in=i0, out=not_i0)
+not(in=i1, out=not_i1)
+not(in=i2, out=not_i2)
+not(in=i3, out=not_i3)
+
+and(a=not_i0, b=not_i1, out=not_i01)
+and(a=not_i2, b=not_i3, out=not_i23)
+and(a=not_i01, b=not_i23, out=out)
