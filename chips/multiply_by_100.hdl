@@ -1,0 +1,90 @@
+inputs i11, i10, i9, i8, i7, i6, i5, i4, i3, i2, i1, i0
+
+outputs o19, o18, o17, o16, o15, o14, o13, o12, o11,
+        o10, o9, o8, o7, o6, o5, o4, o3, o2, o1, o0
+
+# hundred = 00000000000001100100
+
+# These bits can never be set:
+and(a=0, b=0, out=o0)
+and(a=0, b=0, out=o1)
+and(a=0, b=0, out=o19)
+
+# When multiplied by 4:
+and(a=i0, b=1, out=o2)
+and(a=i1, b=1, out=o3)
+and(a=i2, b=1, out=o4)
+and(a=i3, b=1, out=x_0032_0)
+and(a=i4, b=1, out=x_0064_0)
+and(a=i5, b=1, out=x_0128_0)
+and(a=i6, b=1, out=x_0256_0)
+and(a=i7, b=1, out=x_0512_0)
+and(a=i8, b=1, out=x_1024_0)
+and(a=i9, b=1, out=x_2048_0)
+and(a=i10, b=1, out=x_4096_0)
+and(a=i11, b=1, out=x_8192_0)
+
+# When multiplied by 32:
+and(a=i0, b=1, out=x_0032_1)
+and(a=i1, b=1, out=x_0064_1)
+and(a=i2, b=1, out=x_0128_1)
+and(a=i3, b=1, out=x_0256_1)
+and(a=i4, b=1, out=x_0512_1)
+and(a=i5, b=1, out=x_1024_1)
+and(a=i6, b=1, out=x_2048_1)
+and(a=i7, b=1, out=x_4096_1)
+and(a=i8, b=1, out=x_8192_1)
+and(a=i9, b=1, out=x_016k_0)
+and(a=i10, b=1, out=x_032k_0)
+and(a=i11, b=1, out=x_064k_0)
+
+# When multiplied by 64:
+and(a=i0, b=1, out=x_0064_2)
+and(a=i1, b=1, out=x_0128_2)
+and(a=i2, b=1, out=x_0256_2)
+and(a=i3, b=1, out=x_0512_2)
+and(a=i4, b=1, out=x_1024_2)
+and(a=i5, b=1, out=x_2048_2)
+and(a=i6, b=1, out=x_4096_2)
+and(a=i7, b=1, out=x_8192_2)
+and(a=i8, b=1, out=x_016k_1)
+and(a=i9, b=1, out=x_032k_1)
+and(a=i10, b=1, out=x_064k_1)
+and(a=i11, b=1, out=x_128k_0)
+
+half_adder(a=x_0032_0, b=x_0032_1, sum=o5, carry=x_0064_3)
+
+adder(a=x_0064_0, b=x_0064_1, c=x_0064_2, sum=x_0064_4, carry=x_0128_3)
+half_adder(a=x_0064_3, b=x_0064_4, sum=o6, carry=x_0128_4)
+
+adder(a=x_0128_0, b=x_0128_1, c=x_0128_2, sum=x_0128_5, carry=x_0256_3)
+adder(a=x_0128_3, b=x_0128_4, c=x_0128_5, sum=o7, carry=x_0256_4)
+
+adder(a=x_0256_0, b=x_0256_1, c=x_0256_2, sum=x_0256_5, carry=x_0512_3)
+adder(a=x_0256_3, b=x_0256_4, c=x_0256_5, sum=o8, carry=x_0512_4)
+
+adder(a=x_0512_0, b=x_0512_1, c=x_0512_2, sum=x_0512_5, carry=x_1024_3)
+adder(a=x_0512_3, b=x_0512_4, c=x_0512_5, sum=o9, carry=x_1024_4)
+
+adder(a=x_1024_0, b=x_1024_1, c=x_1024_2, sum=x_1024_5, carry=x_2048_3)
+adder(a=x_1024_3, b=x_1024_4, c=x_1024_5, sum=o10, carry=x_2048_4)
+
+adder(a=x_2048_0, b=x_2048_1, c=x_2048_2, sum=x_2048_5, carry=x_4096_3)
+adder(a=x_2048_3, b=x_2048_4, c=x_2048_5, sum=o11, carry=x_4096_4)
+
+adder(a=x_4096_0, b=x_4096_1, c=x_4096_2, sum=x_4096_5, carry=x_8192_3)
+adder(a=x_4096_3, b=x_4096_4, c=x_4096_5, sum=o12, carry=x_8192_4)
+
+adder(a=x_8192_0, b=x_8192_1, c=x_8192_2, sum=x_8192_5, carry=x_016k_2)
+adder(a=x_8192_3, b=x_8192_4, c=x_8192_5, sum=o13, carry=x_016k_3)
+
+adder(a=x_016k_0, b=x_016k_1, c=x_016k_2, sum=x_016k_4, carry=x_032k_2)
+half_adder(a=x_016k_3, b=x_016k_4, sum=o14, carry=x_032k_3)
+
+adder(a=x_032k_0, b=x_032k_1, c=x_032k_2, sum=x_032k_4, carry=x_064k_2)
+half_adder(a=x_032k_3, b=x_032k_4, sum=o15, carry=x_064k_3)
+
+adder(a=x_064k_0, b=x_064k_1, c=x_064k_2, sum=x_064k_4, carry=x_128k_1)
+half_adder(a=x_064k_3, b=x_064k_4, sum=o16, carry=x_128k_2)
+
+adder(a=x_128k_0, b=x_128k_1, c=x_128k_2, sum=o17, carry=o18)
