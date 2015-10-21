@@ -31,6 +31,7 @@ describe(describedChip, function () {
     define("less_than_5");
     define("add_6");
     define("multiply_by_10");
+    define("multiply_by_100");
     define("equal_to_10");
     define("round_decimal");
   });
@@ -44,9 +45,9 @@ describe(describedChip, function () {
       n11: _, n10: _, n9: T, n8: T, n7: T, n6: T,
       n5:  T, n4:  _, n3: T, n2: _, n1: _, n0: _,
 
-      // 30 divisor
-      d11: _, d10: _, d9: _, d8: _, d7: _, d6: _,
-      d5:  _, d4:  T, d3: T, d2: T, d1: T, d0: _
+      // 3000 divisor
+      d11: T, d10: _, d9: T, d8: T, d7: T, d6: _,
+      d5:  T, d4:  T, d3: T, d2: _, d1: _, d0: _
     });
 
     expect(result).toEqual({
@@ -58,13 +59,13 @@ describe(describedChip, function () {
     });
 
     result = HDL.evaluate(describedChip, {
-      // 3000 numerator
-      n11: T, n10: _, n9: T, n8: T, n7: T, n6: _,
-      n5:  T, n4:  T, n3: T, n2: _, n1: _, n0: _,
+      // 300 numerator
+      n11: _, n10: _, n9: _, n8: T, n7: _, n6: _,
+      n5:  T, n4:  _, n3: T, n2: T, n1: _, n0: _,
 
-      // 71 divisor
-      d11: _, d10: _, d9: _, d8: _, d7: _, d6: T,
-      d5:  _, d4:  _, d3: _, d2: T, d1: T, d0: T
+      // 710 divisor
+      d11: _, d10: _, d9: T, d8: _, d7: T, d6: T,
+      d5:  _, d4:  _, d3: _, d2: T, d1: T, d0: _
     });
 
     expect(result).toEqual({
@@ -77,13 +78,13 @@ describe(describedChip, function () {
 
     // In this example, the third significant figure needs to be rounded.
     result = HDL.evaluate(describedChip, {
-      // 3000 numerator
-      n11: T, n10: _, n9: T, n8: T, n7: T, n6: _,
-      n5:  T, n4:  T, n3: T, n2: _, n1: _, n0: _,
+      // 300 numerator
+      n11: _, n10: _, n9: _, n8: T, n7: _, n6: _,
+      n5:  T, n4:  _, n3: T, n2: T, n1: _, n0: _,
 
-      // 70 divisor
-      d11: _, d10: _, d9: _, d8: _, d7: _, d6: T,
-      d5:  _, d4:  _, d3: _, d2: T, d1: T, d0: _
+      // 700 divisor
+      d11: _, d10: _, d9: T, d8: _, d7: T, d6: _,
+      d5:  T, d4:  T, d3: T, d2: T, d1: _, d0: _
     });
 
     expect(result).toEqual({
@@ -96,9 +97,9 @@ describe(describedChip, function () {
 
     // In this example, rounding cascades to the 1st s.f.
     result = HDL.evaluate(describedChip, {
-      // 3000 numerator
-      n11: T, n10: _, n9: T, n8: T, n7: T, n6: _,
-      n5:  T, n4:  T, n3: T, n2: _, n1: _, n0: _,
+      // 30 numerator
+      n11: _, n10: _, n9: _, n8: _, n7: _, n6: _,
+      n5:  _, n4:  T, n3: T, n2: T, n1: T, n0: _,
 
       // 3003 divisor
       d11: T, d10: _, d9: T, d8: T, d7: T, d6: _,
@@ -114,9 +115,9 @@ describe(describedChip, function () {
     });
 
     result = HDL.evaluate(describedChip, {
-      // 3000 numerator
-      n11: T, n10: _, n9: T, n8: T, n7: T, n6: _,
-      n5:  T, n4:  T, n3: T, n2: _, n1: _, n0: _,
+      // 30 numerator
+      n11: _, n10: _, n9: _, n8: _, n7: _, n6: _,
+      n5:  _, n4:  T, n3: T, n2: T, n1: T, n0: _,
 
       // 1200 divisor
       d11: _, d10: T, d9: _, d8: _, d7: T, d6: _,
@@ -132,13 +133,13 @@ describe(describedChip, function () {
     });
 
     result = HDL.evaluate(describedChip, {
-      // 4000 numerator
-      n11: T, n10: T, n9: T, n8: T, n7: T, n6: _,
-      n5:  T, n4:  _, n3: _, n2: _, n1: _, n0: _,
+      // 400 numerator
+      n11: _, n10: _, n9: _, n8: T, n7: T, n6: _,
+      n5:  _, n4:  T, n3: _, n2: _, n1: _, n0: _,
 
-      // 60 divisor
-      d11: _, d10: _, d9: _, d8: _, d7: _, d6: _,
-      d5:  T, d4:  T, d3: T, d2: T, d1: _, d0: _,
+      // 600 divisor
+      d11: _, d10: _, d9: T, d8: _, d7: _, d6: T,
+      d5:  _, d4:  T, d3: T, d2: _, d1: _, d0: _,
     });
 
     expect(result).toEqual({
@@ -150,4 +151,3 @@ describe(describedChip, function () {
     });
   });
 });
-
