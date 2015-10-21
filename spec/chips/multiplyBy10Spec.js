@@ -33,6 +33,7 @@ describe(describedChip, function () {
     });
     // 0
     expect(result).toEqual({
+      o19: _, o18: _, o17: _, o16: _,
       o15: _, o14: _, o13: _, o12: _, o11: _, o10: _, o9: _, o8: _,
       o7:  _, o6:  _, o5:  _, o4:  _, o3:  _, o2:  _, o1: _, o0: _,
     });
@@ -44,6 +45,7 @@ describe(describedChip, function () {
     });
     // 10
     expect(result).toEqual({
+      o19: _, o18: _, o17: _, o16: _,
       o15: _, o14: _, o13: _, o12: _, o11: _, o10: _, o9: _, o8: _,
       o7:  _, o6:  _, o5:  _, o4:  _, o3:  T, o2:  _, o1: T, o0: _,
     });
@@ -55,6 +57,7 @@ describe(describedChip, function () {
     });
     // 12340
     expect(result).toEqual({
+      o19: _, o18: _, o17: _, o16: _,
       o15: _, o14: _, o13: T, o12: T, o11: _, o10: _, o9: _, o8: _,
       o7:  _, o6:  _, o5:  T, o4:  T, o3:  _, o2:  T, o1: _, o0: _,
     });
@@ -66,6 +69,7 @@ describe(describedChip, function () {
     });
     // 40950
     expect(result).toEqual({
+      o19: _, o18: _, o17: _, o16: _,
       o15: T, o14: _, o13: _, o12: T, o11: T, o10: T, o9: T, o8: T,
       o7:  T, o6:  T, o5:  T, o4:  T, o3:  _, o2:  T, o1: T, o0: _,
     });

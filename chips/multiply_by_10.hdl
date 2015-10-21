@@ -1,10 +1,16 @@
 inputs i11, i10, i9, i8, i7, i6, i5, i4, i3, i2, i1, i0
-outputs o15, o14, o13, o12, o11, o10, o9, o8, o7, o6, o5, o4, o3, o2, o1, o0
 
-# This bit can never be set:
+outputs o19, o18, o17, o16, o15, o14, o13, o12, o11,
+        o10, o9, o8, o7, o6, o5, o4, o3, o2, o1, o0
+
+# ten = 00000000000000001010
+
+# These bits can never be set:
+and(a=0, b=0, out=o19)
+and(a=0, b=0, out=o18)
+and(a=0, b=0, out=o17)
+and(a=0, b=0, out=o16)
 and(a=0, b=0, out=o0)
-
-# ten = 000000001010
 
 # When multiplied by 2:
 and(a=i0, b=1, out=o1)
