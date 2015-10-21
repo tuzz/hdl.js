@@ -21,9 +21,9 @@ describe(describedChip, function () {
     define("or");
     define("half_subtractor");
     define("subtractor");
-    define("subtract_32");
-    define("csubtract_32");
-    define("divide_16");
+    define("subtract_40");
+    define("csubtract_40");
+    define("divide_20");
     define("half_adder");
     define("adder");
     define("and");

@@ -8,91 +8,91 @@ outputs a5, a4, a3, a2, a1, a0, # first significant figure
 
 # ---------------- first s.f. ----------------------
 
-divide_16(
-  n15=0, n14=0, n13=0, n12=0, n11=n11, n10=n10, n9=n9, n8=n8,
-  n7=n7, n6=n6, n5=n5, n4=n4, n3=n3, n2=n2, n1=n1, n0=n0,
+divide_20(
+  n19=0, n18=0, n17=0, n16=0, n15=0, n14=0, n13=0, n12=0, n11=n11, n10=n10,
+  n9=n9, n8=n8, n7=n7, n6=n6, n5=n5, n4=n4, n3=n3, n2=n2, n1=n1, n0=n0,
 
-  d15=0, d14=0, d13=0, d12=0, d11=d11, d10=d10, d9=d9, d8=d8,
-  d7=d7, d6=d6, d5=d5, d4=d4, d3=d3, d2=d2, d1=d1, d0=d0,
+  d19=0, d18=0, d17=0, d16=0, d15=0, d14=0, d13=0, d12=0, d11=d11, d10=d10,
+  d9=d9, d8=d8, d7=d7, d6=d6, d5=d5, d4=d4, d3=d3, d2=d2, d1=d1, d0=d0,
 
   # This chip only supports quotients in the range 0 - 63:
-  q15=o0, q14=o1, q13=o2, q12=o3, q11=o4, q10=o5, q9=o6, q8=o7,
-  q7=o8, q6=o9, q5=q1_5, q4=q1_4, q3=q1_3, q2=q1_2, q1=q1_1, q0=q1_0,
+  q19=o0, q18=o1, q17=o2, q16=o3, q15=o4, q14=o5, q13=o6, q12=o7, q11=o8, q10=o9,
+  q9=o10, q8=o11, q7=o12, q6=o13, q5=q1_5, q4=q1_4, q3=q1_3, q2=q1_2, q1=q1_1, q0=q1_0,
 
-  r15=o10, r14=o11, r13=o12, r12=o13, r11=r1_11, r10=r1_10, r9=r1_9, r8=r1_8,
-  r7=r1_7, r6=r1_6, r5=r1_5, r4=r1_4, r3=r1_3, r2=r1_2, r1=r1_1, r0=r1_0
+  r19=o14, r18=o15, r17=o16, r16=o17, r15=o18, r14=o19, r13=o20, r12=o21, r11=r1_11, r10=r1_10,
+  r9=r1_9, r8=r1_8, r7=r1_7, r6=r1_6, r5=r1_5, r4=r1_4, r3=r1_3, r2=r1_2, r1=r1_1, r0=r1_0
 )
 
 multiply_by_10(
   i11=r1_11, i10=r1_10, i9=r1_9, i8=r1_8, i7=r1_7, i6=r1_6,
   i5=r1_5, i4=r1_4, i3=r1_3, i2=r1_2, i1=r1_1, i0=r1_0,
 
-  o15=m1_15, o14=m1_14, o13=m1_13, o12=m1_12, o11=m1_11, o10=m1_10, o9=m1_9, o8=m1_8,
-  o7=m1_7, o6=m1_6, o5=m1_5, o4=m1_4, o3=m1_3, o2=m1_2, o1=m1_1, o0=m1_0
+  o19=m1_19, o18=m1_18, o17=m1_17, o16=m1_16, o15=m1_15, o14=m1_14, o13=m1_13, o12=m1_12, o11=m1_11, o10=m1_10,
+  o9=m1_9, o8=m1_8, o7=m1_7, o6=m1_6, o5=m1_5, o4=m1_4, o3=m1_3, o2=m1_2, o1=m1_1, o0=m1_0
 )
 
 # --------------- second s.f. ----------------------
 
-divide_16(
-  n15=m1_15, n14=m1_14, n13=m1_13, n12=m1_12, n11=m1_11, n10=m1_10, n9=m1_9, n8=m1_8,
-  n7=m1_7, n6=m1_6, n5=m1_5, n4=m1_4, n3=m1_3, n2=m1_2, n1=m1_1, n0=m1_0,
+divide_20(
+  n19=m1_19, n18=m1_18, n17=m1_17, n16=m1_16, n15=m1_15, n14=m1_14, n13=m1_13, n12=m1_12, n11=m1_11, n10=m1_10,
+  n9=m1_9, n8=m1_8, n7=m1_7, n6=m1_6, n5=m1_5, n4=m1_4, n3=m1_3, n2=m1_2, n1=m1_1, n0=m1_0,
 
-  d15=0, d14=0, d13=0, d12=0, d11=d11, d10=d10, d9=d9, d8=d8,
-  d7=d7, d6=d6, d5=d5, d4=d4, d3=d3, d2=d2, d1=d1, d0=d0,
+  d19=0, d18=0, d17=0, d16=0, d15=0, d14=0, d13=0, d12=0, d11=d11, d10=d10,
+  d9=d9, d8=d8, d7=d7, d6=d6, d5=d5, d4=d4, d3=d3, d2=d2, d1=d1, d0=d0,
 
-  q15=o14, q14=o15, q13=o16, q12=o17, q11=o18, q10=o19, q9=o20, q8=o21,
-  q7=o22, q6=o23, q5=o24, q4=o25, q3=q2_3, q2=q2_2, q1=q2_1, q0=q2_0,
+  q19=o22, q18=o23, q17=o24, q16=o25, q15=o26, q14=o27, q13=o28, q12=o29, q11=o30, q10=o31,
+  q9=o32, q8=o33, q7=o34, q6=o35, q5=o36, q4=o37, q3=q2_3, q2=q2_2, q1=q2_1, q0=q2_0,
 
-  r15=o26, r14=o27, r13=o28, r12=o29, r11=r2_11, r10=r2_10, r9=r2_9, r8=r2_8,
-  r7=r2_7, r6=r2_6, r5=r2_5, r4=r2_4, r3=r2_3, r2=r2_2, r1=r2_1, r0=r2_0
+  r19=o38, r18=o39, r17=o40, r16=o41, r15=o42, r14=o43, r13=o44, r12=o45, r11=r2_11, r10=r2_10,
+  r9=r2_9, r8=r2_8, r7=r2_7, r6=r2_6, r5=r2_5, r4=r2_4, r3=r2_3, r2=r2_2, r1=r2_1, r0=r2_0
 )
 
 multiply_by_10(
   i11=r2_11, i10=r2_10, i9=r2_9, i8=r2_8, i7=r2_7, i6=r2_6,
   i5=r2_5, i4=r2_4, i3=r2_3, i2=r2_2, i1=r2_1, i0=r2_0,
 
-  o15=m2_15, o14=m2_14, o13=m2_13, o12=m2_12, o11=m2_11, o10=m2_10, o9=m2_9, o8=m2_8,
-  o7=m2_7, o6=m2_6, o5=m2_5, o4=m2_4, o3=m2_3, o2=m2_2, o1=m2_1, o0=m2_0
+  o19=m2_19, o18=m2_18, o17=m2_17, o16=m2_16, o15=m2_15, o14=m2_14, o13=m2_13, o12=m2_12, o11=m2_11, o10=m2_10,
+  o9=m2_9, o8=m2_8, o7=m2_7, o6=m2_6, o5=m2_5, o4=m2_4, o3=m2_3, o2=m2_2, o1=m2_1, o0=m2_0
 )
 
 # --------------- third s.f. -----------------------
 
-divide_16(
-  n15=m2_15, n14=m2_14, n13=m2_13, n12=m2_12, n11=m2_11, n10=m2_10, n9=m2_9, n8=m2_8,
-  n7=m2_7, n6=m2_6, n5=m2_5, n4=m2_4, n3=m2_3, n2=m2_2, n1=m2_1, n0=m2_0,
+divide_20(
+  n19=m2_19, n18=m2_18, n17=m2_17, n16=m2_16, n15=m2_15, n14=m2_14, n13=m2_13, n12=m2_12, n11=m2_11, n10=m2_10,
+  n9=m2_9, n8=m2_8, n7=m2_7, n6=m2_6, n5=m2_5, n4=m2_4, n3=m2_3, n2=m2_2, n1=m2_1, n0=m2_0,
 
-  d15=0, d14=0, d13=0, d12=0, d11=d11, d10=d10, d9=d9, d8=d8,
-  d7=d7, d6=d6, d5=d5, d4=d4, d3=d3, d2=d2, d1=d1, d0=d0,
+  d19=0, d18=0, d17=0, d16=0, d15=0, d14=0, d13=0, d12=0, d11=d11, d10=d10,
+  d9=d9, d8=d8, d7=d7, d6=d6, d5=d5, d4=d4, d3=d3, d2=d2, d1=d1, d0=d0,
 
-  q15=o30, q14=o31, q13=o32, q12=o33, q11=o34, q10=o35, q9=o36, q8=o37,
-  q7=o38, q6=o39, q5=o40, q4=o41, q3=q3_3, q2=q3_2, q1=q3_1, q0=q3_0,
+  q19=o46, q18=o47, q17=o48, q16=o49, q15=o50, q14=o51, q13=o52, q12=o53, q11=o54, q10=o55,
+  q9=o56, q8=o57, q7=o58, q6=o59, q5=o60, q4=o61, q3=q3_3, q2=q3_2, q1=q3_1, q0=q3_0,
 
-  r15=o26, r14=o27, r13=o28, r12=o29, r11=r3_11, r10=r3_10, r9=r3_9, r8=r3_8,
-  r7=r3_7, r6=r3_6, r5=r3_5, r4=r3_4, r3=r3_3, r2=r3_2, r1=r3_1, r0=r3_0
+  r19=o62, r18=o63, r17=o64, r16=o65, r15=o66, r14=o67, r13=o68, r12=o69, r11=r3_11, r10=r3_10,
+  r9=r3_9, r8=r3_8, r7=r3_7, r6=r3_6, r5=r3_5, r4=r3_4, r3=r3_3, r2=r3_2, r1=r3_1, r0=r3_0
 )
 
 multiply_by_10(
   i11=r3_11, i10=r3_10, i9=r3_9, i8=r3_8, i7=r3_7, i6=r3_6,
   i5=r3_5, i4=r3_4, i3=r3_3, i2=r3_2, i1=r3_1, i0=r3_0,
 
-  o15=m3_15, o14=m3_14, o13=m3_13, o12=m3_12, o11=m3_11, o10=m3_10, o9=m3_9, o8=m3_8,
-  o7=m3_7, o6=m3_6, o5=m3_5, o4=m3_4, o3=m3_3, o2=m3_2, o1=m3_1, o0=m3_0
+  o19=m3_19, o18=m3_18, o17=m3_17, o16=m3_16, o15=m3_15, o14=m3_14, o13=m3_13, o12=m3_12, o11=m3_11, o10=m3_10,
+  o9=m3_9, o8=m3_8, o7=m3_7, o6=m3_6, o5=m3_5, o4=m3_4, o3=m3_3, o2=m3_2, o1=m3_1, o0=m3_0
 )
 
 # --------------- fourth s.f. ----------------------
 
-divide_16(
-  n15=m3_15, n14=m3_14, n13=m3_13, n12=m3_12, n11=m3_11, n10=m3_10, n9=m3_9, n8=m3_8,
-  n7=m3_7, n6=m3_6, n5=m3_5, n4=m3_4, n3=m3_3, n2=m3_2, n1=m3_1, n0=m3_0,
+divide_20(
+  n19=m3_19, n18=m3_18, n17=m3_17, n16=m3_16, n15=m3_15, n14=m3_14, n13=m3_13, n12=m3_12, n11=m3_11, n10=m3_10,
+  n9=m3_9, n8=m3_8, n7=m3_7, n6=m3_6, n5=m3_5, n4=m3_4, n3=m3_3, n2=m3_2, n1=m3_1, n0=m3_0,
 
-  d15=0, d14=0, d13=0, d12=0, d11=d11, d10=d10, d9=d9, d8=d8,
-  d7=d7, d6=d6, d5=d5, d4=d4, d3=d3, d2=d2, d1=d1, d0=d0,
+  d19=0, d18=0, d17=0, d16=0, d15=0, d14=0, d13=0, d12=0, d11=d11, d10=d10,
+  d9=d9, d8=d8, d7=d7, d6=d6, d5=d5, d4=d4, d3=d3, d2=d2, d1=d1, d0=d0,
 
-  q15=o42, q14=o43, q13=o44, q12=o45, q11=o46, q10=o47, q9=o48, q8=o49,
-  q7=o50, q6=o51, q5=o52, q4=o53, q3=q4_3, q2=q4_2, q1=q4_1, q0=q4_0,
+  q19=o70, q18=o71, q17=o72, q16=o73, q15=o74, q14=o75, q13=o76, q12=o77, q11=o78, q10=o79,
+  q9=o80, q8=o81, q7=o82, q6=o83, q5=o84, q4=o85, q3=q4_3, q2=q4_2, q1=q4_1, q0=q4_0,
 
-  r15=o54, r14=o55, r13=o56, r12=o57, r11=r4_11, r10=r4_10, r9=r4_9, r8=r4_8,
-  r7=r4_7, r6=r4_6, r5=r4_5, r4=r4_4, r3=r4_3, r2=r4_2, r1=r4_1, r0=r4_0
+  r19=o86, r18=o87, r17=o88, r16=o89, r15=o90, r14=o91, r13=o92, r12=o93, r11=r4_11, r10=r4_10,
+  r9=r4_9, r8=r4_8, r7=r4_7, r6=r4_6, r5=r4_5, r4=r4_4, r3=r4_3, r2=r4_2, r1=r4_1, r0=r4_0
 )
 
 # ----------------- rounding -----------------------
@@ -110,60 +110,96 @@ round_decimal(
 
 # ----------------- overflows ----------------------
 
-or(a=o0, b=o1, out=o58)
-or(a=o2, b=o3, out=o59)
-or(a=o4, b=o5, out=o60)
-or(a=o6, b=o7, out=o61)
-or(a=o8, b=o9, out=o62)
-or(a=o10, b=o11, out=o63)
-or(a=o12, b=o13, out=o64)
-or(a=o14, b=o15, out=o65)
-or(a=o16, b=o17, out=o66)
-or(a=o18, b=o19, out=o67)
-or(a=o20, b=o21, out=o68)
-or(a=o22, b=o23, out=o69)
-or(a=o24, b=o25, out=o70)
-or(a=o26, b=o27, out=o71)
-or(a=o28, b=o29, out=o72)
-or(a=o30, b=o31, out=o73)
-or(a=o32, b=o33, out=o74)
-or(a=o34, b=o35, out=o75)
-or(a=o36, b=o37, out=o76)
-or(a=o38, b=o39, out=o77)
-or(a=o40, b=o41, out=o78)
-or(a=o42, b=o43, out=o79)
-or(a=o44, b=o45, out=o80)
-or(a=o46, b=o47, out=o81)
-or(a=o48, b=o49, out=o82)
-or(a=o50, b=o51, out=o83)
-or(a=o52, b=o53, out=o84)
-or(a=o54, b=o55, out=o85)
-or(a=o56, b=o57, out=o86)
-or(a=o58, b=o59, out=o87)
-or(a=o60, b=o61, out=o88)
-or(a=o62, b=o63, out=o89)
-or(a=o64, b=o65, out=o90)
-or(a=o66, b=o67, out=o91)
-or(a=o68, b=o69, out=o92)
-or(a=o70, b=o71, out=o93)
-or(a=o72, b=o73, out=o94)
-or(a=o74, b=o75, out=o95)
-or(a=o76, b=o77, out=o96)
-or(a=o78, b=o79, out=o97)
-or(a=o80, b=o81, out=o98)
-or(a=o82, b=o83, out=o99)
-or(a=o84, b=o85, out=o100)
-or(a=o86, b=o87, out=o101)
-or(a=o88, b=o89, out=o102)
-or(a=o90, b=o91, out=o103)
-or(a=o92, b=o93, out=o104)
-or(a=o94, b=o95, out=o105)
-or(a=o96, b=o97, out=o106)
-or(a=o98, b=o99, out=o107)
-or(a=o100, b=o101, out=o108)
-or(a=o102, b=o103, out=o109)
-or(a=o104, b=o105, out=o110)
-or(a=o106, b=o107, out=o111)
-or(a=o108, b=o109, out=o112)
-or(a=o110, b=o111, out=o113)
-or(a=o112, b=o113, out=overflow)
+or(a=o0, b=o1, out=o94)
+or(a=o2, b=o3, out=o95)
+or(a=o4, b=o5, out=o96)
+or(a=o6, b=o7, out=o97)
+or(a=o8, b=o9, out=o98)
+or(a=o10, b=o11, out=o99)
+or(a=o12, b=o13, out=o100)
+or(a=o14, b=o15, out=o101)
+or(a=o16, b=o17, out=o102)
+or(a=o18, b=o19, out=o103)
+or(a=o20, b=o21, out=o104)
+or(a=o22, b=o23, out=o105)
+or(a=o24, b=o25, out=o106)
+or(a=o26, b=o27, out=o107)
+or(a=o28, b=o29, out=o108)
+or(a=o30, b=o31, out=o109)
+or(a=o32, b=o33, out=o110)
+or(a=o34, b=o35, out=o111)
+or(a=o36, b=o37, out=o112)
+or(a=o38, b=o39, out=o113)
+or(a=o40, b=o41, out=o114)
+or(a=o42, b=o43, out=o115)
+or(a=o44, b=o45, out=o116)
+or(a=o46, b=o47, out=o117)
+or(a=o48, b=o49, out=o118)
+or(a=o50, b=o51, out=o119)
+or(a=o52, b=o53, out=o120)
+or(a=o54, b=o55, out=o121)
+or(a=o56, b=o57, out=o122)
+or(a=o58, b=o59, out=o123)
+or(a=o60, b=o61, out=o124)
+or(a=o62, b=o63, out=o125)
+or(a=o64, b=o65, out=o126)
+or(a=o66, b=o67, out=o127)
+or(a=o68, b=o69, out=o128)
+or(a=o70, b=o71, out=o129)
+or(a=o72, b=o73, out=o130)
+or(a=o74, b=o75, out=o131)
+or(a=o76, b=o77, out=o132)
+or(a=o78, b=o79, out=o133)
+or(a=o80, b=o81, out=o134)
+or(a=o82, b=o83, out=o135)
+or(a=o84, b=o85, out=o136)
+or(a=o86, b=o87, out=o137)
+or(a=o88, b=o89, out=o138)
+or(a=o90, b=o91, out=o139)
+or(a=o92, b=o93, out=o140)
+or(a=o94, b=o95, out=o141)
+or(a=o96, b=o97, out=o142)
+or(a=o98, b=o99, out=o143)
+or(a=o100, b=o101, out=o144)
+or(a=o102, b=o103, out=o145)
+or(a=o104, b=o105, out=o146)
+or(a=o106, b=o107, out=o147)
+or(a=o108, b=o109, out=o148)
+or(a=o110, b=o111, out=o149)
+or(a=o112, b=o113, out=o150)
+or(a=o114, b=o115, out=o151)
+or(a=o116, b=o117, out=o152)
+or(a=o118, b=o119, out=o153)
+or(a=o120, b=o121, out=o154)
+or(a=o122, b=o123, out=o155)
+or(a=o124, b=o125, out=o156)
+or(a=o126, b=o127, out=o157)
+or(a=o128, b=o129, out=o158)
+or(a=o130, b=o131, out=o159)
+or(a=o132, b=o133, out=o160)
+or(a=o134, b=o135, out=o161)
+or(a=o136, b=o137, out=o162)
+or(a=o138, b=o139, out=o163)
+or(a=o140, b=o141, out=o164)
+or(a=o142, b=o143, out=o165)
+or(a=o144, b=o145, out=o166)
+or(a=o146, b=o147, out=o167)
+or(a=o148, b=o149, out=o168)
+or(a=o150, b=o151, out=o169)
+or(a=o152, b=o153, out=o170)
+or(a=o154, b=o155, out=o171)
+or(a=o156, b=o157, out=o172)
+or(a=o158, b=o159, out=o173)
+or(a=o160, b=o161, out=o174)
+or(a=o162, b=o163, out=o175)
+or(a=o164, b=o165, out=o176)
+or(a=o166, b=o167, out=o177)
+or(a=o168, b=o169, out=o178)
+or(a=o170, b=o171, out=o179)
+or(a=o172, b=o173, out=o180)
+or(a=o174, b=o175, out=o181)
+or(a=o176, b=o177, out=o182)
+or(a=o178, b=o179, out=o183)
+or(a=o180, b=o181, out=o184)
+or(a=o182, b=o183, out=o185)
+or(a=o184, b=o185, out=overflow)
