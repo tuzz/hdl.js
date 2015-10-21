@@ -23,7 +23,7 @@ describe(describedChip, function () {
       i1: false, // 02 * 0
       i0: true   // 01 * 1
     });
-    // The term "five _'s" contains 1 'e'
+    // The number "five" contains 1 'e'
     expect(result).toEqual({ o2: false, o1: false, o0: true });
 
     result = HDL.evaluate(describedChip, {
@@ -34,7 +34,7 @@ describe(describedChip, function () {
       i1: false, // 02 * 0
       i0: true   // 01 * 1
     });
-    // The term "one _" contains 1 'e'
+    // The number "one" contains 1 'e'
     expect(result).toEqual({ o2: false, o1: false, o0: true });
 
     result = HDL.evaluate(describedChip, {
@@ -45,7 +45,7 @@ describe(describedChip, function () {
       i1: false, // 02 * 0
       i0: true   // 01 * 1
     });
-    // The term "seventeen _'s" contains 4 'e'
+    // The number "seventeen" contains 4 'e'
     expect(result).toEqual({ o2: true, o1: false, o0: false });
   });
 });

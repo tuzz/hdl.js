@@ -24,7 +24,7 @@ describe(describedChip, function () {
       i0: true   // 01 * 1
     });
 
-    // The term "five _'s" contains 0 'a'
+    // The number "five" contains 0 'a'
     expect(result).toEqual({ o2: false, o1: false, o0: false });
   });
 });
