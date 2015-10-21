@@ -1,6 +1,6 @@
 "use strict";
 
-var describedChip = "decimal_divide";
+var describedChip = "percentage_divide";
 var HDL = require("../../lib/hdl");
 var fs = require("fs");
 
