@@ -730,12 +730,12 @@ add_6(
 # Add decimal point count if this chip is one of { p, o, i, n, t }:
 # FINDME: swap 'sel' depending on which chip this is.
 
-mux(a=decimals0, b=0, sel=1, out=sum_point_0)
-mux(a=decimals1, b=0, sel=1, out=sum_point_1)
-mux(a=decimals2, b=0, sel=1, out=sum_point_2)
-mux(a=decimals3, b=0, sel=1, out=sum_point_3)
-mux(a=decimals4, b=0, sel=1, out=sum_point_4)
-mux(a=decimals5, b=0, sel=1, out=sum_point_5)
+mux(a=decimals0, b=0, sel=0, out=sum_point_0)
+mux(a=decimals1, b=0, sel=0, out=sum_point_1)
+mux(a=decimals2, b=0, sel=0, out=sum_point_2)
+mux(a=decimals3, b=0, sel=0, out=sum_point_3)
+mux(a=decimals4, b=0, sel=0, out=sum_point_4)
+mux(a=decimals5, b=0, sel=0, out=sum_point_5)
 
 # Add the sums together:
 
