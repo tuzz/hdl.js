@@ -1,0 +1,355 @@
+inputs a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11,
+       b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11,
+       c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11,
+       d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11,
+       e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11,
+       f0, f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11,
+       g0, g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11,
+       h0, h1, h2, h3, h4, h5, h6, h7, h8, h9, h10, h11,
+       i0, i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, i11,
+       j0, j1, j2, j3, j4, j5, j6, j7, j8, j9, j10, j11,
+       k0, k1, k2, k3, k4, k5, k6, k7, k8, k9, k10, k11,
+       l0, l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11,
+       m0, m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11,
+       n0, n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11,
+       o0, o1, o2, o3, o4, o5, o6, o7, o8, o9, o10, o11,
+       p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11,
+       q0, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11,
+       r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11,
+       s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11,
+       t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11,
+       u0, u1, u2, u3, u4, u5, u6, u7, u8, u9, u10, u11,
+       v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11,
+       w0, w1, w2, w3, w4, w5, w6, w7, w8, w9, w10, w11,
+       x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11,
+       y0, y1, y2, y3, y4, y5, y6, y7, y8, y9, y10, y11,
+       z0, z1, z2, z3, z4, z5, z6, z7, z8, z9, z10, z11
+
+outputs sum0, sum1, sum2, sum3, sum4, sum5,
+        sum6, sum7, sum8, sum9, sum10, sum11,
+        carry
+
+add_12(
+  a0=a0, a1=a1, a2=a2, a3=a3, a4=a4, a5=a5,
+  a6=a6, a7=a7, a8=a8, a9=a9, a10=a10, a11=a11,
+
+  b0=b0, b1=b1, b2=b2, b3=b3, b4=b4, b5=b5,
+  b6=b6, b7=b7, b8=b8, b9=b9, b10=b10, b11=b11,
+
+  o0=sum_0_0, o1=sum_0_1, o2=sum_0_2, o3=sum_0_3, o4=sum_0_4, o5=sum_0_5,
+  o6=sum_0_6, o7=sum_0_7, o8=sum_0_8, o9=sum_0_9, o10=sum_0_10, o11=sum_0_11,
+
+  carry=carry_0
+)
+
+add_12(
+  a0=sum_0_0, a1=sum_0_1, a2=sum_0_2, a3=sum_0_3, a4=sum_0_4, a5=sum_0_5,
+  a6=sum_0_6, a7=sum_0_7, a8=sum_0_8, a9=sum_0_9, a10=sum_0_10, a11=sum_0_11,
+
+  b0=c0, b1=c1, b2=c2, b3=c3, b4=c4, b5=c5,
+  b6=c6, b7=c7, b8=c8, b9=c9, b10=c10, b11=c11,
+
+  o0=sum_1_0, o1=sum_1_1, o2=sum_1_2, o3=sum_1_3, o4=sum_1_4, o5=sum_1_5,
+  o6=sum_1_6, o7=sum_1_7, o8=sum_1_8, o9=sum_1_9, o10=sum_1_10, o11=sum_1_11,
+
+  carry=carry_1
+)
+
+add_12(
+  a0=sum_1_0, a1=sum_1_1, a2=sum_1_2, a3=sum_1_3, a4=sum_1_4, a5=sum_1_5,
+  a6=sum_1_6, a7=sum_1_7, a8=sum_1_8, a9=sum_1_9, a10=sum_1_10, a11=sum_1_11,
+
+  b0=d0, b1=d1, b2=d2, b3=d3, b4=d4, b5=d5,
+  b6=d6, b7=d7, b8=d8, b9=d9, b10=d10, b11=d11,
+
+  o0=sum_2_0, o1=sum_2_1, o2=sum_2_2, o3=sum_2_3, o4=sum_2_4, o5=sum_2_5,
+  o6=sum_2_6, o7=sum_2_7, o8=sum_2_8, o9=sum_2_9, o10=sum_2_10, o11=sum_2_11,
+
+  carry=carry_2
+)
+
+add_12(
+  a0=sum_2_0, a1=sum_2_1, a2=sum_2_2, a3=sum_2_3, a4=sum_2_4, a5=sum_2_5,
+  a6=sum_2_6, a7=sum_2_7, a8=sum_2_8, a9=sum_2_9, a10=sum_2_10, a11=sum_2_11,
+
+  b0=e0, b1=e1, b2=e2, b3=e3, b4=e4, b5=e5,
+  b6=e6, b7=e7, b8=e8, b9=e9, b10=e10, b11=e11,
+
+  o0=sum_3_0, o1=sum_3_1, o2=sum_3_2, o3=sum_3_3, o4=sum_3_4, o5=sum_3_5,
+  o6=sum_3_6, o7=sum_3_7, o8=sum_3_8, o9=sum_3_9, o10=sum_3_10, o11=sum_3_11,
+
+  carry=carry_3
+)
+
+add_12(
+  a0=sum_3_0, a1=sum_3_1, a2=sum_3_2, a3=sum_3_3, a4=sum_3_4, a5=sum_3_5,
+  a6=sum_3_6, a7=sum_3_7, a8=sum_3_8, a9=sum_3_9, a10=sum_3_10, a11=sum_3_11,
+
+  b0=f0, b1=f1, b2=f2, b3=f3, b4=f4, b5=f5,
+  b6=f6, b7=f7, b8=f8, b9=f9, b10=f10, b11=f11,
+
+  o0=sum_4_0, o1=sum_4_1, o2=sum_4_2, o3=sum_4_3, o4=sum_4_4, o5=sum_4_5,
+  o6=sum_4_6, o7=sum_4_7, o8=sum_4_8, o9=sum_4_9, o10=sum_4_10, o11=sum_4_11,
+
+  carry=carry_4
+)
+
+add_12(
+  a0=sum_4_0, a1=sum_4_1, a2=sum_4_2, a3=sum_4_3, a4=sum_4_4, a5=sum_4_5,
+  a6=sum_4_6, a7=sum_4_7, a8=sum_4_8, a9=sum_4_9, a10=sum_4_10, a11=sum_4_11,
+
+  b0=g0, b1=g1, b2=g2, b3=g3, b4=g4, b5=g5,
+  b6=g6, b7=g7, b8=g8, b9=g9, b10=g10, b11=g11,
+
+  o0=sum_5_0, o1=sum_5_1, o2=sum_5_2, o3=sum_5_3, o4=sum_5_4, o5=sum_5_5,
+  o6=sum_5_6, o7=sum_5_7, o8=sum_5_8, o9=sum_5_9, o10=sum_5_10, o11=sum_5_11,
+
+  carry=carry_5
+)
+
+add_12(
+  a0=sum_5_0, a1=sum_5_1, a2=sum_5_2, a3=sum_5_3, a4=sum_5_4, a5=sum_5_5,
+  a6=sum_5_6, a7=sum_5_7, a8=sum_5_8, a9=sum_5_9, a10=sum_5_10, a11=sum_5_11,
+
+  b0=h0, b1=h1, b2=h2, b3=h3, b4=h4, b5=h5,
+  b6=h6, b7=h7, b8=h8, b9=h9, b10=h10, b11=h11,
+
+  o0=sum_6_0, o1=sum_6_1, o2=sum_6_2, o3=sum_6_3, o4=sum_6_4, o5=sum_6_5,
+  o6=sum_6_6, o7=sum_6_7, o8=sum_6_8, o9=sum_6_9, o10=sum_6_10, o11=sum_6_11,
+
+  carry=carry_6
+)
+
+add_12(
+  a0=sum_6_0, a1=sum_6_1, a2=sum_6_2, a3=sum_6_3, a4=sum_6_4, a5=sum_6_5,
+  a6=sum_6_6, a7=sum_6_7, a8=sum_6_8, a9=sum_6_9, a10=sum_6_10, a11=sum_6_11,
+
+  b0=i0, b1=i1, b2=i2, b3=i3, b4=i4, b5=i5,
+  b6=i6, b7=i7, b8=i8, b9=i9, b10=i10, b11=i11,
+
+  o0=sum_7_0, o1=sum_7_1, o2=sum_7_2, o3=sum_7_3, o4=sum_7_4, o5=sum_7_5,
+  o6=sum_7_6, o7=sum_7_7, o8=sum_7_8, o9=sum_7_9, o10=sum_7_10, o11=sum_7_11,
+
+  carry=carry_7
+)
+
+add_12(
+  a0=sum_7_0, a1=sum_7_1, a2=sum_7_2, a3=sum_7_3, a4=sum_7_4, a5=sum_7_5,
+  a6=sum_7_6, a7=sum_7_7, a8=sum_7_8, a9=sum_7_9, a10=sum_7_10, a11=sum_7_11,
+
+  b0=j0, b1=j1, b2=j2, b3=j3, b4=j4, b5=j5,
+  b6=j6, b7=j7, b8=j8, b9=j9, b10=j10, b11=j11,
+
+  o0=sum_8_0, o1=sum_8_1, o2=sum_8_2, o3=sum_8_3, o4=sum_8_4, o5=sum_8_5,
+  o6=sum_8_6, o7=sum_8_7, o8=sum_8_8, o9=sum_8_9, o10=sum_8_10, o11=sum_8_11,
+
+  carry=carry_8
+)
+
+add_12(
+  a0=sum_8_0, a1=sum_8_1, a2=sum_8_2, a3=sum_8_3, a4=sum_8_4, a5=sum_8_5,
+  a6=sum_8_6, a7=sum_8_7, a8=sum_8_8, a9=sum_8_9, a10=sum_8_10, a11=sum_8_11,
+
+  b0=k0, b1=k1, b2=k2, b3=k3, b4=k4, b5=k5,
+  b6=k6, b7=k7, b8=k8, b9=k9, b10=k10, b11=k11,
+
+  o0=sum_9_0, o1=sum_9_1, o2=sum_9_2, o3=sum_9_3, o4=sum_9_4, o5=sum_9_5,
+  o6=sum_9_6, o7=sum_9_7, o8=sum_9_8, o9=sum_9_9, o10=sum_9_10, o11=sum_9_11,
+
+  carry=carry_9
+)
+
+add_12(
+  a0=sum_9_0, a1=sum_9_1, a2=sum_9_2, a3=sum_9_3, a4=sum_9_4, a5=sum_9_5,
+  a6=sum_9_6, a7=sum_9_7, a8=sum_9_8, a9=sum_9_9, a10=sum_9_10, a11=sum_9_11,
+
+  b0=l0, b1=l1, b2=l2, b3=l3, b4=l4, b5=l5,
+  b6=l6, b7=l7, b8=l8, b9=l9, b10=l10, b11=l11,
+
+  o0=sum_10_0, o1=sum_10_1, o2=sum_10_2, o3=sum_10_3, o4=sum_10_4, o5=sum_10_5,
+  o6=sum_10_6, o7=sum_10_7, o8=sum_10_8, o9=sum_10_9, o10=sum_10_10, o11=sum_10_11,
+
+  carry=carry_10
+)
+
+add_12(
+  a0=sum_10_0, a1=sum_10_1, a2=sum_10_2, a3=sum_10_3, a4=sum_10_4, a5=sum_10_5,
+  a6=sum_10_6, a7=sum_10_7, a8=sum_10_8, a9=sum_10_9, a10=sum_10_10, a11=sum_10_11,
+
+  b0=m0, b1=m1, b2=m2, b3=m3, b4=m4, b5=m5,
+  b6=m6, b7=m7, b8=m8, b9=m9, b10=m10, b11=m11,
+
+  o0=sum_11_0, o1=sum_11_1, o2=sum_11_2, o3=sum_11_3, o4=sum_11_4, o5=sum_11_5,
+  o6=sum_11_6, o7=sum_11_7, o8=sum_11_8, o9=sum_11_9, o10=sum_11_10, o11=sum_11_11,
+
+  carry=carry_11
+)
+
+add_12(
+  a0=sum_11_0, a1=sum_11_1, a2=sum_11_2, a3=sum_11_3, a4=sum_11_4, a5=sum_11_5,
+  a6=sum_11_6, a7=sum_11_7, a8=sum_11_8, a9=sum_11_9, a10=sum_11_10, a11=sum_11_11,
+
+  b0=n0, b1=n1, b2=n2, b3=n3, b4=n4, b5=n5,
+  b6=n6, b7=n7, b8=n8, b9=n9, b10=n10, b11=n11,
+
+  o0=sum_12_0, o1=sum_12_1, o2=sum_12_2, o3=sum_12_3, o4=sum_12_4, o5=sum_12_5,
+  o6=sum_12_6, o7=sum_12_7, o8=sum_12_8, o9=sum_12_9, o10=sum_12_10, o11=sum_12_11,
+
+  carry=carry_12
+)
+
+add_12(
+  a0=sum_12_0, a1=sum_12_1, a2=sum_12_2, a3=sum_12_3, a4=sum_12_4, a5=sum_12_5,
+  a6=sum_12_6, a7=sum_12_7, a8=sum_12_8, a9=sum_12_9, a10=sum_12_10, a11=sum_12_11,
+
+  b0=o0, b1=o1, b2=o2, b3=o3, b4=o4, b5=o5,
+  b6=o6, b7=o7, b8=o8, b9=o9, b10=o10, b11=o11,
+
+  o0=sum_13_0, o1=sum_13_1, o2=sum_13_2, o3=sum_13_3, o4=sum_13_4, o5=sum_13_5,
+  o6=sum_13_6, o7=sum_13_7, o8=sum_13_8, o9=sum_13_9, o10=sum_13_10, o11=sum_13_11,
+
+  carry=carry_13
+)
+
+add_12(
+  a0=sum_13_0, a1=sum_13_1, a2=sum_13_2, a3=sum_13_3, a4=sum_13_4, a5=sum_13_5,
+  a6=sum_13_6, a7=sum_13_7, a8=sum_13_8, a9=sum_13_9, a10=sum_13_10, a11=sum_13_11,
+
+  b0=p0, b1=p1, b2=p2, b3=p3, b4=p4, b5=p5,
+  b6=p6, b7=p7, b8=p8, b9=p9, b10=p10, b11=p11,
+
+  o0=sum_14_0, o1=sum_14_1, o2=sum_14_2, o3=sum_14_3, o4=sum_14_4, o5=sum_14_5,
+  o6=sum_14_6, o7=sum_14_7, o8=sum_14_8, o9=sum_14_9, o10=sum_14_10, o11=sum_14_11,
+
+  carry=carry_14
+)
+
+add_12(
+  a0=sum_14_0, a1=sum_14_1, a2=sum_14_2, a3=sum_14_3, a4=sum_14_4, a5=sum_14_5,
+  a6=sum_14_6, a7=sum_14_7, a8=sum_14_8, a9=sum_14_9, a10=sum_14_10, a11=sum_14_11,
+
+  b0=q0, b1=q1, b2=q2, b3=q3, b4=q4, b5=q5,
+  b6=q6, b7=q7, b8=q8, b9=q9, b10=q10, b11=q11,
+
+  o0=sum_15_0, o1=sum_15_1, o2=sum_15_2, o3=sum_15_3, o4=sum_15_4, o5=sum_15_5,
+  o6=sum_15_6, o7=sum_15_7, o8=sum_15_8, o9=sum_15_9, o10=sum_15_10, o11=sum_15_11,
+
+  carry=carry_15
+)
+
+add_12(
+  a0=sum_15_0, a1=sum_15_1, a2=sum_15_2, a3=sum_15_3, a4=sum_15_4, a5=sum_15_5,
+  a6=sum_15_6, a7=sum_15_7, a8=sum_15_8, a9=sum_15_9, a10=sum_15_10, a11=sum_15_11,
+
+  b0=r0, b1=r1, b2=r2, b3=r3, b4=r4, b5=r5,
+  b6=r6, b7=r7, b8=r8, b9=r9, b10=r10, b11=r11,
+
+  o0=sum_16_0, o1=sum_16_1, o2=sum_16_2, o3=sum_16_3, o4=sum_16_4, o5=sum_16_5,
+  o6=sum_16_6, o7=sum_16_7, o8=sum_16_8, o9=sum_16_9, o10=sum_16_10, o11=sum_16_11,
+
+  carry=carry_16
+)
+
+add_12(
+  a0=sum_16_0, a1=sum_16_1, a2=sum_16_2, a3=sum_16_3, a4=sum_16_4, a5=sum_16_5,
+  a6=sum_16_6, a7=sum_16_7, a8=sum_16_8, a9=sum_16_9, a10=sum_16_10, a11=sum_16_11,
+
+  b0=s0, b1=s1, b2=s2, b3=s3, b4=s4, b5=s5,
+  b6=s6, b7=s7, b8=s8, b9=s9, b10=s10, b11=s11,
+
+  o0=sum_17_0, o1=sum_17_1, o2=sum_17_2, o3=sum_17_3, o4=sum_17_4, o5=sum_17_5,
+  o6=sum_17_6, o7=sum_17_7, o8=sum_17_8, o9=sum_17_9, o10=sum_17_10, o11=sum_17_11,
+
+  carry=carry_17
+)
+
+add_12(
+  a0=sum_17_0, a1=sum_17_1, a2=sum_17_2, a3=sum_17_3, a4=sum_17_4, a5=sum_17_5,
+  a6=sum_17_6, a7=sum_17_7, a8=sum_17_8, a9=sum_17_9, a10=sum_17_10, a11=sum_17_11,
+
+  b0=t0, b1=t1, b2=t2, b3=t3, b4=t4, b5=t5,
+  b6=t6, b7=t7, b8=t8, b9=t9, b10=t10, b11=t11,
+
+  o0=sum_18_0, o1=sum_18_1, o2=sum_18_2, o3=sum_18_3, o4=sum_18_4, o5=sum_18_5,
+  o6=sum_18_6, o7=sum_18_7, o8=sum_18_8, o9=sum_18_9, o10=sum_18_10, o11=sum_18_11,
+
+  carry=carry_18
+)
+
+add_12(
+  a0=sum_18_0, a1=sum_18_1, a2=sum_18_2, a3=sum_18_3, a4=sum_18_4, a5=sum_18_5,
+  a6=sum_18_6, a7=sum_18_7, a8=sum_18_8, a9=sum_18_9, a10=sum_18_10, a11=sum_18_11,
+
+  b0=u0, b1=u1, b2=u2, b3=u3, b4=u4, b5=u5,
+  b6=u6, b7=u7, b8=u8, b9=u9, b10=u10, b11=u11,
+
+  o0=sum_19_0, o1=sum_19_1, o2=sum_19_2, o3=sum_19_3, o4=sum_19_4, o5=sum_19_5,
+  o6=sum_19_6, o7=sum_19_7, o8=sum_19_8, o9=sum_19_9, o10=sum_19_10, o11=sum_19_11,
+
+  carry=carry_19
+)
+
+add_12(
+  a0=sum_19_0, a1=sum_19_1, a2=sum_19_2, a3=sum_19_3, a4=sum_19_4, a5=sum_19_5,
+  a6=sum_19_6, a7=sum_19_7, a8=sum_19_8, a9=sum_19_9, a10=sum_19_10, a11=sum_19_11,
+
+  b0=v0, b1=v1, b2=v2, b3=v3, b4=v4, b5=v5,
+  b6=v6, b7=v7, b8=v8, b9=v9, b10=v10, b11=v11,
+
+  o0=sum_20_0, o1=sum_20_1, o2=sum_20_2, o3=sum_20_3, o4=sum_20_4, o5=sum_20_5,
+  o6=sum_20_6, o7=sum_20_7, o8=sum_20_8, o9=sum_20_9, o10=sum_20_10, o11=sum_20_11,
+
+  carry=carry_20
+)
+
+add_12(
+  a0=sum_20_0, a1=sum_20_1, a2=sum_20_2, a3=sum_20_3, a4=sum_20_4, a5=sum_20_5,
+  a6=sum_20_6, a7=sum_20_7, a8=sum_20_8, a9=sum_20_9, a10=sum_20_10, a11=sum_20_11,
+
+  b0=w0, b1=w1, b2=w2, b3=w3, b4=w4, b5=w5,
+  b6=w6, b7=w7, b8=w8, b9=w9, b10=w10, b11=w11,
+
+  o0=sum_21_0, o1=sum_21_1, o2=sum_21_2, o3=sum_21_3, o4=sum_21_4, o5=sum_21_5,
+  o6=sum_21_6, o7=sum_21_7, o8=sum_21_8, o9=sum_21_9, o10=sum_21_10, o11=sum_21_11,
+
+  carry=carry_21
+)
+
+add_12(
+  a0=sum_21_0, a1=sum_21_1, a2=sum_21_2, a3=sum_21_3, a4=sum_21_4, a5=sum_21_5,
+  a6=sum_21_6, a7=sum_21_7, a8=sum_21_8, a9=sum_21_9, a10=sum_21_10, a11=sum_21_11,
+
+  b0=x0, b1=x1, b2=x2, b3=x3, b4=x4, b5=x5,
+  b6=x6, b7=x7, b8=x8, b9=x9, b10=x10, b11=x11,
+
+  o0=sum_22_0, o1=sum_22_1, o2=sum_22_2, o3=sum_22_3, o4=sum_22_4, o5=sum_22_5,
+  o6=sum_22_6, o7=sum_22_7, o8=sum_22_8, o9=sum_22_9, o10=sum_22_10, o11=sum_22_11,
+
+  carry=carry_22
+)
+
+add_12(
+  a0=sum_22_0, a1=sum_22_1, a2=sum_22_2, a3=sum_22_3, a4=sum_22_4, a5=sum_22_5,
+  a6=sum_22_6, a7=sum_22_7, a8=sum_22_8, a9=sum_22_9, a10=sum_22_10, a11=sum_22_11,
+
+  b0=y0, b1=y1, b2=y2, b3=y3, b4=y4, b5=y5,
+  b6=y6, b7=y7, b8=y8, b9=y9, b10=y10, b11=y11,
+
+  o0=sum_23_0, o1=sum_23_1, o2=sum_23_2, o3=sum_23_3, o4=sum_23_4, o5=sum_23_5,
+  o6=sum_23_6, o7=sum_23_7, o8=sum_23_8, o9=sum_23_9, o10=sum_23_10, o11=sum_23_11,
+
+  carry=carry_23
+)
+
+add_12(
+  a0=sum_23_0, a1=sum_23_1, a2=sum_23_2, a3=sum_23_3, a4=sum_23_4, a5=sum_23_5,
+  a6=sum_23_6, a7=sum_23_7, a8=sum_23_8, a9=sum_23_9, a10=sum_23_10, a11=sum_23_11,
+
+  b0=z0, b1=z1, b2=z2, b3=z3, b4=z4, b5=z5,
+  b6=z6, b7=z7, b8=z8, b9=z9, b10=z10, b11=z11,
+
+  o0=sum0, o1=sum1, o2=sum2, o3=sum3, o4=sum4, o5=sum5,
+  o6=sum6, o7=sum7, o8=sum8, o9=sum9, o10=sum10, o11=sum11,
+
+  carry=carry
+)
