@@ -1,0 +1,40 @@
+inputs a_sf1_0, a_sf1_1, a_sf1_2, a_sf1_3, a_sf1_4, a_sf1_5,
+       a_sf2_0, a_sf2_1, a_sf2_2, a_sf2_3,
+       a_sf3_0, a_sf3_1, a_sf3_2, a_sf3_3,
+
+       b_sf1_0, b_sf1_1, b_sf1_2, b_sf1_3, b_sf1_4, b_sf1_5,
+       b_sf2_0, b_sf2_1, b_sf2_2, b_sf2_3,
+       b_sf3_0, b_sf3_1, b_sf3_2, b_sf3_3
+
+outputs out
+
+xnor(a=a_sf1_0, b=b_sf1_0, out=x0)
+xnor(a=a_sf1_1, b=b_sf1_1, out=x1)
+xnor(a=a_sf1_2, b=b_sf1_2, out=x2)
+xnor(a=a_sf1_3, b=b_sf1_3, out=x3)
+xnor(a=a_sf1_4, b=b_sf1_4, out=x4)
+xnor(a=a_sf1_5, b=b_sf1_5, out=x5)
+
+xnor(a=a_sf2_0, b=b_sf2_0, out=x6)
+xnor(a=a_sf2_1, b=b_sf2_1, out=x7)
+xnor(a=a_sf2_2, b=b_sf2_2, out=x8)
+xnor(a=a_sf2_3, b=b_sf2_3, out=x9)
+
+xnor(a=a_sf3_0, b=b_sf3_0, out=x10)
+xnor(a=a_sf3_1, b=b_sf3_1, out=x11)
+xnor(a=a_sf3_2, b=b_sf3_2, out=x12)
+xnor(a=a_sf3_3, b=b_sf3_3, out=x13)
+
+and(a=x0, b=x1, out=x14)
+and(a=x2, b=x3, out=x15)
+and(a=x4, b=x5, out=x16)
+and(a=x6, b=x7, out=x17)
+and(a=x8, b=x9, out=x18)
+and(a=x10, b=x11, out=x19)
+and(a=x12, b=x13, out=x20)
+and(a=x14, b=x15, out=x21)
+and(a=x16, b=x17, out=x22)
+and(a=x18, b=x19, out=x23)
+and(a=x20, b=x21, out=x24)
+and(a=x22, b=x23, out=x25)
+and(a=x24, b=x25, out=out)
