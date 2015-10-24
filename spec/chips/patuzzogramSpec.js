@@ -15,6 +15,18 @@ describe(describedChip, function () {
 
   beforeEach(function () {
     HDL.reset();
+    define("total");
+    define(describedChip);
+
+    define("a_lookup"); define("b_lookup"); define("c_lookup");
+    define("d_lookup"); define("e_lookup"); define("f_lookup");
+    define("g_lookup"); define("h_lookup"); define("i_lookup");
+    define("j_lookup"); define("k_lookup"); define("l_lookup");
+    define("m_lookup"); define("n_lookup"); define("o_lookup");
+    define("p_lookup"); define("q_lookup"); define("r_lookup");
+    define("s_lookup"); define("t_lookup"); define("u_lookup");
+    define("v_lookup"); define("w_lookup"); define("x_lookup");
+    define("y_lookup"); define("z_lookup");
 
     define("and");
     define("xor");
@@ -41,16 +53,6 @@ describe(describedChip, function () {
     define("percentage_divide");
     define("percent_equal");
 
-    define("a_lookup"); define("b_lookup"); define("c_lookup");
-    define("d_lookup"); define("e_lookup"); define("f_lookup");
-    define("g_lookup"); define("h_lookup"); define("i_lookup");
-    define("j_lookup"); define("k_lookup"); define("l_lookup");
-    define("m_lookup"); define("n_lookup"); define("o_lookup");
-    define("p_lookup"); define("q_lookup"); define("r_lookup");
-    define("s_lookup"); define("t_lookup"); define("u_lookup");
-    define("v_lookup"); define("w_lookup"); define("x_lookup");
-    define("y_lookup"); define("z_lookup");
-
     define("a_number"); define("b_number"); define("c_number");
     define("d_number"); define("e_number"); define("f_number");
     define("g_number"); define("h_number"); define("i_number");
@@ -68,8 +70,6 @@ describe(describedChip, function () {
     define("q_sum"); define("r_sum"); define("s_sum"); define("t_sum");
     define("u_sum"); define("v_sum"); define("w_sum"); define("x_sum");
     define("y_sum"); define("z_sum");
-
-    define(describedChip);
   });
 
   it("behaves as expected", function () {
