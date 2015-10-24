@@ -8,6 +8,47 @@ This is an attempt at writing a hardware description language that is at least
 as powerful as that of the language used in the book ["Elements of Computing
 Systems"](http://www.amazon.co.uk/dp/0262640686).
 
+## Setup Instructions
+
+You'll need to have installed [nodejs](https://nodejs.org/en/) first.
+
+Install grunt command line:
+
+```
+npm install grunt-cli -g
+```
+
+Install the dependent node modules:
+
+```
+npm install
+```
+
+To run the test suite:
+
+```
+grunt
+```
+
+You can run a single test by globally installing jasmine-node:
+
+```
+npm install jasmine-node -g
+```
+
+And then:
+
+```
+jasmine-node spec/hdlSpec.js
+```
+
+If the suite successfully builds, you can embed the bin/hdl.js file in your
+web application. See examples/ for more information.
+
+Let me know if you have trouble with any of this.
+
+## Background
+
 The grammar for the language is more-or-less the same, with a few differences:
 
 - Support for defining truth tables
