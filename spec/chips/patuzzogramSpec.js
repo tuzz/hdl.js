@@ -77,10 +77,10 @@ describe(describedChip, function () {
     var T = true;
 
     var result = HDL.evaluate(describedChip, {
-      a_sf1_5: _, a_sf1_4: _, a_sf1_3: _, a_sf1_2: _, a_sf1_1: _, a_sf1_0: T, // one
-                                                                              // point
-      a_sf2_3: T, a_sf2_2: _, a_sf2_1: _, a_sf2_0: T,                         // nine
-      a_sf3_3: T, a_sf3_2: _, a_sf3_1: _, a_sf3_0: _,                         // eight
+      a_sf1_5: _, a_sf1_4: _, a_sf1_3: T, a_sf1_2: _, a_sf1_1: T, a_sf1_0: _, // ten
+                                                                              // ____
+      a_sf2_3: _, a_sf2_2: _, a_sf2_1: _, a_sf2_0: _,                         // ____
+      a_sf3_3: _, a_sf3_2: _, a_sf3_1: _, a_sf3_0: _,                         // ____
                                                                               // percent
                                                                               // are a's
 
@@ -259,35 +259,37 @@ describe(describedChip, function () {
                                                                               // percent
                                                                               // are z's
 
-      seed_a0: _, seed_a1: _, seed_a2: _, seed_a3: _, seed_a4: _, seed_a5: _,
-      seed_b0: _, seed_b1: _, seed_b2: _, seed_b3: _, seed_b4: _, seed_b5: _,
-      seed_c0: _, seed_c1: _, seed_c2: _, seed_c3: _, seed_c4: _, seed_c5: _,
-      seed_d0: _, seed_d1: _, seed_d2: _, seed_d3: _, seed_d4: _, seed_d5: _,
-      seed_e0: _, seed_e1: _, seed_e2: _, seed_e3: _, seed_e4: _, seed_e5: _,
-      seed_f0: _, seed_f1: _, seed_f2: _, seed_f3: _, seed_f4: _, seed_f5: _,
-      seed_g0: _, seed_g1: _, seed_g2: _, seed_g3: _, seed_g4: _, seed_g5: _,
-      seed_h0: _, seed_h1: _, seed_h2: _, seed_h3: _, seed_h4: _, seed_h5: _,
-      seed_i0: _, seed_i1: _, seed_i2: _, seed_i3: _, seed_i4: _, seed_i5: _,
-      seed_j0: _, seed_j1: _, seed_j2: _, seed_j3: _, seed_j4: _, seed_j5: _,
-      seed_k0: _, seed_k1: _, seed_k2: _, seed_k3: _, seed_k4: _, seed_k5: _,
-      seed_l0: _, seed_l1: _, seed_l2: _, seed_l3: _, seed_l4: _, seed_l5: _,
-      seed_m0: _, seed_m1: _, seed_m2: _, seed_m3: _, seed_m4: _, seed_m5: _,
-      seed_n0: _, seed_n1: _, seed_n2: _, seed_n3: _, seed_n4: _, seed_n5: _,
-      seed_o0: _, seed_o1: _, seed_o2: _, seed_o3: _, seed_o4: _, seed_o5: _,
-      seed_p0: _, seed_p1: _, seed_p2: _, seed_p3: _, seed_p4: _, seed_p5: _,
-      seed_q0: _, seed_q1: _, seed_q2: _, seed_q3: _, seed_q4: _, seed_q5: _,
-      seed_r0: _, seed_r1: _, seed_r2: _, seed_r3: _, seed_r4: _, seed_r5: _,
-      seed_s0: _, seed_s1: _, seed_s2: _, seed_s3: _, seed_s4: _, seed_s5: _,
-      seed_t0: _, seed_t1: _, seed_t2: _, seed_t3: _, seed_t4: _, seed_t5: _,
-      seed_u0: _, seed_u1: _, seed_u2: _, seed_u3: _, seed_u4: _, seed_u5: _,
-      seed_v0: _, seed_v1: _, seed_v2: _, seed_v3: _, seed_v4: _, seed_v5: _,
-      seed_w0: _, seed_w1: _, seed_w2: _, seed_w3: _, seed_w4: _, seed_w5: _,
-      seed_x0: _, seed_x1: _, seed_x2: _, seed_x3: _, seed_x4: _, seed_x5: _,
-      seed_y0: _, seed_y1: _, seed_y2: _, seed_y3: _, seed_y4: _, seed_y5: _,
-      seed_z0: _, seed_z1: _, seed_z2: _, seed_z3: _, seed_z4: _, seed_z5: _
+                                                                              // 760 letters
+
+      seed_a5: T, seed_a4: T, seed_a3: _, seed_a2: T, seed_a1: T, seed_a0: T, // + 55 a's
+      seed_b5: _, seed_b4: _, seed_b3: _, seed_b2: T, seed_b1: _, seed_b0: T, // + 5 b's
+      seed_c5: _, seed_c4: _, seed_c3: _, seed_c2: _, seed_c1: _, seed_c0: _,
+      seed_d5: _, seed_d4: _, seed_d3: _, seed_d2: _, seed_d1: _, seed_d0: _,
+      seed_e5: _, seed_e4: _, seed_e3: _, seed_e2: _, seed_e1: _, seed_e0: _,
+      seed_f5: _, seed_f4: _, seed_f3: _, seed_f2: _, seed_f1: _, seed_f0: _,
+      seed_g5: _, seed_g4: _, seed_g3: _, seed_g2: _, seed_g1: _, seed_g0: _,
+      seed_h5: _, seed_h4: _, seed_h3: _, seed_h2: _, seed_h1: _, seed_h0: _,
+      seed_i5: _, seed_i4: _, seed_i3: _, seed_i2: _, seed_i1: _, seed_i0: _,
+      seed_j5: _, seed_j4: _, seed_j3: _, seed_j2: _, seed_j1: _, seed_j0: _,
+      seed_k5: _, seed_k4: _, seed_k3: _, seed_k2: _, seed_k1: _, seed_k0: _,
+      seed_l5: _, seed_l4: _, seed_l3: _, seed_l2: _, seed_l1: _, seed_l0: _,
+      seed_m5: _, seed_m4: _, seed_m3: _, seed_m2: _, seed_m1: _, seed_m0: _,
+      seed_n5: _, seed_n4: _, seed_n3: _, seed_n2: _, seed_n1: _, seed_n0: _,
+      seed_o5: _, seed_o4: _, seed_o3: _, seed_o2: _, seed_o1: _, seed_o0: _,
+      seed_p5: _, seed_p4: _, seed_p3: _, seed_p2: _, seed_p1: _, seed_p0: _,
+      seed_q5: _, seed_q4: _, seed_q3: _, seed_q2: _, seed_q1: _, seed_q0: _,
+      seed_r5: _, seed_r4: _, seed_r3: _, seed_r2: _, seed_r1: _, seed_r0: _,
+      seed_s5: _, seed_s4: _, seed_s3: _, seed_s2: _, seed_s1: _, seed_s0: _,
+      seed_t5: _, seed_t4: _, seed_t3: _, seed_t2: _, seed_t1: _, seed_t0: _,
+      seed_u5: _, seed_u4: _, seed_u3: _, seed_u2: _, seed_u1: _, seed_u0: _,
+      seed_v5: _, seed_v4: _, seed_v3: _, seed_v2: _, seed_v1: _, seed_v0: _,
+      seed_w5: _, seed_w4: _, seed_w3: _, seed_w2: _, seed_w1: _, seed_w0: _,
+      seed_x5: _, seed_x4: _, seed_x3: _, seed_x2: _, seed_x1: _, seed_x0: _,
+      seed_y5: _, seed_y4: _, seed_y3: _, seed_y2: _, seed_y1: _, seed_y0: _,
+      seed_z5: _, seed_z4: _, seed_z3: _, seed_z2: _, seed_z1: _, seed_z0: _
     });
 
-    expect(result).toEqual({ out: T });
+    expect(result).toEqual({ out: _ });
   });
 });
 
