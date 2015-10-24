@@ -27,7 +27,7 @@ describe(describedChip, function () {
     var T = true;
 
     var result = HDL.evaluate(describedChip, {
-      a11: _, a10: _, a9: _, a8: _, a7: _, a6: _, a5: _, a4: _, a3: _, a2: _, a1: T, a0: _, // 2
+      a11: T, a10: _, a9: _, a8: _, a7: _, a6: _, a5: _, a4: _, a3: _, a2: _, a1: _, a0: _, // 2048
       b11: _, b10: _, b9: T, b8: _, b7: _, b6: _, b5: _, b4: _, b3: _, b2: _, b1: _, b0: _, // 512
       c11: _, c10: _, c9: _, c8: _, c7: T, c6: _, c5: _, c4: _, c3: _, c2: _, c1: _, c0: _, // 128
       d11: _, d10: _, d9: _, d8: _, d7: _, d6: _, d5: T, d4: _, d3: _, d2: _, d1: _, d0: _, // 32
@@ -53,39 +53,12 @@ describe(describedChip, function () {
       x11: _, x10: _, x9: _, x8: T, x7: _, x6: _, x5: _, x4: _, x3: _, x2: _, x1: _, x0: _, // 256
       y11: _, y10: _, y9: T, y8: _, y7: _, y6: _, y5: _, y4: _, y3: _, y2: _, y1: _, y0: _, // 512
       z11: _, z10: _, z9: _, z8: _, z7: T, z6: _, z5: _, z4: _, z3: _, z2: _, z1: _, z0: _, // 128
-
-      s_a5: T, s_a4: T, s_a3: T, s_a2: T, s_a1: T, s_a0: T, // 63
-      s_b5: T, s_b4: T, s_b3: T, s_b2: T, s_b1: T, s_b0: T, // 63
-      s_c5: T, s_c4: T, s_c3: T, s_c2: T, s_c1: T, s_c0: T, // 63
-      s_d5: T, s_d4: T, s_d3: T, s_d2: T, s_d1: T, s_d0: T, // 63
-      s_e5: T, s_e4: T, s_e3: T, s_e2: T, s_e1: T, s_e0: T, // 63
-      s_f5: T, s_f4: T, s_f3: T, s_f2: T, s_f1: T, s_f0: T, // 63
-      s_g5: T, s_g4: T, s_g3: T, s_g2: T, s_g1: T, s_g0: T, // 63
-      s_h5: T, s_h4: T, s_h3: T, s_h2: T, s_h1: T, s_h0: T, // 63
-      s_i5: T, s_i4: T, s_i3: T, s_i2: T, s_i1: T, s_i0: T, // 63
-      s_j5: T, s_j4: T, s_j3: T, s_j2: T, s_j1: T, s_j0: T, // 63
-      s_k5: T, s_k4: T, s_k3: T, s_k2: T, s_k1: T, s_k0: T, // 63
-      s_l5: T, s_l4: T, s_l3: T, s_l2: T, s_l1: T, s_l0: T, // 63
-      s_m5: T, s_m4: T, s_m3: T, s_m2: T, s_m1: T, s_m0: T, // 63
-      s_n5: T, s_n4: T, s_n3: T, s_n2: T, s_n1: T, s_n0: T, // 63
-      s_o5: T, s_o4: T, s_o3: T, s_o2: T, s_o1: T, s_o0: T, // 63
-      s_p5: T, s_p4: T, s_p3: T, s_p2: T, s_p1: T, s_p0: T, // 63
-      s_q5: T, s_q4: T, s_q3: T, s_q2: T, s_q1: T, s_q0: T, // 63
-      s_r5: T, s_r4: T, s_r3: T, s_r2: T, s_r1: T, s_r0: T, // 63
-      s_s5: T, s_s4: T, s_s3: T, s_s2: T, s_s1: T, s_s0: T, // 63
-      s_t5: T, s_t4: T, s_t3: T, s_t2: T, s_t1: T, s_t0: T, // 63
-      s_u5: T, s_u4: T, s_u3: T, s_u2: T, s_u1: T, s_u0: T, // 63
-      s_v5: T, s_v4: T, s_v3: T, s_v2: T, s_v1: T, s_v0: T, // 63
-      s_w5: T, s_w4: T, s_w3: T, s_w2: T, s_w1: T, s_w0: T, // 63
-      s_x5: T, s_x4: T, s_x3: T, s_x2: T, s_x1: T, s_x0: T, // 63
-      s_y5: T, s_y4: T, s_y3: T, s_y2: T, s_y1: T, s_y0: T, // 63
-      s_z5: T, s_z4: T, s_z3: T, s_z2: T, s_z1: T, s_z0: T  // 63
     });
 
     expect(result).toEqual({
-      // 3630
-      sum11: T, sum10: T, sum9: T, sum8: _, sum7: _, sum6: _,
-      sum5: T, sum4: _, sum3: T, sum2: T, sum1: T, sum0: _,
+      // 4038
+      sum11: T, sum10: T, sum9: T, sum8: T, sum7: T, sum6: T,
+      sum5: _, sum4: _, sum3: _, sum2: T, sum1: T, sum0: _,
       carry: _
     });
   });
