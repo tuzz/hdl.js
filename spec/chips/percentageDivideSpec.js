@@ -149,5 +149,8 @@ describe(describedChip, function () {
                     c3: _, c2: T, c1: T, c0: T, // 7
       overflow: T
     });
+
+
+    HDL.toDIMACS("percentage_divide");
   });
 });
