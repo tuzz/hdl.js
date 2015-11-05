@@ -2,8 +2,6 @@
 
 [![Build Status](https://travis-ci.org/tuzz/hdl.js.svg?branch=master)](https://travis-ci.org/tuzz/hdl.js)
 
-(Work in progress)
-
 This is an attempt at writing a hardware description language that is at least
 as powerful as that of the language used in the book ["Elements of Computing
 Systems"](http://www.amazon.co.uk/dp/0262640686).
@@ -76,42 +74,53 @@ Here's an example:
 
 ![Example](example.png)
 
-## Next steps
+When subgraphs are connected, a topological sort is performed. This determines
+the order in which nodes need to be visited to evaluate expressions on the
+hardware. HDL is a declarative language, so the user may have specified their
+"wiring" in an arbitrary order and this needs to be sorted based on a
+dependency graph.
 
-I now need to write the logic to traverse the environment's graph to 'evaluate'
-expressions on chips.
+## Evaluation
 
-I then need to extend that logic to support buses. This data is captured in the
-environment graph.
+This project is more than just a way of describing how circuitry is wired
+together – it allows you to simulate it too! This is achieved by traversing the
+environment graph and recursively evaluating an expression. Eventually, this
+recursion bottoms-out on a truth table chip, where the result can bubble back
 
-I then need to extend that logic to support the 'clocked' chip. This will be a
-special kind of chip that persists state on its 'apply' nodes.
+The algorithm for this is fairly complicated as chips can make use of
+intermediate pins and are labelled arbitrary between the implementations of
+chips.
 
-I'd also like to see if I can push as much error checking to 'compile' time
-rather than 'runtime'. I should check for cycles, bus size mismatches, etc.
+## Declarative Programming
+
+This project was taken a step further and ideas of declarative programming were
+applied. This allows chips to effectively run in reverse. For example, you
+could describe an "adder" chip, then specify a desired output for this chip. It
+then attempts to find a set of inputs that make yield the desired output.
+
+It achieves this by reducing the hardware down to SAT by applying the Tseitin
+Transformation. You can read more about that [here](https://github.com/computationclub/computationclub.github.io/wiki/The-New-Turing-Omnibus-Chapter-35-Sequential-Sorting#show--tell).
+
+This technique was then used for finding solutions to the [self-enumerating
+pangram](https://en.wikipedia.org/wiki/Pangram#Self-enumerating_pangrams)
+problem with great success. The resulting SAT equation is able to find a
+solution for an arbitrary sentence seed in a few minutes on consumer grade
+hardware. This is faster than all other (known) attempts at solving this
+problem.
+
+The circuitry for that chip (and a harder variant of the problem) can be found
+on branches of this project.
 
 ## Future plans
 
-I'd like to see if I can turn the problem on its head a little. I'm wondering
-whether it's possible to specify a chip and specify an output to that chip. A
-process would then attempt to find a valid input that produces the specified
-output.
+I've since moved on to exploring whether there's a higher-level abstraction that
+can be used for describing NP-complete problems to computers. It's a lot of work
+to define a chip using HDL and I'd like to explore whether this can be achieved
+(and more) through a rich, high-level programming abstraction.
 
-I plan to do this by [reducing](http://en.wikipedia.org/wiki/Reduction_%28complexity%29)
-a schematic for a chip to the [boolean satisfiability problem](http://en.wikipedia.org/wiki/Boolean_satisfiability_problem).
-I then plan on feeding the resultant boolean equation to a SAT solver.
+That project is called Sentient and it is [here](https://github.com/tuzz/sentient).
 
-My first use case is to solve the problem of finding [self enumerating pangrams](http://en.wikipedia.org/wiki/Pangram#Self-enumerating_pangrams).
-I think I've figured out how to build a chip that can take a set of frequences
-as input, as well as the 'sentence seed'. It would have a single output -
-whether it's a self-enumerating pangram, or not.
+## No longer supported
 
-More generally, I'd like to explore whether there's a high-level language
-abstraction I can create that allows developers to express their problem and
-the language finds solutions for it. Similar to declarative languages, such as
-Prolog.
-
-## Help would be appreciated
-
-I'd love some help or second opinions on any of this. I've been mulling this
-over for some time and now I'm trying to get it out of my head and into code.
+There are no plans to carry out any more work on this project. Use at your own
+risk.
