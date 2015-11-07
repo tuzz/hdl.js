@@ -265,6 +265,8 @@ describe(describedChip, function () {
 
     // 75 a's / 741 == 10.1%
     expect(result).toEqual({ out: _ }); // a_equal: T
+
+    console.log(HDL.toDIMACS("patuzzogram"));
   });
 });
 
