@@ -1,81 +1,55 @@
 inputs a_sf1_0, a_sf1_1, a_sf1_2, a_sf1_3, a_sf1_4, a_sf1_5,
        a_sf2_0, a_sf2_1, a_sf2_2, a_sf2_3,
-       a_sf3_0, a_sf3_1, a_sf3_2, a_sf3_3,
        b_sf1_0, b_sf1_1, b_sf1_2, b_sf1_3, b_sf1_4, b_sf1_5,
        b_sf2_0, b_sf2_1, b_sf2_2, b_sf2_3,
-       b_sf3_0, b_sf3_1, b_sf3_2, b_sf3_3,
        c_sf1_0, c_sf1_1, c_sf1_2, c_sf1_3, c_sf1_4, c_sf1_5,
        c_sf2_0, c_sf2_1, c_sf2_2, c_sf2_3,
-       c_sf3_0, c_sf3_1, c_sf3_2, c_sf3_3,
        d_sf1_0, d_sf1_1, d_sf1_2, d_sf1_3, d_sf1_4, d_sf1_5,
        d_sf2_0, d_sf2_1, d_sf2_2, d_sf2_3,
-       d_sf3_0, d_sf3_1, d_sf3_2, d_sf3_3,
        e_sf1_0, e_sf1_1, e_sf1_2, e_sf1_3, e_sf1_4, e_sf1_5,
        e_sf2_0, e_sf2_1, e_sf2_2, e_sf2_3,
-       e_sf3_0, e_sf3_1, e_sf3_2, e_sf3_3,
        f_sf1_0, f_sf1_1, f_sf1_2, f_sf1_3, f_sf1_4, f_sf1_5,
        f_sf2_0, f_sf2_1, f_sf2_2, f_sf2_3,
-       f_sf3_0, f_sf3_1, f_sf3_2, f_sf3_3,
        g_sf1_0, g_sf1_1, g_sf1_2, g_sf1_3, g_sf1_4, g_sf1_5,
        g_sf2_0, g_sf2_1, g_sf2_2, g_sf2_3,
-       g_sf3_0, g_sf3_1, g_sf3_2, g_sf3_3,
        h_sf1_0, h_sf1_1, h_sf1_2, h_sf1_3, h_sf1_4, h_sf1_5,
        h_sf2_0, h_sf2_1, h_sf2_2, h_sf2_3,
-       h_sf3_0, h_sf3_1, h_sf3_2, h_sf3_3,
        i_sf1_0, i_sf1_1, i_sf1_2, i_sf1_3, i_sf1_4, i_sf1_5,
        i_sf2_0, i_sf2_1, i_sf2_2, i_sf2_3,
-       i_sf3_0, i_sf3_1, i_sf3_2, i_sf3_3,
        j_sf1_0, j_sf1_1, j_sf1_2, j_sf1_3, j_sf1_4, j_sf1_5,
        j_sf2_0, j_sf2_1, j_sf2_2, j_sf2_3,
-       j_sf3_0, j_sf3_1, j_sf3_2, j_sf3_3,
        k_sf1_0, k_sf1_1, k_sf1_2, k_sf1_3, k_sf1_4, k_sf1_5,
        k_sf2_0, k_sf2_1, k_sf2_2, k_sf2_3,
-       k_sf3_0, k_sf3_1, k_sf3_2, k_sf3_3,
        l_sf1_0, l_sf1_1, l_sf1_2, l_sf1_3, l_sf1_4, l_sf1_5,
        l_sf2_0, l_sf2_1, l_sf2_2, l_sf2_3,
-       l_sf3_0, l_sf3_1, l_sf3_2, l_sf3_3,
        m_sf1_0, m_sf1_1, m_sf1_2, m_sf1_3, m_sf1_4, m_sf1_5,
        m_sf2_0, m_sf2_1, m_sf2_2, m_sf2_3,
-       m_sf3_0, m_sf3_1, m_sf3_2, m_sf3_3,
        n_sf1_0, n_sf1_1, n_sf1_2, n_sf1_3, n_sf1_4, n_sf1_5,
        n_sf2_0, n_sf2_1, n_sf2_2, n_sf2_3,
-       n_sf3_0, n_sf3_1, n_sf3_2, n_sf3_3,
        o_sf1_0, o_sf1_1, o_sf1_2, o_sf1_3, o_sf1_4, o_sf1_5,
        o_sf2_0, o_sf2_1, o_sf2_2, o_sf2_3,
-       o_sf3_0, o_sf3_1, o_sf3_2, o_sf3_3,
        p_sf1_0, p_sf1_1, p_sf1_2, p_sf1_3, p_sf1_4, p_sf1_5,
        p_sf2_0, p_sf2_1, p_sf2_2, p_sf2_3,
-       p_sf3_0, p_sf3_1, p_sf3_2, p_sf3_3,
        q_sf1_0, q_sf1_1, q_sf1_2, q_sf1_3, q_sf1_4, q_sf1_5,
        q_sf2_0, q_sf2_1, q_sf2_2, q_sf2_3,
-       q_sf3_0, q_sf3_1, q_sf3_2, q_sf3_3,
        r_sf1_0, r_sf1_1, r_sf1_2, r_sf1_3, r_sf1_4, r_sf1_5,
        r_sf2_0, r_sf2_1, r_sf2_2, r_sf2_3,
-       r_sf3_0, r_sf3_1, r_sf3_2, r_sf3_3,
        s_sf1_0, s_sf1_1, s_sf1_2, s_sf1_3, s_sf1_4, s_sf1_5,
        s_sf2_0, s_sf2_1, s_sf2_2, s_sf2_3,
-       s_sf3_0, s_sf3_1, s_sf3_2, s_sf3_3,
        t_sf1_0, t_sf1_1, t_sf1_2, t_sf1_3, t_sf1_4, t_sf1_5,
        t_sf2_0, t_sf2_1, t_sf2_2, t_sf2_3,
-       t_sf3_0, t_sf3_1, t_sf3_2, t_sf3_3,
        u_sf1_0, u_sf1_1, u_sf1_2, u_sf1_3, u_sf1_4, u_sf1_5,
        u_sf2_0, u_sf2_1, u_sf2_2, u_sf2_3,
-       u_sf3_0, u_sf3_1, u_sf3_2, u_sf3_3,
        v_sf1_0, v_sf1_1, v_sf1_2, v_sf1_3, v_sf1_4, v_sf1_5,
        v_sf2_0, v_sf2_1, v_sf2_2, v_sf2_3,
-       v_sf3_0, v_sf3_1, v_sf3_2, v_sf3_3,
        w_sf1_0, w_sf1_1, w_sf1_2, w_sf1_3, w_sf1_4, w_sf1_5,
        w_sf2_0, w_sf2_1, w_sf2_2, w_sf2_3,
-       w_sf3_0, w_sf3_1, w_sf3_2, w_sf3_3,
        x_sf1_0, x_sf1_1, x_sf1_2, x_sf1_3, x_sf1_4, x_sf1_5,
        x_sf2_0, x_sf2_1, x_sf2_2, x_sf2_3,
-       x_sf3_0, x_sf3_1, x_sf3_2, x_sf3_3,
        y_sf1_0, y_sf1_1, y_sf1_2, y_sf1_3, y_sf1_4, y_sf1_5,
        y_sf2_0, y_sf2_1, y_sf2_2, y_sf2_3,
-       y_sf3_0, y_sf3_1, y_sf3_2, y_sf3_3,
        z_sf1_0, z_sf1_1, z_sf1_2, z_sf1_3, z_sf1_4, z_sf1_5,
-       z_sf2_0, z_sf2_1, z_sf2_2, z_sf2_3,
-       z_sf3_0, z_sf3_1, z_sf3_2, z_sf3_3
+       z_sf2_0, z_sf2_1, z_sf2_2, z_sf2_3
 
 outputs sum0, sum1, sum2, sum3, sum4, sum5,
         sum6, sum7, sum8, sum9, sum10, sum11,
@@ -109,35 +83,6 @@ is_zero(i0=w_sf2_0, i1=w_sf2_1, i2=w_sf2_2, i3=w_sf2_3, out=w_sf2_zero)
 is_zero(i0=x_sf2_0, i1=x_sf2_1, i2=x_sf2_2, i3=x_sf2_3, out=x_sf2_zero)
 is_zero(i0=y_sf2_0, i1=y_sf2_1, i2=y_sf2_2, i3=y_sf2_3, out=y_sf2_zero)
 is_zero(i0=z_sf2_0, i1=z_sf2_1, i2=z_sf2_2, i3=z_sf2_3, out=z_sf2_zero)
-
-# Check if the third-significant figure is zero.
-
-is_zero(i0=a_sf3_0, i1=a_sf3_1, i2=a_sf3_2, i3=a_sf3_3, out=a_sf3_zero)
-is_zero(i0=b_sf3_0, i1=b_sf3_1, i2=b_sf3_2, i3=b_sf3_3, out=b_sf3_zero)
-is_zero(i0=c_sf3_0, i1=c_sf3_1, i2=c_sf3_2, i3=c_sf3_3, out=c_sf3_zero)
-is_zero(i0=d_sf3_0, i1=d_sf3_1, i2=d_sf3_2, i3=d_sf3_3, out=d_sf3_zero)
-is_zero(i0=e_sf3_0, i1=e_sf3_1, i2=e_sf3_2, i3=e_sf3_3, out=e_sf3_zero)
-is_zero(i0=f_sf3_0, i1=f_sf3_1, i2=f_sf3_2, i3=f_sf3_3, out=f_sf3_zero)
-is_zero(i0=g_sf3_0, i1=g_sf3_1, i2=g_sf3_2, i3=g_sf3_3, out=g_sf3_zero)
-is_zero(i0=h_sf3_0, i1=h_sf3_1, i2=h_sf3_2, i3=h_sf3_3, out=h_sf3_zero)
-is_zero(i0=i_sf3_0, i1=i_sf3_1, i2=i_sf3_2, i3=i_sf3_3, out=i_sf3_zero)
-is_zero(i0=j_sf3_0, i1=j_sf3_1, i2=j_sf3_2, i3=j_sf3_3, out=j_sf3_zero)
-is_zero(i0=k_sf3_0, i1=k_sf3_1, i2=k_sf3_2, i3=k_sf3_3, out=k_sf3_zero)
-is_zero(i0=l_sf3_0, i1=l_sf3_1, i2=l_sf3_2, i3=l_sf3_3, out=l_sf3_zero)
-is_zero(i0=m_sf3_0, i1=m_sf3_1, i2=m_sf3_2, i3=m_sf3_3, out=m_sf3_zero)
-is_zero(i0=n_sf3_0, i1=n_sf3_1, i2=n_sf3_2, i3=n_sf3_3, out=n_sf3_zero)
-is_zero(i0=o_sf3_0, i1=o_sf3_1, i2=o_sf3_2, i3=o_sf3_3, out=o_sf3_zero)
-is_zero(i0=p_sf3_0, i1=p_sf3_1, i2=p_sf3_2, i3=p_sf3_3, out=p_sf3_zero)
-is_zero(i0=q_sf3_0, i1=q_sf3_1, i2=q_sf3_2, i3=q_sf3_3, out=q_sf3_zero)
-is_zero(i0=r_sf3_0, i1=r_sf3_1, i2=r_sf3_2, i3=r_sf3_3, out=r_sf3_zero)
-is_zero(i0=s_sf3_0, i1=s_sf3_1, i2=s_sf3_2, i3=s_sf3_3, out=s_sf3_zero)
-is_zero(i0=t_sf3_0, i1=t_sf3_1, i2=t_sf3_2, i3=t_sf3_3, out=t_sf3_zero)
-is_zero(i0=u_sf3_0, i1=u_sf3_1, i2=u_sf3_2, i3=u_sf3_3, out=u_sf3_zero)
-is_zero(i0=v_sf3_0, i1=v_sf3_1, i2=v_sf3_2, i3=v_sf3_3, out=v_sf3_zero)
-is_zero(i0=w_sf3_0, i1=w_sf3_1, i2=w_sf3_2, i3=w_sf3_3, out=w_sf3_zero)
-is_zero(i0=x_sf3_0, i1=x_sf3_1, i2=x_sf3_2, i3=x_sf3_3, out=x_sf3_zero)
-is_zero(i0=y_sf3_0, i1=y_sf3_1, i2=y_sf3_2, i3=y_sf3_3, out=y_sf3_zero)
-is_zero(i0=z_sf3_0, i1=z_sf3_1, i2=z_sf3_2, i3=z_sf3_3, out=z_sf3_zero)
 
 # Lookup the words from the first-significant figure:
 
@@ -197,225 +142,86 @@ d_lookup(i0=x_sf2_0, i1=x_sf2_1, i2=x_sf2_2, i3=x_sf2_3, i4=0, i5=0, o0=sum_x_sf
 d_lookup(i0=y_sf2_0, i1=y_sf2_1, i2=y_sf2_2, i3=y_sf2_3, i4=0, i5=0, o0=sum_y_sf2_0, o1=sum_y_sf2_1, o2=sum_y_sf2_2)
 d_lookup(i0=z_sf2_0, i1=z_sf2_1, i2=z_sf2_2, i3=z_sf2_3, i4=0, i5=0, o0=sum_z_sf2_0, o1=sum_z_sf2_1, o2=sum_z_sf2_2)
 
-# Lookup the words from the third-significant figure:
+# Remove the second-significant figure if it is zero:
 
-d_lookup(i0=a_sf3_0, i1=a_sf3_1, i2=a_sf3_2, i3=a_sf3_3, i4=0, i5=0, o0=sum_a_sf3_0, o1=sum_a_sf3_1, o2=sum_a_sf3_2)
-d_lookup(i0=b_sf3_0, i1=b_sf3_1, i2=b_sf3_2, i3=b_sf3_3, i4=0, i5=0, o0=sum_b_sf3_0, o1=sum_b_sf3_1, o2=sum_b_sf3_2)
-d_lookup(i0=c_sf3_0, i1=c_sf3_1, i2=c_sf3_2, i3=c_sf3_3, i4=0, i5=0, o0=sum_c_sf3_0, o1=sum_c_sf3_1, o2=sum_c_sf3_2)
-d_lookup(i0=d_sf3_0, i1=d_sf3_1, i2=d_sf3_2, i3=d_sf3_3, i4=0, i5=0, o0=sum_d_sf3_0, o1=sum_d_sf3_1, o2=sum_d_sf3_2)
-d_lookup(i0=e_sf3_0, i1=e_sf3_1, i2=e_sf3_2, i3=e_sf3_3, i4=0, i5=0, o0=sum_e_sf3_0, o1=sum_e_sf3_1, o2=sum_e_sf3_2)
-d_lookup(i0=f_sf3_0, i1=f_sf3_1, i2=f_sf3_2, i3=f_sf3_3, i4=0, i5=0, o0=sum_f_sf3_0, o1=sum_f_sf3_1, o2=sum_f_sf3_2)
-d_lookup(i0=g_sf3_0, i1=g_sf3_1, i2=g_sf3_2, i3=g_sf3_3, i4=0, i5=0, o0=sum_g_sf3_0, o1=sum_g_sf3_1, o2=sum_g_sf3_2)
-d_lookup(i0=h_sf3_0, i1=h_sf3_1, i2=h_sf3_2, i3=h_sf3_3, i4=0, i5=0, o0=sum_h_sf3_0, o1=sum_h_sf3_1, o2=sum_h_sf3_2)
-d_lookup(i0=i_sf3_0, i1=i_sf3_1, i2=i_sf3_2, i3=i_sf3_3, i4=0, i5=0, o0=sum_i_sf3_0, o1=sum_i_sf3_1, o2=sum_i_sf3_2)
-d_lookup(i0=j_sf3_0, i1=j_sf3_1, i2=j_sf3_2, i3=j_sf3_3, i4=0, i5=0, o0=sum_j_sf3_0, o1=sum_j_sf3_1, o2=sum_j_sf3_2)
-d_lookup(i0=k_sf3_0, i1=k_sf3_1, i2=k_sf3_2, i3=k_sf3_3, i4=0, i5=0, o0=sum_k_sf3_0, o1=sum_k_sf3_1, o2=sum_k_sf3_2)
-d_lookup(i0=l_sf3_0, i1=l_sf3_1, i2=l_sf3_2, i3=l_sf3_3, i4=0, i5=0, o0=sum_l_sf3_0, o1=sum_l_sf3_1, o2=sum_l_sf3_2)
-d_lookup(i0=m_sf3_0, i1=m_sf3_1, i2=m_sf3_2, i3=m_sf3_3, i4=0, i5=0, o0=sum_m_sf3_0, o1=sum_m_sf3_1, o2=sum_m_sf3_2)
-d_lookup(i0=n_sf3_0, i1=n_sf3_1, i2=n_sf3_2, i3=n_sf3_3, i4=0, i5=0, o0=sum_n_sf3_0, o1=sum_n_sf3_1, o2=sum_n_sf3_2)
-d_lookup(i0=o_sf3_0, i1=o_sf3_1, i2=o_sf3_2, i3=o_sf3_3, i4=0, i5=0, o0=sum_o_sf3_0, o1=sum_o_sf3_1, o2=sum_o_sf3_2)
-d_lookup(i0=p_sf3_0, i1=p_sf3_1, i2=p_sf3_2, i3=p_sf3_3, i4=0, i5=0, o0=sum_p_sf3_0, o1=sum_p_sf3_1, o2=sum_p_sf3_2)
-d_lookup(i0=q_sf3_0, i1=q_sf3_1, i2=q_sf3_2, i3=q_sf3_3, i4=0, i5=0, o0=sum_q_sf3_0, o1=sum_q_sf3_1, o2=sum_q_sf3_2)
-d_lookup(i0=r_sf3_0, i1=r_sf3_1, i2=r_sf3_2, i3=r_sf3_3, i4=0, i5=0, o0=sum_r_sf3_0, o1=sum_r_sf3_1, o2=sum_r_sf3_2)
-d_lookup(i0=s_sf3_0, i1=s_sf3_1, i2=s_sf3_2, i3=s_sf3_3, i4=0, i5=0, o0=sum_s_sf3_0, o1=sum_s_sf3_1, o2=sum_s_sf3_2)
-d_lookup(i0=t_sf3_0, i1=t_sf3_1, i2=t_sf3_2, i3=t_sf3_3, i4=0, i5=0, o0=sum_t_sf3_0, o1=sum_t_sf3_1, o2=sum_t_sf3_2)
-d_lookup(i0=u_sf3_0, i1=u_sf3_1, i2=u_sf3_2, i3=u_sf3_3, i4=0, i5=0, o0=sum_u_sf3_0, o1=sum_u_sf3_1, o2=sum_u_sf3_2)
-d_lookup(i0=v_sf3_0, i1=v_sf3_1, i2=v_sf3_2, i3=v_sf3_3, i4=0, i5=0, o0=sum_v_sf3_0, o1=sum_v_sf3_1, o2=sum_v_sf3_2)
-d_lookup(i0=w_sf3_0, i1=w_sf3_1, i2=w_sf3_2, i3=w_sf3_3, i4=0, i5=0, o0=sum_w_sf3_0, o1=sum_w_sf3_1, o2=sum_w_sf3_2)
-d_lookup(i0=x_sf3_0, i1=x_sf3_1, i2=x_sf3_2, i3=x_sf3_3, i4=0, i5=0, o0=sum_x_sf3_0, o1=sum_x_sf3_1, o2=sum_x_sf3_2)
-d_lookup(i0=y_sf3_0, i1=y_sf3_1, i2=y_sf3_2, i3=y_sf3_3, i4=0, i5=0, o0=sum_y_sf3_0, o1=sum_y_sf3_1, o2=sum_y_sf3_2)
-d_lookup(i0=z_sf3_0, i1=z_sf3_1, i2=z_sf3_2, i3=z_sf3_3, i4=0, i5=0, o0=sum_z_sf3_0, o1=sum_z_sf3_1, o2=sum_z_sf3_2)
-
-# Remove the third-significant figure if it is zero:
-
-mux(a=sum_a_sf3_0, b=0, sel=a_sf3_zero, out=add_a_sf3_0)
-mux(a=sum_a_sf3_1, b=0, sel=a_sf3_zero, out=add_a_sf3_1)
-mux(a=sum_a_sf3_2, b=0, sel=a_sf3_zero, out=add_a_sf3_2)
-mux(a=sum_b_sf3_0, b=0, sel=b_sf3_zero, out=add_b_sf3_0)
-mux(a=sum_b_sf3_1, b=0, sel=b_sf3_zero, out=add_b_sf3_1)
-mux(a=sum_b_sf3_2, b=0, sel=b_sf3_zero, out=add_b_sf3_2)
-mux(a=sum_c_sf3_0, b=0, sel=c_sf3_zero, out=add_c_sf3_0)
-mux(a=sum_c_sf3_1, b=0, sel=c_sf3_zero, out=add_c_sf3_1)
-mux(a=sum_c_sf3_2, b=0, sel=c_sf3_zero, out=add_c_sf3_2)
-mux(a=sum_d_sf3_0, b=0, sel=d_sf3_zero, out=add_d_sf3_0)
-mux(a=sum_d_sf3_1, b=0, sel=d_sf3_zero, out=add_d_sf3_1)
-mux(a=sum_d_sf3_2, b=0, sel=d_sf3_zero, out=add_d_sf3_2)
-mux(a=sum_e_sf3_0, b=0, sel=e_sf3_zero, out=add_e_sf3_0)
-mux(a=sum_e_sf3_1, b=0, sel=e_sf3_zero, out=add_e_sf3_1)
-mux(a=sum_e_sf3_2, b=0, sel=e_sf3_zero, out=add_e_sf3_2)
-mux(a=sum_f_sf3_0, b=0, sel=f_sf3_zero, out=add_f_sf3_0)
-mux(a=sum_f_sf3_1, b=0, sel=f_sf3_zero, out=add_f_sf3_1)
-mux(a=sum_f_sf3_2, b=0, sel=f_sf3_zero, out=add_f_sf3_2)
-mux(a=sum_g_sf3_0, b=0, sel=g_sf3_zero, out=add_g_sf3_0)
-mux(a=sum_g_sf3_1, b=0, sel=g_sf3_zero, out=add_g_sf3_1)
-mux(a=sum_g_sf3_2, b=0, sel=g_sf3_zero, out=add_g_sf3_2)
-mux(a=sum_h_sf3_0, b=0, sel=h_sf3_zero, out=add_h_sf3_0)
-mux(a=sum_h_sf3_1, b=0, sel=h_sf3_zero, out=add_h_sf3_1)
-mux(a=sum_h_sf3_2, b=0, sel=h_sf3_zero, out=add_h_sf3_2)
-mux(a=sum_i_sf3_0, b=0, sel=i_sf3_zero, out=add_i_sf3_0)
-mux(a=sum_i_sf3_1, b=0, sel=i_sf3_zero, out=add_i_sf3_1)
-mux(a=sum_i_sf3_2, b=0, sel=i_sf3_zero, out=add_i_sf3_2)
-mux(a=sum_j_sf3_0, b=0, sel=j_sf3_zero, out=add_j_sf3_0)
-mux(a=sum_j_sf3_1, b=0, sel=j_sf3_zero, out=add_j_sf3_1)
-mux(a=sum_j_sf3_2, b=0, sel=j_sf3_zero, out=add_j_sf3_2)
-mux(a=sum_k_sf3_0, b=0, sel=k_sf3_zero, out=add_k_sf3_0)
-mux(a=sum_k_sf3_1, b=0, sel=k_sf3_zero, out=add_k_sf3_1)
-mux(a=sum_k_sf3_2, b=0, sel=k_sf3_zero, out=add_k_sf3_2)
-mux(a=sum_l_sf3_0, b=0, sel=l_sf3_zero, out=add_l_sf3_0)
-mux(a=sum_l_sf3_1, b=0, sel=l_sf3_zero, out=add_l_sf3_1)
-mux(a=sum_l_sf3_2, b=0, sel=l_sf3_zero, out=add_l_sf3_2)
-mux(a=sum_m_sf3_0, b=0, sel=m_sf3_zero, out=add_m_sf3_0)
-mux(a=sum_m_sf3_1, b=0, sel=m_sf3_zero, out=add_m_sf3_1)
-mux(a=sum_m_sf3_2, b=0, sel=m_sf3_zero, out=add_m_sf3_2)
-mux(a=sum_n_sf3_0, b=0, sel=n_sf3_zero, out=add_n_sf3_0)
-mux(a=sum_n_sf3_1, b=0, sel=n_sf3_zero, out=add_n_sf3_1)
-mux(a=sum_n_sf3_2, b=0, sel=n_sf3_zero, out=add_n_sf3_2)
-mux(a=sum_o_sf3_0, b=0, sel=o_sf3_zero, out=add_o_sf3_0)
-mux(a=sum_o_sf3_1, b=0, sel=o_sf3_zero, out=add_o_sf3_1)
-mux(a=sum_o_sf3_2, b=0, sel=o_sf3_zero, out=add_o_sf3_2)
-mux(a=sum_p_sf3_0, b=0, sel=p_sf3_zero, out=add_p_sf3_0)
-mux(a=sum_p_sf3_1, b=0, sel=p_sf3_zero, out=add_p_sf3_1)
-mux(a=sum_p_sf3_2, b=0, sel=p_sf3_zero, out=add_p_sf3_2)
-mux(a=sum_q_sf3_0, b=0, sel=q_sf3_zero, out=add_q_sf3_0)
-mux(a=sum_q_sf3_1, b=0, sel=q_sf3_zero, out=add_q_sf3_1)
-mux(a=sum_q_sf3_2, b=0, sel=q_sf3_zero, out=add_q_sf3_2)
-mux(a=sum_r_sf3_0, b=0, sel=r_sf3_zero, out=add_r_sf3_0)
-mux(a=sum_r_sf3_1, b=0, sel=r_sf3_zero, out=add_r_sf3_1)
-mux(a=sum_r_sf3_2, b=0, sel=r_sf3_zero, out=add_r_sf3_2)
-mux(a=sum_s_sf3_0, b=0, sel=s_sf3_zero, out=add_s_sf3_0)
-mux(a=sum_s_sf3_1, b=0, sel=s_sf3_zero, out=add_s_sf3_1)
-mux(a=sum_s_sf3_2, b=0, sel=s_sf3_zero, out=add_s_sf3_2)
-mux(a=sum_t_sf3_0, b=0, sel=t_sf3_zero, out=add_t_sf3_0)
-mux(a=sum_t_sf3_1, b=0, sel=t_sf3_zero, out=add_t_sf3_1)
-mux(a=sum_t_sf3_2, b=0, sel=t_sf3_zero, out=add_t_sf3_2)
-mux(a=sum_u_sf3_0, b=0, sel=u_sf3_zero, out=add_u_sf3_0)
-mux(a=sum_u_sf3_1, b=0, sel=u_sf3_zero, out=add_u_sf3_1)
-mux(a=sum_u_sf3_2, b=0, sel=u_sf3_zero, out=add_u_sf3_2)
-mux(a=sum_v_sf3_0, b=0, sel=v_sf3_zero, out=add_v_sf3_0)
-mux(a=sum_v_sf3_1, b=0, sel=v_sf3_zero, out=add_v_sf3_1)
-mux(a=sum_v_sf3_2, b=0, sel=v_sf3_zero, out=add_v_sf3_2)
-mux(a=sum_w_sf3_0, b=0, sel=w_sf3_zero, out=add_w_sf3_0)
-mux(a=sum_w_sf3_1, b=0, sel=w_sf3_zero, out=add_w_sf3_1)
-mux(a=sum_w_sf3_2, b=0, sel=w_sf3_zero, out=add_w_sf3_2)
-mux(a=sum_x_sf3_0, b=0, sel=x_sf3_zero, out=add_x_sf3_0)
-mux(a=sum_x_sf3_1, b=0, sel=x_sf3_zero, out=add_x_sf3_1)
-mux(a=sum_x_sf3_2, b=0, sel=x_sf3_zero, out=add_x_sf3_2)
-mux(a=sum_y_sf3_0, b=0, sel=y_sf3_zero, out=add_y_sf3_0)
-mux(a=sum_y_sf3_1, b=0, sel=y_sf3_zero, out=add_y_sf3_1)
-mux(a=sum_y_sf3_2, b=0, sel=y_sf3_zero, out=add_y_sf3_2)
-mux(a=sum_z_sf3_0, b=0, sel=z_sf3_zero, out=add_z_sf3_0)
-mux(a=sum_z_sf3_1, b=0, sel=z_sf3_zero, out=add_z_sf3_1)
-mux(a=sum_z_sf3_2, b=0, sel=z_sf3_zero, out=add_z_sf3_2)
-
-# Check whether we should remove the second-significant figure:
-
-and(a=a_sf2_zero, b=a_sf3_zero, out=remove_a_sf2)
-and(a=b_sf2_zero, b=b_sf3_zero, out=remove_b_sf2)
-and(a=c_sf2_zero, b=c_sf3_zero, out=remove_c_sf2)
-and(a=d_sf2_zero, b=d_sf3_zero, out=remove_d_sf2)
-and(a=e_sf2_zero, b=e_sf3_zero, out=remove_e_sf2)
-and(a=f_sf2_zero, b=f_sf3_zero, out=remove_f_sf2)
-and(a=g_sf2_zero, b=g_sf3_zero, out=remove_g_sf2)
-and(a=h_sf2_zero, b=h_sf3_zero, out=remove_h_sf2)
-and(a=i_sf2_zero, b=i_sf3_zero, out=remove_i_sf2)
-and(a=j_sf2_zero, b=j_sf3_zero, out=remove_j_sf2)
-and(a=k_sf2_zero, b=k_sf3_zero, out=remove_k_sf2)
-and(a=l_sf2_zero, b=l_sf3_zero, out=remove_l_sf2)
-and(a=m_sf2_zero, b=m_sf3_zero, out=remove_m_sf2)
-and(a=n_sf2_zero, b=n_sf3_zero, out=remove_n_sf2)
-and(a=o_sf2_zero, b=o_sf3_zero, out=remove_o_sf2)
-and(a=p_sf2_zero, b=p_sf3_zero, out=remove_p_sf2)
-and(a=q_sf2_zero, b=q_sf3_zero, out=remove_q_sf2)
-and(a=r_sf2_zero, b=r_sf3_zero, out=remove_r_sf2)
-and(a=s_sf2_zero, b=s_sf3_zero, out=remove_s_sf2)
-and(a=t_sf2_zero, b=t_sf3_zero, out=remove_t_sf2)
-and(a=u_sf2_zero, b=u_sf3_zero, out=remove_u_sf2)
-and(a=v_sf2_zero, b=v_sf3_zero, out=remove_v_sf2)
-and(a=w_sf2_zero, b=w_sf3_zero, out=remove_w_sf2)
-and(a=x_sf2_zero, b=x_sf3_zero, out=remove_x_sf2)
-and(a=y_sf2_zero, b=y_sf3_zero, out=remove_y_sf2)
-and(a=z_sf2_zero, b=z_sf3_zero, out=remove_z_sf2)
-
-# Remove the second-significant figure if sf2 and sf3 are zero:
-
-mux(a=sum_a_sf2_0, b=0, sel=remove_a_sf2, out=add_a_sf2_0)
-mux(a=sum_a_sf2_1, b=0, sel=remove_a_sf2, out=add_a_sf2_1)
-mux(a=sum_a_sf2_2, b=0, sel=remove_a_sf2, out=add_a_sf2_2)
-mux(a=sum_b_sf2_0, b=0, sel=remove_b_sf2, out=add_b_sf2_0)
-mux(a=sum_b_sf2_1, b=0, sel=remove_b_sf2, out=add_b_sf2_1)
-mux(a=sum_b_sf2_2, b=0, sel=remove_b_sf2, out=add_b_sf2_2)
-mux(a=sum_c_sf2_0, b=0, sel=remove_c_sf2, out=add_c_sf2_0)
-mux(a=sum_c_sf2_1, b=0, sel=remove_c_sf2, out=add_c_sf2_1)
-mux(a=sum_c_sf2_2, b=0, sel=remove_c_sf2, out=add_c_sf2_2)
-mux(a=sum_d_sf2_0, b=0, sel=remove_d_sf2, out=add_d_sf2_0)
-mux(a=sum_d_sf2_1, b=0, sel=remove_d_sf2, out=add_d_sf2_1)
-mux(a=sum_d_sf2_2, b=0, sel=remove_d_sf2, out=add_d_sf2_2)
-mux(a=sum_e_sf2_0, b=0, sel=remove_e_sf2, out=add_e_sf2_0)
-mux(a=sum_e_sf2_1, b=0, sel=remove_e_sf2, out=add_e_sf2_1)
-mux(a=sum_e_sf2_2, b=0, sel=remove_e_sf2, out=add_e_sf2_2)
-mux(a=sum_f_sf2_0, b=0, sel=remove_f_sf2, out=add_f_sf2_0)
-mux(a=sum_f_sf2_1, b=0, sel=remove_f_sf2, out=add_f_sf2_1)
-mux(a=sum_f_sf2_2, b=0, sel=remove_f_sf2, out=add_f_sf2_2)
-mux(a=sum_g_sf2_0, b=0, sel=remove_g_sf2, out=add_g_sf2_0)
-mux(a=sum_g_sf2_1, b=0, sel=remove_g_sf2, out=add_g_sf2_1)
-mux(a=sum_g_sf2_2, b=0, sel=remove_g_sf2, out=add_g_sf2_2)
-mux(a=sum_h_sf2_0, b=0, sel=remove_h_sf2, out=add_h_sf2_0)
-mux(a=sum_h_sf2_1, b=0, sel=remove_h_sf2, out=add_h_sf2_1)
-mux(a=sum_h_sf2_2, b=0, sel=remove_h_sf2, out=add_h_sf2_2)
-mux(a=sum_i_sf2_0, b=0, sel=remove_i_sf2, out=add_i_sf2_0)
-mux(a=sum_i_sf2_1, b=0, sel=remove_i_sf2, out=add_i_sf2_1)
-mux(a=sum_i_sf2_2, b=0, sel=remove_i_sf2, out=add_i_sf2_2)
-mux(a=sum_j_sf2_0, b=0, sel=remove_j_sf2, out=add_j_sf2_0)
-mux(a=sum_j_sf2_1, b=0, sel=remove_j_sf2, out=add_j_sf2_1)
-mux(a=sum_j_sf2_2, b=0, sel=remove_j_sf2, out=add_j_sf2_2)
-mux(a=sum_k_sf2_0, b=0, sel=remove_k_sf2, out=add_k_sf2_0)
-mux(a=sum_k_sf2_1, b=0, sel=remove_k_sf2, out=add_k_sf2_1)
-mux(a=sum_k_sf2_2, b=0, sel=remove_k_sf2, out=add_k_sf2_2)
-mux(a=sum_l_sf2_0, b=0, sel=remove_l_sf2, out=add_l_sf2_0)
-mux(a=sum_l_sf2_1, b=0, sel=remove_l_sf2, out=add_l_sf2_1)
-mux(a=sum_l_sf2_2, b=0, sel=remove_l_sf2, out=add_l_sf2_2)
-mux(a=sum_m_sf2_0, b=0, sel=remove_m_sf2, out=add_m_sf2_0)
-mux(a=sum_m_sf2_1, b=0, sel=remove_m_sf2, out=add_m_sf2_1)
-mux(a=sum_m_sf2_2, b=0, sel=remove_m_sf2, out=add_m_sf2_2)
-mux(a=sum_n_sf2_0, b=0, sel=remove_n_sf2, out=add_n_sf2_0)
-mux(a=sum_n_sf2_1, b=0, sel=remove_n_sf2, out=add_n_sf2_1)
-mux(a=sum_n_sf2_2, b=0, sel=remove_n_sf2, out=add_n_sf2_2)
-mux(a=sum_o_sf2_0, b=0, sel=remove_o_sf2, out=add_o_sf2_0)
-mux(a=sum_o_sf2_1, b=0, sel=remove_o_sf2, out=add_o_sf2_1)
-mux(a=sum_o_sf2_2, b=0, sel=remove_o_sf2, out=add_o_sf2_2)
-mux(a=sum_p_sf2_0, b=0, sel=remove_p_sf2, out=add_p_sf2_0)
-mux(a=sum_p_sf2_1, b=0, sel=remove_p_sf2, out=add_p_sf2_1)
-mux(a=sum_p_sf2_2, b=0, sel=remove_p_sf2, out=add_p_sf2_2)
-mux(a=sum_q_sf2_0, b=0, sel=remove_q_sf2, out=add_q_sf2_0)
-mux(a=sum_q_sf2_1, b=0, sel=remove_q_sf2, out=add_q_sf2_1)
-mux(a=sum_q_sf2_2, b=0, sel=remove_q_sf2, out=add_q_sf2_2)
-mux(a=sum_r_sf2_0, b=0, sel=remove_r_sf2, out=add_r_sf2_0)
-mux(a=sum_r_sf2_1, b=0, sel=remove_r_sf2, out=add_r_sf2_1)
-mux(a=sum_r_sf2_2, b=0, sel=remove_r_sf2, out=add_r_sf2_2)
-mux(a=sum_s_sf2_0, b=0, sel=remove_s_sf2, out=add_s_sf2_0)
-mux(a=sum_s_sf2_1, b=0, sel=remove_s_sf2, out=add_s_sf2_1)
-mux(a=sum_s_sf2_2, b=0, sel=remove_s_sf2, out=add_s_sf2_2)
-mux(a=sum_t_sf2_0, b=0, sel=remove_t_sf2, out=add_t_sf2_0)
-mux(a=sum_t_sf2_1, b=0, sel=remove_t_sf2, out=add_t_sf2_1)
-mux(a=sum_t_sf2_2, b=0, sel=remove_t_sf2, out=add_t_sf2_2)
-mux(a=sum_u_sf2_0, b=0, sel=remove_u_sf2, out=add_u_sf2_0)
-mux(a=sum_u_sf2_1, b=0, sel=remove_u_sf2, out=add_u_sf2_1)
-mux(a=sum_u_sf2_2, b=0, sel=remove_u_sf2, out=add_u_sf2_2)
-mux(a=sum_v_sf2_0, b=0, sel=remove_v_sf2, out=add_v_sf2_0)
-mux(a=sum_v_sf2_1, b=0, sel=remove_v_sf2, out=add_v_sf2_1)
-mux(a=sum_v_sf2_2, b=0, sel=remove_v_sf2, out=add_v_sf2_2)
-mux(a=sum_w_sf2_0, b=0, sel=remove_w_sf2, out=add_w_sf2_0)
-mux(a=sum_w_sf2_1, b=0, sel=remove_w_sf2, out=add_w_sf2_1)
-mux(a=sum_w_sf2_2, b=0, sel=remove_w_sf2, out=add_w_sf2_2)
-mux(a=sum_x_sf2_0, b=0, sel=remove_x_sf2, out=add_x_sf2_0)
-mux(a=sum_x_sf2_1, b=0, sel=remove_x_sf2, out=add_x_sf2_1)
-mux(a=sum_x_sf2_2, b=0, sel=remove_x_sf2, out=add_x_sf2_2)
-mux(a=sum_y_sf2_0, b=0, sel=remove_y_sf2, out=add_y_sf2_0)
-mux(a=sum_y_sf2_1, b=0, sel=remove_y_sf2, out=add_y_sf2_1)
-mux(a=sum_y_sf2_2, b=0, sel=remove_y_sf2, out=add_y_sf2_2)
-mux(a=sum_z_sf2_0, b=0, sel=remove_z_sf2, out=add_z_sf2_0)
-mux(a=sum_z_sf2_1, b=0, sel=remove_z_sf2, out=add_z_sf2_1)
-mux(a=sum_z_sf2_2, b=0, sel=remove_z_sf2, out=add_z_sf2_2)
+mux(a=sum_a_sf2_0, b=0, sel=a_sf2_zero, out=add_a_sf2_0)
+mux(a=sum_a_sf2_1, b=0, sel=a_sf2_zero, out=add_a_sf2_1)
+mux(a=sum_a_sf2_2, b=0, sel=a_sf2_zero, out=add_a_sf2_2)
+mux(a=sum_b_sf2_0, b=0, sel=b_sf2_zero, out=add_b_sf2_0)
+mux(a=sum_b_sf2_1, b=0, sel=b_sf2_zero, out=add_b_sf2_1)
+mux(a=sum_b_sf2_2, b=0, sel=b_sf2_zero, out=add_b_sf2_2)
+mux(a=sum_c_sf2_0, b=0, sel=c_sf2_zero, out=add_c_sf2_0)
+mux(a=sum_c_sf2_1, b=0, sel=c_sf2_zero, out=add_c_sf2_1)
+mux(a=sum_c_sf2_2, b=0, sel=c_sf2_zero, out=add_c_sf2_2)
+mux(a=sum_d_sf2_0, b=0, sel=d_sf2_zero, out=add_d_sf2_0)
+mux(a=sum_d_sf2_1, b=0, sel=d_sf2_zero, out=add_d_sf2_1)
+mux(a=sum_d_sf2_2, b=0, sel=d_sf2_zero, out=add_d_sf2_2)
+mux(a=sum_e_sf2_0, b=0, sel=e_sf2_zero, out=add_e_sf2_0)
+mux(a=sum_e_sf2_1, b=0, sel=e_sf2_zero, out=add_e_sf2_1)
+mux(a=sum_e_sf2_2, b=0, sel=e_sf2_zero, out=add_e_sf2_2)
+mux(a=sum_f_sf2_0, b=0, sel=f_sf2_zero, out=add_f_sf2_0)
+mux(a=sum_f_sf2_1, b=0, sel=f_sf2_zero, out=add_f_sf2_1)
+mux(a=sum_f_sf2_2, b=0, sel=f_sf2_zero, out=add_f_sf2_2)
+mux(a=sum_g_sf2_0, b=0, sel=g_sf2_zero, out=add_g_sf2_0)
+mux(a=sum_g_sf2_1, b=0, sel=g_sf2_zero, out=add_g_sf2_1)
+mux(a=sum_g_sf2_2, b=0, sel=g_sf2_zero, out=add_g_sf2_2)
+mux(a=sum_h_sf2_0, b=0, sel=h_sf2_zero, out=add_h_sf2_0)
+mux(a=sum_h_sf2_1, b=0, sel=h_sf2_zero, out=add_h_sf2_1)
+mux(a=sum_h_sf2_2, b=0, sel=h_sf2_zero, out=add_h_sf2_2)
+mux(a=sum_i_sf2_0, b=0, sel=i_sf2_zero, out=add_i_sf2_0)
+mux(a=sum_i_sf2_1, b=0, sel=i_sf2_zero, out=add_i_sf2_1)
+mux(a=sum_i_sf2_2, b=0, sel=i_sf2_zero, out=add_i_sf2_2)
+mux(a=sum_j_sf2_0, b=0, sel=j_sf2_zero, out=add_j_sf2_0)
+mux(a=sum_j_sf2_1, b=0, sel=j_sf2_zero, out=add_j_sf2_1)
+mux(a=sum_j_sf2_2, b=0, sel=j_sf2_zero, out=add_j_sf2_2)
+mux(a=sum_k_sf2_0, b=0, sel=k_sf2_zero, out=add_k_sf2_0)
+mux(a=sum_k_sf2_1, b=0, sel=k_sf2_zero, out=add_k_sf2_1)
+mux(a=sum_k_sf2_2, b=0, sel=k_sf2_zero, out=add_k_sf2_2)
+mux(a=sum_l_sf2_0, b=0, sel=l_sf2_zero, out=add_l_sf2_0)
+mux(a=sum_l_sf2_1, b=0, sel=l_sf2_zero, out=add_l_sf2_1)
+mux(a=sum_l_sf2_2, b=0, sel=l_sf2_zero, out=add_l_sf2_2)
+mux(a=sum_m_sf2_0, b=0, sel=m_sf2_zero, out=add_m_sf2_0)
+mux(a=sum_m_sf2_1, b=0, sel=m_sf2_zero, out=add_m_sf2_1)
+mux(a=sum_m_sf2_2, b=0, sel=m_sf2_zero, out=add_m_sf2_2)
+mux(a=sum_n_sf2_0, b=0, sel=n_sf2_zero, out=add_n_sf2_0)
+mux(a=sum_n_sf2_1, b=0, sel=n_sf2_zero, out=add_n_sf2_1)
+mux(a=sum_n_sf2_2, b=0, sel=n_sf2_zero, out=add_n_sf2_2)
+mux(a=sum_o_sf2_0, b=0, sel=o_sf2_zero, out=add_o_sf2_0)
+mux(a=sum_o_sf2_1, b=0, sel=o_sf2_zero, out=add_o_sf2_1)
+mux(a=sum_o_sf2_2, b=0, sel=o_sf2_zero, out=add_o_sf2_2)
+mux(a=sum_p_sf2_0, b=0, sel=p_sf2_zero, out=add_p_sf2_0)
+mux(a=sum_p_sf2_1, b=0, sel=p_sf2_zero, out=add_p_sf2_1)
+mux(a=sum_p_sf2_2, b=0, sel=p_sf2_zero, out=add_p_sf2_2)
+mux(a=sum_q_sf2_0, b=0, sel=q_sf2_zero, out=add_q_sf2_0)
+mux(a=sum_q_sf2_1, b=0, sel=q_sf2_zero, out=add_q_sf2_1)
+mux(a=sum_q_sf2_2, b=0, sel=q_sf2_zero, out=add_q_sf2_2)
+mux(a=sum_r_sf2_0, b=0, sel=r_sf2_zero, out=add_r_sf2_0)
+mux(a=sum_r_sf2_1, b=0, sel=r_sf2_zero, out=add_r_sf2_1)
+mux(a=sum_r_sf2_2, b=0, sel=r_sf2_zero, out=add_r_sf2_2)
+mux(a=sum_s_sf2_0, b=0, sel=s_sf2_zero, out=add_s_sf2_0)
+mux(a=sum_s_sf2_1, b=0, sel=s_sf2_zero, out=add_s_sf2_1)
+mux(a=sum_s_sf2_2, b=0, sel=s_sf2_zero, out=add_s_sf2_2)
+mux(a=sum_t_sf2_0, b=0, sel=t_sf2_zero, out=add_t_sf2_0)
+mux(a=sum_t_sf2_1, b=0, sel=t_sf2_zero, out=add_t_sf2_1)
+mux(a=sum_t_sf2_2, b=0, sel=t_sf2_zero, out=add_t_sf2_2)
+mux(a=sum_u_sf2_0, b=0, sel=u_sf2_zero, out=add_u_sf2_0)
+mux(a=sum_u_sf2_1, b=0, sel=u_sf2_zero, out=add_u_sf2_1)
+mux(a=sum_u_sf2_2, b=0, sel=u_sf2_zero, out=add_u_sf2_2)
+mux(a=sum_v_sf2_0, b=0, sel=v_sf2_zero, out=add_v_sf2_0)
+mux(a=sum_v_sf2_1, b=0, sel=v_sf2_zero, out=add_v_sf2_1)
+mux(a=sum_v_sf2_2, b=0, sel=v_sf2_zero, out=add_v_sf2_2)
+mux(a=sum_w_sf2_0, b=0, sel=w_sf2_zero, out=add_w_sf2_0)
+mux(a=sum_w_sf2_1, b=0, sel=w_sf2_zero, out=add_w_sf2_1)
+mux(a=sum_w_sf2_2, b=0, sel=w_sf2_zero, out=add_w_sf2_2)
+mux(a=sum_x_sf2_0, b=0, sel=x_sf2_zero, out=add_x_sf2_0)
+mux(a=sum_x_sf2_1, b=0, sel=x_sf2_zero, out=add_x_sf2_1)
+mux(a=sum_x_sf2_2, b=0, sel=x_sf2_zero, out=add_x_sf2_2)
+mux(a=sum_y_sf2_0, b=0, sel=y_sf2_zero, out=add_y_sf2_0)
+mux(a=sum_y_sf2_1, b=0, sel=y_sf2_zero, out=add_y_sf2_1)
+mux(a=sum_y_sf2_2, b=0, sel=y_sf2_zero, out=add_y_sf2_2)
+mux(a=sum_z_sf2_0, b=0, sel=z_sf2_zero, out=add_z_sf2_0)
+mux(a=sum_z_sf2_1, b=0, sel=z_sf2_zero, out=add_z_sf2_1)
+mux(a=sum_z_sf2_2, b=0, sel=z_sf2_zero, out=add_z_sf2_2)
 
 #### Add the letter counts for each significant figure:
 
@@ -487,68 +293,34 @@ lookup_adder(
   carry=not_used_1
 )
 
-lookup_adder(
-  a0=add_a_sf3_0, a1=add_a_sf3_1, a2=add_a_sf3_2,
-  b0=add_b_sf3_0, b1=add_b_sf3_1, b2=add_b_sf3_2,
-  c0=add_c_sf3_0, c1=add_c_sf3_1, c2=add_c_sf3_2,
-  d0=add_d_sf3_0, d1=add_d_sf3_1, d2=add_d_sf3_2,
-  e0=add_e_sf3_0, e1=add_e_sf3_1, e2=add_e_sf3_2,
-  f0=add_f_sf3_0, f1=add_f_sf3_1, f2=add_f_sf3_2,
-  g0=add_g_sf3_0, g1=add_g_sf3_1, g2=add_g_sf3_2,
-  h0=add_h_sf3_0, h1=add_h_sf3_1, h2=add_h_sf3_2,
-  i0=add_i_sf3_0, i1=add_i_sf3_1, i2=add_i_sf3_2,
-  j0=add_j_sf3_0, j1=add_j_sf3_1, j2=add_j_sf3_2,
-  k0=add_k_sf3_0, k1=add_k_sf3_1, k2=add_k_sf3_2,
-  l0=add_l_sf3_0, l1=add_l_sf3_1, l2=add_l_sf3_2,
-  m0=add_m_sf3_0, m1=add_m_sf3_1, m2=add_m_sf3_2,
-  n0=add_n_sf3_0, n1=add_n_sf3_1, n2=add_n_sf3_2,
-  o0=add_o_sf3_0, o1=add_o_sf3_1, o2=add_o_sf3_2,
-  p0=add_p_sf3_0, p1=add_p_sf3_1, p2=add_p_sf3_2,
-  q0=add_q_sf3_0, q1=add_q_sf3_1, q2=add_q_sf3_2,
-  r0=add_r_sf3_0, r1=add_r_sf3_1, r2=add_r_sf3_2,
-  s0=add_s_sf3_0, s1=add_s_sf3_1, s2=add_s_sf3_2,
-  t0=add_t_sf3_0, t1=add_t_sf3_1, t2=add_t_sf3_2,
-  u0=add_u_sf3_0, u1=add_u_sf3_1, u2=add_u_sf3_2,
-  v0=add_v_sf3_0, v1=add_v_sf3_1, v2=add_v_sf3_2,
-  w0=add_w_sf3_0, w1=add_w_sf3_1, w2=add_w_sf3_2,
-  x0=add_x_sf3_0, x1=add_x_sf3_1, x2=add_x_sf3_2,
-  y0=add_y_sf3_0, y1=add_y_sf3_1, y2=add_y_sf3_2,
-  z0=add_z_sf3_0, z1=add_z_sf3_1, z2=add_z_sf3_2,
+# Add the word "point" unless sf2 is zero:
 
-  sum0=sum_sf3_0, sum1=sum_sf3_1, sum2=sum_sf3_2, sum3=sum_sf3_3, sum4=sum_sf3_4, sum5=sum_sf3_5,
-  sum6=sum_sf3_6, sum7=sum_sf3_7, sum8=sum_sf3_8, sum9=sum_sf3_9, sum10=sum_sf3_10, sum11=sum_sf3_11,
-
-  carry=not_used_2
-)
-
-# Check which inputs specify a number that requires a decimal point:
-
-not(in=remove_a_sf2, out=a_decimal_point)
-not(in=remove_b_sf2, out=b_decimal_point)
-not(in=remove_c_sf2, out=c_decimal_point)
-not(in=remove_d_sf2, out=d_decimal_point)
-not(in=remove_e_sf2, out=e_decimal_point)
-not(in=remove_f_sf2, out=f_decimal_point)
-not(in=remove_g_sf2, out=g_decimal_point)
-not(in=remove_h_sf2, out=h_decimal_point)
-not(in=remove_i_sf2, out=i_decimal_point)
-not(in=remove_j_sf2, out=j_decimal_point)
-not(in=remove_k_sf2, out=k_decimal_point)
-not(in=remove_l_sf2, out=l_decimal_point)
-not(in=remove_m_sf2, out=m_decimal_point)
-not(in=remove_n_sf2, out=n_decimal_point)
-not(in=remove_o_sf2, out=o_decimal_point)
-not(in=remove_p_sf2, out=p_decimal_point)
-not(in=remove_q_sf2, out=q_decimal_point)
-not(in=remove_r_sf2, out=r_decimal_point)
-not(in=remove_s_sf2, out=s_decimal_point)
-not(in=remove_t_sf2, out=t_decimal_point)
-not(in=remove_u_sf2, out=u_decimal_point)
-not(in=remove_v_sf2, out=v_decimal_point)
-not(in=remove_w_sf2, out=w_decimal_point)
-not(in=remove_x_sf2, out=x_decimal_point)
-not(in=remove_y_sf2, out=y_decimal_point)
-not(in=remove_z_sf2, out=z_decimal_point)
+not(in=a_sf2_zero, out=a_decimal_point)
+not(in=b_sf2_zero, out=b_decimal_point)
+not(in=c_sf2_zero, out=c_decimal_point)
+not(in=d_sf2_zero, out=d_decimal_point)
+not(in=e_sf2_zero, out=e_decimal_point)
+not(in=f_sf2_zero, out=f_decimal_point)
+not(in=g_sf2_zero, out=g_decimal_point)
+not(in=h_sf2_zero, out=h_decimal_point)
+not(in=i_sf2_zero, out=i_decimal_point)
+not(in=j_sf2_zero, out=j_decimal_point)
+not(in=k_sf2_zero, out=k_decimal_point)
+not(in=l_sf2_zero, out=l_decimal_point)
+not(in=m_sf2_zero, out=m_decimal_point)
+not(in=n_sf2_zero, out=n_decimal_point)
+not(in=o_sf2_zero, out=o_decimal_point)
+not(in=p_sf2_zero, out=p_decimal_point)
+not(in=q_sf2_zero, out=q_decimal_point)
+not(in=r_sf2_zero, out=r_decimal_point)
+not(in=s_sf2_zero, out=s_decimal_point)
+not(in=t_sf2_zero, out=t_decimal_point)
+not(in=u_sf2_zero, out=u_decimal_point)
+not(in=v_sf2_zero, out=v_decimal_point)
+not(in=w_sf2_zero, out=w_decimal_point)
+not(in=x_sf2_zero, out=x_decimal_point)
+not(in=y_sf2_zero, out=y_decimal_point)
+not(in=z_sf2_zero, out=z_decimal_point)
 
 # Add one for every number that has a decimal point:
 
@@ -756,24 +528,11 @@ add_12(
   a0=sum_x_0, a1=sum_x_1, a2=sum_x_2, a3=sum_x_3, a4=sum_x_4, a5=sum_x_5,
   a6=sum_x_6, a7=sum_x_7, a8=sum_x_8, a9=sum_x_9, a10=sum_x_10, a11=sum_x_11,
 
-  b0=sum_sf3_0, b1=sum_sf3_1, b2=sum_sf3_2, b3=sum_sf3_3, b4=sum_sf3_4, b5=sum_sf3_5,
-  b6=sum_sf3_6, b7=sum_sf3_7, b8=sum_sf3_8, b9=sum_sf3_9, b10=sum_sf3_10, b11=sum_sf3_11,
-
-  o0=sum_y_0, o1=sum_y_1, o2=sum_y_2, o3=sum_y_3, o4=sum_y_4, o5=sum_y_5,
-  o6=sum_y_6, o7=sum_y_7, o8=sum_y_8, o9=sum_y_9, o10=sum_y_10, o11=sum_y_11,
-
-  carry=not_used_29
-)
-
-add_12(
-  a0=sum_y_0, a1=sum_y_1, a2=sum_y_2, a3=sum_y_3, a4=sum_y_4, a5=sum_y_5,
-  a6=sum_y_6, a7=sum_y_7, a8=sum_y_8, a9=sum_y_9, a10=sum_y_10, a11=sum_y_11,
-
   b0=sum_point_0, b1=sum_point_1, b2=sum_point_2, b3=sum_point_3, b4=sum_point_4, b5=sum_point_5,
   b6=0, b7=0, b8=0, b9=0, b10=0, b11=0,
 
   o0=sum0, o1=sum1, o2=sum2, o3=sum3, o4=sum4, o5=sum5,
   o6=sum6, o7=sum7, o8=sum8, o9=sum9, o10=sum10, o11=sum11,
 
-  carry=not_used_30
+  carry=not_used_29
 )
