@@ -78,191 +78,165 @@ describe(describedChip, function () {
 
     var result = HDL.evaluate(describedChip, {
       a_sf1_5: _, a_sf1_4: _, a_sf1_3: T, a_sf1_2: _, a_sf1_1: T, a_sf1_0: _, // ten
-                                                                              // ____
-      a_sf2_3: _, a_sf2_2: _, a_sf2_1: _, a_sf2_0: _,                         // ____
-      a_sf3_3: _, a_sf3_2: _, a_sf3_1: _, a_sf3_0: _,                         // ____
+                                                                              // point
+      a_sf2_3: _, a_sf2_2: _, a_sf2_1: _, a_sf2_0: T,                         // one
                                                                               // percent
                                                                               // are a's
 
       b_sf1_5: _, b_sf1_4: _, b_sf1_3: _, b_sf1_2: _, b_sf1_1: T, b_sf1_0: _, // two
                                                                               // point
       b_sf2_3: _, b_sf2_2: T, b_sf2_1: T, b_sf2_0: T,                         // seven
-      b_sf3_3: _, b_sf3_2: T, b_sf3_1: T, b_sf3_0: _,                         // six
                                                                               // percent
                                                                               // are b's
 
       c_sf1_5: _, c_sf1_4: _, c_sf1_3: _, c_sf1_2: _, c_sf1_1: T, c_sf1_0: T, // three
                                                                               // point
       c_sf2_3: _, c_sf2_2: T, c_sf2_1: _, c_sf2_0: T,                         // five
-      c_sf3_3: _, c_sf3_2: T, c_sf3_1: _, c_sf3_0: _,                         // four
                                                                               // percent
                                                                               // are c's
 
       d_sf1_5: _, d_sf1_4: _, d_sf1_3: _, d_sf1_2: T, d_sf1_1: _, d_sf1_0: _, // four
                                                                               // point
       d_sf2_3: _, d_sf2_2: _, d_sf2_1: T, d_sf2_0: T,                         // three
-      d_sf3_3: _, d_sf3_2: _, d_sf3_1: T, d_sf3_0: _,                         // two
                                                                               // percent
                                                                               // are d's
 
       e_sf1_5: _, e_sf1_4: _, e_sf1_3: _, e_sf1_2: T, e_sf1_1: _, e_sf1_0: T, // five
                                                                               // point
       e_sf2_3: _, e_sf2_2: _, e_sf2_1: _, e_sf2_0: T,                         // one
-      e_sf3_3: _, e_sf3_2: _, e_sf3_1: _, e_sf3_0: _,                         // ____
                                                                               // percent
                                                                               // are e's
 
       f_sf1_5: _, f_sf1_4: _, f_sf1_3: _, f_sf1_2: T, f_sf1_1: T, f_sf1_0: _, // six
                                                                               // point
       f_sf2_3: T, f_sf2_2: _, f_sf2_1: _, f_sf2_0: T,                         // nine
-      f_sf3_3: T, f_sf3_2: _, f_sf3_1: _, f_sf3_0: _,                         // eight
                                                                               // percent
                                                                               // are f's
 
       g_sf1_5: _, g_sf1_4: _, g_sf1_3: _, g_sf1_2: T, g_sf1_1: T, g_sf1_0: T, // seven
                                                                               // point
       g_sf2_3: _, g_sf2_2: T, g_sf2_1: T, g_sf2_0: T,                         // seven
-      g_sf3_3: _, g_sf3_2: T, g_sf3_1: T, g_sf3_0: _,                         // six
                                                                               // percent
                                                                               // are g's
 
       h_sf1_5: _, h_sf1_4: _, h_sf1_3: T, h_sf1_2: _, h_sf1_1: _, h_sf1_0: _, // eight
                                                                               // point
       h_sf2_3: _, h_sf2_2: T, h_sf2_1: _, h_sf2_0: T,                         // five
-      h_sf3_3: _, h_sf3_2: T, h_sf3_1: _, h_sf3_0: _,                         // four
                                                                               // percent
                                                                               // are h's
 
       i_sf1_5: _, i_sf1_4: _, i_sf1_3: T, i_sf1_2: _, i_sf1_1: _, i_sf1_0: T, // nine
                                                                               // point
       i_sf2_3: _, i_sf2_2: _, i_sf2_1: T, i_sf2_0: T,                         // three
-      i_sf3_3: _, i_sf3_2: _, i_sf3_1: T, i_sf3_0: _,                         // two
                                                                               // percent
                                                                               // are i's
 
       j_sf1_5: _, j_sf1_4: _, j_sf1_3: T, j_sf1_2: _, j_sf1_1: T, j_sf1_0: _, // ten
                                                                               // point
       j_sf2_3: _, j_sf2_2: _, j_sf2_1: _, j_sf2_0: T,                         // one
-      j_sf3_3: _, j_sf3_2: _, j_sf3_1: _, j_sf3_0: _,                         // ____
                                                                               // percent
                                                                               // are j's
 
       k_sf1_5: _, k_sf1_4: _, k_sf1_3: T, k_sf1_2: _, k_sf1_1: T, k_sf1_0: T, // eleven
                                                                               // point
       k_sf2_3: T, k_sf2_2: _, k_sf2_1: _, k_sf2_0: T,                         // nine
-      k_sf3_3: T, k_sf3_2: _, k_sf3_1: _, k_sf3_0: _,                         // eight
                                                                               // percent
                                                                               // are k's
 
       l_sf1_5: _, l_sf1_4: _, l_sf1_3: T, l_sf1_2: T, l_sf1_1: _, l_sf1_0: _, // twelve
                                                                               // point
       l_sf2_3: _, l_sf2_2: T, l_sf2_1: T, l_sf2_0: T,                         // seven
-      l_sf3_3: _, l_sf3_2: T, l_sf3_1: T, l_sf3_0: _,                         // six
                                                                               // percent
                                                                               // are l's
 
       m_sf1_5: _, m_sf1_4: _, m_sf1_3: T, m_sf1_2: T, m_sf1_1: _, m_sf1_0: T, // thirteen
                                                                               // ____
       m_sf2_3: _, m_sf2_2: _, m_sf2_1: _, m_sf2_0: _,                         // ____
-      m_sf3_3: _, m_sf3_2: _, m_sf3_1: _, m_sf3_0: _,                         // ____
                                                                               // percent
                                                                               // are m's
 
       n_sf1_5: _, n_sf1_4: _, n_sf1_3: T, n_sf1_2: T, n_sf1_1: T, n_sf1_0: _, // fourteen
                                                                               // point
       n_sf2_3: _, n_sf2_2: _, n_sf2_1: T, n_sf2_0: T,                         // three
-      n_sf3_3: _, n_sf3_2: _, n_sf3_1: T, n_sf3_0: _,                         // two
                                                                               // percent
                                                                               // are n's
 
       o_sf1_5: _, o_sf1_4: _, o_sf1_3: T, o_sf1_2: T, o_sf1_1: T, o_sf1_0: T, // fifteen
                                                                               // point
       o_sf2_3: _, o_sf2_2: _, o_sf2_1: _, o_sf2_0: T,                         // one
-      o_sf3_3: _, o_sf3_2: _, o_sf3_1: _, o_sf3_0: _,                         // ____
                                                                               // percent
                                                                               // are o's
 
       p_sf1_5: _, p_sf1_4: T, p_sf1_3: _, p_sf1_2: _, p_sf1_1: _, p_sf1_0: _, // sixteen
-                                                                              // point
-      p_sf2_3: _, p_sf2_2: _, p_sf2_1: _, p_sf2_0: _,                         // zero
-      p_sf3_3: _, p_sf3_2: T, p_sf3_1: _, p_sf3_0: T,                         // five
+                                                                              // ____
+      p_sf2_3: _, p_sf2_2: _, p_sf2_1: _, p_sf2_0: _,                         // ____
                                                                               // percent
                                                                               // are p's
 
       q_sf1_5: _, q_sf1_4: T, q_sf1_3: _, q_sf1_2: _, q_sf1_1: _, q_sf1_0: T, // seventeen
                                                                               // point
       q_sf2_3: _, q_sf2_2: T, q_sf2_1: T, q_sf2_0: T,                         // seven
-      q_sf3_3: _, q_sf3_2: T, q_sf3_1: T, q_sf3_0: _,                         // six
                                                                               // percent
                                                                               // are q's
 
       r_sf1_5: _, r_sf1_4: T, r_sf1_3: _, r_sf1_2: _, r_sf1_1: T, r_sf1_0: _, // eighteen
                                                                               // point
       r_sf2_3: _, r_sf2_2: T, r_sf2_1: _, r_sf2_0: T,                         // five
-      r_sf3_3: _, r_sf3_2: T, r_sf3_1: _, r_sf3_0: _,                         // four
                                                                               // percent
                                                                               // are r's
 
       s_sf1_5: _, s_sf1_4: T, s_sf1_3: _, s_sf1_2: _, s_sf1_1: T, s_sf1_0: T, // nineteen
                                                                               // point
       s_sf2_3: _, s_sf2_2: _, s_sf2_1: T, s_sf2_0: T,                         // three
-      s_sf3_3: _, s_sf3_2: _, s_sf3_1: T, s_sf3_0: _,                         // two
                                                                               // percent
                                                                               // are s's
 
       t_sf1_5: _, t_sf1_4: T, t_sf1_3: _, t_sf1_2: T, t_sf1_1: _, t_sf1_0: _, // twenty
                                                                               // point
       t_sf2_3: _, t_sf2_2: _, t_sf2_1: _, t_sf2_0: T,                         // one
-      t_sf3_3: _, t_sf3_2: _, t_sf3_1: _, t_sf3_0: _,                         // ____
                                                                               // percent
                                                                               // are t's
 
       u_sf1_5: _, u_sf1_4: T, u_sf1_3: _, u_sf1_2: T, u_sf1_1: _, u_sf1_0: T, // twenty-one
                                                                               // point
       u_sf2_3: T, u_sf2_2: _, u_sf2_1: _, u_sf2_0: T,                         // nine
-      u_sf3_3: T, u_sf3_2: _, u_sf3_1: _, u_sf3_0: _,                         // eight
                                                                               // percent
                                                                               // are u's
 
       v_sf1_5: _, v_sf1_4: T, v_sf1_3: _, v_sf1_2: T, v_sf1_1: T, v_sf1_0: _, // twenty-two
                                                                               // point
       v_sf2_3: _, v_sf2_2: T, v_sf2_1: T, v_sf2_0: T,                         // seven
-      v_sf3_3: _, v_sf3_2: T, v_sf3_1: T, v_sf3_0: _,                         // six
                                                                               // percent
                                                                               // are v's
 
       w_sf1_5: _, w_sf1_4: T, w_sf1_3: _, w_sf1_2: T, w_sf1_1: T, w_sf1_0: T, // twenty-three
                                                                               // ____
       w_sf2_3: _, w_sf2_2: _, w_sf2_1: _, w_sf2_0: _,                         // ____
-      w_sf3_3: _, w_sf3_2: _, w_sf3_1: _, w_sf3_0: _,                         // ____
                                                                               // percent
                                                                               // are w's
 
       x_sf1_5: _, x_sf1_4: T, x_sf1_3: T, x_sf1_2: _, x_sf1_1: _, x_sf1_0: _, // twenty-four
                                                                               // point
       x_sf2_3: _, x_sf2_2: _, x_sf2_1: T, x_sf2_0: T,                         // three
-      x_sf3_3: _, x_sf3_2: _, x_sf3_1: T, x_sf3_0: _,                         // two
                                                                               // percent
                                                                               // are x's
 
       y_sf1_5: _, y_sf1_4: T, y_sf1_3: T, y_sf1_2: _, y_sf1_1: _, y_sf1_0: T, // twenty-five
                                                                               // point
       y_sf2_3: _, y_sf2_2: _, y_sf2_1: _, y_sf2_0: T,                         // one
-      y_sf3_3: _, y_sf3_2: _, y_sf3_1: _, y_sf3_0: _,                         // ____
                                                                               // percent
                                                                               // are y's
 
       z_sf1_5: _, z_sf1_4: T, z_sf1_3: T, z_sf1_2: _, z_sf1_1: T, z_sf1_0: _, // twenty-six
                                                                               // point
       z_sf2_3: T, z_sf2_2: _, z_sf2_1: _, z_sf2_0: T,                         // nine
-      z_sf3_3: T, z_sf3_2: _, z_sf3_1: _, z_sf3_0: _,                         // eight
                                                                               // percent
                                                                               // are z's
 
-                                                                              // 760 letters
+                                                                              // 693 letters
 
-      seed_a5: T, seed_a4: T, seed_a3: _, seed_a2: T, seed_a1: T, seed_a0: T, // + 55 a's
-      seed_b5: _, seed_b4: _, seed_b3: _, seed_b2: T, seed_b1: _, seed_b0: T, // + 5 b's
+      seed_a5: T, seed_a4: T, seed_a3: _, seed_a2: _, seed_a1: _, seed_a0: _, // + 48 a's
+      seed_b5: _, seed_b4: _, seed_b3: _, seed_b2: _, seed_b1: _, seed_b0: _,
       seed_c5: _, seed_c4: _, seed_c3: _, seed_c2: _, seed_c1: _, seed_c0: _,
       seed_d5: _, seed_d4: _, seed_d3: _, seed_d2: _, seed_d1: _, seed_d0: _,
       seed_e5: _, seed_e4: _, seed_e3: _, seed_e2: _, seed_e1: _, seed_e0: _,
@@ -289,7 +263,8 @@ describe(describedChip, function () {
       seed_z5: _, seed_z4: _, seed_z3: _, seed_z2: _, seed_z1: _, seed_z0: _
     });
 
-    expect(result).toEqual({ out: _ });
+    // 75 a's / 741 == 10.1%
+    expect(result).toEqual({ out: _ }); // a_equal: T
   });
 });
 
