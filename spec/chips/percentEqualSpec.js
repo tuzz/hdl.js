@@ -30,8 +30,7 @@ describe(describedChip, function () {
       a_sf3_0: _, a_sf3_1: T, a_sf3_2: _, a_sf3_3: T,
 
       b_sf1_0: _, b_sf1_1: T, b_sf1_2: _, b_sf1_3: T, b_sf1_4: _, b_sf1_5: T,
-      b_sf2_0: T, b_sf2_1: _, b_sf2_2: T, b_sf2_3: _,
-      b_sf3_0: _, b_sf3_1: T, b_sf3_2: _, b_sf3_3: T,
+      b_sf2_0: T, b_sf2_1: _, b_sf2_2: T, b_sf2_3: _
     });
 
     expect(result).toEqual({ out: T });
@@ -42,8 +41,7 @@ describe(describedChip, function () {
       a_sf3_0: _, a_sf3_1: T, a_sf3_2: _, a_sf3_3: _,
 
       b_sf1_0: _, b_sf1_1: T, b_sf1_2: _, b_sf1_3: T, b_sf1_4: _, b_sf1_5: T,
-      b_sf2_0: T, b_sf2_1: _, b_sf2_2: T, b_sf2_3: _,
-      b_sf3_0: _, b_sf3_1: T, b_sf3_2: _, b_sf3_3: T,
+      b_sf2_0: T, b_sf2_1: _, b_sf2_2: T, b_sf2_3: T
     });
 
     expect(result).toEqual({ out: _ });
