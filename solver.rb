@@ -41,7 +41,7 @@ end
 
 def to_numbers(variables)
   ("a".."z").map do |letter|
-    (1..3).map do |sf|
+    (1..2).map do |sf|
       bits = variables.select do |k, _|
         k.start_with?(letter) && k.include?("sf#{sf}")
       end
@@ -80,7 +80,7 @@ def variables(original_dimacs, assignments)
   variables = {}
 
   ("a".."z").each do |letter|
-    (1..3).each do |sf|
+    (1..2).each do |sf|
       (0..5).each do |bit|
         next if sf > 1 && bit > 3
 
