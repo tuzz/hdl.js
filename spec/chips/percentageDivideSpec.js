@@ -51,10 +51,9 @@ describe(describedChip, function () {
     });
 
     expect(result).toEqual({
-      // 33.33 quotient
+      // 33.3 quotient
       a5: T, a4: _, a3: _, a2: _, a1: _, a0: T, // 33
                     b3: _, b2: _, b1: T, b0: T, // 3
-                    c3: _, c2: _, c1: T, c0: T, // 3
       overflow: _
     });
 
@@ -69,33 +68,12 @@ describe(describedChip, function () {
     });
 
     expect(result).toEqual({
-      // 42.25 quotient
+      // 42.3 quotient
       a5: T, a4: _, a3: T, a2: _, a1: T, a0: _, // 42
-                    b3: _, b2: _, b1: T, b0: _, // 2
-                    c3: _, c2: T, c1: _, c0: T, // 5
+                    b3: _, b2: _, b1: T, b0: T, // 3
       overflow: _
     });
 
-    // In this example, the third significant figure needs to be rounded.
-    result = HDL.evaluate(describedChip, {
-      // 300 numerator
-      n11: _, n10: _, n9: _, n8: T, n7: _, n6: _,
-      n5:  T, n4:  _, n3: T, n2: T, n1: _, n0: _,
-
-      // 700 divisor
-      d11: _, d10: _, d9: T, d8: _, d7: T, d6: _,
-      d5:  T, d4:  T, d3: T, d2: T, d1: _, d0: _
-    });
-
-    expect(result).toEqual({
-      // 42.86 quotient (rounded 5 -> 6)
-      a5: T, a4: _, a3: T, a2: _, a1: T, a0: _, // 42
-                    b3: T, b2: _, b1: _, b0: _, // 8
-                    c3: _, c2: T, c1: T, c0: _, // 6
-      overflow: _
-    });
-
-    // In this example, rounding cascades to the 1st s.f.
     result = HDL.evaluate(describedChip, {
       // 30 numerator
       n11: _, n10: _, n9: _, n8: _, n7: _, n6: _,
@@ -107,10 +85,9 @@ describe(describedChip, function () {
     });
 
     expect(result).toEqual({
-      // 1.00 quotient (rounded from 0.999)
+      // 1.0 quotient (rounded from 0.99)
       a5: _, a4: _, a3: _, a2: _, a1: _, a0: T, // 1
                     b3: _, b2: _, b1: _, b0: _, // 0
-                    c3: _, c2: _, c1: _, c0: _, // 0
       overflow: _
     });
 
@@ -125,10 +102,9 @@ describe(describedChip, function () {
     });
 
     expect(result).toEqual({
-      // 2.50 quotient
+      // 2.5 quotient
       a5: _, a4: _, a3: _, a2: _, a1: T, a0: _, // 2
                     b3: _, b2: T, b1: _, b0: T, // 5
-                    c3: _, c2: _, c1: _, c0: _, // 0
       overflow: _
     });
 
@@ -143,14 +119,10 @@ describe(describedChip, function () {
     });
 
     expect(result).toEqual({
-      // 2.67 quotient (overflows 64)
+      // 2.7 quotient (overflows 64)
       a5: _, a4: _, a3: _, a2: _, a1: T, a0: _, // 2
-                    b3: _, b2: T, b1: T, b0: _, // 6
-                    c3: _, c2: T, c1: T, c0: T, // 7
+                    b3: _, b2: T, b1: T, b0: T, // 7
       overflow: T
     });
-
-
-    HDL.toDIMACS("percentage_divide");
   });
 });
