@@ -1,34 +1,13 @@
 inputs sf1_in0, sf1_in1, sf1_in2, sf1_in3, sf1_in4, sf1_in5,
        sf2_in0, sf2_in1, sf2_in2, sf2_in3,
-       sf3_in0, sf3_in1, sf3_in2, sf3_in3,
-       sf4_in0, sf4_in1, sf4_in2, sf4_in3
+       sf3_in0, sf3_in1, sf3_in2, sf3_in3
 
 outputs sf1_out0, sf1_out1, sf1_out2, sf1_out3, sf1_out4, sf1_out5,
-        sf2_out0, sf2_out1, sf2_out2, sf2_out3,
-        sf3_out0, sf3_out1, sf3_out2, sf3_out3
-
-# Check if the fourth-significant figure causes rounding to the third:
-less_than_5(i0=sf4_in0, i1=sf4_in1, i2=sf4_in2, i3=sf4_in3, i4=0, i5=0, out=sf4_less_than_5)
-not(in=sf4_less_than_5, out=round_sf3)
-
-# -----------------------------
-
-# Add one to the third-significant figure if needed:
-add_6(
-  a0=sf3_in0, a1=sf3_in1, a2=sf3_in2, a3=sf3_in3, a4=0, a5=0,
-  b0=round_sf3, b1=0, b2=0, b3=0, b4=0, b5=0,
-  o0=sf3_x0, o1=sf3_x1, o2=sf3_x2, o3=sf3_x3, o4=sf3_x4, o5=sf3_x5,
-  carry=x0
-)
+        sf2_out0, sf2_out1, sf2_out2, sf2_out3
 
 # Check if the third-significant figure causes rounding to the second:
-equal_to_10(i0=sf3_x0, i1=sf3_x1, i2=sf3_x2, i3=sf3_x3, i4=sf3_x4, i5=sf3_x5, out=round_sf2)
-
-# If the third-significant figure rounded, return 0s:
-mux(a=sf3_x0, b=0, sel=round_sf2, out=sf3_out0)
-mux(a=sf3_x1, b=0, sel=round_sf2, out=sf3_out1)
-mux(a=sf3_x2, b=0, sel=round_sf2, out=sf3_out2)
-mux(a=sf3_x3, b=0, sel=round_sf2, out=sf3_out3)
+less_than_5(i0=sf3_in0, i1=sf3_in1, i2=sf3_in2, i3=sf3_in3, i4=0, i5=0, out=sf3_less_than_5)
+not(in=sf3_less_than_5, out=round_sf2)
 
 # -----------------------------
 
@@ -37,13 +16,13 @@ add_6(
   a0=sf2_in0, a1=sf2_in1, a2=sf2_in2, a3=sf2_in3, a4=0, a5=0,
   b0=round_sf2, b1=0, b2=0, b3=0, b4=0, b5=0,
   o0=sf2_x0, o1=sf2_x1, o2=sf2_x2, o3=sf2_x3, o4=sf2_x4, o5=sf2_x5,
-  carry=x1
+  carry=x0
 )
 
 # Check if the second-significant figure causes rounding to the first:
 equal_to_10(i0=sf2_x0, i1=sf2_x1, i2=sf2_x2, i3=sf2_x3, i4=sf2_x4, i5=sf2_x5, out=round_sf1)
 
-# If the second-significant figure rounded, return 0s:
+# If the first-significant figure rounded, return 0s:
 mux(a=sf2_x0, b=0, sel=round_sf1, out=sf2_out0)
 mux(a=sf2_x1, b=0, sel=round_sf1, out=sf2_out1)
 mux(a=sf2_x2, b=0, sel=round_sf1, out=sf2_out2)
