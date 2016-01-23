@@ -157,9 +157,9 @@ def parse_assignments(solution)
   end
 
   literals = []
-  assignments = lines.select { |l| l.start_with?("c v ") }
+  assignments = lines.select { |l| l.start_with?("v ") }
   assignments.map do |line|
-    line = line.gsub("c v ", "")
+    line = line.gsub("v ", "")
     line = line.gsub(/ 0$/, "")
 
     line.split(" ").each do |literal|
@@ -195,38 +195,13 @@ end
 def build_term(number_array)
   term = number_array.first.in_words
 
-  unless number_array[1].zero? && number_array[2].zero?
+  unless number_array[1].zero?
     term += " point "
     term += number_array[1].in_words
-
-    unless number_array[2].zero?
-      term += " "
-      term += number_array[2].in_words
-    end
   end
 
   term += " percent"
 end
-
-# def extract_seed(original_dimacs, assignments) # temporary
-#   mappings = parse_mappings(original_dimacs)
-#   variables = {}
-#
-#   ("a".."z").each do |letter|
-#     (0..5).each do |bit|
-#       variable = "seed_#{letter}#{bit}"
-#       literal = mappings.fetch(variable)
-#
-#       if assignments.include?(literal)
-#         variables.merge!(variable => true)
-#       else
-#         variables.merge!(variable => false)
-#       end
-#     end
-#   end
-#
-#   variables
-# end
 
 dimacs = generate_dimacs(original_dimacs, seed_prefix, seed_after_first, seed_before_last)
 solution = solve_dimacs(binary, dimacs)
